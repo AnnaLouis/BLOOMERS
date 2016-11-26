@@ -1,4 +1,24 @@
-/* -------------------------------------
- * CSS code specific to home page
- * (margin/padding adjustments)
- * ------------------------------------- */
+
+.wrapper {
+  position: relative;
+  padding: 40px 40px 40px 40px;
+}
+
+.wrapper p {
+  font-size: 15px;
+}
+
+.wrapper h1 {
+  font-size:23px;
+  text-align:center
+}
+
+.card-bloomer {
+  height: 175px;
+  background-size: cover !important;
+}
+
+.card {
+  text-align:center;
+  padding: 40px 10px 40px 10px;
+}
