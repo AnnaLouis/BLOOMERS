@@ -1,7 +1,7 @@
 
 .wrapper {
   position: relative;
-  padding: 40px 40px 40px 40px;
+  padding: 30px 40px 30px 40px;
 }
 
 .wrapper p {
@@ -13,12 +13,23 @@
   text-align:center
 }
 
-.card-bloomer {
-  height: 175px;
-  background-size: cover !important;
-}
-
 .card {
   text-align:center;
-  padding: 40px 10px 40px 10px;
+  font-weight:bold;
+  font-size: 30px;
+  height: 200px;
+  border-radius: 2px;
+  }
+
+#bloomer.card {
+  background-image:linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('1.jpg');
 }
+
+// #mutinerie.card {
+//   background-image:linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('3.jpg');
+// }
+#partners.card {
+  background-image:linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('2.jpg');
+}
+
+
