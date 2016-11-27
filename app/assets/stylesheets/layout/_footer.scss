@@ -1,1 +1,10 @@
-// Your footer style
+.footer-wrapper {
+  padding: 30px 40px 30px 40px;
+  background-color: white;
+}
+
+.row {
+  display:flex;
+  justify-content: space-around;
+  align-items:center;
+}
