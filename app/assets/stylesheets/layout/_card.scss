@@ -9,12 +9,17 @@
 //     url('../fonts/feathericons/feathericons.svg?-8is7zf#feathericons') format('svg');
 // }
 
-.grid .row {
+.grid {
   display:flex;
   height:50%;
   text-align: center;
   justify-content: center;
   align-items: center;
+  justify-content: space-between;
+}
+
+.effect-zoe {
+  border-radius: 3px;
 }
 
 .grid .col-xs-6 {
