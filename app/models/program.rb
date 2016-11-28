@@ -8,6 +8,5 @@ class Program < ApplicationRecord
   validates :name, presence: true
   validates :short_description, presence: true
   validates :price, presence: true
-  validates :equity, presence: true
   validates :duration, presence: true
 end

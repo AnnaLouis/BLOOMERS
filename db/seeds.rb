@@ -57,3 +57,23 @@ bloomer1.date_creation = Date.new(2015, 6, 1)
 bloomer1.description = "LOOK FORWARD est la plateforme de toute innovation susceptible de revolutionner le monde de la mode et du retail. Avec les startups integrees à son incubateur, LOOK FORWARD a l’ambition de bousculer la facon de distribuer, consommer et produire la mode."
 bloomer1.user = User.find_by_email("anna@bloomers.fr")
 bloomer1.save
+
+# PROGRAM
+
+program1 = Program.new(name:"Program 1")
+program1.short_description = "La Plaine Saint Denis"
+program1.price = 0
+program1.duration = "Un an"
+program1.equity = false
+program1.bloomer = bloomer1
+program1.save!
+
+# BATCH
+p program1
+batch1 = Batch.new(name:"Promo 1")
+batch1.batch_start = Date.new(2015,1,1)
+batch1.batch_end = Date.new(2016,1,1)
+batch1.program = program1
+batch1.startup = startup1
+batch1.save!
+
