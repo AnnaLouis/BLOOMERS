@@ -7,18 +7,19 @@ class BloomersController < ApplicationController
 
   def show
     @bloomer = Bloomer.find(params[:id])
+    authorize @bloomer
   end
 
   def new
     @bloomer = Bloomer.new
     @bloomer.user = current_user
-    # authorize @bloomer
+    authorize @bloomer
   end
 
   def create
     @bloomer = Bloomer.new(bloomer_params)
     @bloomer.user = current_user
-    # authorize @bloomer
+    authorize @bloomer
     if @bloomer.save
       redirect_to bloomer_path(@bloomer)
     else
