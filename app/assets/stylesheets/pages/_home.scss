@@ -1,8 +1,6 @@
 .home {
-  position: relative;
-  padding: 30px 40px 30px 40px;
   text-align:center;
-  font-weight:lighter;
+  padding: 40px 40px 40px 40px;
 }
 
 .home p {
@@ -17,8 +15,19 @@
 
 .home h3 {
   color: $gray;
+  font-weight:lighter;
 }
 
+.grid .row {
+  display:flex;
+  height:50%;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
 
-
-
+.grid .col-xs-6 {
+  display:flex;
+  text-align:center;
+  justify-content: center;
+}
