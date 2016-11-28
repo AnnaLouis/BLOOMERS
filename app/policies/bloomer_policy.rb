@@ -7,7 +7,5 @@ class BloomerPolicy < ApplicationPolicy
     def create
     end
 
-
-
   end
 end

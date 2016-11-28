@@ -1,11 +1,12 @@
 class StartupsController < ApplicationController
   def show
-    @startup = Startup.find([:id])
-    authorize(@startup)
+    @startup = Startup.find(params[:id])
+    authorize @startup
   end
 
   def new
     @startup = Startup.new
+    authorize @startup
   end
 
   def create
