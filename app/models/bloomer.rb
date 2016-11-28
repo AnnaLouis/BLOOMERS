@@ -1,7 +1,11 @@
 class Bloomer < ApplicationRecord
+  # REFERENCES
   belongs_to :user
   has_many :programs
   has_many :reviews
+  # IMG ATTACHINARY & CLOUDINARY
+  has_attachments :photos, maximum: 8
+  # VALIDATIONS
   validates :name, presence: true, uniqueness: true
   validates :city, presence: true
   validates :country, presence: true
