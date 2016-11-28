@@ -15,19 +15,6 @@ ActiveRecord::Schema.define(version: 20161128102340) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "applications", force: :cascade do |t|
-    t.string   "status"
-    t.date     "start_date"
-    t.date     "preselection_date"
-    t.date     "end_date"
-    t.integer  "startup_id"
-    t.integer  "program_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-    t.index ["program_id"], name: "index_applications_on_program_id", using: :btree
-    t.index ["startup_id"], name: "index_applications_on_startup_id", using: :btree
-  end
-
   create_table "batchs", force: :cascade do |t|
     t.date     "batch_start"
     t.date     "batch_end"
@@ -128,8 +115,6 @@ ActiveRecord::Schema.define(version: 20161128102340) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_foreign_key "applications", "programs"
-  add_foreign_key "applications", "startups"
   add_foreign_key "batchs", "bloomers"
   add_foreign_key "batchs", "startups", column: "startups_id"
   add_foreign_key "bloomers", "users"
