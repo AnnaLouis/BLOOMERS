@@ -20,5 +20,5 @@ Rails.application.routes.draw do
   # resources :programs, only: [:edit, :update]
 
   resources :startups, only: [:show, :new, :create]
-
+  mount Attachinary::Engine => "/attachinary"
 end
