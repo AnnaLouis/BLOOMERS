@@ -1,10 +1,31 @@
 .footer-wrapper {
   padding: 30px 40px 30px 40px;
   background-color: white;
+  // width: 300px;
 }
 
 .row {
   display:flex;
   justify-content: space-around;
   align-items:center;
+}
+
+
+.logo-container{
+
+  // width: 240px;
+
+}
+
+.main-col-footer{
+margin-left: 20px;
+margin-right: 20px;
+color: #FFC400;
+}
+
+
+.social-col-footer{
+margin-left: 20px;
+margin-right: 20px;
+padding-bottom: 10px;
 }
