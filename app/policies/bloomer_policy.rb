@@ -3,9 +3,27 @@ class BloomerPolicy < ApplicationPolicy
     def resolve
       scope
     end
+  end
 
-    def create
-    end
+  def index?
+   true
+ end
+
+ def show?
+   true
+ end
+
+
+  #  def new?
+  #   true
+  # end
+
+  def create?
+    record.user.bloomer_admin == true
+  end
+
+    # def update?
+    #   record.user == user
+    # end
 
   end
-end
