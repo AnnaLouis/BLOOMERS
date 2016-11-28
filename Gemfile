@@ -10,6 +10,9 @@ gem 'devise'
 gem 'redis'
 gem 'pundit'
 
+# CLOUDINARY - IMG STORAGE
+gem 'cloudinary', '1.1.0'
+
 gem 'sass-rails'
 gem 'jquery-rails'
 gem 'uglifier'
