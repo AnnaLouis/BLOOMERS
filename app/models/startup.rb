@@ -4,7 +4,8 @@ class Startup < ApplicationRecord
   has_many :candidatures, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :programs, through: :batchs
-  validates :short_description
-  validates :name
-  validates :date_creation
+  has_many :bloomers, through: :programs
+  validates :short_description, presence: true
+  validates :name, presence: true
+  validates :date_creation, presence: true
 end
