@@ -58,22 +58,35 @@ bloomer1.description = "LOOK FORWARD est la plateforme de toute innovation susce
 bloomer1.user = User.find_by_email("anna@bloomers.fr")
 bloomer1.save
 
+bloomer2 = Bloomer.new(name:"La Mutinerie")
+bloomer2.city = "Paris"
+bloomer2.country = "France"
+bloomer2.category = "Coworking"
+bloomer2.website = "lamutinerie.org"
+bloomer2.speciality = "cowork"
+bloomer2.email = "annalouis2@gmail.com"
+bloomer2.address = "16 Villa Gaudelet, Paris"
+bloomer2.twitter_account = "https://twitter.com/mutineries"
+bloomer2.date_creation = Date.new(2015, 9, 1)
+bloomer2.description = "Libre ensemble"
+bloomer2.user = User.find_by_email("anna@bloomers.fr")
+bloomer2.save
+
 # PROGRAM
 
-program1 = Program.new(name:"Program 1")
-program1.short_description = "La Plaine Saint Denis"
-program1.price = 0
-program1.duration = "Un an"
-program1.equity = false
-program1.bloomer = bloomer1
-program1.save!
+# program1 = Program.new(name:"Program 1")
+# program1.short_description = "La Plaine Saint Denis"
+# program1.price = 0
+# program1.duration = "Un an"
+# program1.equity = false
+# program1.bloomer = bloomer1
+# program1.save!
 
 # BATCH
-p program1
-batch1 = Batch.new(name:"Promo 1")
-batch1.batch_start = Date.new(2015,1,1)
-batch1.batch_end = Date.new(2016,1,1)
-batch1.program = program1
-batch1.startup = startup1
-batch1.save!
+# batch1 = Batch.new(name:"Promo 1")
+# batch1.batch_start = Date.new(2015,1,1)
+# batch1.batch_end = Date.new(2016,1,1)
+# batch1.program = program1
+# batch1.startup = startup1
+# batch1.save!
 
