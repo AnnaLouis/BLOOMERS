@@ -10,32 +10,62 @@
     <!-- Profile picture and dropdown -->
     <div class="navbar-bloomer-item">
       <div class="dropdown">
-        <p id="navbar-bloomer-menu" data-toggle="dropdown"> Les Bloomers </p>
+        <p id="navbar-bloomer-menu" data-toggle="dropdown"> Bloomers </p>
         <ul class="dropdown-menu dropdown-menu-right navbar-bloomer-dropdown-menu">
           <li>
-            <%= link_to "/bloomers" do %>
-            <i class="fa fa-eye" aria-hidden="true"></i> Tous les Bloomers <!-- <#%= t(".profile", default: "Profile") %#> -->
+            <%= link_to "/bloomers" do %> Les Bloomers
+             <!-- <#%= t(".profile", default: "Profile") %#> -->
             <% end %>
           </li>
           <li>
-            <%= link_to "/map" do %>
-            <i class="fa fa-map-marker" aria-hidden="true"></i> La Carte <%= t(".profile", default: "Bloomers") %>
+            <%= link_to "/programs" do %> Les programmes
+            <!-- <#%= t(".profile", default: "Bloomers") %> -->
+            <% end %>
+          </li>
+          <li>
+            <%= link_to "/batches" do %> Les Batchs
+            <!-- <#%= t(".profile", default: "Bloomers") %> -->
             <% end %>
           </li>
         </ul>
       </div>
     </div>
+
     <div class="navbar-bloomer-item">
       <div class="dropdown">
-        <p id="navbar-bloomer-menu" data-toggle="dropdown"> Connexion </p>
-      </div>
-    </div>
-    <div class="navbar-bloomer-item">
-      <div class="dropdown">
-        <p id="navbar-bloomer-menu" data-toggle="dropdown"> Inscription </p>
+        <p id="navbar-bloomer-menu" data-toggle="dropdown"> Startups </p>
+        <ul class="dropdown-menu dropdown-menu-right navbar-bloomer-dropdown-menu">
+          <li>
+            <%= link_to "/startups" do %> Les Startups
+             <!-- <#%= t(".profile", default: "Profile") %#> -->
+            <% end %>
+          </li>
+          <li>
+            <%= link_to "/programs/:program_id/candidatures/new" do %> Les Candidatures
+            <!-- <#%= t(".profile", default: "Bloomers") %> -->
+            <% end %>
+          </li>
+        </ul>
       </div>
     </div>
 
+    <div class="navbar-bloomer-item">
+      <div class="dropdown">
+        <p id="navbar-bloomer-menu" data-toggle="dropdown"> Les Users </p>
+        <ul class="dropdown-menu dropdown-menu-right navbar-bloomer-dropdown-menu">
+          <li>
+            <%= link_to "/startups" do %> Les Profiles
+             <!-- <#%= t(".profile", default: "Profile") %#> -->
+            <% end %>
+          </li>
+          <li>
+            <%= link_to "/programs/:program_id/candidatures/new" do %> Éditer
+            <!-- <#%= t(".profile", default: "Bloomers") %> -->
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 
 </div>

@@ -13,15 +13,17 @@
   </head>
   <body>
 
-    <%  if current_user.admin? %>
-      <%= render 'shared/navbar/navbar_admin' %>
-    <%  elsif current_user.startup_admin? %>
-      <%= render 'shared/navbar/navbar_startup_admin' %>
-    <%  elsif current_user.bloomer_admin? %>
-      <%= render 'shared/navbar/navbar_bloomer_admin' %>
-    <%  elsif %>
-      <%= render 'shared/navbar/navbar_visitor' %>
-    <% end %>
+<!--     <#%  if current_user.admin? %>
+      <#%= render 'shared/navbar/navbar_admin' %>
+    <#%  elsif current_user.startup_admin? %>
+      <#%= render 'shared/navbar/navbar_startup_admin' %>
+    <#%  elsif current_user.bloomer_admin? %>
+      <#%= render 'shared/navbar/navbar_bloomer_admin' %>
+    <#%  elsif %>
+      <#%= render 'shared/navbar/navbar_visitor' %>
+    <#% end %> -->
+
+    <%= render 'shared/navbar/navbar_admin' %>
 
     <%= render 'shared/flashes' %>
 
