@@ -10,3 +10,17 @@ $(document).ready(function() {
       $(tabSelector).removeClass("hidden");
     });
 });
+
+$(document).ready(function() {
+  $(".tab-new-bloomer").on("click", function(e){
+      // Change active tab
+      $(".tab-new-bloomer").removeClass("active");
+      $(this).addClass("active");
+      // Hide all tab-content (use class="hidden")
+      $(".tab-new-bloomer-content").addClass("hidden");
+      // Show target tab-content (use class="hidden")
+      tabSelector = $(this).data("target");
+      $(tabSelector).removeClass("hidden");
+    });
+});
+
