@@ -7,6 +7,9 @@ class BloomersController < ApplicationController
 
   def show
     @bloomer = Bloomer.find(params[:id])
+    authorize @bloomer
+    @alert_message = "Vous êtes sur la page de : #{@bloomer.name}"
+    @bloomer_coordinates = { lat: @bloomer.latitude, lng: @bloomer.longitude }
   end
 
   def new
