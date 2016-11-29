@@ -1,0 +1,71 @@
+.wrapper-bloomer {
+  width: 100vw;
+  margin-left: 0px;
+  color: #8C8C8C;
+}
+
+.solution {
+  position: relative;
+}
+
+
+.solution .home-image {
+  height: 60px;
+  opacity: 0;
+  position: absolute;
+  top: 20px;
+  right: 30px;
+}
+
+.solution:hover .home-image {
+  opacity: 1;
+}
+
+#explore .li {
+  color: rgba(0,0,0,0)
+}
+
+#explore:hover .li {
+  color: #FEC300;
+}
+
+#explore {
+  background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('1.jpg');
+  background-size: cover;
+  height: 100vh;
+  background-attachment: fixed;
+}
+
+#explore:hover {
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('1.jpg');
+  transition: 2000;
+  color: white;
+  background-attachment: fixed;
+}
+
+#partage {
+  background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('2.jpg');
+  background-size: cover;
+  height: 100vh;
+  background-attachment: fixed;
+}
+#partage:hover {
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('2.jpg');
+  transition: 2000;
+  color: white;
+  background-attachment: fixed;
+}
+
+#guide {
+  background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('3.jpg');
+  background-size: cover;
+  height: 100vh;
+  background-attachment: fixed;
+}
+
+#guide:hover {
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('3.jpg');
+  transition: 2000;
+  color: white;
+  background-attachment: fixed;
+}
