@@ -1,17 +1,13 @@
 class BloomerPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope
+      scope.all
     end
   end
 
-  def index?
+  def show?
    true
- end
-
- def show?
-   true
- end
+  end
 
 
   #  def new?
@@ -26,4 +22,4 @@ class BloomerPolicy < ApplicationPolicy
     #   record.user == user
     # end
 
-  end
+end
