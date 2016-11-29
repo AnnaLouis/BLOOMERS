@@ -1,27 +1,62 @@
-<h1> ci l'index de bloomers </h1>
+<div class="container">
+  <!-- <div class="row">
+   <h3> Hello </h3>
+ </div> -->
+
+ <div class="row">
+    <div class="col-md-2">
+      <div class="row">
+       <h3> La Recherche </h3>
+      </div>
+    </div>
+    <div class="col-md-10">
+      <div class="row">
+        <h3> Les résultats </h3>
+      </div>
+
+      <div class="row">
+        <% @bloomers.each do |bloomer| %>
+          <div col-md-4>
+            <div class="card">
+              <figure class="effect-zoe" style="background-image: url('<%= image_path('5.jpg')%>');">
+                <div class="test"> <h3> <%= bloomer.name %> </h3> </div>
+                <figcaption>
+                  <div class="row more-details">
+                    <div class="col-xs-6" id="category">
+                      <p> <%= bloomer.category %> </p>
+                    </div>
+                    <div class="col-xs-6" id="location">
+                      <p> <i class="fa fa-map-marker" aria-hidden="true"></i> <%= bloomer.city %> </p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-xs-6">
+                      <p> <%= bloomer.speciality %> </p>
+                    </div>
+                    <div class="col-xs-6">
+                      <p class="icon-links">
+                        <a href="#"><span class="icon-heart"></span></a>
+                        <a href="#"><span class="icon-eye"></span></a>
+                        <a href="#"><span class="icon-paper-clip"></span></a>
+                      </p>
+                    </div>
+                  </div>
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+</div>
+</div>
 
 
-<aside class="research">
-
-</aside>
-
-
-<section class="search-results">
-
-  <div class="section-header">
-
-
-  </div>
-
-  <ul>
-
-    <li>
-
-    </li>
 
 
 
-  </ul>
 
 
-</section>
+
+

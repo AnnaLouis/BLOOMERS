@@ -9,23 +9,17 @@
 //     url('../fonts/feathericons/feathericons.svg?-8is7zf#feathericons') format('svg');
 // }
 
-.grid {
-  display:flex;
-  height:50%;
+.card {
+  position: relative;
+  margin: 0 auto;
+  padding: 1em 0 4em;
+  max-width: 1000px;
+  list-style: none;
   text-align: center;
-  justify-content: center;
-  align-items: center;
-  justify-content: space-between;
 }
 
 .effect-zoe {
   border-radius: 3px;
-}
-
-.grid .col-xs-6 {
-  display:flex;
-  text-align:center;
-  justify-content: center;
 }
 
 .test h3 {
@@ -42,22 +36,12 @@
 .effect-zoe:hover h3 {
 /*  opacity: 0;
   transition: opacity 0.15s ease-in-out;*/
-
   padding-top: 5%;
-
 }
 
-.grid {
-  position: relative;
-  margin: 0 auto;
-  padding: 1em 0 4em;
-  max-width: 1000px;
-  list-style: none;
-  text-align: center;
-}
 
 /* Common style */
-.grid figure {
+.card figure {
   position: relative;
   float: left;
   overflow: hidden;
@@ -68,17 +52,18 @@
   background-color: rgba(0, 0, 255, 0);
   text-align: center;
   cursor: pointer;
+  background-size:cover;
 }
 
-.grid figure img {
-  position: relative;
-  display: block;
-  min-height: 100%;
-  max-width: 100%;
-  opacity: 0.8;
-}
+// .card figure img {
+//   position: relative;
+//   display: block;
+//   min-height: 100%;
+//   max-width: 100%;
+//   opacity: 0.8;
+// }
 
-.grid figure figcaption {
+.card figure figcaption {
   padding: 2em;
   color: #fff;
   text-transform: uppercase;
@@ -87,13 +72,13 @@
   backface-visibility: hidden;
 }
 
-.grid figure figcaption::before,
-.grid figure figcaption::after {
+.card figure figcaption::before,
+.card figure figcaption::after {
   pointer-events: none;
 }
 
-.grid figure figcaption,
-.grid figure figcaption > a {
+.card figure figcaption,
+.card figure figcaption > a {
   position: absolute;
   top: 0;
   left: 0;
@@ -103,7 +88,7 @@
 
 /* Anchor will cover the whole item by default */
 /* For some effects it will show as a button */
-.grid figure figcaption > a {
+.card figure figcaption > a {
   z-index: 1000;
   text-indent: 200%;
   white-space: nowrap;
@@ -111,21 +96,21 @@
   opacity: 0;
 }
 
-.grid figure h2 {
+.card figure h2 {
   word-spacing: -0.15em;
   font-weight: 300;
 }
 
-.grid figure h2 span {
+.card figure h2 span {
   font-weight: 800;
 }
 
-.grid figure h2,
-.grid figure p {
+.card figure h2,
+.card figure p {
   margin: 0;
 }
 
-.grid figure p {
+.card figure p {
   letter-spacing: 1px;
   font-size: 68.5%;
 }
@@ -245,7 +230,7 @@ figure.effect-zoe:hover p.icon-links a:first-child {
     padding: 0 10px;
     text-align: center;
   }
-  .grid figure {
+  .card figure {
     display: inline-block;
     float: none;
     margin: 10px auto;
