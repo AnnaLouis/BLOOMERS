@@ -4,6 +4,7 @@ class Bloomer < ApplicationRecord
   has_many :programs
   has_many :reviews
   # IMG ATTACHINARY & CLOUDINARY
+  has_attachment :logo
   has_attachments :photos, maximum: 8
   # VALIDATIONS
   validates :name, presence: true, uniqueness: true
