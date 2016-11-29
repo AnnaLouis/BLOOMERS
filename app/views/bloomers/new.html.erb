@@ -1,1 +1,54 @@
-<h1> ici le new de bloomers </h1>
+<div class="wrapper">
+  <div class="wrapper-page-new-bloom">
+    <div class="col-xs-3 new-bloomer-left">
+      <div class="steps">
+        <h1>créez votre bloomer</h1>
+        <div class="circle active" data-target="#step-1-name"></div>
+        <div class="step"><p><span>étape 1</span><br>Création</p></div>
+        <div class="line-box"><div class="grey-line"></div></div>
+        <div class="circle" data-target="#step-2-description"></div>
+        <div class="step"><p><span>étape 2</span><br>Description</p></div>
+        <div class="line-box"><div class="grey-line"></div></div>
+        <div class="circle" data-target="#step-3-infos"></div>
+        <div class="step"><p><span>étape 3</span><br>Info pratiques</p></div>
+        <div class="line-box"><div class="grey-line"></div></div>
+        <div class="circle"></div>
+        <div class="step" data-target="#step-4-medias"><p><span>étape 4</span><br>Réseaux sociaux</p></div>
+      </div>
+    </div>
+    <div class="col-xs-9 new-bloomer-right">
+      <!-- Begining of simple form -->
+      <div class="tab-new-bloomer-content" id="step-1-name">
+        <%= simple_form_for(@bloomer) do |f| %>
+        <%= f.error_notification %>
+        <%= f.input :name %>
+      </div>
+      <!-- MAIN DESCRIPTION -->
+      <div class="tab-new-bloomer-content hidden" id="step-2-description">
+        <%= f.input :category, collection: Bloomer::CATEGORIES %>
+        <%= f.input :speciality %>
+        <%= f.input :description %>
+      </div>
+      <!-- INFO -->
+      <div class="tab-new-bloomer-content hidden" id="step-3-infos">
+        <%= f.input :date_creation %>
+        <%= f.input :website %>
+        <%= f.input :email %>
+        <%= f.input :address %>
+        <%= f.input :city %>
+      </div>
+      <!-- SOCIAL MEDIAS -->
+      <div class="tab-new-bloomer-content hidden" id="step-4-medias">
+        <%= f.input :twitter_account %>
+        <!-- SUBMIT -->
+        <%= f.button :submit %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
