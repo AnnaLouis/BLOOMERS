@@ -7,6 +7,7 @@ class BloomersController < ApplicationController
 
   def show
     @bloomer = Bloomer.find(params[:id])
+    authorize @bloomer
   end
 
   def new
