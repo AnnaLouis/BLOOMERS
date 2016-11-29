@@ -11,7 +11,6 @@ $(document).ready(function() {
     });
 });
 
-
 $(document).ready(function() {
   $(".tab-new-bloomer").on("click", function(e){
       // Change active tab
@@ -24,3 +23,4 @@ $(document).ready(function() {
       $(tabSelector).removeClass("hidden");
     });
 });
+

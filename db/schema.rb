@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161128170220) do
+ActiveRecord::Schema.define(version: 20161129093512) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,16 +30,16 @@ ActiveRecord::Schema.define(version: 20161128170220) do
     t.index ["attachinariable_type", "attachinariable_id", "scope"], name: "by_scoped_parent", using: :btree
   end
 
-  create_table "batches", force: :cascade do |t|
+  create_table "batchs", force: :cascade do |t|
     t.date     "batch_start"
     t.date     "batch_end"
-    t.integer  "startup_id"
+    t.integer  "startups_id"
     t.string   "name"
-    t.integer  "program_id"
+    t.integer  "bloomer_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["program_id"], name: "index_batches_on_program_id", using: :btree
-    t.index ["startup_id"], name: "index_batches_on_startup_id", using: :btree
+    t.index ["bloomer_id"], name: "index_batchs_on_bloomer_id", using: :btree
+    t.index ["startups_id"], name: "index_batchs_on_startups_id", using: :btree
   end
 
   create_table "bloomers", force: :cascade do |t|
@@ -57,6 +57,8 @@ ActiveRecord::Schema.define(version: 20161128170220) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "user_id"
+    t.float    "latitude"
+    t.float    "longitude"
     t.index ["user_id"], name: "index_bloomers_on_user_id", using: :btree
   end
 
@@ -133,8 +135,8 @@ ActiveRecord::Schema.define(version: 20161128170220) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_foreign_key "batches", "programs"
-  add_foreign_key "batches", "startups"
+  add_foreign_key "batchs", "bloomers"
+  add_foreign_key "batchs", "startups", column: "startups_id"
   add_foreign_key "bloomers", "users"
   add_foreign_key "candidatures", "programs"
   add_foreign_key "candidatures", "startups"

@@ -1,254 +1,254 @@
 <div class="banner-bloomer" style="background-image: /*linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%),*/url('http://imageshack.com/a/img923/6113/XpMsUl.jpg');background-repeat:no-repeat;background-position: center center;">
-  </div>
+</div>
 
-  <!--  TITLE & TABS SELECTOR-->
+<!--  TITLE & TABS SELECTOR-->
+<div class="wrapper-show-bloomer">
+  <div class="container">
+    <div class="row title">
+      <div class="col-xs-9">
+        <h1><%= @bloomer.name.upcase %></h1>
+      </div>
+      <div class="col-xs-3">
+        <h4><i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-envelope" aria-hidden="true"></i> <i class="fa fa-facebook-square" aria-hidden="true"></i> <a href="<%= @bloomer.twitter_account %>"><i class="fa fa-twitter" aria-hidden="true"></i></a></h4>
+        <h3><a href="<%= @bloomer.website %>">visit the website</a></h3>
+      </div>
+    </div>
+    <div class="row sub-titles">
+      <div class="col-xs-12">
+        <a class="sub-title tab active" data-target="#main-bloomer-info">INFO</a>
+        <a class="sub-title tab" data-target="#entrepreneurs">ENTREPRENEURS</a>
+        <a class="sub-title tab" data-target="#entreprises">ENTREPRISES</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE INFO -->
+<div id="main-bloomer-info" class="sub-content" style="margin:0px;padding:0px">
+  <!-- ROW 1 : main info + description -->
   <div class="wrapper-show-bloomer">
     <div class="container">
-      <div class="row title">
-        <div class="col-xs-9">
-          <h1><%= @bloomer.name.upcase %></h1>
+      <!-- First Line -->
+      <div class="row">
+        <!-- colonne 1 -->
+        <div class="col-xs-12 col-sm-6">
+          <div class="container-second">
+            <div class="row-main-info">
+              <div class="col-xs-12 col-md-6">
+                <div class="div-main-info">
+                  <h2>STRUCTURE</h2>
+                  <h3><%= @bloomer.category.upcase %></h3>
+                </div>
+              </div>
+              <div class="col-xs-12 col-md-6">
+                <div class="div-main-info">
+                  <h2>SPECIALISATION</h2>
+                  <h3><%= @bloomer.speciality.upcase %></h3>
+                </div>
+              </div>
+            </div>
+            <div class="row-main-info">
+              <div class="col-xs-12 col-md-6">
+                <div class="div-main-info">
+                  <h2>NOS STARTUPS</h2>
+                  <h3>20(!)</h3>
+                </div>
+              </div>
+              <div class="col-xs-12 col-md-6">
+                <div class="div-main-info">
+                  <h2>CREATION</h2>
+                  <h3><%= @bloomer.date_creation %></h3>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="col-xs-3">
-          <h4><i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-envelope" aria-hidden="true"></i> <i class="fa fa-facebook-square" aria-hidden="true"></i> <a href="<%= @bloomer.twitter_account %>"><i class="fa fa-twitter" aria-hidden="true"></i></a></h4>
-          <h3><a href="<%= @bloomer.website %>">visit the website</a></h3>
-        </div>
-      </div>
-      <div class="row sub-titles">
-        <div class="col-xs-12">
-          <a class="sub-title tab active" data-target="#main-bloomer-info">INFO</a>
-          <a class="sub-title tab" data-target="#entrepreneurs">ENTREPRENEURS</a>
-          <a class="sub-title tab" data-target="#entreprises">ENTREPRISES</a>
+        <!-- colonne 2 -->
+        <div class="col-xs-12 col-sm-6">
+          <div class="container-second">
+            <div class="div-description">
+              <p><%= @bloomer.description %>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- PAGE INFO -->
-  <div id="main-bloomer-info" class="sub-content" style="margin:0px;padding:0px">
-    <!-- ROW 1 : main info + description -->
-    <div class="wrapper-show-bloomer">
-      <div class="container">
-        <!-- First Line -->
-        <div class="row">
-          <!-- colonne 1 -->
-          <div class="col-xs-12 col-sm-6">
-            <div class="container-second">
-              <div class="row-main-info">
-                <div class="col-xs-12 col-md-6">
-                  <div class="div-main-info">
-                    <h2>STRUCTURE</h2>
-                    <h3><%= @bloomer.category.upcase %></h3>
-                  </div>
-                </div>
-                <div class="col-xs-12 col-md-6">
-                  <div class="div-main-info">
-                    <h2>SPECIALISATION</h2>
-                    <h3><%= @bloomer.speciality.upcase %></h3>
-                  </div>
-                </div>
-              </div>
-              <div class="row-main-info">
-                <div class="col-xs-12 col-md-6">
-                  <div class="div-main-info">
-                    <h2>NOS STARTUPS</h2>
-                    <h3>20(!)</h3>
-                  </div>
-                </div>
-                <div class="col-xs-12 col-md-6">
-                  <div class="div-main-info">
-                    <h2>CREATION</h2>
-                    <h3><%= @bloomer.date_creation %></h3>
-                  </div>
-                </div>
-              </div>
+  <!-- ROW 2 : VIDEOS & STARTUPS -->
+  <div class="wrapper-show-bloomer">
+    <div class="container">
+      <div class="row">
+        <!-- en vidéo -->
+        <div class="col-xs-12 col-sm-6">
+          <h3>EN VIDEO</h3>
+          <div class="div-content-white">
+            <div class="col-xs-8" style="margin:0; padding:0">
+              <img src="http://www.roadtovr.com/wp-content/uploads/2015/03/youtube-logo2.jpg" alt="video 1" class="big-video">
+            </div>
+            <div class="col-xs-4 small-videos">
+              <img src="http://www.roadtovr.com/wp-content/uploads/2015/03/youtube-logo2.jpg" alt="video 2" class="small-video">
+              <img src="http://www.roadtovr.com/wp-content/uploads/2015/03/youtube-logo2.jpg" alt="video 3" class="small-video">
             </div>
           </div>
-          <!-- colonne 2 -->
-          <div class="col-xs-12 col-sm-6">
-            <div class="container-second">
-              <div class="div-description">
-                <p><%= @bloomer.description %>
-                </p>
+        </div>
+        <!-- Startups -->
+        <div class="col-xs-12 col-sm-6">
+          <h3>LES STARTUPS (20)</h3>
+          <div class="div-content-white">
+            <div class="div-startups-card">
+              <div class="col-xs-12 col-sm-4" style="padding:0px">
+                <img src="http://laurenceourac.com/home/wp-content/uploads/2015/12/ANNA.jpg" class="avatar">
+              </div>
+              <div class="col-xs-12 col-md-8" style="padding:0px">
+                <h2>ASK ANNA</h2>
+                <h3>L’app pour ne plus hésiter en cabine d’essayage</h3>
+                <h4>PROMO 1</h4>
+              </div>
+            </div>
+            <div class="div-startups-card">
+              <div class="col-xs-12 col-sm-4" style="padding:0px">
+                <img src="http://laurenceourac.com/home/wp-content/uploads/2015/12/ANNA.jpg" class="avatar">
+              </div>
+              <div class="col-xs-12 col-md-8" style="padding:0px">
+                <h2>ASK ANNA</h2>
+                <h3>L’app pour ne plus hésiter en cabine d’essayage</h3>
+                <h4>PROMO 1</h4>
+              </div>
+            </div>
+            <div class="div-startups-card">
+              <div class="col-xs-12 col-sm-4" style="padding:0px">
+                <img src="http://laurenceourac.com/home/wp-content/uploads/2015/12/ANNA.jpg" class="avatar">
+              </div>
+              <div class="col-xs-12 col-md-8" style="padding:0px">
+                <h2>ASK ANNA</h2>
+                <h3>L’app pour ne plus hésiter en cabine d’essayage</h3>
+                <h4>PROMO 1</h4>
+              </div>
+            </div>
+            <div class="div-startups-card">
+              <div class="card-team">
+                <h4 style="text-align:center">Découvrez les <br>autres startups +</h4>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- ROW 2 : VIDEOS & STARTUPS -->
-    <div class="wrapper-show-bloomer">
-      <div class="container">
-        <div class="row">
-          <!-- en vidéo -->
-          <div class="col-xs-12 col-sm-6">
-            <h3>EN VIDEO</h3>
-            <div class="div-content-white">
-              <div class="col-xs-8" style="margin:0; padding:0">
-                <img src="http://www.roadtovr.com/wp-content/uploads/2015/03/youtube-logo2.jpg" alt="video 1" class="big-video">
-              </div>
-              <div class="col-xs-4 small-videos">
-                <img src="http://www.roadtovr.com/wp-content/uploads/2015/03/youtube-logo2.jpg" alt="video 2" class="small-video">
-                <img src="http://www.roadtovr.com/wp-content/uploads/2015/03/youtube-logo2.jpg" alt="video 3" class="small-video">
-              </div>
-            </div>
-          </div>
-          <!-- Startups -->
-          <div class="col-xs-12 col-sm-6">
-            <h3>LES STARTUPS (20)</h3>
-            <div class="div-content-white">
-              <div class="div-startups-card">
-                <div class="col-xs-12 col-sm-4" style="padding:0px">
-                  <img src="http://laurenceourac.com/home/wp-content/uploads/2015/12/ANNA.jpg" class="avatar">
-                </div>
-                <div class="col-xs-12 col-md-8" style="padding:0px">
-                  <h2>ASK ANNA</h2>
-                  <h3>L’app pour ne plus hésiter en cabine d’essayage</h3>
-                  <h4>PROMO 1</h4>
-                </div>
-              </div>
-              <div class="div-startups-card">
-                <div class="col-xs-12 col-sm-4" style="padding:0px">
-                  <img src="http://laurenceourac.com/home/wp-content/uploads/2015/12/ANNA.jpg" class="avatar">
-                </div>
-                <div class="col-xs-12 col-md-8" style="padding:0px">
-                  <h2>ASK ANNA</h2>
-                  <h3>L’app pour ne plus hésiter en cabine d’essayage</h3>
-                  <h4>PROMO 1</h4>
-                </div>
-              </div>
-              <div class="div-startups-card">
-                <div class="col-xs-12 col-sm-4" style="padding:0px">
-                  <img src="http://laurenceourac.com/home/wp-content/uploads/2015/12/ANNA.jpg" class="avatar">
-                </div>
-                <div class="col-xs-12 col-md-8" style="padding:0px">
-                  <h2>ASK ANNA</h2>
-                  <h3>L’app pour ne plus hésiter en cabine d’essayage</h3>
-                  <h4>PROMO 1</h4>
-                </div>
-              </div>
-              <div class="div-startups-card">
-                <div class="card-team">
-                  <h4 style="text-align:center">Découvrez les <br>autres startups +</h4>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ROW 3 : main info + description -->
-    <div class="wrapper-show-bloomer">
-      <div class="container">
-        <!-- First Line -->
-        <div class="row">
-          <!-- colonne 1 -->
-          <div class="col-xs-12 col-sm-6">
-            <h3>L'EQUIPE ENCADRANTE</h3>
-            <!-- les membres de l'équipe -->
-            <div class="div-content-white">
+  <!-- ROW 3 : main info + description -->
+  <div class="wrapper-show-bloomer">
+    <div class="container">
+      <!-- First Line -->
+      <div class="row">
+        <!-- colonne 1 -->
+        <div class="col-xs-12 col-sm-6">
+          <h3>L'EQUIPE ENCADRANTE</h3>
+          <!-- les membres de l'équipe -->
+          <div class="div-content-white">
+            <!--  Une carte équipe -->
+            <div class="div-startups-card">
               <!--  Une carte équipe -->
-              <div class="div-startups-card">
-                <!--  Une carte équipe -->
-                <div class="col-xs-12 col-sm-4" style="padding:0px">
-                  <img src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAdzAAAAJDliYjg0Y2JjLTNhOGYtNGFkYi05Y2ZhLWU5NzU0NzU3MjllMw.jpg" class="avatar">
-                </div>
-                <div class="col-xs-12 col-md-8" style="padding:0px 0px 0px 10px">
-                  <h2>Pierre Méric</h2>
-                  <h3>STARTUP MANAGER</h3>
-                  <h4><i class="fa fa-envelope" aria-hidden="true"></i> <i class="fa fa-linkedin-square" aria-hidden="true"></i> <i class="fa fa-twitter" aria-hidden="true"></i></h4>
-                </div>
+              <div class="col-xs-12 col-sm-4" style="padding:0px">
+                <img src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAdzAAAAJDliYjg0Y2JjLTNhOGYtNGFkYi05Y2ZhLWU5NzU0NzU3MjllMw.jpg" class="avatar">
               </div>
-              <div class="div-startups-card">
-                <!--  Une carte équipe -->
-
-                <div class="col-xs-12 col-sm-4" style="padding:0px">
-                  <img src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAdzAAAAJDliYjg0Y2JjLTNhOGYtNGFkYi05Y2ZhLWU5NzU0NzU3MjllMw.jpg" class="avatar">
-                </div>
-                <div class="col-xs-12 col-md-8" style="padding:0px 0px 0px 10px">
-                  <h2>Pierre Méric</h2>
-                  <h3>STARTUP MANAGER</h3>
-                  <h4><i class="fa fa-envelope" aria-hidden="true"></i> <i class="fa fa-linkedin-square" aria-hidden="true"></i> <i class="fa fa-twitter" aria-hidden="true"></i></h4>
-                </div>
-
+              <div class="col-xs-12 col-md-8" style="padding:0px 0px 0px 10px">
+                <h2>Pierre Méric</h2>
+                <h3>STARTUP MANAGER</h3>
+                <h4><i class="fa fa-envelope" aria-hidden="true"></i> <i class="fa fa-linkedin-square" aria-hidden="true"></i> <i class="fa fa-twitter" aria-hidden="true"></i></h4>
               </div>
-              <div class="div-startups-card">
-                <!--  Une carte équipe -->
-
-                <div class="col-xs-12 col-sm-4" style="padding:0px">
-                  <img src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAdzAAAAJDliYjg0Y2JjLTNhOGYtNGFkYi05Y2ZhLWU5NzU0NzU3MjllMw.jpg" class="avatar">
-                </div>
-                <div class="col-xs-12 col-md-8" style="padding:0px 0px 0px 10px">
-                  <h2>Pierre Méric</h2>
-                  <h3>STARTUP MANAGER</h3>
-                  <h4><i class="fa fa-envelope" aria-hidden="true"></i> <i class="fa fa-linkedin-square" aria-hidden="true"></i> <i class="fa fa-twitter" aria-hidden="true"></i></h4>
-                </div>
-
-              </div>
+            </div>
+            <div class="div-startups-card">
               <!--  Une carte équipe -->
-              <div class="col-xs-12 col-md-6">
-                <div class="card-team">
-                  <h4>Plus d'info +</h4>
-                </div>
+
+              <div class="col-xs-12 col-sm-4" style="padding:0px">
+                <img src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAdzAAAAJDliYjg0Y2JjLTNhOGYtNGFkYi05Y2ZhLWU5NzU0NzU3MjllMw.jpg" class="avatar">
+              </div>
+              <div class="col-xs-12 col-md-8" style="padding:0px 0px 0px 10px">
+                <h2>Pierre Méric</h2>
+                <h3>STARTUP MANAGER</h3>
+                <h4><i class="fa fa-envelope" aria-hidden="true"></i> <i class="fa fa-linkedin-square" aria-hidden="true"></i> <i class="fa fa-twitter" aria-hidden="true"></i></h4>
+              </div>
+
+            </div>
+            <div class="div-startups-card">
+              <!--  Une carte équipe -->
+
+              <div class="col-xs-12 col-sm-4" style="padding:0px">
+                <img src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAdzAAAAJDliYjg0Y2JjLTNhOGYtNGFkYi05Y2ZhLWU5NzU0NzU3MjllMw.jpg" class="avatar">
+              </div>
+              <div class="col-xs-12 col-md-8" style="padding:0px 0px 0px 10px">
+                <h2>Pierre Méric</h2>
+                <h3>STARTUP MANAGER</h3>
+                <h4><i class="fa fa-envelope" aria-hidden="true"></i> <i class="fa fa-linkedin-square" aria-hidden="true"></i> <i class="fa fa-twitter" aria-hidden="true"></i></h4>
+              </div>
+
+            </div>
+            <!--  Une carte équipe -->
+            <div class="col-xs-12 col-md-6">
+              <div class="card-team">
+                <h4>Plus d'info +</h4>
               </div>
             </div>
           </div>
-          <!-- colonne 2 -->
-          <div class="col-xs-12 col-sm-6">
-            <h3>EVENEMENTS</h3>
-            <div class="container-second" id="flex-center">
-              <div class="div-event">
-                <div class="col-xs-4">
-                  <div class="photo-event" style="background-image: url('http://pepseo.fr/wp-content/uploads/2015/04/Event-management.png'); background-size:cover"></div>
-                </div>
-                <div class="col-xs-8">
-                  <h2>EVent</h2>
-                  <h3>hello</h3>
-                  <h4>Book here</h4>
-                </div>
+        </div>
+        <!-- colonne 2 -->
+        <div class="col-xs-12 col-sm-6">
+          <h3>EVENEMENTS</h3>
+          <div class="container-second" id="flex-center">
+            <div class="div-event">
+              <div class="col-xs-4">
+                <div class="photo-event" style="background-image: url('http://pepseo.fr/wp-content/uploads/2015/04/Event-management.png'); background-size:cover"></div>
               </div>
+              <div class="col-xs-8">
+                <h2>EVent</h2>
+                <h3>hello</h3>
+                <h4>Book here</h4>
+              </div>
+            </div>
 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROW 4 : PHOTO + PLACE INFO -->
+  <div class="wrapper-show-bloomer">
+    <div class="container">
+      <div class="row">
+        <!-- en photo -->
+        <div class="col-xs-12 col-sm-6">
+          <h3>VISITEZ NOS LOCAUX</h3>
+          <div class="div-content-white">
+            <div class="col-xs-8" style="margin:0; padding:0">
+              <img src="http://imageshack.com/a/img923/6113/XpMsUl.jpg" alt="photo 1" class="big-video">
+            </div>
+            <div class="col-xs-4 small-videos">
+              <img src="http://imageshack.com/a/img923/6113/XpMsUl.jpg" alt="video 2" class="small-video">
+              <img src="http://imageshack.com/a/img923/6113/XpMsUl.jpg" alt="video 3" class="small-video">
+            </div>
+          </div>
+        </div>
+        <!-- local info -->
+        <div class="col-xs-12 col-sm-6">
+          <h3>QUELQUES INFOS</h3>
+          <div class="div-content-white">
+            <div class="div-description">
+              <p>Des locaux inspirants en plein coeur du siège de Showroomprivé.
+                <br>3 salles de meeting
+                <br>1 imprimante 3D…
+                <br>dans un espace de 500m2, 3 salles de réunions. </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- ROW 4 : PHOTO + PLACE INFO -->
-    <div class="wrapper-show-bloomer">
-      <div class="container">
-        <div class="row">
-          <!-- en photo -->
-          <div class="col-xs-12 col-sm-6">
-            <h3>VISITEZ NOS LOCAUX</h3>
-            <div class="div-content-white">
-              <div class="col-xs-8" style="margin:0; padding:0">
-                <img src="http://imageshack.com/a/img923/6113/XpMsUl.jpg" alt="photo 1" class="big-video">
-              </div>
-              <div class="col-xs-4 small-videos">
-                <img src="http://imageshack.com/a/img923/6113/XpMsUl.jpg" alt="video 2" class="small-video">
-                <img src="http://imageshack.com/a/img923/6113/XpMsUl.jpg" alt="video 3" class="small-video">
-              </div>
-            </div>
-          </div>
-          <!-- local info -->
-          <div class="col-xs-12 col-sm-6">
-            <h3>QUELQUES INFOS</h3>
-            <div class="div-content-white">
-              <div class="div-description">
-                <p>Des locaux inspirants en plein coeur du siège de Showroomprivé.
-                  <br>3 salles de meeting
-                  <br>1 imprimante 3D…
-                  <br>dans un espace de 500m2, 3 salles de réunions. </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-    </div>
-
-      <!-- NEWSFEED + MAP -->
+    <!-- NEWSFEED + MAP -->
     <div class="wrapper-show-bloomer">
       <div class="container">
         <div class="row">
@@ -276,169 +276,162 @@
           </div>
           <!-- NOUS  -->
           <div class="col-xs-12 col-sm-6">
-            <h3>OU LES TROUVER ?</h3>
+            <h3>OÙ LES TROUVER ?</h3>
             <div class="div-content-white">
-              <div class="col-xs-12 col-sm-6" style="padding:0">
-                <img src="http://maps.googleapis.com/maps/api/staticmap?center=Saint-Denis&zoom=13&scale=false&size=1000x1000&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:1%7CSaint-Denis" width="90%" overflow="hidden";/>
-              </div>
-              <div class="col-xs-12 col-sm-6" style="padding:0">
-                <p><%= @bloomer.address%>
-                  <br> Métro Front Populaire (ligne 12) / RER La Plaine - Stade de France (RER B)
-                  <br><%= @bloomer.email %></p>
-                </div>
-              </div>
+              <div id="map" style="width: 100%; height: 200px;"></div>
             </div>
           </div>
+  </div>
+</div>
+</div>
+</div>
+
+<!-- PAGE ENTREPRENEURS -->
+<div id="entrepreneurs" class="sub-content hidden" style="margin:0px;padding:0px">
+  <!-- TAB SUB TITLE PROGRAM -->
+  <div class="wrapper-show-bloomer">
+    <div class="container">
+      <div class="row program-titles">
+        <div class="col-xs-12">
+          <a class="program-title tab" style="padding:0;margin:0px">></a>
+          <a class="program-title tab active" data-target="#program-one">PROGRAMME 1</a>
+          <a class="program-title" data-target="#program-two">PROGRAMME 2</a>
+          <a class="program-title" data-target="#coworking">CO-WORKING</a>
         </div>
+      </div>
     </div>
   </div>
 
-  <!-- PAGE ENTREPRENEURS -->
-  <div id="entrepreneurs" class="sub-content hidden" style="margin:0px;padding:0px">
-    <!-- TAB SUB TITLE PROGRAM -->
-    <div class="wrapper-show-bloomer">
-      <div class="container">
-        <div class="row program-titles">
-          <div class="col-xs-12">
-            <a class="program-title tab" style="padding:0;margin:0px">></a>
-            <a class="program-title tab active" data-target="#program-one">PROGRAMME 1</a>
-            <a class="program-title" data-target="#program-two">PROGRAMME 2</a>
-            <a class="program-title" data-target="#coworking">CO-WORKING</a>
+  <!-- PAGE 1 - PROGRAMME 1 -->
+  <div id="program-one" style="padding:0;margin:0"></div>
+  <!-- ROW 1 : main info + postulate -->
+  <div class="wrapper-show-bloomer">
+    <div class="container">
+      <!-- ROW 1 : main info + time line -->
+      <div class="row">
+        <!-- MAIN INFO PROGRAM -->
+        <div class="col-xs-12 col-sm-6">
+          <div class="container-second">
+            <div class="row-main-info">
+              <div class="col-xs-12 col-md-6">
+                <div class="div-main-info">
+                  <h2>COUT</h2>
+                  <h3>GRATUIT</h3>
+                </div>
+              </div>
+              <div class="col-xs-12 col-md-6">
+                <div class="div-main-info">
+                  <h2>DUREE</h2>
+                  <h3>1 AN</h3>
+                </div>
+              </div>
+            </div>
+            <div class="row-main-info">
+              <div class="col-xs-12 col-md-6">
+                <div class="div-main-info">
+                  <h2>TAUX SURVIE</h2>
+                  <h3>100%</h3>
+                </div>
+              </div>
+              <div class="col-xs-12 col-md-6">
+                <div class="div-main-info">
+                  <h2>PRISE PARTICIPATION</h2>
+                  <h3>0 %</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- TIMELINE CANDIDATURE -->
+        <div class="col-xs-12 col-sm-6">
+          <div class="container-second">
+            <div class="div-description">
+              <div class="timeline">
+                <div class="l-wizard-h">
+                  <ul class="wizard-h">
+                    <li class="l-wizard-h-step wizard-h__step--previous">
+                     <i class="fa fa-file-text-o"></i>
+                     <div class="text-step-timeline">
+                      <span class="date-step-timeline">30 JUIN - 17 OCT</span>
+                      <br><span class="name-step-timeline">Appel à projects</span>
+                    </div>
+                  </li>
+                  <li class="l-wizard-h-step wizard-h__step--current">
+                    <i class="fa fa-user"></i>
+                    <div class="text-step-timeline">
+                      <span class="date-step-timeline">FIN OCT</span>
+                      <br><span class="name-step-timeline">Prélection des projets</span>
+                    </div>
+                  </li>
+                  <li class="l-wizard-h-step wizard-h__step">
+                    <i class="fa fa-check"></i>
+                    <div class="text-step-timeline">
+                      <span class="date-step-timeline">17 NOV</span>
+                      <br><span class="name-step-timeline">Rentrée Saison 2</span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="timeline">
+              <div class="col-xs-6">
+                <h4 style="text-align:center">Il reste 45 jours</h4>
+              </div>
+              <div class="col-xs-6" style="justify-content: center;display:flex">
+                <a href="#" class="btn-postulate">Je postule</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ROW 2 : L'ACCOMPAGNEMENT (individuel + collectif) -->
+<div class="wrapper-show-bloomer">
+  <div class="container">
+    <div class="row">
+      <!-- ACCOMPAGNEMENT INDIV -->
+      <div class="col-xs-12 col-sm-6">
+        <h3>ACCOMPAGNEMENT INDIVIDUEL</h3>
+        <div class="div-content-white">
+          <div class="plain-text">
+            <h4>EXPERTISE</h4>
+            <p>FORFAIT 20 H avec les experts de Showroomprivé (au choix parmi les 1000 employés).</p>
+            <h4>MENTORING</h4>
+            <p>- Interne : 1 membre du board (1 rdv/mois) pour aider aux décisions managériales
+              <br>- Externe : personnalité influente du réseau (TBC)</p>
+            </div>
+          </div>
+        </div>
+        <!-- ACCOMPAGNEMENT COLLECTIF -->
+        <div class="col-xs-12 col-sm-6">
+          <h3>ACCOMPAGNEMENT COLLECTIF</h3>
+          <div class="div-content-white">
+            <div class="plain-text">
+              <h4>25 ATELIERS VALUE BOOST</h4>
+              <p>1h de conférence, 1h de Q/R</p>
+              <h4>PROGRAMME ALUMNI</h4>
+              <p>: TBC</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- PAGE 1 - PROGRAMME 1 -->
-    <div id="program-one" style="padding:0;margin:0"></div>
-      <!-- ROW 1 : main info + postulate -->
-      <div class="wrapper-show-bloomer">
-        <div class="container">
-          <!-- ROW 1 : main info + time line -->
-          <div class="row">
-            <!-- MAIN INFO PROGRAM -->
-            <div class="col-xs-12 col-sm-6">
-              <div class="container-second">
-                <div class="row-main-info">
-                  <div class="col-xs-12 col-md-6">
-                    <div class="div-main-info">
-                      <h2>COUT</h2>
-                      <h3>GRATUIT</h3>
-                    </div>
-                  </div>
-                  <div class="col-xs-12 col-md-6">
-                    <div class="div-main-info">
-                      <h2>DUREE</h2>
-                      <h3>1 AN</h3>
-                    </div>
-                  </div>
-                </div>
-                <div class="row-main-info">
-                  <div class="col-xs-12 col-md-6">
-                    <div class="div-main-info">
-                      <h2>TAUX SURVIE</h2>
-                      <h3>100%</h3>
-                    </div>
-                  </div>
-                  <div class="col-xs-12 col-md-6">
-                    <div class="div-main-info">
-                      <h2>PRISE PARTICIPATION</h2>
-                      <h3>0 %</h3>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- TIMELINE CANDIDATURE -->
-            <div class="col-xs-12 col-sm-6">
-              <div class="container-second">
-                <div class="div-description">
-                  <div class="timeline">
-                      <div class="l-wizard-h">
-                          <ul class="wizard-h">
-                              <li class="l-wizard-h-step wizard-h__step--previous">
-                                   <i class="fa fa-file-text-o"></i>
-                                  <div class="text-step-timeline">
-                                    <span class="date-step-timeline">30 JUIN - 17 OCT</span>
-                                    <br><span class="name-step-timeline">Appel à projects</span>
-                                  </div>
-                              </li>
-                              <li class="l-wizard-h-step wizard-h__step--current">
-                                  <i class="fa fa-user"></i>
-                                  <div class="text-step-timeline">
-                                    <span class="date-step-timeline">FIN OCT</span>
-                                    <br><span class="name-step-timeline">Prélection des projets</span>
-                                  </div>
-                              </li>
-                              <li class="l-wizard-h-step wizard-h__step">
-                                  <i class="fa fa-check"></i>
-                                  <div class="text-step-timeline">
-                                    <span class="date-step-timeline">17 NOV</span>
-                                    <br><span class="name-step-timeline">Rentrée Saison 2</span>
-                                  </div>
-                              </li>
-                          </ul>
-                      </div>
-                  </div>
-                  <div class="timeline">
-                    <div class="col-xs-6">
-                      <h4 style="text-align:center">Il reste 45 jours</h4>
-                    </div>
-                    <div class="col-xs-6" style="justify-content: center;display:flex">
-                      <a href="#" class="btn-postulate">Je postule</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ROW 2 : L'ACCOMPAGNEMENT (individuel + collectif) -->
-      <div class="wrapper-show-bloomer">
-        <div class="container">
-          <div class="row">
-            <!-- ACCOMPAGNEMENT INDIV -->
-            <div class="col-xs-12 col-sm-6">
-              <h3>ACCOMPAGNEMENT INDIVIDUEL</h3>
-              <div class="div-content-white">
-                <div class="plain-text">
-                  <h4>EXPERTISE</h4>
-                  <p>FORFAIT 20 H avec les experts de Showroomprivé (au choix parmi les 1000 employés).</p>
-                  <h4>MENTORING</h4>
-                  <p>- Interne : 1 membre du board (1 rdv/mois) pour aider aux décisions managériales
-                  <br>- Externe : personnalité influente du réseau (TBC)</p>
-                </div>
-              </div>
-            </div>
-            <!-- ACCOMPAGNEMENT COLLECTIF -->
-            <div class="col-xs-12 col-sm-6">
-              <h3>ACCOMPAGNEMENT COLLECTIF</h3>
-              <div class="div-content-white">
-                <div class="plain-text">
-                  <h4>25 ATELIERS VALUE BOOST</h4>
-                  <p>1h de conférence, 1h de Q/R</p>
-                  <h4>PROGRAMME ALUMNI</h4>
-                  <p>: TBC</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ROW 3 : Ecocsysteme + avantages -->
-      <div class="wrapper-show-bloomer">
-      <div class="container">
-        <!-- First Line -->
-        <div class="row">
-          <!-- colonne 1 - ECOSYSTEME -->
-          <div class="col-xs-12 col-sm-6">
-            <h3>L'ECOSYSTEME</h3>
-            <div class="div-content-white">
-              <div class="plain-text">
-                <p>Partage du réseau de Showroomprivé : 1,4M visiteurs uniques, 25 M clients,  1 500 marques.
+  <!-- ROW 3 : Ecocsysteme + avantages -->
+  <div class="wrapper-show-bloomer">
+    <div class="container">
+      <!-- First Line -->
+      <div class="row">
+        <!-- colonne 1 - ECOSYSTEME -->
+        <div class="col-xs-12 col-sm-6">
+          <h3>L'ECOSYSTEME</h3>
+          <div class="div-content-white">
+            <div class="plain-text">
+              <p>Partage du réseau de Showroomprivé : 1,4M visiteurs uniques, 25 M clients,  1 500 marques.
                 <br>Mise en valeur auprès des collaborateurs au travers d’une newsletter
                 <br>Mise en contact avec Business Angels & Banques
                 <br>Réseau de Thierry Petit
@@ -454,104 +447,119 @@
                 <p>Services à tarifs négociés : taux avantageux chez SG, Colissimo, Service juridique, page chez SMGO</p>
                 <h4>HERBERGEMENT </h4>
                 <p>An offert : 6postes/startup Showroom
-                <br>Shooting photo et vidéo avec mannequin</p>
+                  <br>Shooting photo et vidéo avec mannequin</p>
                 </div>
               </div>
+            </div>
           </div>
         </div>
-      </div>
       </div>
 
       <!-- ROW 4 : criteres de selection + avis -->
       <div class="wrapper-show-bloomer">
-      <div class="container">
-        <div class="row">
-          <!-- en photo -->
-          <div class="col-xs-12 col-sm-6">
-            <h3>CRITERES DE SELECTION</h3>
-            <div class="div-content-white">
-              <div class="plain-text">
-                <h4>TEAM DE CHOC</h4>
-                <p>Passion, pragmatisme, envie de grandir et de prospérer</p>
-                <h4>POTENTIEL INTERNATIONAL</h4>
-                <p>Démontrer la scalabilité</p>
-                <h4>ADN DIGITAL, MODE OU RETAIL</h4>
-                <p>Ambition de révolutionner la façon de distribution, consommer et produire la mode</p>
-                <h4>FIABILITE </h4>
-                <p>Proof of concept</p>
+        <div class="container">
+          <div class="row">
+            <!-- en photo -->
+            <div class="col-xs-12 col-sm-6">
+              <h3>CRITERES DE SELECTION</h3>
+              <div class="div-content-white">
+                <div class="plain-text">
+                  <h4>TEAM DE CHOC</h4>
+                  <p>Passion, pragmatisme, envie de grandir et de prospérer</p>
+                  <h4>POTENTIEL INTERNATIONAL</h4>
+                  <p>Démontrer la scalabilité</p>
+                  <h4>ADN DIGITAL, MODE OU RETAIL</h4>
+                  <p>Ambition de révolutionner la façon de distribution, consommer et produire la mode</p>
+                  <h4>FIABILITE </h4>
+                  <p>Proof of concept</p>
+                </div>
               </div>
             </div>
-          </div>
-          <!-- local info -->
-          <div class="col-xs-12 col-sm-6">
-            <h3>AVIS DES STARTUPS</h3>
-            <div class="div-content-white">
-              <div class="reviews-bloomer-small-card">
-                <div class="logo-startup-review">
-                  <img src="http://laurenceourac.com/home/wp-content/uploads/2015/12/ANNA.jpg" class="avatar">
-                </div>
-                <div class="text-startup-reviews">
-                  <h2>ASK ANNA</h2>
-                  <p>« Le meilleur programme d’incubation à Paris »
-                  <br>« Beaucoup de bienveillance »</p>
-                  <h4>En savoir +</h4>
-                </div>
-              </div>
-              <div class="reviews-bloomer-small-card">
-                <div class="logo-startup-review">
-                  <img src="http://laurenceourac.com/home/wp-content/uploads/2015/12/ANNA.jpg" class="avatar">
-                </div>
-                <div class="text-startup-reviews">
-                  <h2>ASK ANNA</h2>
-                  <p>« Le meilleur programme d’incubation à Paris »
-                  <br>« Beaucoup de bienveillance »</p>
-                  <h4>En savoir +</h4>
-                </div>
-              </div>
-              <div class="reviews-bloomer-small-card">
-                <div class="logo-startup-review">
-                  <img src="http://laurenceourac.com/home/wp-content/uploads/2015/12/ANNA.jpg" class="avatar">
-                </div>
-                <div class="text-startup-reviews">
-                  <h2>ASK ANNA</h2>
-                  <p>« Le meilleur programme d’incubation à Paris »
-                  <br>« Beaucoup de bienveillance »</p>
-                  <h4>En savoir +</h4>
-                </div>
-              </div>
-              <div class="reviews-bloomer-small-card">
-                <div class="logo-startup-review">
-                  <div class="avatar" style="background-color: #FAFAFA;text-align:center;height:40px; width:40px">
-                  <h2 style="padding-top:13px;color:#8C8C8C">?</h2>
+            <!-- local info -->
+            <div class="col-xs-12 col-sm-6">
+              <h3>AVIS DES STARTUPS</h3>
+              <div class="div-content-white">
+                <div class="reviews-bloomer-small-card">
+                  <div class="logo-startup-review">
+                    <img src="http://laurenceourac.com/home/wp-content/uploads/2015/12/ANNA.jpg" class="avatar">
+                  </div>
+                  <div class="text-startup-reviews">
+                    <h2>ASK ANNA</h2>
+                    <p>« Le meilleur programme d’incubation à Paris »
+                      <br>« Beaucoup de bienveillance »</p>
+                      <h4>En savoir +</h4>
+                    </div>
+                  </div>
+                  <div class="reviews-bloomer-small-card">
+                    <div class="logo-startup-review">
+                      <img src="http://laurenceourac.com/home/wp-content/uploads/2015/12/ANNA.jpg" class="avatar">
+                    </div>
+                    <div class="text-startup-reviews">
+                      <h2>ASK ANNA</h2>
+                      <p>« Le meilleur programme d’incubation à Paris »
+                        <br>« Beaucoup de bienveillance »</p>
+                        <h4>En savoir +</h4>
+                      </div>
+                    </div>
+                    <div class="reviews-bloomer-small-card">
+                      <div class="logo-startup-review">
+                        <img src="http://laurenceourac.com/home/wp-content/uploads/2015/12/ANNA.jpg" class="avatar">
+                      </div>
+                      <div class="text-startup-reviews">
+                        <h2>ASK ANNA</h2>
+                        <p>« Le meilleur programme d’incubation à Paris »
+                          <br>« Beaucoup de bienveillance »</p>
+                          <h4>En savoir +</h4>
+                        </div>
+                      </div>
+                      <div class="reviews-bloomer-small-card">
+                        <div class="logo-startup-review">
+                          <div class="avatar" style="background-color: #FAFAFA;text-align:center;height:40px; width:40px">
+                            <h2 style="padding-top:13px;color:#8C8C8C">?</h2>
+                          </div>
+                        </div>
+                        <div class="text-startup-reviews" style="margin-bottom:0">
+                          <h2> PARTAGEZ VOTRE EXPERIENCE !</h2>
+                          <p>Ecrivez votre review et aidez les autres entrepreneurs à mieux choisir</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div class="text-startup-reviews" style="margin-bottom:0">
-                  <h2> PARTAGEZ VOTRE EXPERIENCE !</h2>
-                  <p>Ecrivez votre review et aidez les autres entrepreneurs à mieux choisir</p>
-                </div>
               </div>
             </div>
           </div>
+
         </div>
-      </div>
-      </div>
-    </div>
 
-  </div>
-
-  <!-- PAGE ENTREPRISES -->
-  <div id="entreprises" class="sub-content hidden" style="margin:0px;padding:0px">
-    <div class="wrapper-show-bloomer">
-      <div class="container">
-        <h2> Pas d'info pour l'instant</h2>
-      </div>
+<!-- PAGE ENTREPRISES -->
+<div id="entreprises" class="sub-content hidden" style="margin:0px;padding:0px">
+  <div class="wrapper-show-bloomer">
+    <div class="container">
+      <h2> Pas d'info pour l'instant</h2>
     </div>
   </div>
+</div>
 
-  <!-- FOOTER -->
-  <div class="wrapper-show-bloomer" style="height:50px">
-  </div>
+<!-- FOOTER -->
+<div class="wrapper-show-bloomer" style="height:50px">
+</div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="show_bloomer.js"></script>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      var handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers([{ lat: <%= @bloomer.latitude %>, lng: <%= @bloomer.longitude %> }]);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(14);
+        };
+      });
+    });
+  <% end %>
+<% end %>
