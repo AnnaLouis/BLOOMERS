@@ -12,7 +12,23 @@
   </head>
   <body>
 
+<<<<<<< HEAD
     <%= render 'shared/navbar' %>
+=======
+<!--     <#%  if current_user.admin? %>
+      <#%= render 'shared/navbar/navbar_admin' %>
+    <#%  elsif current_user.startup_admin? %>
+      <#%= render 'shared/navbar/navbar_startup_admin' %>
+    <#%  elsif current_user.bloomer_admin? %>
+      <#%= render 'shared/navbar/navbar_bloomer_admin' %>
+    <#%  elsif %>
+      <#%= render 'shared/navbar/navbar_visitor' %>
+    <#% end %> -->
+
+    <%= render 'shared/navbar/navbar_admin' %>
+
+    <%= render 'shared/flashes' %>
+>>>>>>> f807ccc98c60e96fe82a94dfa8f5ec5c31f1157e
 
     <%= yield %>
 
