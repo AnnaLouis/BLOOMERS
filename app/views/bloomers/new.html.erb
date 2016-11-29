@@ -1,1 +1,136 @@
-<h1> ici le new de bloomers </h1>
+<div class="wrapper">
+  <div class="wrapper-page-new-bloom">
+    <div class="col-xs-3 new-bloomer-left">
+      <div class="steps">
+        <h1>créez votre bloomer</h1>
+        <!-- STEP 1 - Création -->
+        <div class="nb-global-step active" data-target="#step-1-name">
+          <div class="circle active" data-target="#step-1-name"></div>
+          <div class="step"><p><span>étape 1</span><br>Création</p></div>
+        </div>
+        <!-- Step 2 - Description -->
+        <div class="line-box"><div class="grey-line"></div></div>
+        <div class="nb-global-step" data-target="#step-2-description">
+          <div class="circle" id="circle-2"></div>
+          <div class="step"><p><span>étape 2</span><br>Description</p></div>
+        </div>
+        <!-- Step 3 - info pratiques -->
+        <div class="line-box"><div class="grey-line"></div></div>
+        <div class="nb-global-step" data-target="#step-3-infos">
+          <div class="circle" id="circle-3"></div>
+          <div class="step"><p><span>étape 3</span><br>Info pratiques</p></div>
+        </div>
+        <!-- Step 4 - Medias -->
+        <div class="line-box"><div class="grey-line"></div></div>
+        <div class="nb-global-step" data-target="#step-4-medias">
+          <div class="circle" id="circle-4"></div>
+          <div class="step"><p><span>étape 4</span><br>Réseaux sociaux</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-9 new-bloomer-right">
+      <!-- Begining of simple form -->
+      <div class="sub-new-bloomer-content" id="step-1-name">
+        <%= simple_form_for(@bloomer) do |f| %>
+        <%= f.error_notification %>
+        <%= f.input :name, label: 'Nom de votre structure' %>
+        <%= f.input :logo, as: :attachinary %>
+        <div class="nb-next-button" id="nb-next-button-1"><h4><span>SUIVANT</span> ></h4></div>
+      </div>
+      <!-- MAIN DESCRIPTION -->
+      <div class="sub-new-bloomer-content hidden" id="step-2-description">
+        <div class="nb-title-sub-content"><h2>Décrivez votre structure</h2></div>
+        <div class="nb-sub-content">
+          <div class="col-xs-12 col-sm-6">
+            <%= f.input :category, collection: Bloomer::CATEGORIES, label: 'Choisissez une catégorie'  %>
+            <%= f.input :speciality, label: 'Entrez les spécialités' %>
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <%= f.input :description %>
+            <div class="nb-next-button" id="nb-next-button-2"><h4><span>SUIVANT</span> ></h4></div>
+          </div>
+        </div>
+      </div>
+      <!-- INFO -->
+      <div class="sub-new-bloomer-content hidden" id="step-3-infos">
+      <div class="nb-title-sub-content"><h2>Informations pratiques</h2></div>
+        <div class="col-xs-12 col-sm-6">
+          <%= f.input :date_creation, order: [:month, :year], label: 'Date de création' %>
+          <%= f.input :website, label: 'Site internet' %>
+          <%= f.input :email %>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+          <%= f.input :address, label: 'Adresse' %>
+          <%= f.input :city, label: 'Ville' %>
+          <div class="nb-next-button" id="nb-next-button-3"><h4><span>SUIVANT</span> ></h4></div>
+        </div>
+      </div>
+      <!-- SOCIAL MEDIAS -->
+      <div class="sub-new-bloomer-content hidden" id="step-4-medias">
+      <div class="nb-title-sub-content"><h2>Réseaux sociaux</h2></div>
+      <div class="col-xs-12 col-sm-6">
+        <%= f.input :twitter_account, label: 'Compte Twitter' %>
+        <%= f.input :photos, as: :attachinary %>
+
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <span class="nb-next-button"><%= f.button :submit, "Je crée ma structure !" %></span>
+        <% end %>
+      </div>
+      <!-- SUBMIT -->
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+$(document).ready(function() {
+  $(".nb-global-step").on("click", function(e){
+    // Change active tab
+    $(".nb-global-step").removeClass("active");
+    $(".circle").removeClass("active");
+    $(this).addClass("active");
+    $(this).children().addClass("active");
+    // Hide all tab-content (use class="hidden")
+    $(".sub-new-bloomer-content").addClass("hidden");
+    // Show target tab-content (use class="hidden")
+    tabSelector = $(this).data("target");
+    $(tabSelector).removeClass("hidden");
+  });
+
+  // STEP 1 TO STEP 2
+  $("#nb-next-button-1").on("click", function(e){
+    $(".nb-global-step").removeClass("active");
+    $(".circle").removeClass("active");
+    $("#circle-2").addClass("active");
+    $(".sub-new-bloomer-content").addClass("hidden");
+    $("#step-2-description").removeClass("hidden");
+  });
+
+  // STEP 2 TO STEP 3
+  $("#nb-next-button-2").on("click", function(e){
+    $(".nb-global-step").removeClass("active");
+    $(".circle").removeClass("active");
+    $("#circle-3").addClass("active");
+    $(".sub-new-bloomer-content").addClass("hidden");
+    $("#step-3-infos").removeClass("hidden");
+  });
+
+  // STEP 3 TO STEP 4
+  $("#nb-next-button-3").on("click", function(e){
+    $(".nb-global-step").removeClass("active");
+    $(".circle").removeClass("active");
+    $("#circle-4").addClass("active");
+    $(".sub-new-bloomer-content").addClass("hidden");
+    $("#step-4-medias").removeClass("hidden");
+  });
+});
+
+  <% end %>
+<% end %>
+
+
+
+

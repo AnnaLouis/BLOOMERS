@@ -12,10 +12,23 @@
 
   </head>
   <body>
-    <%= render 'shared/navbar' %>
+
+    <%  if current_user.admin? %>
+      <%= render 'shared/navbar/navbar_admin' %>
+    <%  elsif current_user.startup_admin? %>
+      <%= render 'shared/navbar/navbar_startup_admin' %>
+    <%  elsif current_user.bloomer_admin? %>
+      <%= render 'shared/navbar/navbar_bloomer_admin' %>
+    <%  elsif %>
+      <%= render 'shared/navbar/navbar_visitor' %>
+    <% end %>
+
     <%= render 'shared/flashes' %>
+
     <%= yield %>
+
     <%= render 'shared/footer' %>
+
     <%= javascript_include_tag 'application' %>
     <%= cloudinary_js_config %>
 
@@ -24,7 +37,6 @@
     <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_API_SERVER_KEY']}" %>
     <%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/markerclusterer/src/markerclusterer_compiled.js" %>
     <%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js" %>
-    <%= javascript_include_tag "application" %>
     <%= yield(:after_js) %>
 
   </body>

@@ -1,34 +1,22 @@
-.home {
-  text-align:center;
-  padding: 40px 0px 40px 0px;
-}
 
-.home p {
+
+.wrapper p {
   font-size: 15px;
   text-align:center;
 }
 
-.home h1 {
+.wrapper h1 {
   font-size:23px;
   text-decoration: none;
 }
 
-.home h3 {
+.wrapper h3 {
   color: $gray;
   font-weight:lighter;
+  padding-top:20px;
 }
 
-.grid .row {
-  display:flex;
-  height:50%;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.grid .col-xs-6 {
-  display:flex;
+.wrapper {
+  height: 70vh;
   text-align:center;
-  justify-content: center;
 }
