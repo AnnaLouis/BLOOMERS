@@ -9,27 +9,17 @@
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300,400,700|Muli:300,300i,400,400i|Quicksand:300,400,700" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <link rel="shortcut icon" href="../favicon.ico">
-
   </head>
   <body>
 
-    <%  if current_user.admin? %>
-      <%= render 'shared/navbar/navbar_admin' %>
-    <%  elsif current_user.startup_admin? %>
-      <%= render 'shared/navbar/navbar_startup_admin' %>
-    <%  elsif current_user.bloomer_admin? %>
-      <%= render 'shared/navbar/navbar_bloomer_admin' %>
-    <%  elsif %>
-      <%= render 'shared/navbar/navbar_visitor' %>
-    <% end %>
-
-    <%= render 'shared/flashes' %>
+    <%= render 'shared/navbar' %>
 
     <%= yield %>
 
     <%= render 'shared/footer' %>
 
     <%= javascript_include_tag 'application' %>
+
     <%= cloudinary_js_config %>
 
     <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" %>
@@ -37,6 +27,7 @@
     <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_API_SERVER_KEY']}" %>
     <%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/markerclusterer/src/markerclusterer_compiled.js" %>
     <%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js" %>
+
     <%= yield(:after_js) %>
 
   </body>
