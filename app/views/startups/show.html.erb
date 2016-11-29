@@ -1,3 +1,104 @@
-<h1><%= @startup.name %></h1>
-<p><%= @startup.description %></p>
+
+<div class="container">
+  <div class="banner-startup">
+
+    <!-- Name & Description on banner -->
+    <div class="wrapper-show-startup .title">
+      <h1><%= @startup.name %></h1>
+      <p><%= @startup.description %></p>
+    </div>
+  </div>
+
+  <!-- Main Infos on the startup -->
+  <div class="wrapper-show-startup-container-second">
+    <h3>INFO PRINCIPALES</h3>
+    <h4>Date de création: <%=@startup.date_creation  %></h4>
+    <h4>Twitter: <%=@startup.twitter_account  %></h4>
+    <h4>Site: <%=@startup.website  %></h4>
+  </div>
+  <!-- Main Info on the team -->
+  <div class="wrapper-show-startup-container-second">
+    <h3>L'EQUIPE</h3>
+    <h4><%= @startup.user.email %></h4>
+  </div>
+
+
+  <!-- Main Milestones of the Startup -->
+  <div class="wrapper-show-startup-container-second">
+    <h3>MILESTONES</h3>
+    <div class="row">
+  <div class="col-xs-12 col-sm-6">
+    <ul>
+      <li class="startup-timeline">
+        <div class="row">
+          <div class="col-xs-2 fafa-style achieved">
+            <i class="fa fa-file-text-o"></i>
+          </div>
+          <div class="col-xs-3">
+            <div class="timeline-info">
+              <p>25/04/2916</p>
+              <h4>Launch of Company</h4>
+            </div>
+          </div>
+          <div class="col-xs-7 story">
+          <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia veniam officiis nam dolore dolor reiciendis, iusto officia nemo inventore molestiae non rerum vel nihil praesentium enim facere consequatur quia hic?
+          </p>
+          </div>
+        </div>
+      </li>
+
+
+      <li class="startup-timeline">
+        <div class="row">
+          <div class="col-xs-2 fafa-style">
+            <i class="fa fa-user"></i>
+          </div>
+          <div class="col-xs-3">
+            <div class="timeline-info">
+              <p>25/04/2916</p>
+              <h4>Launch of Company</h4>
+            </div>
+          </div>
+          <div class="col-xs-7 story">
+          <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius voluptatum aliquid temporibus, quaerat iusto esse deserunt nam at libero quasi omnis dolorem laudantium veniam! Harum, illum inventore nulla molestiae est!
+          </p>
+          </div>
+        </div>
+      </li>
+
+
+      <li class="startup-timeline">
+        <div class="row">
+          <div class="col-xs-2 fafa-style">
+            <i class="fa fa-check"></i>
+          </div>
+          <div class="col-xs-3">
+            <div class="timeline-info">
+              <p>25/04/2916</p>
+              <h4>Launch of Company</h4>
+            </div>
+          </div>
+          <div class="col-xs-7 story">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea ipsa impedit expedita rem sequi a dolor accusantium dolorem repellendus itaque similique totam sunt eum enim autem quod, ut, beatae, ad.</p>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="col-xs-12 col-sm-6">
+    <div class="startup-info-card" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('images/9.jpg');">
+
+    </div>
+  </div>
+  <div class="timeline-border">
+  </div>
+</div>
+
+
+</div>
+</div>
+
 
