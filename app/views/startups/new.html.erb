@@ -1,17 +1,17 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6 col-md-offset-3"></div>
+    <div class="col-md-5">
+    <% if policy(Startup).create? %>
+    <%= simple_form_for @startup do |f| %>
+    <%= f.input :name %>
+    <%= f.input :short_description %>
+    <%= f.input :description %>
+    <%= f.input :date_creation %>
+    <%= f.input :twitter_account %>
+    <%= f.input :website %>
+    <%= f.submit %>
+    <% end %>
+    <% end %>
+    </div>
   </div>
 </div>
-
-<% if policy(Startup).create? %>
-<%= simple_form_for (@startup) do |f| %>
-<%= f.input :name %>
-<%= f.input :short_description %>
-<%= f.input :description %>
-<%= f.input :date_creation %>
-<%= f.input :twitter_account %>
-<%= f.input :website %>
-<%= f.submit "create" %>
-<% end %>
-<% end %>
