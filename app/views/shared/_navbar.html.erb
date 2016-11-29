@@ -8,9 +8,10 @@
  <% if user_signed_in? %>
 
     <!-- Right Navigation -->
+
     <div class="navbar-bloomer-item">
       <div class="dropdown">
-        <p id="navbar-bloomer-menu" data-toggle="dropdown"> Les Bloomers </p>
+        <p id="navbar-bloomer-menu" class="dropdown-toggle" data-toggle="dropdown"> Les Bloomers </p>
           <ul class="dropdown-menu dropdown-menu-right navbar-bloomer-dropdown-menu">
             <li>
               <%= link_to "/bloomers" do %>
