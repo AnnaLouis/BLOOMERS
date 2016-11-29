@@ -2,7 +2,7 @@ class BloomersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @bloomer = Bloomer.all
+    @bloomers = policy_scope(Bloomer)
   end
 
   def show
