@@ -40,7 +40,8 @@ class BloomersController < ApplicationController
 private
 
   def bloomer_params
-    params.require(:bloomer).permit(:name, :city, :country, :category, :website, :email, :twitter_account, :description, :address, :specialty, :date_creation, :photos[], :logo)
+    params.require(:bloomer).permit(:name, :city, :category, :website, :email, :twitter_account, :description, :address, :speciality, :date_creation, photos:[])
+
   end
 
 end
