@@ -255,6 +255,10 @@ Devise.setup do |config|
       image_size: 'square',  # 50x50, guaranteed ratio
       secure_image_url: true
 
+  config.omniauth :linkedin, ENV["LINKEDIN_ID"], ENV["LINKEDIN_SECRET"],
+      secure_image_url: true,
+      :scope => "r_basicprofile r_emailaddress"
+
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
