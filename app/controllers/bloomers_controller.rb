@@ -3,6 +3,7 @@ class BloomersController < ApplicationController
 
   def index
     @bloomers = policy_scope(Bloomer)
+    @search_bloomer = Bloomer.new
   end
 
   def show
