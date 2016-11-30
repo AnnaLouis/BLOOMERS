@@ -1,110 +1,85 @@
-<h1> Bloomer : la carte ! </h1>
+<div class="head-general-map">
+  <h1> Bloomer : la carte ! </h1>
+</div>
 
-<div class="container">
-<div id="map" style="width: 100%; height: 600px;"></div>
+<!-- <div class="container"> -->
+  <div id="map" style="width: 100%; height: 100vh;"></div>
 
-<% content_for(:after_js) do %>
+  <% content_for(:after_js) do %>
   <%= javascript_tag do %>
-    $(document).ready(function() {
+
+  $(document).ready(function() {
     var mapStyle = [
-    {
-        "featureType": "landscape.natural",
-        "elementType": "geometry.fill",
-        "stylers": [
-            {
-                "visibility": "on"
-            },
-            {
-                "color": "#e0efef"
-            }
-        ]
-    },
-    {
-        "featureType": "poi",
-        "elementType": "geometry.fill",
-        "stylers": [
-            {
-                "visibility": "on"
-            },
-            {
-                "hue": "#1900ff"
-            },
-            {
-                "color": "#c0e8e8"
-            }
-        ]
-    },
-    {
-        "featureType": "road",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "lightness": 100
-            },
-            {
-                "visibility": "simplified"
-            }
-        ]
-    },
-    {
+      {"featureType": "landscape.natural",
+      "elementType": "geometry.fill",
+      "stylers": [{
+      "visibility": "on"},
+      {"color": "#e0efef"
+      }]},
+      {"featureType": "poi",
+      "elementType": "geometry.fill",
+      "stylers": [
+      {"visibility": "on"
+      },
+      {"hue": "#1900ff"
+      },
+      {"color": "#c0e8e8"
+      }]},
+      {"featureType": "road", "elementType": "geometry", "stylers": [
+        {"lightness": 100},
+        {"visibility": "simplified"}]},
+      {
         "featureType": "road",
         "elementType": "labels",
         "stylers": [
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
+        {
+        "visibility": "off"
+      }]},
+      {
         "featureType": "road.local",
         "elementType": "labels.text",
         "stylers": [
-            {
-                "visibility": "on"
-            }
-        ]
-    },
-    {
+        {
+        "visibility": "on"
+      }]},
+      {
         "featureType": "transit.line",
         "elementType": "geometry",
         "stylers": [
-            {
-                "visibility": "on"
-            },
-            {
-                "lightness": 700
-            }
-        ]
-    },
-    {
+        {
+        "visibility": "on"
+      },
+      {
+        "lightness": 700
+      }]},
+      {
         "featureType": "water",
         "elementType": "all",
         "stylers": [
-            {
-                "color": "#7dcdcd"
-            }
-        ]
-    }
-];
+        {
+        "color": "#7dcdcd"
+      }]}];
 
       var handler = Gmaps.build('Google');
       handler.buildMap({
-          internal: { id: 'map' },
-          provider: {
-          styles: mapStyle
-          }
-          },
-        function() {
-        markers = handler.addMarkers(<%= raw @hash.to_json %>);
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-        if (markers.length == 0) {
-          handler.getMap().setZoom(2);
-        } else if (markers.length == 1) {
-          handler.getMap().setZoom(14);
-        }
-      });
-    });
-  <% end %>
+      internal: { id: 'map' },
+      provider: {
+      scrollwheel: false,
+      <!-- zoomControl: false, -->
+      styles: mapStyle
+      }
+      },
+  function() {
+    markers = handler.addMarkers(<%= raw @hash.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    if (markers.length == 0) {
+    handler.getMap().setZoom(2);
+    } else if (markers.length == 1) {
+    handler.getMap().setZoom(14);
+    }
+  });
+  });
+<% end %>
 <% end %>
 </div>
