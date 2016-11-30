@@ -56,6 +56,13 @@ bloomer1.date_creation = Date.new(2015, 6, 1)
 bloomer1.description = "LOOK FORWARD est la plateforme de toute innovation susceptible de revolutionner le monde de la mode et du retail. Avec les startups integrees à son incubateur, LOOK FORWARD a l’ambition de bousculer la facon de distribuer, consommer et produire la mode."
 bloomer1.user = User.find_by_email("anna@bloomers.fr")
 bloomer1.save!
+# PHOTOS
+urls1 = ["http://imageshack.com/a/img923/6113/XpMsUl.jpg",
+        "http://blog.upfit-services.com/wp-content/uploads/2015/10/IMG_20151012_150511.jpg",
+        "https://www.ideclik.com/wp-content/uploads/2016/01/lookforward-002.jpg",
+        "http://blog.upfit-services.com/wp-content/uploads/2015/10/IMG_20151012_113324.jpg"]
+bloomer1.photo_urls = urls1
+
 
 bloomer2 = Bloomer.new(name:"La Mutinerie")
 bloomer2.city = "Paris"
@@ -69,6 +76,13 @@ bloomer2.date_creation = Date.new(2015, 9, 1)
 bloomer2.description = "Libre ensemble"
 bloomer2.user = User.find_by_email("anna@bloomers.fr")
 bloomer2.save!
+# PHOTOS
+urls2 = ["https://www.powwownow.fr/travailler-fute/wp-content/uploads/2016/07/espace-coworking-la-mutinerie.jpg",
+        "http://www.mutinerie.org/wp-content/uploads/2012/02/Rue-de-meaux_plan-couleur_RDC_craft.jpg",
+        "http://bureauflexible.fr/uploads/space_pictures/img_1438687605.jpg",
+        "http://coworkinginitiatives.com/wp-content/uploads/2013/01/verri%C3%A8re.jpg",
+        ]
+bloomer2.photo_urls = urls2
 
 # PROGRAM
 
