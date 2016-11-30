@@ -5,6 +5,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook, :linkedin]
 
+  has_many :startups
+  has_many :bloomers
+  has_many :candidatures, through: :startups
+  has_many :reviews, through: :startups
+
   def self.find_for_facebook_oauth(auth)
     user_params = auth.to_h.slice(:provider, :uid)
     user_params.merge! auth.info.slice(:email, :first_name, :last_name)
