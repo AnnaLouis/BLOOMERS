@@ -1,6 +1,15 @@
 ActiveAdmin.register Candidature do
 
   permit_params :status, :start_date, :preselection_date, :end_date
+
+  index do
+    selectable_column
+    column :status
+    column :start_date
+    column :end_date
+    column :preselection_date
+    actions
+  end
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
