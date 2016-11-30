@@ -41,10 +41,7 @@ private
 
   def bloomer_params
      params.require(:bloomer).permit(:name, :city, :category, :website, :email, :twitter_account, :description, :address, :speciality, :date_creation, photos:[])
-   end
+  end
 
  end
 
-  end
-
-end
