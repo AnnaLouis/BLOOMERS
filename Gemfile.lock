@@ -133,6 +133,7 @@ GEM
     nio4r (1.2.1)
     nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
+    oauth (0.5.1)
     oauth2 (1.2.0)
       faraday (>= 0.8, < 0.10)
       jwt (~> 1.0)
@@ -144,6 +145,11 @@ GEM
       rack (>= 1.0, < 3)
     omniauth-facebook (4.0.0)
       omniauth-oauth2 (~> 1.2)
+    omniauth-linkedin (0.2.0)
+      omniauth-oauth (~> 1.0)
+    omniauth-oauth (1.1.0)
+      oauth
+      omniauth (~> 1.0)
     omniauth-oauth2 (1.4.0)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
@@ -258,7 +264,9 @@ DEPENDENCIES
   jquery-fileupload-rails
   jquery-rails
   listen (~> 3.0.5)
+  omniauth
   omniauth-facebook
+  omniauth-linkedin
   pg
   pry-byebug
   pry-rails

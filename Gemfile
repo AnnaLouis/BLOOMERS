@@ -13,6 +13,8 @@ gem "geocoder"
 gem "coffee-rails"
 gem "gmaps4rails"
 gem 'omniauth-facebook'
+gem 'omniauth'
+gem 'omniauth-linkedin'
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
