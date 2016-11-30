@@ -1,8 +1,8 @@
 class Program < ApplicationRecord
   # REFERENCES
   belongs_to :bloomer
-  has_many :batchs
-  has_many :startups, through: :batchs
+  has_many :batches
+  has_many :startups, through: :batches
   has_many :candidatures
   # VALIDATION
   validates :name, presence: true

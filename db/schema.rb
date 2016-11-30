@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161130101310) do
+ActiveRecord::Schema.define(version: 20161130112254) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_admin_comments", force: :cascade do |t|
+    t.string   "namespace"
+    t.text     "body"
+    t.string   "resource_id",   null: false
+    t.string   "resource_type", null: false
+    t.string   "author_type"
+    t.integer  "author_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
+    t.index ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
+    t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
+  end
 
   create_table "attachinary_files", force: :cascade do |t|
     t.string   "attachinariable_type"
@@ -30,16 +44,16 @@ ActiveRecord::Schema.define(version: 20161130101310) do
     t.index ["attachinariable_type", "attachinariable_id", "scope"], name: "by_scoped_parent", using: :btree
   end
 
-  create_table "batchs", force: :cascade do |t|
+  create_table "batches", force: :cascade do |t|
     t.date     "batch_start"
     t.date     "batch_end"
-    t.integer  "startups_id"
+    t.integer  "startup_id"
     t.string   "name"
-    t.integer  "bloomer_id"
+    t.integer  "program_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["bloomer_id"], name: "index_batchs_on_bloomer_id", using: :btree
-    t.index ["startups_id"], name: "index_batchs_on_startups_id", using: :btree
+    t.index ["program_id"], name: "index_batches_on_program_id", using: :btree
+    t.index ["startup_id"], name: "index_batches_on_startup_id", using: :btree
   end
 
   create_table "bloomers", force: :cascade do |t|
@@ -141,8 +155,8 @@ ActiveRecord::Schema.define(version: 20161130101310) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_foreign_key "batchs", "bloomers"
-  add_foreign_key "batchs", "startups", column: "startups_id"
+  add_foreign_key "batches", "programs"
+  add_foreign_key "batches", "startups"
   add_foreign_key "bloomers", "users"
   add_foreign_key "candidatures", "programs"
   add_foreign_key "candidatures", "startups"
