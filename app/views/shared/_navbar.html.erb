@@ -7,13 +7,20 @@
   <!-- Right Navigation -->
   <div class="navbar-bloomer-right hidden-xs hidden-sm">
 
-    <!-- Search form -->
-    <form action="" class="navbar-bloomer-search">
-      <input type="text" class="navbar-bloomer-search-input" placeholder="Search something">
-      <button type="submit" class="navbar-bloomer-search-btn">
-        <i class="fa fa-search"></i>
-      </button>
-    </form>
+  <!-- Les Bloomers -->
+  <div class="navbar-bloomer-item">
+  <div class="dropdown">
+   <%= image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+    <ul class="dropdown-menu dropdown-menu-right navbar-bloomer-dropdown-menu">
+      <li>
+        <p> <%= link_to "La Carte", map_path %> </p>
+      </li>
+      <li>
+        <p> <%= link_to "La Carte", map_path %> </p>
+      </li>
+    </ul>
+  </div>
+  </div>
 
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
