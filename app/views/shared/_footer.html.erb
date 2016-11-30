@@ -1,34 +1,35 @@
-<div class="footer-wrapper">
-  <div class="row">
-    <div class="logo-container">
-      <%= link_to root_path, class: "footer-wrapper" do %>
-      <%= image_tag "logo.png", :style => 'width:15%' %>
-      <% end %>
-    </div>
+<div class="containter footer-bloomer">
+    <div class="row">
+      <div class="col-md-2">
 
-    <div class="main-col-footer">
-      <p> CONTACT </p>
-    </div>
-
-    <div class="main-col-footer">
-      <p> L'EXPLORATION </p>
-    </div>
-
-    <div class="social-col-footer">
-      <div class="share-links">
-        <a href="#" class="share-link bg-twitter">
-          <i class="fa fa-twitter" style="color:#FFC400"></i>
-        </a>
+        <%= link_to root_path, class: "footer-bloomer-brand" do %>
+        <%= image_tag "logo.png" %>
+        <% end %>
       </div>
-    </div>
-    <div class="social-col-footer">
-      <div class="share-links">
-        <a href="#" class="share-link bg-email">
-          <i class="fa fa-envelope-o" style="color:#FFC400"></i>
-        </a>
+
+      <div class="col-md-8">
+        <div class="footer-bloomer-right hidden-xs hidden-sm">
+
+          <div class="section-footer">
+           CONTACT
+         </div>
+
+         <div class="section-footer">
+          L'EXPLORATION
+        </div>
+
+        <div class="section-footer">
+          <a href="#" class="share-link bg-twitter">
+            <i class="fa fa-twitter" style="color:#FFC400"></i>
+          </a>
+
+          <a href="#" class="share-link bg-email">
+            <i class="fa fa-envelope-o" style="color:#FFC400"></i>
+          </a>
+        </div>
       </div>
     </div>
   </div>
-
-
 </div>
+
+
