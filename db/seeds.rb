@@ -14,7 +14,7 @@ user1.password = "123456"
 user1.admin = false
 user1.startup_admin = true
 user1.bloomer_admin = false
-user1.save
+user1.save!
 
 user2 = User.new(first_name: "Anna", last_name:"Louis")
 user2.email = "anna@bloomers.fr"
@@ -22,7 +22,7 @@ user2.password = "123456"
 user2.startup_admin = false
 user2.bloomer_admin = true
 user2.admin = false
-user2.save
+user2.save!
 
 user3 = User.new(first_name: "Bloom", last_name: "Her")
 user3.email = "hello@bloomers.fr"
@@ -30,7 +30,7 @@ user3.password = "123456"
 user3.startup_admin = true
 user3.bloomer_admin = true
 user3.admin = true
-user3.save
+user3.save!
 
 # STARTUP CREATION
 
@@ -40,13 +40,12 @@ startup1.website = "askanna.me"
 startup1.twitter_account = "https://twitter.com/AskAnna_app?utm_source=nouveau%20site&utm_medium=icons&utm_campaign=icones%20RS%20twitter%20new%20site"
 startup1.date_creation = Date.new(2015, 1, 1)
 startup1.user = User.find_by_email("alizee@bloomers.fr")
-startup1.save
+startup1.save!
 
 # BLOOMER CREATION
 
 bloomer1 = Bloomer.new(name:"Look Forward by Showroomprive")
 bloomer1.city = "La Plaine Saint Denis"
-bloomer1.country = "France"
 bloomer1.category = "Incubateur"
 bloomer1.website = "lookforwardproject.com"
 bloomer1.speciality = "mode and retail"
@@ -56,11 +55,10 @@ bloomer1.twitter_account = "https://twitter.com/LookForwardHub"
 bloomer1.date_creation = Date.new(2015, 6, 1)
 bloomer1.description = "LOOK FORWARD est la plateforme de toute innovation susceptible de revolutionner le monde de la mode et du retail. Avec les startups integrees à son incubateur, LOOK FORWARD a l’ambition de bousculer la facon de distribuer, consommer et produire la mode."
 bloomer1.user = User.find_by_email("anna@bloomers.fr")
-bloomer1.save
+bloomer1.save!
 
 bloomer2 = Bloomer.new(name:"La Mutinerie")
 bloomer2.city = "Paris"
-bloomer2.country = "France"
 bloomer2.category = "Coworking"
 bloomer2.website = "lamutinerie.org"
 bloomer2.speciality = "cowork"
@@ -70,23 +68,42 @@ bloomer2.twitter_account = "https://twitter.com/mutineries"
 bloomer2.date_creation = Date.new(2015, 9, 1)
 bloomer2.description = "Libre ensemble"
 bloomer2.user = User.find_by_email("anna@bloomers.fr")
-bloomer2.save
+bloomer2.save!
 
 # PROGRAM
 
-# program1 = Program.new(name:"Program 1")
-# program1.short_description = "La Plaine Saint Denis"
-# program1.price = 0
-# program1.duration = "Un an"
-# program1.equity = false
-# program1.bloomer = bloomer1
-# program1.save!
+program1 = Program.new(name:"Program 1")
+program1.short_description = "La Plaine Saint Denis"
+program1.price = 0
+program1.duration = "Un an"
+program1.equity = false
+program1.bloomer = bloomer1
+program1.save!
 
 # BATCH
-# batch1 = Batch.new(name:"Promo 1")
-# batch1.batch_start = Date.new(2015,1,1)
-# batch1.batch_end = Date.new(2016,1,1)
-# batch1.program = program1
-# batch1.startup = startup1
-# batch1.save!
 
+batch1 = Batch.new(name:"Promo 1")
+batch1.batch_start = Date.new(2015,1,1)
+batch1.batch_end = Date.new(2016,1,1)
+batch1.program = program1
+batch1.startup = startup1
+batch1.save!
+
+# CANDIDATURE
+
+candidature1 = Candidature.new(status:"Pending")
+candidature1.start_date = Date.new(2016,2,2)
+candidature1.end_date = Date.new(2016,12,12)
+candidature1.preselection_date = Date.new(2016,11,11)
+candidature1.startup_id = startup1
+candidature1.program_id = program1
+candidature1.save!
+
+# REVIEW
+
+review1 = Review.new(title:"Bien")
+review1.description = "Trop bien"
+review1.rating = 3
+review1.bloomer_id = bloomer2
+review1.startup_id = startup1
+review1.save!
