@@ -1,35 +1,39 @@
 <div class="containter footer-bloomer">
-    <div class="row">
+  <div class="row">
+  <div class="col-md-6">
+
+      <%= link_to root_path, class: "footer-bloomer-brand" do %>
+      <%= image_tag "logo.png" %>
+      <% end %>
+    </div>
+
+
+    <div class="footer-bloomer-right hidden-xs hidden-sm">
       <div class="col-md-2">
-
-        <%= link_to root_path, class: "footer-bloomer-brand" do %>
-        <%= image_tag "logo.png" %>
-        <% end %>
-      </div>
-
-      <div class="col-md-8">
-        <div class="footer-bloomer-right hidden-xs hidden-sm">
-
-          <div class="section-footer">
-           CONTACT
-         </div>
-
-         <div class="section-footer">
-          L'EXPLORATION
-        </div>
-
         <div class="section-footer">
-          <a href="#" class="share-link bg-twitter">
-            <i class="fa fa-twitter" style="color:#FFC400"></i>
-          </a>
+         CONTACT
+       </div>
+     </div>
+     <div class="col-md-2">
+       <div class="section-footer">
+        L'EXPLORATION
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="section-footer">
+        <a href="#" class="share-link bg-twitter">
+          <i class="fa fa-twitter" style="color:#FFC400"></i>
 
-          <a href="#" class="share-link bg-email">
-            <i class="fa fa-envelope-o" style="color:#FFC400"></i>
-          </a>
-        </div>
+        </a>
+
+        <a href="#" class="share-link bg-email">
+          <i class="fa fa-envelope-o" style="color:#FFC400"></i>
+        </a>
       </div>
     </div>
   </div>
+</div>
+</div>
 </div>
 
 

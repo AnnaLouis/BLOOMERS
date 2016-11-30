@@ -3,6 +3,7 @@ class BloomersController < ApplicationController
 
   def index
     @bloomers = policy_scope(Bloomer)
+    @search_bloomer = Bloomer.new
   end
 
   def show
@@ -41,6 +42,6 @@ private
 
   def bloomer_params
      params.require(:bloomer).permit(:name, :city, :category, :website, :email, :twitter_account, :description, :address, :speciality, :date_creation, photos:[])
-   end
+  end
 
  end
