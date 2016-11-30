@@ -1,6 +1,14 @@
 ActiveAdmin.register Review do
 
   permit_params :title, :description, :rating
+
+  index do
+    selectable_column
+    column :title
+    column :description
+    column :rating
+    actions
+  end
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
