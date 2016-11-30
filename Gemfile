@@ -17,6 +17,7 @@ gem 'omniauth'
 gem 'omniauth-linkedin'
 gem 'activeadmin', github: 'activeadmin/activeadmin'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+gem "jquery-fileupload-rails"
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
