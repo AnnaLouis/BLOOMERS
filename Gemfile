@@ -15,6 +15,8 @@ gem "gmaps4rails"
 gem 'omniauth-facebook'
 gem 'omniauth'
 gem 'omniauth-linkedin'
+gem 'activeadmin', github: 'activeadmin/activeadmin'
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"

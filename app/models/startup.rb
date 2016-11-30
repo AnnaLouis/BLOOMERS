@@ -1,10 +1,10 @@
 class Startup < ApplicationRecord
   # REFEREJCES
   belongs_to :user
-  has_many :batchs
+  has_many :batches
   has_many :candidatures, dependent: :destroy
   has_many :reviews, dependent: :destroy
-  has_many :programs, through: :batchs
+  has_many :programs, through: :batches
   has_many :bloomers, through: :programs
   # CLOUDINARY & ATTACHINARY
   has_attachments :photos, maximum: 3

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  ActiveAdmin.routes(self)
   devise_for :users,
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
@@ -15,7 +16,7 @@ Rails.application.routes.draw do
 
   resources :programs, only: [] do
     resources :candidatures, only: [:new, :create]
-    # resources :batchs, only: [:new, :create]
+    # resources :batches, only: [:new, :create]
   end
 
   # resources :batches, only: :show
