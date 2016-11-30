@@ -10,14 +10,22 @@
 }
 
 .footer-bloomer-brand img {
-  width: 150px;
-  padding-left: 20px;
+  width: 200px;
+
+  padding-left: 40px;
 }
 
 .section-footer{
   display:inline;
   color: #FFC400;
   float: right;
-  justify-content: space-between;
-  justify-content: space-around;
+  // justify-content: space-between;
+  // justify-content: space-around;
+  // justify-content: right;
+
+}
+
+
+.share-link {
+  padding: 15px;
 }
