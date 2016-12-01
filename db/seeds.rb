@@ -109,15 +109,16 @@ startup4.date_creation = Date.new(2013, 8, 10)
 startup4.user = User.find_by_email("igloo@test.fr")
 startup4.save
 
-# # PROGRAM
+# PROGRAM
 
-# program1 = Program.new(name:"Program 1")
-# program1.short_description = "La Plaine Saint Denis"
-# program1.price = 0
-# program1.duration = "Un an"
-# program1.equity = false
-# program1.bloomer = bloomer1
-# program1.save!
+program1 = Program.new(name:"Program 1")
+program1.short_description = "La Plaine Saint Denis"
+program1.description = "La Plaine Saint Denis c'est top"
+program1.price = 0
+program1.duration = "Un an"
+program1.equity = false
+program1.bloomer = bloomer1
+program1.save!
 
 # BATCH
 
