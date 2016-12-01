@@ -51,5 +51,9 @@ class PagesController < ApplicationController
     end
   end
 
+  def dashboard
+    @bloomers = Bloomer.select{ |bloomer| bloomer.user_id == current_user.id }
+  end
+
 
 end
