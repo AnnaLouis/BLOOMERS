@@ -9,10 +9,8 @@ $(document).ready(function() {
       tabSelector = $(this).data("target");
       $(tabSelector).removeClass("hidden");
     });
-});
 
-$(document).ready(function() {
-  $(".program-title").on("click", function(e){
+    $(".program-title").on("click", function(e){
       // Change active tab
       $(".program-title").removeClass("active");
       $(this).addClass("active");
