@@ -22,8 +22,10 @@ Rails.application.routes.draw do
   resources :batches, only: [:show, :index]
   resources :candidatures, only: [:show, :index]
 
-  # resources :programs, only: [:edit, :update]
+  # DASHBOARD STARTUP_USER
+  get '/startup_dashboard' => 'pages#startup_dashboard'
 
+  # resources :programs, only: [:edit, :update]
   resources :startups, only: [:show, :new, :create]
   mount Attachinary::Engine => "/attachinary"
 end
