@@ -4,6 +4,19 @@ class BloomersController < ApplicationController
   def index
     @bloomers = policy_scope(Bloomer)
     @search_bloomer = Bloomer.new
+    # Je crée les spécialités Bloomers
+    @specialities = []
+    @bloomers.each do |bloomer|
+      @specialities << bloomer.speciality
+    end
+    @specialities.uniq!
+    # Je fais la fonction recherche
+    if params[:search] && params[:search][:category] != ""
+      @bloomers = @bloomers.where(category: params[:search][:category])
+    end
+    if params[:search] && params[:search][:city] != ""
+      @bloomers = @bloomers.where(city: params[:search][:city])
+    end
   end
 
   def show
