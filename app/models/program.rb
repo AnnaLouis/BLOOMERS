@@ -7,6 +7,10 @@ class Program < ApplicationRecord
   # VALIDATION
   validates :name, presence: true
   validates :short_description, presence: true
-  validates :price, presence: true
+  validates :description, presence: true
   validates :duration, presence: true
+  validates :price, presence: true
+  validates :equity, presence: true
+  validates :candidature_open, presence: true
+  validates :candidature_close, presence: true
 end
