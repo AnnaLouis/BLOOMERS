@@ -10,6 +10,7 @@ class Startup < ApplicationRecord
   has_many :bloomers, through: :programs
   # CLOUDINARY & ATTACHINARY
   has_attachments :photos, maximum: 3
+  has_attachment :logo
   # VALIDATIONS
   validates :name, presence: true
   validates :short_description, presence: true
