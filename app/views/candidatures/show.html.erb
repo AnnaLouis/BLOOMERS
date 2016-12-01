@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+
+        <% @candidatures.each do |candidature| %>
+
+
+
+        <%= candidature.team %>
+        <% end %>
+
+
+    </div>
+  </div>
+</div>
+
+<!--
+t.string   "status"
+    t.integer  "startup_id"
+    t.integer  "program_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.text     "team"
+    t.text     "short_description"
+    t.text     "your_problem"
+    t.text     "your_solution"
+    t.text     "your_market"
+    t.text     "description"
+    t.integer  "phone_number"
+    t.index ["program_id"], name: "index_candidatures_on_program_id", using: :btree
+    t.index ["startup_id"], name: "index_candidatures_on_startup_id", using: :btree
+
+
+
+
+
+
+:team, :short_description, :your_problem, :your_solution, :your_market, :description, :phone_number)
+ -->

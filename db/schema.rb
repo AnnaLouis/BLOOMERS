@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20161201102414) do
 
   # These are extensions that must be enabled in order to support this database
@@ -77,15 +78,14 @@ ActiveRecord::Schema.define(version: 20161201102414) do
     t.string   "status"
     t.integer  "startup_id"
     t.integer  "program_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.text     "team"
-    t.text     "short_description"
     t.text     "your_problem"
     t.text     "your_solution"
     t.text     "your_market"
-    t.text     "description"
     t.integer  "phone_number"
+    t.text     "question_incubation"
     t.index ["program_id"], name: "index_candidatures_on_program_id", using: :btree
     t.index ["startup_id"], name: "index_candidatures_on_startup_id", using: :btree
   end
