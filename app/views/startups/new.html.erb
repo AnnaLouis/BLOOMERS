@@ -15,7 +15,6 @@
           <div class="circle" id="circle-2"></div>
           <div class="step"><p><span>étape 2</span><br>Mes info</p></div>
         </div>
-
       </div>
     </div>
 
@@ -31,20 +30,18 @@
       </div>
       <!-- MES INFOS-->
       <div class="sub-new-bloomer-content hidden" id="step-2-description">
-        <div class="nb-sub-content">
-          <div class="col-xs-12 col-sm-6">
             <%= f.input :website, label: 'Site internet' %>
             <%= f.input :twitter_account, label: 'Compte Twitter' %>
             <%= f.input :photos, as: :attachinary %>
-          </div>
-        </div>
+        <br><br>
+      <!-- SUBMIT -->
+        <span class="nb-next-button"><%= f.button :submit, "Je crée ma structure !" %></span>
       </div>
 
-      <br><br>
 
-  <!-- SUBMIT -->
-    <span class="nb-next-button"><%= f.button :submit, "Je crée ma structure !" %></span>
-    <% end %>
+
+      <% end %>
+
     </div>
 
 
