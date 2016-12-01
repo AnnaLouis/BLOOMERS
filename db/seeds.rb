@@ -176,14 +176,6 @@ program1.equity = false
 program1.bloomer = bloomer1
 program1.save!
 
-# BATCH
-
-batch1 = Batch.new(name:"Promo 1")
-batch1.batch_start = Date.new(2015,1,1)
-batch1.batch_end = Date.new(2016,1,1)
-batch1.program = program1
-batch1.startup = startup1
-batch1.save!
 #LOGO
 startup4.logo_url = "http://entreprendre.univ-lyon3.fr/wp-content/uploads/2015/08/logo-derigueur.png"
 
