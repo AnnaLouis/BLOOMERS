@@ -90,6 +90,7 @@
       </div>
     </div>
   </div>
+</div>
 
   <!-- ROW 2 : VIDEOS & STARTUPS -->
   <div class="wrapper-show-bloomer">
@@ -366,7 +367,7 @@
 
   <!-- PAGE 1 - PROGRAMME 1 -->
   <% if @first_program.present? %>
-    <div id="program-one" style="padding:0;margin:0"></div>
+    <div class="program-content" id="program-one"></div>
     <!-- ROW 1 : main info + postulate -->
     <div class="wrapper-show-bloomer">
       <div class="container">
@@ -478,7 +479,9 @@
           <h3>ACCOMPAGNEMENT INDIVIDUEL</h3>
           <div class="div-content-white">
             <div class="plain-text">
+              <% if @first_program.individual_coaching? %>
               <%= @first_program.individual_coaching.html_safe %>
+              <% end %>
               </div>
             </div>
           </div>
@@ -487,7 +490,9 @@
             <h3>ACCOMPAGNEMENT COLLECTIF</h3>
             <div class="div-content-white">
               <div class="plain-text">
+                <% if @first_program.collective_coachin? %>
                 <%= @first_program.collective_coachin.html_safe %>
+                <% end %>
               </div>
             </div>
           </div>
@@ -505,7 +510,9 @@
             <h3>L'ECOSYSTEME</h3>
             <div class="div-content-white">
               <div class="plain-text">
+                  <% if @first_program.ecosystem? %>
                   <%= @first_program.ecosystem.html_safe %>
+                  <% end %>
                 </div>
               </div>
             </div>
@@ -514,7 +521,9 @@
               <h3>LES AVANTAGES</h3>
               <div class="div-content-white">
                 <div class="plain-text">
+                  <% if @first_program.advantages? %>
                   <%= @first_program.advantages.html_safe %>
+                  <% end %>
                 </div>
                 </div>
               </div>
@@ -531,7 +540,9 @@
                 <h3>CRITERES DE SELECTION</h3>
                 <div class="div-content-white">
                   <div class="plain-text">
+                    <% if @first_program.selection_criterias? %>
                     <%= @first_program.selection_criterias.html_safe %>
+                    <% end %>
                   </div>
                 </div>
               </div>
@@ -539,7 +550,7 @@
               <div class="col-xs-12 col-sm-6">
                 <h3>AVIS DES STARTUPS</h3>
                 <div class="div-content-white">
-                  <div class="reviews-bloomer-small-card">
+                  <div class="reviews-bloomer-small-card hidden">
                     <div class="logo-startup-review">
                       <img src="http://laurenceourac.com/home/wp-content/uploads/2015/12/ANNA.jpg" class="avatar">
                     </div>
@@ -595,7 +606,7 @@
 
     <!-- PAGE 1 - PROGRAMME 2 -->
   <% if @second_program.present? %>
-    <div id="program-two hidden" style="padding:0;margin:0"></div>
+    <div class="program-content" id="program-two hidden"></div>
     <!-- ROW 1 : main info + postulate -->
     <div class="wrapper-show-bloomer">
       <div class="container">
