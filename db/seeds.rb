@@ -174,6 +174,8 @@ program1.price = 0
 program1.duration = "Un an"
 program1.equity = false
 program1.bloomer = bloomer1
+program1.candidature_open = Date.new(2016, 12, 1)
+program1.candidature_close = Date.new(2016, 12, 31)
 program1.save!
 
 #LOGO

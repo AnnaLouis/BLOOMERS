@@ -440,9 +440,16 @@
                       <i class="fa fa-check"></i>
                       <div class="text-step-timeline">
                         <span class="date-step-timeline">
+                          <% if @first_program.batches.count != 0 %>
                           <%= @first_program.batches.last.batch_start.strftime("%l %b %y") %>
+                          <% else %>
+                          <%= "?" %>
+                          <% end %>
                           </span>
-                        <br><span class="name-step-timeline">Rentrée <%= @first_program.batches.last.name%></span>
+                        <br><span class="name-step-timeline">
+                          <% if @first_program.batches.count != 0 %>
+                          Rentrée <%= @first_program.batches.last.name%></span>
+                          <% end %>
                       </div>
                     </li>
                   </ul>
