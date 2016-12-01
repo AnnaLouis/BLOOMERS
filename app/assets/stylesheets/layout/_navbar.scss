@@ -1,3 +1,4 @@
+
 /* Main class */
 .navbar-bloomer {
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
@@ -9,6 +10,10 @@
   align-items: center;
   align-items: inline;
   justify-content: space-between;
+}
+
+.navbar-bloomer a:hover {
+  text-decoration: none;
 }
 
 /* Optional class to fix the navbar on top */
@@ -28,7 +33,6 @@
 /* Navbar right section (with form, links, button) */
 .navbar-bloomer-right {
   display: flex;
-  align-items: center;
   justify-content: space-between;
 }
 
@@ -46,7 +50,6 @@
 /* Navbar standard link */
 .navbar-bloomer-link {
   color: #616668;
-  font-size: 14px;
 }
 .navbar-bloomer-link:hover {
   color: #07617D;
