@@ -2,11 +2,22 @@
 font-family: "Comfortaa", cursive;
 font-size: 30px;
 color: #04677D;
+padding:5px 40px 0px 40px;
+text-align: center;
+}
+
+.head-general-map h1 span {
+  border-bottom: 2px solid #FEC300;
+}
+
+.head-general-map {
+  padding-bottom: 20px
 }
 
 // .head-general-map p {
 //   font-size: 12px;
 // }
+
 
 .gm-style-iw h1 {
 font-size: 12px;
@@ -14,4 +25,30 @@ font-size: 12px;
 
 .gm-style-iw p {
 font-size: 10px;
+}
+
+.container-map-marker-legend {
+  width:40%;
+  margin:auto;
+}
+
+.container-map-marker-legend h2 {
+  font-family: 'Muli';
+  font-size: 20px;
+  color: #04677D;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.map-marker-legend-content {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.map-marker-legend-content img {
+  margin: 5px;
+  height: 24px;
+  width:auto;
+  margin-right:20px;
 }
