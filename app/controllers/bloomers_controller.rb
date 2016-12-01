@@ -8,6 +8,7 @@ class BloomersController < ApplicationController
 
   def show
     @bloomer = Bloomer.find(params[:id])
+    @three_random_startups = @bloomer.startups.order("RANDOM()").limit(3)
     authorize @bloomer
     @alert_message = "Vous êtes sur la page de : #{@bloomer.name}"
     @bloomer_coordinates = { lat: @bloomer.latitude, lng: @bloomer.longitude }

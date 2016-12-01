@@ -14,7 +14,7 @@ user1.password = "123456"
 user1.admin = false
 user1.startup_admin = true
 user1.bloomer_admin = false
-user1.save!
+user1.save
 
 user2 = User.new(first_name: "Anna", last_name:"Louis")
 user2.email = "anna@bloomers.fr"
@@ -22,7 +22,7 @@ user2.password = "123456"
 user2.startup_admin = false
 user2.bloomer_admin = true
 user2.admin = false
-user2.save!
+user2.save
 
 user3 = User.new(first_name: "Bloom", last_name: "Her")
 user3.email = "hello@bloomers.fr"
@@ -30,17 +30,7 @@ user3.password = "123456"
 user3.startup_admin = true
 user3.bloomer_admin = true
 user3.admin = true
-user3.save!
-
-# STARTUP CREATION
-
-startup1 = Startup.new(name: "Ask Anna")
-startup1.short_description = "L’app pour ne plus hésiter en cabine d’essayage"
-startup1.website = "askanna.me"
-startup1.twitter_account = "https://twitter.com/AskAnna_app?utm_source=nouveau%20site&utm_medium=icons&utm_campaign=icones%20RS%20twitter%20new%20site"
-startup1.date_creation = Date.new(2015, 1, 1)
-startup1.user = User.find_by_email("alizee@bloomers.fr")
-startup1.save!
+user3.save
 
 # BLOOMER CREATION
 
@@ -55,7 +45,8 @@ bloomer1.twitter_account = "https://twitter.com/LookForwardHub"
 bloomer1.date_creation = Date.new(2015, 6, 1)
 bloomer1.description = "LOOK FORWARD est la plateforme de toute innovation susceptible de revolutionner le monde de la mode et du retail. Avec les startups integrees à son incubateur, LOOK FORWARD a l’ambition de bousculer la facon de distribuer, consommer et produire la mode."
 bloomer1.user = User.find_by_email("anna@bloomers.fr")
-bloomer1.save!
+bloomer1.save
+
 # PHOTOS
 urls1 = ["http://imageshack.com/a/img923/6113/XpMsUl.jpg",
         "http://blog.upfit-services.com/wp-content/uploads/2015/10/IMG_20151012_150511.jpg",
@@ -84,15 +75,49 @@ urls2 = ["https://www.powwownow.fr/travailler-fute/wp-content/uploads/2016/07/es
         ]
 bloomer2.photo_urls = urls2
 
-# PROGRAM
+# STARTUP CREATION
 
-program1 = Program.new(name:"Program 1")
-program1.short_description = "La Plaine Saint Denis"
-program1.price = 0
-program1.duration = "Un an"
-program1.equity = false
-program1.bloomer = bloomer1
-program1.save!
+startup1 = Startup.new(name: "Ask Anna")
+startup1.short_description = "L’app pour ne plus hésiter en cabine d’essayage"
+startup1.website = "askanna.me"
+startup1.twitter_account = "https://twitter.com/AskAnna_app?utm_source=nouveau%20site&utm_medium=icons&utm_campaign=icones%20RS%20twitter%20new%20site"
+startup1.date_creation = Date.new(2015, 1, 1)
+startup1.user = User.find_by_email("alizee@bloomers.fr")
+startup1.save
+
+startup2 = Startup.new(name: "Le Lab")
+startup2.short_description = "Des chemises uniques au monde combinant style, coupe et tissu."
+startup2.website = "www.lelab.cc"
+startup2.twitter_account = "https://twitter.com/LeLabShirt"
+startup2.date_creation = Date.new(2014, 4, 8)
+startup2.user = User.find_by_email("lelab@test.fr")
+startup2.save
+
+startup3 = Startup.new(name: "Igloo")
+startup3.short_description = "Les boutiques près de chez vous"
+startup3.website = "www.igloo.paris"
+startup3.twitter_account = "https://twitter.com/iglooparis"
+startup3.date_creation = Date.new(2015, 4, 8)
+startup3.user = User.find_by_email("igloo@test.fr")
+startup3.save
+
+startup4 = Startup.new(name: "De Rigueur")
+startup4.short_description = "Maison française du XXIe siècle"
+startup4.website = "www.derigueur.fr"
+startup4.twitter_account = "https://twitter.com/derigueurfr"
+startup4.date_creation = Date.new(2013, 8, 10)
+startup4.user = User.find_by_email("igloo@test.fr")
+startup4.save
+
+# # PROGRAM
+
+# program1 = Program.new(name:"Program 1")
+# program1.short_description = "La Plaine Saint Denis"
+# program1.price = 0
+# program1.duration = "Un an"
+# program1.equity = false
+# program1.bloomer = bloomer1
+# program1.save!
 
 # BATCH
 
@@ -105,13 +130,13 @@ batch1.save!
 
 # CANDIDATURE
 
-candidature1 = Candidature.new(status:"Pending")
-candidature1.start_date = Date.new(2016,2,2)
-candidature1.end_date = Date.new(2016,12,12)
-candidature1.preselection_date = Date.new(2016,11,11)
-candidature1.startup_id = startup1
-candidature1.program_id = program1
-candidature1.save!
+# candidature1 = Candidature.new(status:"Pending")
+# candidature1.start_date = Date.new(2016,2,2)
+# candidature1.end_date = Date.new(2016,12,12)
+# candidature1.preselection_date = Date.new(2016,11,11)
+# candidature1.startup_id = startup1
+# candidature1.program_id = program1
+# candidature1.save!
 
 # REVIEW
 
