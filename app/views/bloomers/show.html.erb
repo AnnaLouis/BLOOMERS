@@ -117,10 +117,10 @@
                 <img src="http://laurenceourac.com/home/wp-content/uploads/2015/12/ANNA.jpg" class="avatar">
               </div>
               <div class="col-xs-12 col-md-8" style="padding:0px">
-                <% if @three_random_startups.first %>
-                <h2><%= @three_random_startups.first.name %></h2>
-                <h3><%= @three_random_startups.first.short_description %></h3>
-                <h4>PROMO 1 (?)</h4>
+                <% if @three_random_startups[0].present? %>
+                  <h2><%= @three_random_startups[0].name %></h2>
+                  <h3><%= @three_random_startups[0].short_description %></h3>
+                  <h4><%= @three_random_startups[0].batches.first.name %>?</h4>
                 <% end %>
               </div>
             </div>
@@ -129,9 +129,11 @@
                 <img src="http://laurenceourac.com/home/wp-content/uploads/2015/12/ANNA.jpg" class="avatar">
               </div>
               <div class="col-xs-12 col-md-8" style="padding:0px">
-                <h2>ASK ANNA</h2>
-                <h3>L’app pour ne plus hésiter en cabine d’essayage</h3>
-                <h4>PROMO 1</h4>
+                <% if @three_random_startups[1].present? %>
+                  <h2><%= @three_random_startups[1].name %></h2>
+                  <h3><%= @three_random_startups[1].short_description %></h3>
+                  <h4><%= @three_random_startups[1].batches.first.name %>?</h4>
+                <% end %>
               </div>
             </div>
             <div class="div-startups-card">
@@ -139,9 +141,11 @@
                 <img src="http://laurenceourac.com/home/wp-content/uploads/2015/12/ANNA.jpg" class="avatar">
               </div>
               <div class="col-xs-12 col-md-8" style="padding:0px">
-                <h2>ASK ANNA</h2>
-                <h3>L’app pour ne plus hésiter en cabine d’essayage</h3>
-                <h4>PROMO 1</h4>
+                <% if @three_random_startups[2].present? %>
+                  <h2><%= @three_random_startups[2].name %></h2>
+                  <h3><%= @three_random_startups[2].short_description %></h3>
+                  <h4><%= @three_random_startups[2].batches.first.name %>?</h4>
+                <% end %>
               </div>
             </div>
             <div class="div-startups-card">
@@ -328,9 +332,21 @@
       <div class="row program-titles">
         <div class="col-xs-12">
           <a class="program-title tab" style="padding:0;margin:0px">></a>
-          <a class="program-title tab active" data-target="#program-one">PROGRAMME 1</a>
-          <a class="program-title" data-target="#program-two">PROGRAMME 2</a>
-          <a class="program-title" data-target="#coworking">CO-WORKING</a>
+          <a class="program-title tab active" data-target="#program-one">
+            <% if @first_program.present? %>
+              <%= @first_program.name %>
+            <% end %>
+          </a>
+          <a class="program-title" data-target="#program-two">
+            <% if @second_program.present? %>
+              <%= @second_program.name %>
+            <% end %>
+          </a>
+          <a class="program-title" data-target="#coworking">
+            <% if @thrid_program.present? %>
+              <%= @third_program.name %>
+            <% end %>
+          </a>
         </div>
       </div>
     </div>
@@ -350,13 +366,13 @@
               <div class="col-xs-12 col-md-6">
                 <div class="div-main-info">
                   <h2>COUT</h2>
-                  <h3>GRATUIT</h3>
+                  <h3><%= @first_program.price %> €</h3>
                 </div>
               </div>
               <div class="col-xs-12 col-md-6">
                 <div class="div-main-info">
                   <h2>DUREE</h2>
-                  <h3>1 AN</h3>
+                  <h3><%= @first_program.duration %></h3>
                 </div>
               </div>
             </div>
@@ -364,13 +380,19 @@
               <div class="col-xs-12 col-md-6">
                 <div class="div-main-info">
                   <h2>TAUX SURVIE</h2>
-                  <h3>100%</h3>
+                  <h3>?? %</h3>
                 </div>
               </div>
               <div class="col-xs-12 col-md-6">
                 <div class="div-main-info">
                   <h2>PRISE PARTICIPATION</h2>
-                  <h3>0 %</h3>
+                  <h3>
+                    <% if @first_program.equity? %>
+                    <%= "OUI" %>
+                    <% else %>
+                    <%= "NON" %>
+                    <% end %>
+                  </h3>
                 </div>
               </div>
             </div>
@@ -386,21 +408,27 @@
                     <li class="l-wizard-h-step wizard-h__step--previous">
                      <i class="fa fa-file-text-o"></i>
                      <div class="text-step-timeline">
-                      <span class="date-step-timeline">30 JUIN - 17 OCT</span>
+                      <span class="date-step-timeline">
+                        <%= @first_program.candidature_open.strftime("%l %b %y") %>
+                      </span>
                       <br><span class="name-step-timeline">Appel à projects</span>
                     </div>
                   </li>
                   <li class="l-wizard-h-step wizard-h__step--current">
                     <i class="fa fa-user"></i>
                     <div class="text-step-timeline">
-                      <span class="date-step-timeline">FIN OCT</span>
-                      <br><span class="name-step-timeline">Prélection des projets</span>
+                      <span class="date-step-timeline">
+                        <%= @first_program.candidature_close.strftime("%l %b %y") %>
+                      </span>
+                      <br><span class="name-step-timeline">Fin de candidature</span>
                     </div>
                   </li>
                   <li class="l-wizard-h-step wizard-h__step">
                     <i class="fa fa-check"></i>
                     <div class="text-step-timeline">
-                      <span class="date-step-timeline">17 NOV</span>
+                      <span class="date-step-timeline">
+                        <%= @first_program.batches.last.batch_start.strftime("%l %b %y") %>
+                        </span>
                       <br><span class="name-step-timeline">Rentrée Saison 2</span>
                     </div>
                   </li>
@@ -409,7 +437,7 @@
             </div>
             <div class="timeline">
               <div class="col-xs-6">
-                <h4 style="text-align:center">Il reste 45 jours</h4>
+                <h4 style="text-align:center">Il reste <%= (@first_program.candidature_close - Date.today).to_i %> jours </h4>
               </div>
               <div class="col-xs-6" style="justify-content: center;display:flex">
                 <a href="#" class="btn-postulate">Je postule</a>
