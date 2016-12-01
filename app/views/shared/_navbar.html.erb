@@ -22,7 +22,6 @@
      <!-- Different navigation if login or not -->
      <% if user_signed_in? %>
         <!--  Startup Admin -->
-
        <%  if current_user.startup_admin? %>
          <p class="navbar-bloomer-item"> <%= link_to "Ma Startup", bloomers_path %> </p>
           <%= link_to destroy_user_session_path, method: :delete do %>
