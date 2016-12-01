@@ -6,6 +6,7 @@ class CandidaturesController < ApplicationController
 
   def show
     @candidature = Candidature.find(params[:id])
+    authorize @candidature
   end
 
   def new

@@ -1,6 +1,7 @@
 class StartupsController < ApplicationController
   def show
     @startup = Startup.find(params[:id])
+    @candidatures = Candidature.all.select { |candidature| candidature.startup_id == @startup.id }
     authorize @startup
   end
 
