@@ -32,6 +32,30 @@ user3.bloomer_admin = true
 user3.admin = true
 user3.save
 
+user4 = User.new(first_name: "Jacques", last_name: "Michel")
+user4.email = "admin@lelab.fr"
+user4.password = "123456"
+user4.startup_admin = true
+user4.bloomer_admin = false
+user4.admin = false
+user4.save
+
+user5 = User.new(first_name: "Rose", last_name: "Delpèche")
+user5.email = "admin@igloo.fr"
+user5.password = "123456"
+user5.startup_admin = true
+user5.bloomer_admin = false
+user5.admin = false
+user5.save
+
+user5 = User.new(first_name: "Martin", last_name: "Berton")
+user5.email = "admin@derigueur.fr"
+user5.password = "123456"
+user5.startup_admin = true
+user5.bloomer_admin = false
+user5.admin = false
+user5.save
+
 # BLOOMER CREATION
 
 bloomer1 = Bloomer.new(name:"Look Forward by Showroomprive")
@@ -75,6 +99,32 @@ urls2 = ["https://www.powwownow.fr/travailler-fute/wp-content/uploads/2016/07/es
         ]
 bloomer2.photo_urls = urls2
 
+# # PROGRAM
+
+program1 = Program.new(name:"Incubation")
+program1.short_description = "1 an au coeur de Showroomprive"
+program1.description = "Plus d'info online. Description blablabla."
+program1.price = 0
+program1.duration = "Un an"
+program1.equity = false
+program1.individual_coaching = "<h4>EXPERTISE</h4><p>FORFAIT 20 H avec les experts de Showroomprivé (au choix parmi les 1000 employés).</p><h4>MENTORING</h4><p>- Interne : 1 membre du board (1 rdv/mois) pour aider aux décisions managériales<br>- Externe : personnalité influente du réseau (TBC)</p>"
+program1.collective_coachin = "<h4>25 ATELIERS VALUE BOOST</h4><p>1h de conférence, 1h de Q/R</p><h4>PROGRAMME ALUMNI</h4><p>: TBC</p>"
+program1.ecosystem = "<p>Partage du réseau de Showroomprivé : 1,4M visiteurs uniques, 25 M clients,  1 500 marques. <br>Mise en valeur auprès des collaborateurs au travers d’une newsletter <br>Mise en contact avec Business Angels & Banques <br>Réseau de Thierry Petit </p>"
+program1.advantages = "<h4>EN NATURE :</h4> <p>Services à tarifs négociés : taux avantageux chez SG, Colissimo, Service juridique, page chez SMGO</p><h4>HERBERGEMENT </h4><p>An offert : 6postes/startup Showroom<br>Shooting photo et vidéo avec mannequin</p>"
+program1.selection_criterias = "<h4>TEAM DE CHOC</h4> <p>Passion, pragmatisme, envie de grandir et de prospérer</p> <h4>POTENTIEL INTERNATIONAL</h4> <p>Démontrer la scalabilité</p> <h4>ADN DIGITAL, MODE OU RETAIL</h4> <p>Ambition de révolutionner la façon de distribution, consommer et produire la mode</p> <h4>FIABILITE </h4> <p>Proof of concept</p>"
+program1.bloomer = bloomer1
+program1.candidature_open = Date.new(2016,11,1)
+program1.candidature_close = Date.new(2016,12,31)
+program1.save
+
+# BATCH
+
+batch1 = Batch.new(name:"Promo 1")
+batch1.batch_start = Date.new(2017,1,1)
+batch1.batch_end = Date.new(2018,1,1)
+batch1.program = program1
+batch1.save
+
 # STARTUP CREATION
 
 startup1 = Startup.new(name: "Ask Anna")
@@ -84,29 +134,35 @@ startup1.twitter_account = "https://twitter.com/AskAnna_app?utm_source=nouveau%2
 startup1.date_creation = Date.new(2015, 1, 1)
 startup1.user = User.find_by_email("alizee@bloomers.fr")
 startup1.save
+# LOGO
+startup1.logo_url = "http://laurenceourac.com/home/wp-content/uploads/2015/12/ANNA.jpg"
 
 startup2 = Startup.new(name: "Le Lab")
 startup2.short_description = "Des chemises uniques au monde combinant style, coupe et tissu."
 startup2.website = "www.lelab.cc"
 startup2.twitter_account = "https://twitter.com/LeLabShirt"
 startup2.date_creation = Date.new(2014, 4, 8)
-startup2.user = User.find_by_email("lelab@test.fr")
+startup2.user = User.find_by_email("admin@lelab.fr")
 startup2.save
+# LOGO
+startup2.logo_url = "http://modelab.fr/wp-content/uploads/2015/11/Logo-Lelab.png"
 
 startup3 = Startup.new(name: "Igloo")
 startup3.short_description = "Les boutiques près de chez vous"
 startup3.website = "www.igloo.paris"
 startup3.twitter_account = "https://twitter.com/iglooparis"
 startup3.date_creation = Date.new(2015, 4, 8)
-startup3.user = User.find_by_email("igloo@test.fr")
+startup3.user = User.find_by_email("admin@igloo.fr")
 startup3.save
+# LOGO
+startup3.logo_url = "http://startuponly.com/pp/146/703/698/d3acbf1247867657_400.png"
 
 startup4 = Startup.new(name: "De Rigueur")
 startup4.short_description = "Maison française du XXIe siècle"
 startup4.website = "www.derigueur.fr"
 startup4.twitter_account = "https://twitter.com/derigueurfr"
 startup4.date_creation = Date.new(2013, 8, 10)
-startup4.user = User.find_by_email("igloo@test.fr")
+startup4.user = User.find_by_email("admin@derigueur.fr")
 startup4.save
 
 # PROGRAM
@@ -128,6 +184,30 @@ batch1.batch_end = Date.new(2016,1,1)
 batch1.program = program1
 batch1.startup = startup1
 batch1.save!
+#LOGO
+startup4.logo_url = "http://entreprendre.univ-lyon3.fr/wp-content/uploads/2015/08/logo-derigueur.png"
+
+# INCUBATION
+
+incubation1 = Incubation.new()
+incubation1.startup = startup1
+incubation1.batch = batch1
+incubation1.save
+
+incubation2 = Incubation.new()
+incubation2.startup = startup2
+incubation2.batch = batch1
+incubation2.save
+
+incubation3 = Incubation.new()
+incubation3.startup = startup3
+incubation3.batch = batch1
+incubation3.save
+
+incubation4 = Incubation.new()
+incubation4.startup = startup4
+incubation4.batch = batch1
+incubation4.save
 
 # CANDIDATURE
 

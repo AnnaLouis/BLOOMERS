@@ -6,7 +6,7 @@ class StartupPolicy < ApplicationPolicy
   end
 
   def show?
-    user == record.user
+    true
   end
 
   def create?

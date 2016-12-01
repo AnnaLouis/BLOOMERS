@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161201102014) do
+ActiveRecord::Schema.define(version: 20161201132618) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,13 +47,11 @@ ActiveRecord::Schema.define(version: 20161201102014) do
   create_table "batches", force: :cascade do |t|
     t.date     "batch_start"
     t.date     "batch_end"
-    t.integer  "startup_id"
     t.string   "name"
     t.integer  "program_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["program_id"], name: "index_batches_on_program_id", using: :btree
-    t.index ["startup_id"], name: "index_batches_on_startup_id", using: :btree
   end
 
   create_table "bloomers", force: :cascade do |t|
@@ -79,15 +77,14 @@ ActiveRecord::Schema.define(version: 20161201102014) do
     t.string   "status"
     t.integer  "startup_id"
     t.integer  "program_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.text     "team"
-    t.text     "short_description"
     t.text     "your_problem"
     t.text     "your_solution"
     t.text     "your_market"
-    t.text     "description"
     t.integer  "phone_number"
+    t.text     "question_incubation"
     t.index ["program_id"], name: "index_candidatures_on_program_id", using: :btree
     t.index ["startup_id"], name: "index_candidatures_on_startup_id", using: :btree
   end
@@ -110,10 +107,15 @@ ActiveRecord::Schema.define(version: 20161201102014) do
     t.integer  "price"
     t.boolean  "equity"
     t.integer  "bloomer_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.date     "candidature_open"
     t.date     "candidature_close"
+    t.text     "individual_coaching"
+    t.text     "collective_coachin"
+    t.text     "ecosystem"
+    t.text     "advantages"
+    t.text     "selection_criterias"
     t.index ["bloomer_id"], name: "index_programs_on_bloomer_id", using: :btree
   end
 
@@ -171,7 +173,6 @@ ActiveRecord::Schema.define(version: 20161201102014) do
   end
 
   add_foreign_key "batches", "programs"
-  add_foreign_key "batches", "startups"
   add_foreign_key "bloomers", "users"
   add_foreign_key "candidatures", "programs"
   add_foreign_key "candidatures", "startups"

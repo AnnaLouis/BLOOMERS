@@ -1,0 +1,109 @@
+<div class="wrapper-new">
+  <div class="wrapper-page-new-bloom">
+    <div class="col-xs-3 new-bloomer-left">
+      <div class="steps">
+        <!-- CANDIDATURE -->
+        <h1>Je postule</h1>
+        <!-- STEP 1 - DREATEAM -->
+        <div class="nb-global-step active" data-target="#step-1-name">
+          <div class="circle active" data-target="#step-1-name"></div>
+          <div class="step"><p><span>étape 1</span><br>L'équipe</p></div>
+        </div>
+        <!-- Step 2 - PROJECT -->
+        <div class="line-box"><div class="grey-line"></div></div>
+        <div class="nb-global-step" data-target="#step-2-description">
+          <div class="circle" id="circle-2"></div>
+          <div class="step"><p><span>étape 2</span><br>Le Projet</p></div>
+        </div>
+        <!-- Step 3 - INCUBATION -->
+        <div class="line-box"><div class="grey-line"></div></div>
+        <div class="nb-global-step" data-target="#step-2-description">
+          <div class="circle" id="circle-2"></div>
+          <div class="step"><p><span>étape 3</span><br>L'incubation</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-9 new-bloomer-right">
+      <!-- STEP 1 - DREATEAM -->
+      <div class="sub-new-bloomer-content" id="step-1-name">
+        <%= simple_form_for(@candidature) do |f| %>
+        <%= f.error_notification %>
+        <%= f.input :team, label: 'Qui se cache derrière votre projet ?' %>
+        <div class="nb-next-button" id="nb-next-button-1"><h4><span>SUIVANT</span> ></h4></div>
+      </div>
+
+      <!-- Step 2 - PROJECT -->
+      <div class="sub-new-bloomer-content hidden" id="step-2-description">
+        <div class="nb-title-sub-content"><h2>Votre projet aujourd'hui</h2></div>
+        <div class="nb-sub-content">
+          <div class="col-xs-12 col-sm-6">
+          <%= f.input :your_problem, label: 'Quel est votre constat ?' %>
+          <%= f.input :your_market, label: 'À quel marché vous adressez-vous ?' %>
+          <%= f.input :your_solution, label: 'Quelle solution avez-vous trouvé ?' %>
+          <div class="nb-next-button" id="nb-next-button-2"><h4><span>SUIVANT</span> ></h4></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3 - INCUBATION -->
+      <div class="sub-new-bloomer-content hidden" id="step-3-infos">
+      <div class="nb-title-sub-content"><h2>Informations pratiques</h2></div>
+        <div class="col-xs-12 col-sm-6">
+          <%= f.input :question_incubation, label: "Qu'attendez-vous de votre incubation?" %>
+          <%= f.input :your_problem, label: 'Votre numéro de téléphone : ' %>
+          <p> Merci d'avoir postulé. Nous reviendrons vers vous au plus vite ! </p>
+        </div>
+      </div>
+
+      <!-- SUBMIT -->
+      <div class="col-xs-12 col-sm-6">
+        <span class="nb-next-button"><%= f.button :submit, "Je crée ma structure !" %></span>
+        <% end %>
+      </div>
+      <!-- SUBMIT -->
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+$(document).ready(function() {
+  $(".nb-global-step").on("click", function(e){
+    // Change active tab
+    $(".nb-global-step").removeClass("active");
+    $(".circle").removeClass("active");
+    $(this).addClass("active");
+    $(this).children().addClass("active");
+    // Hide all tab-content (use class="hidden")
+    $(".sub-new-bloomer-content").addClass("hidden");
+    // Show target tab-content (use class="hidden")
+    tabSelector = $(this).data("target");
+    $(tabSelector).removeClass("hidden");
+  });
+
+  // STEP 1 TO STEP 2
+  $("#nb-next-button-1").on("click", function(e){
+    $(".nb-global-step").removeClass("active");
+    $(".circle").removeClass("active");
+    $("#circle-2").addClass("active");
+    $(".sub-new-bloomer-content").addClass("hidden");
+    $("#step-2-description").removeClass("hidden");
+  });
+
+  // STEP 2 TO STEP 3
+  $("#nb-next-button-2").on("click", function(e){
+    $(".nb-global-step").removeClass("active");
+    $(".circle").removeClass("active");
+    $("#circle-3").addClass("active");
+    $(".sub-new-bloomer-content").addClass("hidden");
+    $("#step-3-infos").removeClass("hidden");
+  });
+
+});
+
+  <% end %>
+<% end %>
+

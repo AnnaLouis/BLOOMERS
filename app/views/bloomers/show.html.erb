@@ -113,36 +113,52 @@
           <h3>LES STARTUPS (<%= @bloomer.startups.count%>)</h3>
           <div class="div-content-white">
             <div class="div-startups-card">
+              <% if @three_random_startups[0].present? %>
               <div class="col-xs-12 col-sm-4" style="padding:0px">
+                <% if @three_random_startups[0].logo? %>
+                  <%= cl_image_tag @three_random_startups[0].logo.path, crop: :fill, class: "avatar" %>
+                <% else %>
                 <img src="http://laurenceourac.com/home/wp-content/uploads/2015/12/ANNA.jpg" class="avatar">
-              </div>
-              <div class="col-xs-12 col-md-8" style="padding:0px">
-                <% if @three_random_startups.first %>
-                <h2><%= @three_random_startups.first.name %></h2>
-                <h3><%= @three_random_startups.first.short_description %></h3>
-                <h4>PROMO 1 (?)</h4>
                 <% end %>
               </div>
+              <div class="col-xs-12 col-md-8" style="padding:0px">
+                  <h2><%= @three_random_startups[0].name %></h2>
+                  <h3><%= @three_random_startups[0].short_description %></h3>
+                  <h4><%= @three_random_startups[0].batches.first.name %>?</h4>
+              </div>
+              <% end %>
             </div>
             <div class="div-startups-card">
+              <% if @three_random_startups[1].present? %>
               <div class="col-xs-12 col-sm-4" style="padding:0px">
+                <% if @three_random_startups[1].logo? %>
+                  <%= cl_image_tag @three_random_startups[1].logo.path, crop: :fill, class: "avatar" %>
+                <% else %>
                 <img src="http://laurenceourac.com/home/wp-content/uploads/2015/12/ANNA.jpg" class="avatar">
+                <% end %>
               </div>
               <div class="col-xs-12 col-md-8" style="padding:0px">
-                <h2>ASK ANNA</h2>
-                <h3>L’app pour ne plus hésiter en cabine d’essayage</h3>
-                <h4>PROMO 1</h4>
+                  <h2><%= @three_random_startups[1].name %></h2>
+                  <h3><%= @three_random_startups[1].short_description %></h3>
+                  <h4><%= @three_random_startups[1].batches.first.name %>?</h4>
               </div>
+              <% end %>
             </div>
             <div class="div-startups-card">
+              <% if @three_random_startups[2].present? %>
               <div class="col-xs-12 col-sm-4" style="padding:0px">
+                <% if @three_random_startups[2].logo? %>
+                <%= cl_image_tag @three_random_startups[2].logo.path, crop: :fill, class: "avatar" %>
+                <% else %>
                 <img src="http://laurenceourac.com/home/wp-content/uploads/2015/12/ANNA.jpg" class="avatar">
+                <% end %>
               </div>
               <div class="col-xs-12 col-md-8" style="padding:0px">
-                <h2>ASK ANNA</h2>
-                <h3>L’app pour ne plus hésiter en cabine d’essayage</h3>
-                <h4>PROMO 1</h4>
+                <h2><%= @three_random_startups[2].name %></h2>
+                <h3><%= @three_random_startups[2].short_description %></h3>
+                <h4><%= @three_random_startups[2].batches.first.name %>?</h4>
               </div>
+              <% end %>
             </div>
             <div class="div-startups-card">
               <div class="card-team">
@@ -315,9 +331,9 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
   </div>
-</div>
-</div>
 </div>
 
 <!-- PAGE ENTREPRENEURS -->
@@ -328,202 +344,194 @@
       <div class="row program-titles">
         <div class="col-xs-12">
           <a class="program-title tab" style="padding:0;margin:0px">></a>
-          <a class="program-title tab active" data-target="#program-one">PROGRAMME 1</a>
-          <a class="program-title" data-target="#program-two">PROGRAMME 2</a>
-          <a class="program-title" data-target="#coworking">CO-WORKING</a>
+          <a class="program-title tab active" data-target="#program-one">
+            <% if @first_program.present? %>
+              <%= @first_program.name %>
+            <% end %>
+          </a>
+          <a class="program-title" data-target="#program-two">
+            <% if @second_program.present? %>
+              <%= @second_program.name %>
+            <% end %>
+          </a>
+          <a class="program-title" data-target="#coworking">
+            <% if @thrid_program.present? %>
+              <%= @third_program.name %>
+            <% end %>
+          </a>
         </div>
       </div>
     </div>
   </div>
 
   <!-- PAGE 1 - PROGRAMME 1 -->
-  <div id="program-one" style="padding:0;margin:0"></div>
-  <!-- ROW 1 : main info + postulate -->
-  <div class="wrapper-show-bloomer">
-    <div class="container">
-      <!-- ROW 1 : main info + time line -->
-      <div class="row">
-        <!-- MAIN INFO PROGRAM -->
-        <div class="col-xs-12 col-sm-6">
-          <div class="container-second">
-            <div class="row-main-info">
-              <div class="col-xs-12 col-md-6">
-                <div class="div-main-info">
-                  <h2>COUT</h2>
-                  <h3>GRATUIT</h3>
-                </div>
-              </div>
-              <div class="col-xs-12 col-md-6">
-                <div class="div-main-info">
-                  <h2>DUREE</h2>
-                  <h3>1 AN</h3>
-                </div>
-              </div>
-            </div>
-            <div class="row-main-info">
-              <div class="col-xs-12 col-md-6">
-                <div class="div-main-info">
-                  <h2>TAUX SURVIE</h2>
-                  <h3>100%</h3>
-                </div>
-              </div>
-              <div class="col-xs-12 col-md-6">
-                <div class="div-main-info">
-                  <h2>PRISE PARTICIPATION</h2>
-                  <h3>0 %</h3>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- TIMELINE CANDIDATURE -->
-        <div class="col-xs-12 col-sm-6">
-          <div class="container-second">
-            <div class="div-description">
-              <div class="timeline">
-                <div class="l-wizard-h">
-                  <ul class="wizard-h">
-                    <li class="l-wizard-h-step wizard-h__step--previous">
-                     <i class="fa fa-file-text-o"></i>
-                     <div class="text-step-timeline">
-                      <span class="date-step-timeline">30 JUIN - 17 OCT</span>
-                      <br><span class="name-step-timeline">Appel à projects</span>
-                    </div>
-                  </li>
-                  <li class="l-wizard-h-step wizard-h__step--current">
-                    <i class="fa fa-user"></i>
-                    <div class="text-step-timeline">
-                      <span class="date-step-timeline">FIN OCT</span>
-                      <br><span class="name-step-timeline">Prélection des projets</span>
-                    </div>
-                  </li>
-                  <li class="l-wizard-h-step wizard-h__step">
-                    <i class="fa fa-check"></i>
-                    <div class="text-step-timeline">
-                      <span class="date-step-timeline">17 NOV</span>
-                      <br><span class="name-step-timeline">Rentrée Saison 2</span>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="timeline">
-              <div class="col-xs-6">
-                <h4 style="text-align:center">Il reste 45 jours</h4>
-              </div>
-              <div class="col-xs-6" style="justify-content: center;display:flex">
-                <a href="#" class="btn-postulate">Je postule</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ROW 2 : L'ACCOMPAGNEMENT (individuel + collectif) -->
-<div class="wrapper-show-bloomer">
-  <div class="container">
-    <div class="row">
-      <!-- ACCOMPAGNEMENT INDIV -->
-      <div class="col-xs-12 col-sm-6">
-        <h3>ACCOMPAGNEMENT INDIVIDUEL</h3>
-        <div class="div-content-white">
-          <div class="plain-text">
-            <h4>EXPERTISE</h4>
-            <p>FORFAIT 20 H avec les experts de Showroomprivé (au choix parmi les 1000 employés).</p>
-            <h4>MENTORING</h4>
-            <p>- Interne : 1 membre du board (1 rdv/mois) pour aider aux décisions managériales
-              <br>- Externe : personnalité influente du réseau (TBC)</p>
-            </div>
-          </div>
-        </div>
-        <!-- ACCOMPAGNEMENT COLLECTIF -->
-        <div class="col-xs-12 col-sm-6">
-          <h3>ACCOMPAGNEMENT COLLECTIF</h3>
-          <div class="div-content-white">
-            <div class="plain-text">
-              <h4>25 ATELIERS VALUE BOOST</h4>
-              <p>1h de conférence, 1h de Q/R</p>
-              <h4>PROGRAMME ALUMNI</h4>
-              <p>: TBC</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ROW 3 : Ecocsysteme + avantages -->
-  <div class="wrapper-show-bloomer">
-    <div class="container">
-      <!-- First Line -->
-      <div class="row">
-        <!-- colonne 1 - ECOSYSTEME -->
-        <div class="col-xs-12 col-sm-6">
-          <h3>L'ECOSYSTEME</h3>
-          <div class="div-content-white">
-            <div class="plain-text">
-              <p>Partage du réseau de Showroomprivé : 1,4M visiteurs uniques, 25 M clients,  1 500 marques.
-                <br>Mise en valeur auprès des collaborateurs au travers d’une newsletter
-                <br>Mise en contact avec Business Angels & Banques
-                <br>Réseau de Thierry Petit
-              </div>
-            </div>
-          </div>
-          <!-- colonne 2 - AVANTAGES -->
+  <% if @first_program.present? %>
+    <div id="program-one" style="padding:0;margin:0"></div>
+    <!-- ROW 1 : main info + postulate -->
+    <div class="wrapper-show-bloomer">
+      <div class="container">
+        <!-- ROW 1 : main info + time line -->
+        <div class="row">
+          <!-- MAIN INFO PROGRAM -->
           <div class="col-xs-12 col-sm-6">
-            <h3>LES AVANTAGES</h3>
+            <div class="container-second">
+              <div class="row-main-info">
+                <div class="col-xs-12 col-md-6">
+                  <div class="div-main-info">
+                    <h2>COUT</h2>
+                    <h3><%= @first_program.price %> €</h3>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-md-6">
+                  <div class="div-main-info">
+                    <h2>DUREE</h2>
+                    <h3><%= @first_program.duration %></h3>
+                  </div>
+                </div>
+              </div>
+              <div class="row-main-info">
+                <div class="col-xs-12 col-md-6">
+                  <div class="div-main-info">
+                    <h2>TAUX SURVIE</h2>
+                    <h3>?? %</h3>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-md-6">
+                  <div class="div-main-info">
+                    <h2>PRISE PARTICIPATION</h2>
+                    <h3>
+                      <% if @first_program.equity? %>
+                      <%= "OUI" %>
+                      <% else %>
+                      <%= "NON" %>
+                      <% end %>
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- TIMELINE CANDIDATURE -->
+          <div class="col-xs-12 col-sm-6">
+            <div class="container-second">
+              <div class="div-description">
+                <div class="timeline">
+                  <div class="l-wizard-h">
+                    <ul class="wizard-h">
+                      <li class="l-wizard-h-step wizard-h__step--previous">
+                       <i class="fa fa-file-text-o"></i>
+                       <div class="text-step-timeline">
+                        <span class="date-step-timeline">
+                          <%= @first_program.candidature_open.strftime("%l %b %y") %>
+                        </span>
+                        <br><span class="name-step-timeline">Appel à projects</span>
+                      </div>
+                    </li>
+                    <li class="l-wizard-h-step wizard-h__step--current">
+                      <i class="fa fa-user"></i>
+                      <div class="text-step-timeline">
+                        <span class="date-step-timeline">
+                          <%= @first_program.candidature_close.strftime("%l %b %y") %>
+                        </span>
+                        <br><span class="name-step-timeline">Fin de candidature</span>
+                      </div>
+                    </li>
+                    <li class="l-wizard-h-step wizard-h__step">
+                      <i class="fa fa-check"></i>
+                      <div class="text-step-timeline">
+                        <span class="date-step-timeline">
+                          <%= @first_program.batches.last.batch_start.strftime("%l %b %y") %>
+                          </span>
+                        <br><span class="name-step-timeline">Rentrée <%= @first_program.batches.last.name%></span>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="timeline">
+                <div class="col-xs-6">
+                  <h4 style="text-align:center">Il reste <%= (@first_program.candidature_close - Date.today).to_i %> jours </h4>
+                </div>
+                <div class="col-xs-6" style="justify-content: center;display:flex">
+                  <a href="#" class="btn-postulate">Je postule</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <!-- ROW 2 : L'ACCOMPAGNEMENT (individuel + collectif) -->
+    <div class="wrapper-show-bloomer">
+    <div class="container">
+      <div class="row">
+        <!-- ACCOMPAGNEMENT INDIV -->
+        <div class="col-xs-12 col-sm-6">
+          <h3>ACCOMPAGNEMENT INDIVIDUEL</h3>
+          <div class="div-content-white">
+            <div class="plain-text">
+              <%= @first_program.individual_coaching.html_safe %>
+              </div>
+            </div>
+          </div>
+          <!-- ACCOMPAGNEMENT COLLECTIF -->
+          <div class="col-xs-12 col-sm-6">
+            <h3>ACCOMPAGNEMENT COLLECTIF</h3>
             <div class="div-content-white">
               <div class="plain-text">
-                <h4>EN NATURE :</h4>
-                <p>Services à tarifs négociés : taux avantageux chez SG, Colissimo, Service juridique, page chez SMGO</p>
-                <h4>HERBERGEMENT </h4>
-                <p>An offert : 6postes/startup Showroom
-                  <br>Shooting photo et vidéo avec mannequin</p>
-                </div>
+                <%= @first_program.collective_coachin.html_safe %>
               </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- ROW 4 : criteres de selection + avis -->
-      <div class="wrapper-show-bloomer">
-        <div class="container">
-          <div class="row">
-            <!-- en photo -->
-            <div class="col-xs-12 col-sm-6">
-              <h3>CRITERES DE SELECTION</h3>
-              <div class="div-content-white">
-                <div class="plain-text">
-                  <h4>TEAM DE CHOC</h4>
-                  <p>Passion, pragmatisme, envie de grandir et de prospérer</p>
-                  <h4>POTENTIEL INTERNATIONAL</h4>
-                  <p>Démontrer la scalabilité</p>
-                  <h4>ADN DIGITAL, MODE OU RETAIL</h4>
-                  <p>Ambition de révolutionner la façon de distribution, consommer et produire la mode</p>
-                  <h4>FIABILITE </h4>
-                  <p>Proof of concept</p>
+    <!-- ROW 3 : Ecocsysteme + avantages -->
+    <div class="wrapper-show-bloomer">
+      <div class="container">
+        <!-- First Line -->
+        <div class="row">
+          <!-- colonne 1 - ECOSYSTEME -->
+          <div class="col-xs-12 col-sm-6">
+            <h3>L'ECOSYSTEME</h3>
+            <div class="div-content-white">
+              <div class="plain-text">
+                  <%= @first_program.ecosystem.html_safe %>
                 </div>
               </div>
             </div>
-            <!-- local info -->
+            <!-- colonne 2 - AVANTAGES -->
             <div class="col-xs-12 col-sm-6">
-              <h3>AVIS DES STARTUPS</h3>
+              <h3>LES AVANTAGES</h3>
               <div class="div-content-white">
-                <div class="reviews-bloomer-small-card">
-                  <div class="logo-startup-review">
-                    <img src="http://laurenceourac.com/home/wp-content/uploads/2015/12/ANNA.jpg" class="avatar">
+                <div class="plain-text">
+                  <%= @first_program.advantages.html_safe %>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ROW 4 : criteres de selection + avis -->
+        <div class="wrapper-show-bloomer">
+          <div class="container">
+            <div class="row">
+              <!-- en photo -->
+              <div class="col-xs-12 col-sm-6">
+                <h3>CRITERES DE SELECTION</h3>
+                <div class="div-content-white">
+                  <div class="plain-text">
+                    <%= @first_program.selection_criterias.html_safe %>
                   </div>
-                  <div class="text-startup-reviews">
-                    <h2>ASK ANNA</h2>
-                    <p>« Le meilleur programme d’incubation à Paris »
-                      <br>« Beaucoup de bienveillance »</p>
-                      <h4>En savoir +</h4>
-                    </div>
-                  </div>
+                </div>
+              </div>
+              <!-- local info -->
+              <div class="col-xs-12 col-sm-6">
+                <h3>AVIS DES STARTUPS</h3>
+                <div class="div-content-white">
                   <div class="reviews-bloomer-small-card">
                     <div class="logo-startup-review">
                       <img src="http://laurenceourac.com/home/wp-content/uploads/2015/12/ANNA.jpg" class="avatar">
@@ -548,13 +556,25 @@
                       </div>
                       <div class="reviews-bloomer-small-card">
                         <div class="logo-startup-review">
-                          <div class="avatar" style="background-color: #FAFAFA;text-align:center;height:40px; width:40px">
-                            <h2 style="padding-top:13px;color:#8C8C8C">?</h2>
+                          <img src="http://laurenceourac.com/home/wp-content/uploads/2015/12/ANNA.jpg" class="avatar">
+                        </div>
+                        <div class="text-startup-reviews">
+                          <h2>ASK ANNA</h2>
+                          <p>« Le meilleur programme d’incubation à Paris »
+                            <br>« Beaucoup de bienveillance »</p>
+                            <h4>En savoir +</h4>
                           </div>
                         </div>
-                        <div class="text-startup-reviews" style="margin-bottom:0">
-                          <h2> PARTAGEZ VOTRE EXPERIENCE !</h2>
-                          <p>Ecrivez votre review et aidez les autres entrepreneurs à mieux choisir</p>
+                        <div class="reviews-bloomer-small-card">
+                          <div class="logo-startup-review">
+                            <div class="avatar" style="background-color: #FAFAFA;text-align:center;height:40px; width:40px">
+                              <h2 style="padding-top:13px;color:#8C8C8C">?</h2>
+                            </div>
+                          </div>
+                          <div class="text-startup-reviews" style="margin-bottom:0">
+                            <h2> PARTAGEZ VOTRE EXPERIENCE !</h2>
+                            <p>Ecrivez votre review et aidez les autres entrepreneurs à mieux choisir</p>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -562,9 +582,252 @@
                 </div>
               </div>
             </div>
-          </div>
 
+          </div>
+  <% end %>
+
+    <!-- PAGE 1 - PROGRAMME 2 -->
+  <% if @second_program.present? %>
+    <div id="program-two hidden" style="padding:0;margin:0"></div>
+    <!-- ROW 1 : main info + postulate -->
+    <div class="wrapper-show-bloomer">
+      <div class="container">
+        <!-- ROW 1 : main info + time line -->
+        <div class="row">
+          <!-- MAIN INFO PROGRAM -->
+          <div class="col-xs-12 col-sm-6">
+            <div class="container-second">
+              <div class="row-main-info">
+                <div class="col-xs-12 col-md-6">
+                  <div class="div-main-info">
+                    <h2>COUT</h2>
+                    <h3><%= @second_program.price %> €</h3>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-md-6">
+                  <div class="div-main-info">
+                    <h2>DUREE</h2>
+                    <h3><%= @second_program.duration %></h3>
+                  </div>
+                </div>
+              </div>
+              <div class="row-main-info">
+                <div class="col-xs-12 col-md-6">
+                  <div class="div-main-info">
+                    <h2>TAUX SURVIE</h2>
+                    <h3>?? %</h3>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-md-6">
+                  <div class="div-main-info">
+                    <h2>PRISE PARTICIPATION</h2>
+                    <h3>
+                      <% if @second_program.equity? %>
+                      <%= "OUI" %>
+                      <% else %>
+                      <%= "NON" %>
+                      <% end %>
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- TIMELINE CANDIDATURE -->
+          <div class="col-xs-12 col-sm-6">
+            <div class="container-second">
+              <div class="div-description">
+                <div class="timeline">
+                  <div class="l-wizard-h">
+                    <ul class="wizard-h">
+                      <li class="l-wizard-h-step wizard-h__step--previous">
+                       <i class="fa fa-file-text-o"></i>
+                       <div class="text-step-timeline">
+                        <span class="date-step-timeline">
+                          <%= @second_program.candidature_open.strftime("%l %b %y") %>
+                        </span>
+                        <br><span class="name-step-timeline">Appel à projects</span>
+                      </div>
+                    </li>
+                    <li class="l-wizard-h-step wizard-h__step--current">
+                      <i class="fa fa-user"></i>
+                      <div class="text-step-timeline">
+                        <span class="date-step-timeline">
+                          <%= @second_program.candidature_close.strftime("%l %b %y") %>
+                        </span>
+                        <br><span class="name-step-timeline">Fin de candidature</span>
+                      </div>
+                    </li>
+                    <li class="l-wizard-h-step wizard-h__step">
+                      <i class="fa fa-check"></i>
+                      <div class="text-step-timeline">
+                        <span class="date-step-timeline">
+                          <%= @second_program.batches.last.batch_start.strftime("%l %b %y") %>
+                          </span>
+                        <br><span class="name-step-timeline">Rentrée Saison 2</span>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="timeline">
+                <div class="col-xs-6">
+                  <h4 style="text-align:center">Il reste <%= (@second_program.candidature_close - Date.today).to_i %> jours </h4>
+                </div>
+                <div class="col-xs-6" style="justify-content: center;display:flex">
+                  <a href="#" class="btn-postulate">Je postule</a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+    </div>
+    </div>
+    <!-- ROW 2 : L'ACCOMPAGNEMENT (individuel + collectif) -->
+    <div class="wrapper-show-bloomer">
+    <div class="container">
+      <div class="row">
+        <!-- ACCOMPAGNEMENT INDIV -->
+        <div class="col-xs-12 col-sm-6">
+          <h3>ACCOMPAGNEMENT INDIVIDUEL</h3>
+          <div class="div-content-white">
+            <div class="plain-text">
+              <h4>EXPERTISE</h4>
+              <p>FORFAIT 20 H avec les experts de Showroomprivé (au choix parmi les 1000 employés).</p>
+              <h4>MENTORING</h4>
+              <p>- Interne : 1 membre du board (1 rdv/mois) pour aider aux décisions managériales
+                <br>- Externe : personnalité influente du réseau (TBC)</p>
+              </div>
+            </div>
+          </div>
+          <!-- ACCOMPAGNEMENT COLLECTIF -->
+          <div class="col-xs-12 col-sm-6">
+            <h3>ACCOMPAGNEMENT COLLECTIF</h3>
+            <div class="div-content-white">
+              <div class="plain-text">
+                <h4>25 ATELIERS VALUE BOOST</h4>
+                <p>1h de conférence, 1h de Q/R</p>
+                <h4>PROGRAMME ALUMNI</h4>
+                <p>: TBC</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 3 : Ecocsysteme + avantages -->
+    <div class="wrapper-show-bloomer">
+      <div class="container">
+        <!-- First Line -->
+        <div class="row">
+          <!-- colonne 1 - ECOSYSTEME -->
+          <div class="col-xs-12 col-sm-6">
+            <h3>L'ECOSYSTEME</h3>
+            <div class="div-content-white">
+              <div class="plain-text">
+                <p>Partage du réseau de Showroomprivé : 1,4M visiteurs uniques, 25 M clients,  1 500 marques.
+                  <br>Mise en valeur auprès des collaborateurs au travers d’une newsletter
+                  <br>Mise en contact avec Business Angels & Banques
+                  <br>Réseau de Thierry Petit
+                </div>
+              </div>
+            </div>
+            <!-- colonne 2 - AVANTAGES -->
+            <div class="col-xs-12 col-sm-6">
+              <h3>LES AVANTAGES</h3>
+              <div class="div-content-white">
+                <div class="plain-text">
+                  <h4>EN NATURE :</h4>
+                  <p>Services à tarifs négociés : taux avantageux chez SG, Colissimo, Service juridique, page chez SMGO</p>
+                  <h4>HERBERGEMENT </h4>
+                  <p>An offert : 6postes/startup Showroom
+                    <br>Shooting photo et vidéo avec mannequin</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ROW 4 : criteres de selection + avis -->
+        <div class="wrapper-show-bloomer">
+          <div class="container">
+            <div class="row">
+              <!-- en photo -->
+              <div class="col-xs-12 col-sm-6">
+                <h3>CRITERES DE SELECTION</h3>
+                <div class="div-content-white">
+                  <div class="plain-text">
+                    <h4>TEAM DE CHOC</h4>
+                    <p>Passion, pragmatisme, envie de grandir et de prospérer</p>
+                    <h4>POTENTIEL INTERNATIONAL</h4>
+                    <p>Démontrer la scalabilité</p>
+                    <h4>ADN DIGITAL, MODE OU RETAIL</h4>
+                    <p>Ambition de révolutionner la façon de distribution, consommer et produire la mode</p>
+                    <h4>FIABILITE </h4>
+                    <p>Proof of concept</p>
+                  </div>
+                </div>
+              </div>
+              <!-- local info -->
+              <div class="col-xs-12 col-sm-6">
+                <h3>AVIS DES STARTUPS</h3>
+                <div class="div-content-white">
+                  <div class="reviews-bloomer-small-card">
+                    <div class="logo-startup-review">
+                      <img src="http://laurenceourac.com/home/wp-content/uploads/2015/12/ANNA.jpg" class="avatar">
+                    </div>
+                    <div class="text-startup-reviews">
+                      <h2>ASK ANNA</h2>
+                      <p>« Le meilleur programme d’incubation à Paris »
+                        <br>« Beaucoup de bienveillance »</p>
+                        <h4>En savoir +</h4>
+                      </div>
+                    </div>
+                    <div class="reviews-bloomer-small-card">
+                      <div class="logo-startup-review">
+                        <img src="http://laurenceourac.com/home/wp-content/uploads/2015/12/ANNA.jpg" class="avatar">
+                      </div>
+                      <div class="text-startup-reviews">
+                        <h2>ASK ANNA</h2>
+                        <p>« Le meilleur programme d’incubation à Paris »
+                          <br>« Beaucoup de bienveillance »</p>
+                          <h4>En savoir +</h4>
+                        </div>
+                      </div>
+                      <div class="reviews-bloomer-small-card">
+                        <div class="logo-startup-review">
+                          <img src="http://laurenceourac.com/home/wp-content/uploads/2015/12/ANNA.jpg" class="avatar">
+                        </div>
+                        <div class="text-startup-reviews">
+                          <h2>ASK ANNA</h2>
+                          <p>« Le meilleur programme d’incubation à Paris »
+                            <br>« Beaucoup de bienveillance »</p>
+                            <h4>En savoir +</h4>
+                          </div>
+                        </div>
+                        <div class="reviews-bloomer-small-card">
+                          <div class="logo-startup-review">
+                            <div class="avatar" style="background-color: #FAFAFA;text-align:center;height:40px; width:40px">
+                              <h2 style="padding-top:13px;color:#8C8C8C">?</h2>
+                            </div>
+                          </div>
+                          <div class="text-startup-reviews" style="margin-bottom:0">
+                            <h2> PARTAGEZ VOTRE EXPERIENCE !</h2>
+                            <p>Ecrivez votre review et aidez les autres entrepreneurs à mieux choisir</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+  <% end %>
 
 <!-- PAGE ENTREPRISES -->
 <div id="entreprises" class="sub-content hidden" style="margin:0px;padding:0px">

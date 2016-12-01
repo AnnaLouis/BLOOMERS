@@ -1,18 +1,82 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-5">
-    <% if policy(Startup).create? %>
-    <%= simple_form_for @startup do |f| %>
-    <%= f.input :name %>
-    <%= f.input :short_description %>
-    <%= f.input :description %>
-    <%= f.input :date_creation %>
-    <%= f.input :twitter_account %>
-    <%= f.input :website %>
-    <%= f.input :photos, as: :attachinary %>
-    <%= f.submit %>
-    <% end %>
-    <% end %>
+<div class="wrapper-new">
+  <div class="wrapper-page-new-bloom">
+    <div class="col-xs-3 new-bloomer-left">
+      <div class="steps">
+        <!-- PROFILE -->
+        <h1>Je crée mon profil startup</h1>
+        <!-- STEP 1 - Création -->
+        <div class="nb-global-step active" data-target="#step-1-name">
+          <div class="circle active" data-target="#step-1-name"></div>
+          <div class="step"><p><span>étape 1</span><br>Mon projet</p></div>
+        </div>
+        <!-- STEP 2 - Description -->
+        <div class="line-box"><div class="grey-line"></div></div>
+        <div class="nb-global-step" data-target="#step-2-description">
+          <div class="circle" id="circle-2"></div>
+          <div class="step"><p><span>étape 2</span><br>Mes info</p></div>
+        </div>
+      </div>
     </div>
+
+    <div class="col-xs-9 new-bloomer-right">
+      <!-- MON PROJET -->
+      <div class="sub-new-bloomer-content" id="step-1-name">
+        <%= simple_form_for(@startup) do |f| %>
+        <%= f.error_notification %>
+        <%= f.input :name, label: 'Le nom de votre startup' %>
+        <%= f.input :short_description, label: 'Votre startup en une phrase' %>
+        <%= f.input :description, label: "Quelle est l'avancée de votre projet ?" %>
+        <div class="nb-next-button" id="nb-next-button-1"><h4><span>SUIVANT</span> ></h4></div>
+      </div>
+      <!-- MES INFOS-->
+      <div class="sub-new-bloomer-content hidden" id="step-2-description">
+            <%= f.input :website, label: 'Site internet' %>
+            <%= f.input :twitter_account, label: 'Compte Twitter' %>
+            <%= f.input :photos, as: :attachinary %>
+        <br><br>
+      <!-- SUBMIT -->
+        <span class="nb-next-button"><%= f.button :submit, "Je crée ma structure !" %></span>
+      </div>
+
+
+
+      <% end %>
+
+    </div>
+
+
   </div>
+
 </div>
+
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+$(document).ready(function() {
+  $(".nb-global-step").on("click", function(e){
+    // Change active tab
+    $(".nb-global-step").removeClass("active");
+    $(".circle").removeClass("active");
+    $(this).addClass("active");
+    $(this).children().addClass("active");
+    // Hide all tab-content (use class="hidden")
+    $(".sub-new-bloomer-content").addClass("hidden");
+    // Show target tab-content (use class="hidden")
+    tabSelector = $(this).data("target");
+    $(tabSelector).removeClass("hidden");
+  });
+
+  // STEP 1 TO STEP 2
+  $("#nb-next-button-1").on("click", function(e){
+    $(".nb-global-step").removeClass("active");
+    $(".circle").removeClass("active");
+    $("#circle-2").addClass("active");
+    $(".sub-new-bloomer-content").addClass("hidden");
+    $("#step-2-description").removeClass("hidden");
+  });
+
+});
+
+  <% end %>
+<% end %>
+

@@ -4,7 +4,8 @@ class Bloomer < ApplicationRecord
   has_many :programs
   has_many :reviews
   has_many :candidatures, through: :programs
-  has_many :startups, through: :programs
+  has_many :batches, through: :programs
+  has_many :startups, through: :batches
   # IMG ATTACHINARY & CLOUDINARY
   has_attachment :logo
   has_attachments :photos, maximum: 8
