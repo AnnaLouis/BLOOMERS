@@ -1,0 +1,16 @@
+<% @bloomers.each do |bloomer| %>
+  <% @programs = Program.select{ |program| program.bloomer_id == bloomer.id } %>
+  <% @programs.each do |program| %>
+    <% @batches = Batch.select{ |batch| batch.program_id == program.id } %>
+    <% @candidatures = Candidature.select{ |candidature| candidature.program_id == program.id } %>
+      <div class="container">
+        <div class="row">
+          <% @batches.each do |batch| %>
+            <div class="col-md-4">
+              <h1><%= batch.name %></h1>
+            </div>
+          <% end %>
+        </div>
+      </div>
+  <% end %>
+<% end %>
