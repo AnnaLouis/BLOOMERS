@@ -6,72 +6,36 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# LES TROIS STYLES D'USERS
 
-user1 = User.new(first_name: "Alizée", last_name:"Wyart")
-user1.email = "alizee@bloomers.fr"
-user1.password = "123456"
-user1.admin = false
-user1.startup_admin = true
-user1.bloomer_admin = false
-user1.save
+# BATCH
 
-user2 = User.new(first_name: "Anna", last_name:"Louis")
-user2.email = "anna@bloomers.fr"
-user2.password = "123456"
-user2.startup_admin = false
-user2.bloomer_admin = true
-user2.admin = false
-user2.save
+batch1 = Batch.new(name:"Promo 1")
+batch1.batch_start = Date.new(2017,1,1)
+batch1.batch_end = Date.new(2018,1,1)
+batch1.program = program1
+batch1.save
 
-user3 = User.new(first_name: "Bloom", last_name: "Her")
-user3.email = "hello@bloomers.fr"
-user3.password = "123456"
-user3.startup_admin = true
-user3.bloomer_admin = true
-user3.admin = true
-user3.save
+batch2 = Batch.new(name:"Promo 2")
+batch2.batch_start = Date.new(2017,1,1)
+batch2.batch_end = Date.new(2018,1,1)
+batch2.program = program2
+batch2.save
 
-user4 = User.new(first_name: "Jacques", last_name: "Michel")
-user4.email = "admin@lelab.fr"
-user4.password = "123456"
-user4.startup_admin = true
-user4.bloomer_admin = false
-user4.admin = false
-user4.save
-
-user5 = User.new(first_name: "Rose", last_name: "Delpèche")
-user5.email = "admin@igloo.fr"
-user5.password = "123456"
-user5.startup_admin = true
-user5.bloomer_admin = false
-user5.admin = false
-user5.save
-
-user5 = User.new(first_name: "Martin", last_name: "Berton")
-user5.email = "admin@derigueur.fr"
-user5.password = "123456"
-user5.startup_admin = true
-user5.bloomer_admin = false
-user5.admin = false
-user5.save
-
-# BLOOMER CREATION
+# BLOOMERS
 
 bloomer1 = Bloomer.new(name:"Look Forward by Showroomprive")
 bloomer1.city = "La Plaine Saint Denis"
 bloomer1.category = "Incubateur"
 bloomer1.website = "lookforwardproject.com"
-bloomer1.speciality = "mode and retail"
+bloomer1.speciality = "Mode and Retail"
 bloomer1.email = "alizee.wyart@gmail.com"
 bloomer1.address = "1 rue des blés, ZA La Montjoie - 93 210 La Plaine Saint Denis"
 bloomer1.twitter_account = "https://twitter.com/LookForwardHub"
 bloomer1.date_creation = Date.new(2015, 6, 1)
-bloomer1.description = "LOOK FORWARD est la plateforme de toute innovation susceptible de revolutionner le monde de la mode et du retail. Avec les startups integrees à son incubateur, LOOK FORWARD a l’ambition de bousculer la facon de distribuer, consommer et produire la mode."
+bloomer1.description = "LOOK FORWARD est la plateforme de toute innovation susceptible de révolutionner le monde de la mode et du retail. Avec les startups integrees à son incubateur, LOOK FORWARD a l’ambition de bousculer la facon de distribuer, consommer et produire la mode."
 bloomer1.user = User.find_by_email("anna@bloomers.fr")
 bloomer1.save
 
-# PHOTOS
 urls1 = ["http://imageshack.com/a/img923/6113/XpMsUl.jpg",
         "http://blog.upfit-services.com/wp-content/uploads/2015/10/IMG_20151012_150511.jpg",
         "https://www.ideclik.com/wp-content/uploads/2016/01/lookforward-002.jpg",
@@ -91,13 +55,44 @@ bloomer2.date_creation = Date.new(2015, 9, 1)
 bloomer2.description = "Libre ensemble"
 bloomer2.user = User.find_by_email("anna@bloomers.fr")
 bloomer2.save!
-# PHOTOS
+
 urls2 = ["https://www.powwownow.fr/travailler-fute/wp-content/uploads/2016/07/espace-coworking-la-mutinerie.jpg",
         "http://www.mutinerie.org/wp-content/uploads/2012/02/Rue-de-meaux_plan-couleur_RDC_craft.jpg",
         "http://bureauflexible.fr/uploads/space_pictures/img_1438687605.jpg",
         "http://coworkinginitiatives.com/wp-content/uploads/2013/01/verri%C3%A8re.jpg",
         ]
 bloomer2.photo_urls = urls2
+
+bloomer3 = Bloomer.new(name:"EMLYON")
+bloomer3.city = "Lyon"
+bloomer3.category = "Incubateur"
+bloomer3.website = "emlyon.com"
+bloomer3.speciality = "Général"
+bloomer3.email = "annalouis@gmail.com"
+bloomer3.address = "1 place Bellecour, Lyon"
+bloomer3.twitter_account = "https://twitter.com/emlyon"
+bloomer3.date_creation = Date.new(2010, 9, 1)
+bloomer3.description = "Entrepeneurs For The World"
+bloomer3.user = User.find_by_email("ananas@bloomers.fr")
+bloomer3.save!
+
+urls3 = ["http://incub.em-lyon.com/wp-content/uploads/2016/07/retinalogo.png",
+        "http://incub.em-lyon.com/wp-content/uploads/2011/03/dsc_4434bis.jpg",
+        "http://incub.em-lyon.com/wp-content/uploads/2016/07/Slider-corporate-home_1300x987.png"
+        ]
+bloomer3.photo_urls = urls3
+
+# CANDIDATURE
+
+# candidature1 = Candidature.new(status:"Pending")
+# candidature1.start_date = Date.new(2016,2,2)
+# candidature1.end_date = Date.new(2016,12,12)
+# candidature1.preselection_date = Date.new(2016,11,11)
+# candidature1.startup_id = startup1
+# candidature1.program_id = program1
+# candidature1.save!
+
+# PHOTOS
 
 # # PROGRAM
 
@@ -117,13 +112,6 @@ program1.candidature_open = Date.new(2016,11,1)
 program1.candidature_close = Date.new(2016,12,31)
 program1.save
 
-# BATCH
-
-batch1 = Batch.new(name:"Promo 1")
-batch1.batch_start = Date.new(2017,1,1)
-batch1.batch_end = Date.new(2018,1,1)
-batch1.program = program1
-batch1.save
 
 # STARTUP CREATION
 
@@ -189,17 +177,8 @@ incubation4.startup = startup4
 incubation4.batch = batch1
 incubation4.save
 
-# CANDIDATURE
 
-# candidature1 = Candidature.new(status:"Pending")
-# candidature1.start_date = Date.new(2016,2,2)
-# candidature1.end_date = Date.new(2016,12,12)
-# candidature1.preselection_date = Date.new(2016,11,11)
-# candidature1.startup_id = startup1
-# candidature1.program_id = program1
-# candidature1.save!
-
-# REVIEW
+#REVIEW
 
 review1 = Review.new(title:"Bien")
 review1.description = "Trop bien"
@@ -207,3 +186,54 @@ review1.rating = 3
 review1.bloomer_id = bloomer2
 review1.startup_id = startup1
 review1.save!
+
+
+#USERS
+
+user1 = User.new(first_name: "Alizée", last_name:"Wyart")
+user1.email = "alizee@bloomers.fr"
+user1.password = "123456"
+user1.admin = false
+user1.startup_admin = true
+user1.bloomer_admin = false
+user1.save
+
+user2 = User.new(first_name: "Anna", last_name:"Louis")
+user2.email = "anna@bloomers.fr"
+user2.password = "123456"
+user2.startup_admin = false
+user2.bloomer_admin = true
+user2.admin = false
+user2.save
+
+user3 = User.new(first_name: "Bloom", last_name: "Her")
+user3.email = "hello@bloomers.fr"
+user3.password = "123456"
+user3.startup_admin = true
+user3.bloomer_admin = true
+user3.admin = true
+user3.save
+
+user4 = User.new(first_name: "Jacques", last_name: "Michel")
+user4.email = "admin@lelab.fr"
+user4.password = "123456"
+user4.startup_admin = true
+user4.bloomer_admin = false
+user4.admin = false
+user4.save
+
+user5 = User.new(first_name: "Rose", last_name: "Delpèche")
+user5.email = "admin@igloo.fr"
+user5.password = "123456"
+user5.startup_admin = true
+user5.bloomer_admin = false
+user5.admin = false
+user5.save
+
+user5 = User.new(first_name: "Martin", last_name: "Berton")
+user5.email = "admin@derigueur.fr"
+user5.password = "123456"
+user5.startup_admin = true
+user5.bloomer_admin = false
+user5.admin = false
+user5.save
