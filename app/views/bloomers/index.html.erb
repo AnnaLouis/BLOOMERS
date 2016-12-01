@@ -4,15 +4,22 @@
       <div class="wrapper-index">
         <div class="row">
           <h3> RECHERCHER </h3>
-          <div class="col-md-4">
-            <h4>Categories Dropdown</h4>
-          </div>
-          <div class="col-md-4">
-            <h4>Specialisation Dropdown</h4>
-          </div>
-          <div class="col-md-4">
-            <h4>Prix Dropdown</h4>
-          </div>
+            <div class="col-md-4">
+              <h4>Catégories</h4>
+              <%= simple_form_for(:search, url: bloomers_path, method: :get) do |f| %>
+              <%= f.error_notification %>
+              <%= f.input :category, as: :check_boxes, collection: Bloomer::CATEGORIES, label: 'Choisissez une catégorie'  %>
+            </div>
+            <div class="col-md-4">
+              <h4>Location</h4>
+              <%= f.input :city, label: 'Ville' %>
+            </div>
+            <div class="col-md-4">
+              <h4>Spécialité</h4>
+              <%= f.input :speciality, as: :check_boxes, collection: @specialities, label: 'Entrez les spécialités' %>
+            </div>
+              <span class="nb-next-button"><%= f.button :submit, "Go !" %></span>
+          <% end %>
         </div>
       </div>
     </div>
@@ -23,7 +30,8 @@
         <div class="container">
         <div class="row">
           <% @bloomers.each do |bloomer| %>
-        <div class="col-md-4">
+          <div class="col-md-4">
+            <%= link_to bloomer_path(bloomer), method: :get do %>
            <div class="card">
                 <figure class="effect-zoe" style="background-image: url('<%= image_path('5.jpg')%>');">
                   <div class="test"> <h3>LA <span> MUTINERIE</span></h3></div>
@@ -51,6 +59,7 @@
                   </figcaption>
                 </figure>
               </div>
+              <% end %>
             </div>
           <% end %>
         </div>
@@ -61,8 +70,19 @@
   </div>
 </div>
 
+<!-- LINK FROM CARDS TO FIRST BLOOMER FOR DEMO -->
 
+<!--  <#% content_for(:after_js) do %>
+ <script>
 
+   $('.card').on('click', function(event) {
+     window.location.href="/bloomers/1"
+   });
+
+ </script>
+ <#% end %>
+
+ -->
 
 
 
