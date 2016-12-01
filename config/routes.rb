@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   end
 
   resources :batches, only: [:show, :index]
+  resources :candidatures, only: [:show, :index]
 
   # resources :programs, only: [:edit, :update]
 

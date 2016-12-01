@@ -27,8 +27,8 @@
     <div class="col-xs-9 new-bloomer-right">
       <!-- STEP 1 - DREATEAM -->
       <div class="sub-new-bloomer-content" id="step-1-name">
-        <%= simple_form_for(@candidature) do |f| %>
-        <%= f.error_notification %>
+        <%= simple_form_for [@program, @candidature] do |f| %>
+        <%#= f.error_notification %>
         <%= f.input :team, label: 'Qui se cache derrière votre projet ?' %>
         <div class="nb-next-button" id="nb-next-button-1"><h4><span>SUIVANT</span> ></h4></div>
       </div>
@@ -51,14 +51,14 @@
       <div class="nb-title-sub-content"><h2>Informations pratiques</h2></div>
         <div class="col-xs-12 col-sm-6">
           <%= f.input :question_incubation, label: "Qu'attendez-vous de votre incubation?" %>
-          <%= f.input :your_problem, label: 'Votre numéro de téléphone : ' %>
+          <%= f.input :phone_number, label: 'Votre numéro de téléphone : ' %>
           <p> Merci d'avoir postulé. Nous reviendrons vers vous au plus vite ! </p>
         </div>
       </div>
 
       <!-- SUBMIT -->
       <div class="col-xs-12 col-sm-6">
-        <span class="nb-next-button"><%= f.button :submit, "Je crée ma structure !" %></span>
+        <span class="nb-next-button"><%= f.submit %></span>
         <% end %>
       </div>
       <!-- SUBMIT -->
