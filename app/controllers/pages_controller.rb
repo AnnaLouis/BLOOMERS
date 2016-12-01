@@ -29,27 +29,16 @@ class PagesController < ApplicationController
          :height  => 32
         })
       end
-      # if bloomer.category == "Incubateur"
-      #   marker.picture({
-      #     "url" => "http://www.clker.com/cliparts/n/T/j/m/1/z/map-pin-green-hi.png",
-      #     "width" =>  29,
-      #     "height" => 32
-      #     })
-      # elsif bloomer.category == "Accélérateur"
-      #   marker.picture({
-      #     "url" => "http://www.clker.com/cliparts/W/0/g/a/W/E/map-pin-red-hi.png",
-      #     "width" =>  29,
-      #     "height" => 32
-      #     })
-      # else bloomer.category == "Coworking"
-      #   marker.picture({
-      #     "url" => "http://www.clker.com/cliparts/G/R/Y/M/S/g/map-pin-yellow-hi.png",
-      #     "width" =>  29,
-      #     "height" => 32
-      #     })
-      # end
     end
   end
 
+  def startup_dashboard
+    @user = current_user
+    @candidatures = Candidature.all.select {|candidature| candidature.user_id = @user.id }
+    @startups = Startup.all.select {|startup| startup.user_id = @user.id }
+  end
 
+  def dashboard
+    @bloomers = Bloomer.select{ |bloomer| bloomer.user_id == current_user.id }
+  end
 end

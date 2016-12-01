@@ -79,6 +79,13 @@ bloomer1.description = "LOOK FORWARD est la plateforme de toute innovation susce
 bloomer1.user = User.find_by_email("anna@bloomers.fr")
 bloomer1.save
 
+# PHOTOS
+urls1 = ["http://imageshack.com/a/img923/6113/XpMsUl.jpg",
+        "http://blog.upfit-services.com/wp-content/uploads/2015/10/IMG_20151012_150511.jpg",
+        "https://www.ideclik.com/wp-content/uploads/2016/01/lookforward-002.jpg",
+        "http://blog.upfit-services.com/wp-content/uploads/2015/10/IMG_20151012_113324.jpg"]
+bloomer1.photo_urls = urls1
+
 bloomer2 = Bloomer.new(name:"La Mutinerie")
 bloomer2.city = "Paris"
 bloomer2.category = "Coworking"
@@ -90,7 +97,15 @@ bloomer2.twitter_account = "https://twitter.com/mutineries"
 bloomer2.date_creation = Date.new(2015, 9, 1)
 bloomer2.description = "Libre ensemble"
 bloomer2.user = User.find_by_email("anna@bloomers.fr")
-bloomer2.save!
+bloomer2.save
+
+# PHOTOS
+urls2 = ["https://www.powwownow.fr/travailler-fute/wp-content/uploads/2016/07/espace-coworking-la-mutinerie.jpg",
+        "http://www.mutinerie.org/wp-content/uploads/2012/02/Rue-de-meaux_plan-couleur_RDC_craft.jpg",
+        "http://bureauflexible.fr/uploads/space_pictures/img_1438687605.jpg",
+        "http://coworkinginitiatives.com/wp-content/uploads/2013/01/verri%C3%A8re.jpg",
+        ]
+bloomer2.photo_urls = urls2
 
 bloomer3 = Bloomer.new(name:"EMLYON")
 bloomer3.city = "Lyon"
@@ -103,7 +118,7 @@ bloomer3.twitter_account = "https://twitter.com/lyon"
 bloomer3.date_creation = Date.new(2015, 9, 1)
 bloomer3.description = "Libre ensemble"
 bloomer3.user = User.find_by_email("alizee@bloomers.fr")
-bloomer3.save!
+bloomer3.save
 
 bloomer4 = Bloomer.new(name:"La Cantine Numérique")
 bloomer4.city = "Nantes"
@@ -116,7 +131,7 @@ bloomer4.twitter_account = "https://twitter.com/nantes"
 bloomer4.date_creation = Date.new(2015, 9, 1)
 bloomer4.description = "Libre ensemble"
 bloomer4.user = User.find_by_email("alizee@bloomers.fr")
-bloomer4.save!
+bloomer4.save
 
 # PHOTOS
 
@@ -133,18 +148,6 @@ urls2 = ["https://www.powwownow.fr/travailler-fute/wp-content/uploads/2016/07/es
         ]
 bloomer2.photo_urls = urls2
 
-# CANDIDATURE
-
-candidature1 = Candidature.new(status:"Pending")
-candidature1.team = "Trois EMLyon et deux Wagons."
-candidature1.your_problem = "En finir avec le mal-logement"
-candidature1.your_solution = "Des logements par milliers"
-candidature1.your_market = "1 000 000 de sans abris"
-candidature1.phone_number = "0606066556"
-candidature1.question_incubation = "Un mentoring de qualité"
-candidature1.startup_id = startup1
-candidature1.program_id = program1
-candidature1.save!
 
 # PROGRAM
 
@@ -241,4 +244,15 @@ review1.bloomer_id = bloomer2
 review1.startup_id = startup1
 review1.save!
 
+# CANDIDATURE
 
+candidature1 = Candidature.new(status:"Pending")
+candidature1.team = "Trois EMLyon et deux Wagons."
+candidature1.your_problem = "En finir avec le mal-logement"
+candidature1.your_solution = "Des logements par milliers"
+candidature1.your_market = "1 000 000 de sans abris"
+candidature1.phone_number = "0606066556"
+candidature1.question_incubation = "Un mentoring de qualité"
+candidature1.startup_id = startup1
+candidature1.program_id = program1
+candidature1.save

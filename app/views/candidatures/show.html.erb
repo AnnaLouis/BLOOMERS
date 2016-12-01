@@ -1,15 +1,14 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-4">
-
-        <% @candidatures.each do |candidature| %>
-
-
-
-        <%= candidature.team %>
-        <% end %>
-
-
+    <h2>  Your Startup (ID for now) startup.name startup_id = <%= @candidature.startup.name %></h2><% raise %>
+    <div class="col-sm-6">
+        <h3>  Your Problem <%= @candidature.your_problem %> </h3>
+        <h3>  Your Market <%= @candidature.your_market %></h3>
+        <h3>  Your Solution <%= @candidature.your_solution %></h3>
+        </div>
+        <div class="col-sm-6">
+        <h3>  Your question to the incubator <%= @candidature.question_incubation %></h3>
+        <h3>  Your Team <%= @candidature.team %></h3>
     </div>
   </div>
 </div>
