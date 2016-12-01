@@ -108,15 +108,15 @@ program1.price = 0
 program1.duration = "Un an"
 program1.equity = false
 program1.bloomer = bloomer1
-program1.candidature_open = Date.new(2014,1,1)
-program1.candidature_close = Date.new(2014,2,1)
+program1.candidature_open = Date.new(2016,11,1)
+program1.candidature_close = Date.new(2016,12,31)
 program1.save
 
 # BATCH
 
 batch1 = Batch.new(name:"Promo 1")
-batch1.batch_start = Date.new(2015,1,1)
-batch1.batch_end = Date.new(2016,1,1)
+batch1.batch_start = Date.new(2017,1,1)
+batch1.batch_end = Date.new(2018,1,1)
 batch1.program = program1
 batch1.save
 
