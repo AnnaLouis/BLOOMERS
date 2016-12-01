@@ -164,6 +164,26 @@ startup4.twitter_account = "https://twitter.com/derigueurfr"
 startup4.date_creation = Date.new(2013, 8, 10)
 startup4.user = User.find_by_email("admin@derigueur.fr")
 startup4.save
+
+# PROGRAM
+
+program1 = Program.new(name:"Program 1")
+program1.short_description = "La Plaine Saint Denis"
+program1.description = "La Plaine Saint Denis c'est top"
+program1.price = 0
+program1.duration = "Un an"
+program1.equity = false
+program1.bloomer = bloomer1
+program1.save!
+
+# BATCH
+
+batch1 = Batch.new(name:"Promo 1")
+batch1.batch_start = Date.new(2015,1,1)
+batch1.batch_end = Date.new(2016,1,1)
+batch1.program = program1
+batch1.startup = startup1
+batch1.save!
 #LOGO
 startup4.logo_url = "http://entreprendre.univ-lyon3.fr/wp-content/uploads/2015/08/logo-derigueur.png"
 

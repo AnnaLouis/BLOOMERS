@@ -16,10 +16,10 @@ Rails.application.routes.draw do
 
   resources :programs, only: [] do
     resources :candidatures, only: [:new, :create]
-    # resources :batches, only: [:new, :create]
+    resources :batches, only: [:new, :create]
   end
 
-  # resources :batches, only: :show
+  resources :batches, only: [:show, :index]
 
   # resources :programs, only: [:edit, :update]
 

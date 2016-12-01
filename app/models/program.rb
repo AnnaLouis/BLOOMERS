@@ -12,6 +12,6 @@ class Program < ApplicationRecord
   validates :price, presence: true
   validates :equity, :inclusion => { :in => [true, false] }
   # validates :equity, :inclusion => { :in => [true, false] }
-  validates :candidature_open, presence: true
-  validates :candidature_close, presence: true
+  # validates :candidature_open, presence: true
+  # validates :candidature_close, presence: true
 end

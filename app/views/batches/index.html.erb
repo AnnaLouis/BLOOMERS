@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="row">
+    <% @batches.each do |batch| %>
+    <div class="col-md-3">
+      <h1><%= batch.name %></h1>
+      <p>du <%= batch.batch_start %> au <%= batch.batch_end %></p>
+    </div>
+    <% end %>
+  </div>
+</div>
