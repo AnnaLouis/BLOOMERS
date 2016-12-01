@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20161201102414) do
+ActiveRecord::Schema.define(version: 20161201132618) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -108,10 +107,15 @@ ActiveRecord::Schema.define(version: 20161201102414) do
     t.integer  "price"
     t.boolean  "equity"
     t.integer  "bloomer_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.date     "candidature_open"
     t.date     "candidature_close"
+    t.text     "individual_coaching"
+    t.text     "collective_coachin"
+    t.text     "ecosystem"
+    t.text     "advantages"
+    t.text     "selection_criterias"
     t.index ["bloomer_id"], name: "index_programs_on_bloomer_id", using: :btree
   end
 
