@@ -10,7 +10,7 @@ class Program < ApplicationRecord
   validates :description, presence: true
   validates :duration, presence: true
   validates :price, presence: true
-  validates :field_name, :inclusion => { :in => [true, false] }
+  validates :equity, :inclusion => { :in => [true, false] }
   # validates :equity, :inclusion => { :in => [true, false] }
   validates :candidature_open, presence: true
   validates :candidature_close, presence: true
