@@ -6,6 +6,55 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+#USERS
+
+user1 = User.new(first_name: "Alizée", last_name:"Wyart")
+user1.email = "alizee@bloomers.fr"
+user1.password = "123456"
+user1.admin = false
+user1.startup_admin = true
+user1.bloomer_admin = false
+user1.save
+
+user2 = User.new(first_name: "Anna", last_name:"Louis")
+user2.email = "anna@bloomers.fr"
+user2.password = "123456"
+user2.startup_admin = false
+user2.bloomer_admin = true
+user2.admin = false
+user2.save
+
+user3 = User.new(first_name: "Bloom", last_name: "Her")
+user3.email = "hello@bloomers.fr"
+user3.password = "123456"
+user3.startup_admin = true
+user3.bloomer_admin = true
+user3.admin = true
+user3.save
+
+user4 = User.new(first_name: "Jacques", last_name: "Michel")
+user4.email = "admin@lelab.fr"
+user4.password = "123456"
+user4.startup_admin = true
+user4.bloomer_admin = false
+user4.admin = false
+user4.save
+
+user5 = User.new(first_name: "Rose", last_name: "Delpèche")
+user5.email = "admin@igloo.fr"
+user5.password = "123456"
+user5.startup_admin = true
+user5.bloomer_admin = false
+user5.admin = false
+user5.save
+
+user5 = User.new(first_name: "Martin", last_name: "Berton")
+user5.email = "admin@derigueur.fr"
+user5.password = "123456"
+user5.startup_admin = true
+user5.bloomer_admin = false
+user5.admin = false
+user5.save
 
 # BATCH
 
@@ -35,7 +84,7 @@ bloomer1.date_creation = Date.new(2015, 6, 1)
 bloomer1.description = "LOOK FORWARD est la plateforme de toute innovation susceptible de révolutionner le monde de la mode et du retail. Avec les startups integrees à son incubateur, LOOK FORWARD a l’ambition de bousculer la facon de distribuer, consommer et produire la mode."
 bloomer1.user = User.find_by_email("anna@bloomers.fr")
 bloomer1.save
-
+# PHOTOS
 urls1 = ["http://imageshack.com/a/img923/6113/XpMsUl.jpg",
         "http://blog.upfit-services.com/wp-content/uploads/2015/10/IMG_20151012_150511.jpg",
         "https://www.ideclik.com/wp-content/uploads/2016/01/lookforward-002.jpg",
@@ -55,7 +104,7 @@ bloomer2.date_creation = Date.new(2015, 9, 1)
 bloomer2.description = "Libre ensemble"
 bloomer2.user = User.find_by_email("anna@bloomers.fr")
 bloomer2.save!
-
+# PHOTOS
 urls2 = ["https://www.powwownow.fr/travailler-fute/wp-content/uploads/2016/07/espace-coworking-la-mutinerie.jpg",
         "http://www.mutinerie.org/wp-content/uploads/2012/02/Rue-de-meaux_plan-couleur_RDC_craft.jpg",
         "http://bureauflexible.fr/uploads/space_pictures/img_1438687605.jpg",
@@ -188,52 +237,4 @@ review1.startup_id = startup1
 review1.save!
 
 
-#USERS
 
-user1 = User.new(first_name: "Alizée", last_name:"Wyart")
-user1.email = "alizee@bloomers.fr"
-user1.password = "123456"
-user1.admin = false
-user1.startup_admin = true
-user1.bloomer_admin = false
-user1.save
-
-user2 = User.new(first_name: "Anna", last_name:"Louis")
-user2.email = "anna@bloomers.fr"
-user2.password = "123456"
-user2.startup_admin = false
-user2.bloomer_admin = true
-user2.admin = false
-user2.save
-
-user3 = User.new(first_name: "Bloom", last_name: "Her")
-user3.email = "hello@bloomers.fr"
-user3.password = "123456"
-user3.startup_admin = true
-user3.bloomer_admin = true
-user3.admin = true
-user3.save
-
-user4 = User.new(first_name: "Jacques", last_name: "Michel")
-user4.email = "admin@lelab.fr"
-user4.password = "123456"
-user4.startup_admin = true
-user4.bloomer_admin = false
-user4.admin = false
-user4.save
-
-user5 = User.new(first_name: "Rose", last_name: "Delpèche")
-user5.email = "admin@igloo.fr"
-user5.password = "123456"
-user5.startup_admin = true
-user5.bloomer_admin = false
-user5.admin = false
-user5.save
-
-user5 = User.new(first_name: "Martin", last_name: "Berton")
-user5.email = "admin@derigueur.fr"
-user5.password = "123456"
-user5.startup_admin = true
-user5.bloomer_admin = false
-user5.admin = false
-user5.save

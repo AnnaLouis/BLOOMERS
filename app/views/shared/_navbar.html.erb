@@ -24,13 +24,13 @@
         <!--  Startup Admin -->
 
        <%  if current_user.startup_admin? %>
-         <p class="navbar-bloomer-item"> <%= link_to "Ma Startup", bloomers_path %> </p>
+         <p class="navbar-bloomer-item"> <%= link_to "Ma Startup", startup_dashboard_path %> </p>
           <%= link_to destroy_user_session_path, method: :delete do %>
           <%= t(".sign_out", default: "Déconnexion") %>
       <% end %>
       <!-- Bloomer Admin -->
       <%  elsif current_user.bloomer_admin? %>
-          <p class="navbar-bloomer-item"> <%= link_to "Ma structure", bloomers_path %> </p>
+          <p class="navbar-bloomer-item"> <%= link_to "Ma structure", dashboard_path %> </p>
           <%= link_to destroy_user_session_path, method: :delete do %>
           <p class="navbar-bloomer-item"> <%= t(".sign_out", default: "Déconnexion") %> </p>
           <% end %>
