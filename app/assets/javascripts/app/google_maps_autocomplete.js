@@ -1,10 +1,10 @@
 $(document).ready(function() {
-  var bloomer_addresse = $('#bloomer_addresse').get(0);
+  var bloomer_address = $('#bloomer_address').get(0);
 
-  if (bloomer_addresse) {
-    var autocomplete = new google.maps.places.Autocomplete(bloomer_addresse, { types: ['geocode'] });
+  if (bloomer_address) {
+    var autocomplete = new google.maps.places.Autocomplete(bloomer_address, { types: ['geocode'] });
     google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
-    google.maps.event.addDomListener(bloomer_addresse, 'keydown', function(e) {
+    google.maps.event.addDomListener(bloomer_address, 'keydown', function(e) {
       if (e.keyCode == 13) {
         e.preventDefault(); // Do not submit the form on Enter.
       }
@@ -16,7 +16,7 @@ function onPlaceChanged() {
   var place = this.getPlace();
   var components = getAddressComponents(place);
 
-  $('#bloomer_addresse').trigger('blur').val(components.address);
+  $('#bloomer_address').trigger('blur').val(components.address);
   $('#bloomer_zip_code').val(components.zip_code);
   $('#bloomer_city').val(components.city);
   if (components.country_code) {
