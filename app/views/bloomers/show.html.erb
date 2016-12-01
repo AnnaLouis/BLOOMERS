@@ -355,7 +355,7 @@
             <% end %>
           </a>
           <a class="program-title" data-target="#program-three">
-            <% if @thrid_program.present? %>
+            <% if @third_program.present? %>
               <%= @third_program.name %>
             <% end %>
           </a>
@@ -460,7 +460,7 @@
                     <h4 style="text-align:center">Il reste <%= (@first_program.candidature_close - Date.today).to_i %> jours </h4>
                   </div>
                   <div class="col-xs-6" style="justify-content: center;display:flex">
-                    <a href="#" class="btn-postulate">Je postule</a>
+                    <%= link_to "Je Postule", new_program_candidature_path(@first_program), class:"btn-postulate" %>
                   </div>
                 </div>
               </div>
@@ -698,7 +698,7 @@
                     <h4 style="text-align:center">Il reste <%= (@second_program.candidature_close - Date.today).to_i %> jours </h4>
                   </div>
                   <div class="col-xs-6" style="justify-content: center;display:flex">
-                    <a href="#" class="btn-postulate">Je postule</a>
+                    <%= link_to "Je Postule", new_program_candidature_path(@second_program), class:"btn-postulate" %>
                   </div>
                 </div>
               </div>
