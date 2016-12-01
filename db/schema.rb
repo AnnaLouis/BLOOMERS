@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161201095134) do
+ActiveRecord::Schema.define(version: 20161201102014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,6 +92,16 @@ ActiveRecord::Schema.define(version: 20161201095134) do
     t.index ["startup_id"], name: "index_candidatures_on_startup_id", using: :btree
   end
 
+  create_table "incubations", force: :cascade do |t|
+    t.integer  "startup_id"
+    t.integer  "batch_id"
+    t.string   "comments"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["batch_id"], name: "index_incubations_on_batch_id", using: :btree
+    t.index ["startup_id"], name: "index_incubations_on_startup_id", using: :btree
+  end
+
   create_table "programs", force: :cascade do |t|
     t.string   "name"
     t.string   "short_description"
@@ -165,6 +175,8 @@ ActiveRecord::Schema.define(version: 20161201095134) do
   add_foreign_key "bloomers", "users"
   add_foreign_key "candidatures", "programs"
   add_foreign_key "candidatures", "startups"
+  add_foreign_key "incubations", "batches"
+  add_foreign_key "incubations", "startups"
   add_foreign_key "programs", "bloomers"
   add_foreign_key "reviews", "bloomers"
   add_foreign_key "reviews", "startups"
