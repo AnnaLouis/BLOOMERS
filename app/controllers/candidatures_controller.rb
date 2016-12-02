@@ -20,6 +20,7 @@ class CandidaturesController < ApplicationController
     @candidature = Candidature.new(candidature_params)
     @candidature.program_id = @program.id
     authorize @candidature
+    @candidature.status = "En cours"
       if @candidature.save
         redirect_to candidature_path(@candidature)
       else
