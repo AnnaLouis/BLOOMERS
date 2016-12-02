@@ -12,6 +12,11 @@ class CandidaturesController < ApplicationController
   def new
     @candidature = Candidature.new
     @program = Program.find(params[:program_id])
+    @startups = Startup.select{|startup| startup.user_id == current_user.id }
+    # @array_startups = []
+    # @startups.each do |startup|
+    #   @array_startups << startup.name
+    # end
     authorize @candidature
   end
 
@@ -39,7 +44,7 @@ class CandidaturesController < ApplicationController
 private
 
   def candidature_params
-    params.require(:candidature).permit(:team, :your_problem, :your_solution, :your_market, :phone_number, :question_incubation)
+    params.require(:candidature).permit(:team, :your_problem, :your_solution, :your_market, :phone_number, :question_incubation, :startup_id)
   end
 end
 
