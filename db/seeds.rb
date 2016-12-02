@@ -242,9 +242,9 @@ incubation4.save
 review1 = Review.new(title:"Bien")
 review1.description = "Trop bien"
 review1.rating = 3
-review1.bloomer_id = bloomer2
-review1.startup_id = startup1
-review1.save!
+review1.bloomer = bloomer2
+review1.startup = startup1
+review1.save
 
 # CANDIDATURE
 
@@ -255,6 +255,6 @@ candidature1.your_solution = "Des logements par milliers"
 candidature1.your_market = "1 000 000 de sans abris"
 candidature1.phone_number = "0606066556"
 candidature1.question_incubation = "Un mentoring de qualité"
-candidature1.startup_id = startup1
-candidature1.program_id = program1
+candidature1.startup = startup1
+candidature1.program = program1
 candidature1.save
