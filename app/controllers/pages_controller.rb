@@ -2,6 +2,8 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home, :map ]
 
   def home
+    bloomers = Bloomer.all
+    @three_random_bloomers = bloomers.order("RANDOM()").limit(3)
   end
 
   def map
@@ -41,4 +43,5 @@ class PagesController < ApplicationController
   def dashboard
     @bloomers = Bloomer.select{ |bloomer| bloomer.user_id == current_user.id }
   end
+
 end
