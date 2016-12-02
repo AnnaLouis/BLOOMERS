@@ -46,32 +46,34 @@
       <div class="row" id="cards">
         <% @three_random_bloomers.each do |bloomer| %>
          <div class="col-md-4">
-          <div class="card">
-            <figure class="effect-zoe" style="background-image: url('<%= image_path('5.jpg')%>');">
-              <div class="test"> <h3>LA <span> MUTINERIE</span></h3> </div>
-              <figcaption>
-                <div class="row more-details">
-                  <div class="col-xs-6">
-                    <p> Co-Working </p>
+          <%= link_to bloomer_path(bloomer), method: :get do %>
+            <div class="card">
+              <figure class="effect-zoe" style="background-image: url('<% if bloomer.photos? %><%= cl_image_path(bloomer.photos.last.path, :crop => :crop)%> <% else %> <%= "http://imageshack.com/a/img923/6113/XpMsUl.jpg"%> <% end %>');">
+                <div class="test"> <h3> <%= bloomer.name %> </span></h3></div>
+                <figcaption>
+                  <div class="row more-details">
+                    <div class="col-xs-6">
+                      <p> <%= bloomer.category %> </p>
+                    </div>
+                    <div class="col-xs-6">
+                      <p> <i class="fa fa-map-marker" aria-hidden="true"></i> Paris </p>
+                    </div>
                   </div>
-                  <div class="col-xs-6">
-                    <p> <i class="fa fa-map-marker" aria-hidden="true"></i> Paris </p>
+                  <div class="row">
+                    <div class="col-xs-6">
+                      <p>  <%= bloomer.speciality %> </p>
+                    </div>
+                    <div class="col-xs-6">
+                      <p class="icon-links">
+                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                      </p>
+                    </div>
                   </div>
-                </div>
-                <div class="row">
-                  <div class="col-xs-6">
-                    <p> Mode Retail </p>
-                  </div>
-                  <div class="col-xs-6">
-                    <p class="icon-links">
-                      <i class="fa fa-calendar" aria-hidden="true"></i>
-                    </p>
-                  </div>
-                </div>
-              </figcaption>
-            </figure>
+                </figcaption>
+              </figure>
+            </div>
+            <% end %>
           </div>
-        </div>
         <% end %>
 
 
