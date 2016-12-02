@@ -21,7 +21,7 @@ class CandidaturesController < ApplicationController
     @candidature.program_id = @program.id
     authorize @candidature
       if @candidature.save
-        redirect_to candidatures_path
+        redirect_to candidature_path(@candidature)
       else
         render 'new'
       end
