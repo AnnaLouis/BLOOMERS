@@ -1,37 +1,42 @@
 <div class="wrapper-show-candidature">
   <div class="container">
-        <div class="title-candidature">
+    <div class="row">
+      <div class="title-candidature">
+        <div class="col-md-12">
           <h2> <%= @candidature.startup.name %> </h2>
         </div>
-      <div class="row content">
-        <div class="col-sm-6">
-          <div class="box-candidature">
-            <h3> Votre constat </h3>
-            <h4><%= @candidature.your_problem %></h4>
-          </div>
-          <div class="box-candidature">
-            <h3> Votre Marché </h3>
-            <h4><%= @candidature.your_market %></h4>
-          </div>
-          <div class="box-candidature">
-            <h3> Votre Solution </h3>
-            <h4><%= @candidature.your_solution %></h4>
-          </div>
+      </div>
+    </div>
+    <div class="row content">
+      <div class="col-sm-6">
+        <div class="box-candidature">
+          <h3> Votre constat </h3>
+          <h4><%= @candidature.your_problem %></h4>
         </div>
-        <div class="col-sm-6">
-          <div class="box-candidature">
-            <h3> Qu'attendez-vous de votre incubation ? </h3>
-            <h4><%= @candidature.question_incubation %></h4>
-          </div>
-          <div class="box-candidature">
-            <h3> Votre Dream Team </h3>
-            <h4><%= @candidature.team %></h4>
-          </div>
-          <div class="box-candidature">
-            <h3> Votre candidature </h3>
-            <h4><%= @candidature.status %></h4>
-          </div>
+        <div class="box-candidature">
+          <h3> Votre Marché </h3>
+          <h4><%= @candidature.your_market %></h4>
+        </div>
+        <div class="box-candidature">
+          <h3> Votre Solution </h3>
+          <h4><%= @candidature.your_solution %></h4>
         </div>
       </div>
+      <div class="col-sm-6">
+        <div class="box-candidature">
+          <h3> Qu'attendez-vous de votre incubation ? </h3>
+          <h4><%= @candidature.question_incubation %></h4>
+        </div>
+        <div class="box-candidature">
+          <h3> Votre Dream Team </h3>
+          <h4><%= @candidature.team %></h4>
+        </div>
+        <div class="box-candidature">
+          <h3> Votre candidature </h3>
+
+          <h4><%= @candidature.status %></h4>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
