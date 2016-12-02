@@ -20,10 +20,17 @@
   font-size: 13px;
 }
 
-.wrapper-show-candidature .title-candidature h2 {
+.title-candidature {
+  width: 100%;
+
   text-align: center;
-  margin: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  display: inline-block;
+  padding-bottom: 25px;
+  // padding-bottom: 25px;
   border-bottom: 2px solid #FEC300;
+  justify-content: center;
 }
 
 
