@@ -3,13 +3,13 @@ class BatchPolicy < ApplicationPolicy
     def resolve
       scope.all
     end
-
   end
-    def new?
-      return true
-    end
 
-    def create?
-      return true
-    end
+  def new?
+    user.bloomer_admin == true
+  end
+
+  def create?
+    user.bloomer_admin == true
+  end
 end
