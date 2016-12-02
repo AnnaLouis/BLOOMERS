@@ -36,7 +36,7 @@ class PagesController < ApplicationController
 
   def startup_dashboard
     @user = current_user
-    @candidatures = Candidature.all.select {|candidature| candidature.user_id = @user.id }
+    @candidatures = Candidature.all.select {|candidature| candidature.startup.user_id = @user.id }
     @startups = Startup.all.select {|startup| startup.user_id = @user.id }
   end
 
