@@ -18,12 +18,11 @@ $(function(){
     $(this).addClass("active");
   });
    $(".dashboard-tab").on("click", function(e){
-      if $(this).hasClass('active') {
+      if($(this).hasClass('active')) {
 
       } else {
         $(".dashboard-tab.active").removeClass("active");
         $(this).addClass('active');
-        $(this)
       }
    });
 
