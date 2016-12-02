@@ -1,20 +1,29 @@
+.wrapper-show-candidature {
+  background-color: #FAFAFA;
+  padding:20px 0 40px 0;
+}
 
-.box-candidature{
-  border: 1px solid ;
+.box-candidature {
   padding: 10px;
   margin: 10px;
-  border-radius: 3px;
+  border-radius: 2px;
+  background-color: #FFFFFF;
 }
 
 .box-candidature h3 {
-  text-decoration: underline;
+  // text-decoration: underline;
+  font-size: 17px;
+  color: #746A5D;
 }
 
+.box-candidature h4 {
+  font-size: 13px;
+}
 
-.text-center-candidature{
+.wrapper-show-candidature .title-candidature h2 {
   text-align: center;
   margin: 20px;
-  text-decoration: underline;
-  // text-decoration-color: #FEC32B;
+  border-bottom: 2px solid #FEC300;
 }
+
 
