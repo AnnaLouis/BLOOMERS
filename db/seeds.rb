@@ -56,13 +56,7 @@ user5.bloomer_admin = false
 user5.admin = false
 user5.save
 
-# BATCH
 
-batch1 = Batch.new(name:"Promo 1")
-batch1.batch_start = Date.new(2017,1,1)
-batch1.batch_end = Date.new(2018,1,1)
-batch1.program = program1
-batch1.save
 
 # BLOOMERS
 
@@ -212,6 +206,14 @@ startup4.save
 
 #LOGO
 startup4.logo_url = "http://entreprendre.univ-lyon3.fr/wp-content/uploads/2015/08/logo-derigueur.png"
+
+# BATCH
+
+batch1 = Batch.new(name:"Promo 1")
+batch1.batch_start = Date.new(2017,1,1)
+batch1.batch_end = Date.new(2018,1,1)
+batch1.program = program1
+batch1.save
 
 # INCUBATION
 

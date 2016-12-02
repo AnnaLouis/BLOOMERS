@@ -14,5 +14,4 @@ class Startup < ApplicationRecord
   # VALIDATIONS
   validates :name, presence: true
   validates :short_description, presence: true
-  validates :date_creation, presence: true
 end

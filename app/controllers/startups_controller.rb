@@ -11,8 +11,8 @@ class StartupsController < ApplicationController
   end
 
   def create
-      @startup = Startup.new(startup_params)
-      @startup.user = current_user
+    @startup = Startup.new(startup_params)
+    @startup.user = current_user
     authorize(@startup)
     if @startup.save
       redirect_to startup_path(@startup)
