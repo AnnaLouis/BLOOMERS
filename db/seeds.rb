@@ -7,6 +7,14 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 #USERS
+Incubation.destroy_all
+Review.destroy_all
+Batch.destroy_all
+Candidature.destroy_all
+Startup.destroy_all
+Program.destroy_all
+Bloomer.destroy_all
+User.destroy_all
 
 user1 = User.new(first_name: "Alizée", last_name:"Wyart")
 user1.email = "alizee@bloomers.fr"
