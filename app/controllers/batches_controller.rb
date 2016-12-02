@@ -21,7 +21,8 @@ class BatchesController < ApplicationController
     @batch.program_id = @program.id
     authorize @batch
     if @batch.save
-      redirect_to batches_path
+      flash[:notice] = "Le batch \"#{@batch.name}\" du programme \"#{@program.name}\" a bien créé"
+      redirect_to dashboard_path
     else
       render 'new'
     end

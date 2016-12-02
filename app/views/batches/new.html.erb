@@ -1,5 +1,10 @@
 <div class="container">
   <div class="row">
+    <h2>Créer une promotion</h2>
+    <h4>Incubateur : <%= @program.bloomer.name %></h4>
+    <h4>Programme : <%= @program.name %></h4>
+  </div>
+  <div class="row">
     <div class="col-md-4">
       <%= simple_form_for [@program, @batch] do |f| %>
       <%= f.input :batch_start %>
