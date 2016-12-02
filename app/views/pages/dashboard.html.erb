@@ -9,7 +9,8 @@
           <div class="row">
             <div class="col-xs-12">
               <div class="dashboard-tabs">
-                <% bloomer.programs.each do |program| %>
+                <%= link_to "Nouveau programme", new_bloomer_program_path(bloomer) %>
+                <% program = bloomer.programs.first%>
                 <a class="dashboard-tab" data-target="#programs">
                   <h2><%= program.name %> (<%= program.batches.count%>)</h2>
                 </a>
@@ -22,8 +23,9 @@
                 <div class="row">
                   <div class="col-xs-6">
                     <h2>LES PROMOTIONS</h2>
-                    <ul>
-                      <% program.batches.each do |batch| %>
+                    <%= link_to "Nouvelle promotion", new_program_batch_path(program) %>
+                      <ul>
+                      <% batch = program.batches.first %>
                       <li><%= link_to batch.name, batch_path(batch) %> (<%= batch.startups.count %> startups)</li>
                     </ul>
                   </div>
@@ -33,14 +35,12 @@
                       <% batch.startups.each do |startup| %>
                       <li><%= link_to startup.name, startup_path(startup) %></li>
                       <% end %>
-                      <% end %>
                     </ul>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <% end %>
         </div>
       </div>
     </div>
