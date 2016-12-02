@@ -1,16 +1,18 @@
+
+MES INCUBATEURS
 <% @bloomers.each do |bloomer| %>
-  <% @programs = Program.select{ |program| program.bloomer_id == bloomer.id } %>
-  <% @programs.each do |program| %>
-    <% @batches = Batch.select{ |batch| batch.program_id == program.id } %>
-    <% @candidatures = Candidature.select{ |candidature| candidature.program_id == program.id } %>
-      <div class="container">
-        <div class="row">
-          <% @batches.each do |batch| %>
-            <div class="col-md-4">
-              <h1><%= batch.name %></h1>
-            </div>
-          <% end %>
-        </div>
-      </div>
-  <% end %>
+  <br>NOM INCUBATEUR :
+  <%= bloomer.name %> (<%= bloomer.programs.count%> programmes)
+    <% bloomer.programs.each do |program| %>
+    <br><br>LES PROGRAMMES :
+      <%= program.name %> (<%= program.batches.count%> promotions)
+        <br><br> LES PROMOTIONS :
+        <br><% program.batches.each do |batch| %>
+          <br><%= batch.name %> (<%= batch.startups.count %> startups)
+          <br> LES STARTUPS DE LA PROMO:
+            <br><% batch.startups.each do |startup| %>
+              <br><%= startup.name %>
+        <% end %>
+      <% end %>
+    <% end %>
 <% end %>

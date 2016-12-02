@@ -25,12 +25,17 @@
   right: 30px;
 }
 
-.solution:hover .home-image {
+.solution:hover .home-image{
   opacity: 1;
 }
 
 .solution ul{
   justify-content: center;
+  opacity: 0;
+}
+
+.solution:hover ul{
+  opacity: 1;
 }
 
 
