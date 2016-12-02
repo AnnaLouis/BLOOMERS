@@ -1,18 +1,49 @@
-
-MES INCUBATEURS
-<% @bloomers.each do |bloomer| %>
-  <br>NOM INCUBATEUR :
-  <%= bloomer.name %> (<%= bloomer.programs.count%> programmes)
-    <% bloomer.programs.each do |program| %>
-    <br><br>LES PROGRAMMES :
-      <%= program.name %> (<%= program.batches.count%> promotions)
-        <br><br> LES PROMOTIONS :
-        <br><% program.batches.each do |batch| %>
-          <br><%= batch.name %> (<%= batch.startups.count %> startups)
-          <br> LES STARTUPS DE LA PROMO:
-            <br><% batch.startups.each do |startup| %>
-              <br><%= startup.name %>
-        <% end %>
-      <% end %>
+<div class="wrapper-dashboard">
+  <div class="container">
+  <h3>MES INCUBATEURS</h3>
+    <% @bloomers.each do |bloomer| %>
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <div class="card-bloomer">
+          <h1><%= bloomer.name %> (<%= bloomer.programs.count%>)</h1>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="dashboard-tabs">
+                <% bloomer.programs.each do |program| %>
+                <a class="dashboard-tab" data-target="#programs">
+                  <h2><%= program.name %> (<%= program.batches.count%>)</h2>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="dashboard-tab-content">
+                <div class="row">
+                  <div class="col-xs-6">
+                    <h2>LES PROMOTIONS</h2>
+                    <ul>
+                      <% program.batches.each do |batch| %>
+                      <li><%= link_to batch.name, batch_path(batch) %> (<%= batch.startups.count %> startups)</li>
+                    </ul>
+                  </div>
+                  <div class="col-xs-6">
+                    <h2>LES STARTUPS</h2>
+                    <ul>
+                      <% batch.startups.each do |startup| %>
+                      <li><%= link_to startup.name, startup_path(startup) %></li>
+                      <% end %>
+                      <% end %>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
     <% end %>
-<% end %>
+  </div>
+</div>
