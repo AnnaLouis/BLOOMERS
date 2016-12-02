@@ -23,10 +23,14 @@
      <% if user_signed_in? %>
         <!--  Startup Admin -->
        <%  if current_user.startup_admin? %>
-         <p class="navbar-bloomer-item"> <%= link_to "Ma Startup", startup_dashboard_path %> </p>
+           <% if current_user.startups.count == 0 %>
+          <p class="navbar-bloomer-item"> <%= link_to "Je crée ma startup",  new_startup_path %> </p>
+          <% else %>
+          <p class="navbar-bloomer-item"> <%= link_to "Voir mon profil startup", startup_dashboard_path %> </p>
+          <% end %>
           <%= link_to destroy_user_session_path, method: :delete do %>
           <%= t(".sign_out", default: "Déconnexion") %>
-      <% end %>
+          <% end %>
       <!-- Bloomer Admin -->
       <%  elsif current_user.bloomer_admin? %>
           <p class="navbar-bloomer-item"> <%= link_to "Ma structure", dashboard_path %> </p>
