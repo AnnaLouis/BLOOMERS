@@ -33,12 +33,12 @@
           <div class="col-md-4">
             <%= link_to bloomer_path(bloomer), method: :get do %>
            <div class="card">
-                <figure class="effect-zoe" style="background-image: url('<%= image_path('5.jpg')%>');">
-                  <div class="test"> <h3>LA <span> MUTINERIE</span></h3></div>
+                <figure class="effect-zoe" style="background-image: url('<% if bloomer.photos? %><%= cl_image_path(bloomer.photos.last.path, :crop => :crop)%> <% else %> <%= "http://imageshack.com/a/img923/6113/XpMsUl.jpg"%> <% end %>');">
+                  <div class="test"> <h3> <%= bloomer.name %> </span></h3></div>
                   <figcaption>
                     <div class="row more-details">
                       <div class="col-xs-6">
-                        <p> Co-Working </p>
+                        <p> <%= bloomer.category %> </p>
                       </div>
                       <div class="col-xs-6">
                         <p> <i class="fa fa-map-marker" aria-hidden="true"></i> Paris </p>
@@ -46,7 +46,7 @@
                     </div>
                     <div class="row">
                       <div class="col-xs-6">
-                        <p> Mode Retail </p>
+                        <p>  <%= bloomer.speciality %> </p>
                       </div>
                       <div class="col-xs-6">
                         <p class="icon-links">
