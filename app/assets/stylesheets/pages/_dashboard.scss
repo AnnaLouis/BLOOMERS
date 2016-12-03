@@ -1,8 +1,207 @@
 .wrapper-dashboard {
-  background-color: #FAFAFA;
+  background-color: #FBFBFB;
   min-height: 75vh;
-
+  margin:0;
+  padding:0;
 }
+
+.container-dashboard {
+  width:100vw;
+  padding:40px 40px 20px 40px;
+}
+
+
+.first-row-dashboard {
+  display: inline-flex;
+  justify-content:center;
+}
+
+.dashboard-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 1px solid #FEC300;
+  margin-right: 40px;
+}
+
+.dashboard-avatar-text {
+  height: 80px;
+  padding: 10px 0 10px 0;
+}
+
+.dashboard-avatar-text h2 {
+  font-family: 'Comfortaa';
+  font-size: 30px;
+  color: #04677D;
+  margin: 0 0 5px 0;
+  padding:0;
+}
+
+.dashboard-avatar-text h3 {
+  font-family: 'Muli';
+  font-weight: lighter;
+  font-size: 16px;
+  color: rgba(0,0,0,0.59);
+  text-transform: uppercase;
+  padding: 0;
+  margin:0;
+}
+
+.second-row-dashboard {
+  display: flex;
+}
+
+// TABS DASHBOARD
+
+.dashboard-main-tabs {
+  padding:40px;
+  min-height:40vh;
+  background-color: white;
+  margin-right:40px;
+}
+
+.dashboard-main-tabs h3 {
+  font-family: 'Quicksand';
+  font-size: 16px;
+  color: #04677D;
+  margin:30px 0 30px 0;
+}
+
+.dashboard-main-tabs h3:hover {
+  font-weight: bolder;
+  cursor:pointer;
+}
+
+.dashboard-main-tabs h3.active {
+  font-weight:bolder;
+}
+
+.dash-notifs{
+  color: #FEC300;
+  font-size:12px;
+  font-weight:lighter;
+}
+
+.dashboard-main-tabs h4 {
+  font-family: 'Quicksand';
+  font-size: 12px;
+  color: #FEC300;
+  font-weight:lighter;
+  padding-left:20px;
+}
+
+.dashboard-main-tabs h4:hover {
+  font-weight: bolder;
+  cursor:pointer;
+}
+
+.dashboard-main-tabs h4.active {
+  font-weight:bolder;
+}
+
+.dashboard-main-tabs i {
+  margin-right: 10px;
+}
+
+// CONTENT
+
+
+.dashboard-content {
+  padding:0;
+  min-height:75vh;
+}
+
+.dashboard-content h2 {
+  font-family: 'Quicksand';
+  margin: 0px;
+  padding:0px;
+  color:#8C8C8C;
+  font-size:30px;
+  font-weight:lighter;
+  text-transform: uppercase;
+}
+
+.dashboard-sub-content {
+  padding:20px 40px 20px 40px;
+  margin: 20px 0 20px 0;
+  background-color: white;
+  width:100%;
+}
+
+.dashboard-sub-content h3 {
+  font-family: 'Muli';
+  font-size: 12px;
+  color: #04677D;
+}
+
+.dashboard-sub-content h3 span {
+  font-weight:bolder;
+}
+
+// CANDIDATURES
+
+.dashboard-apply-cards {
+  display:flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  padding: 20px 0 20px 0;
+}
+
+.dashboard-apply-card {
+  flex: 1 40%;
+  padding: 20px;
+  margin-right:20px;
+  background-color:white;
+}
+
+.dashboard-apply-card h2{
+  font-family: 'Comfortaa';
+  font-size: 18px;
+  color: #04677D;
+}
+
+.dashboard-apply-card h3 {
+  font-weight: lighter;
+  font-size: 16px;
+  margin-top: 11px;
+  color: #FEC300;
+}
+
+.dashboard-apply-card h4 {
+  font-weight: lighter;
+  font-size: 14px;
+  color: #8C8C8C;
+  margin-bottom:10px;
+  margin-top:20px;
+}
+
+.dashboard-apply-card p {
+  font-weight: lighter;
+  font-size: 12px;
+}
+
+.dashboard-apply-card p span:hover {
+  font-weight: bolder;
+  cursor:pointer;
+  background-color:#FBFBFB;
+  text-decoration: underline;
+}
+
+.dashboard-apply-card i {
+  margin: 0 5px 0 20px;
+}
+
+.candidature-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid #FEC300;
+  margin: 0 10px 0 0;
+  padding:0;
+}
+
+// ANCIEN CSS
+
 .card-bloomer {
   text-align: center;
   background-color: white;
