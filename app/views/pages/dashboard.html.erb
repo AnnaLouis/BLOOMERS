@@ -1,49 +1,296 @@
 <div class="wrapper-dashboard">
-  <div class="container">
-  <h3>MES INCUBATEURS</h3>
-    <% @bloomers.each do |bloomer| %>
-    <div class="row">
-      <div class="col-md-10 col-md-offset-1">
-        <div class="card-bloomer">
-          <h1><%= bloomer.name %> (<%= bloomer.programs.count%>)</h1>
-          <div class="row">
-            <div class="col-xs-12">
-              <div class="dashboard-tabs">
-                <%= link_to "Nouveau programme", new_bloomer_program_path(bloomer) %>
-                <% program = bloomer.programs.first%>
-                <a class="dashboard-tab" data-target="#programs">
-                  <h2><%= program.name %> (<%= program.batches.count%>)</h2>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-12">
-              <div class="dashboard-tab-content">
-                <div class="row">
-                  <div class="col-xs-6">
-                    <h2>LES PROMOTIONS</h2>
-                    <%= link_to "Nouvelle promotion", new_program_batch_path(program) %>
-                      <ul>
-                      <% batch = program.batches.first %>
-                      <li><%= link_to batch.name, batch_path(batch) %> (<%= batch.startups.count %> startups)</li>
-                    </ul>
-                  </div>
-                  <div class="col-xs-6">
-                    <h2>LES STARTUPS</h2>
-                    <ul>
-                      <% batch.startups.each do |startup| %>
-                      <li><%= link_to startup.name, startup_path(startup) %></li>
-                      <% end %>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+  <div class="container-dashboard">
+    <!-- NOM & AVATAR - USER -->
+    <div class="first-row-dashboard" id="header-user-info">
+      <% avatar_url = current_user.facebook_picture_url || current_user.linkedin_picture_url || "https://cdn4.iconfinder.com/data/icons/linecon/512/photo-512.png" %>
+      <%= image_tag avatar_url, class:"dashboard-avatar" %>
+      <div class="dashboard-avatar-text">
+        <h2><%= @user.first_name%> <%= @user.last_name%>  </h2>
+        <% if @user.startup_admin && @user.startups.count != 0 %>
+          <h3>CEO de <% @user.startups.each do |startup|%><%=startup.name%>, <%end%></h3>
+        <% elsif @user.bloomer_admin && @user.bloomers.count != 0 %>
+          <h3>Manager de <% @user.bloomers.each do |bloomer|%><%=bloomer.name%>, <%end%></h3>
+        <%end%>
       </div>
+    </div>
+    <!-- NOM & AVATAR - STARTUP -->
+    <% if @user.startup_admin? %>
+    <div class="first-row-dashboard hidden" id="header-startup-info">
+      <% if @user.startups.count != 0 %>
+        <% if @user.startups.first.logo? %>
+          <%= cl_image_tag @user.startups.first.logo.path, class:"dashboard-avatar" %>
+        <% else %>
+          <img src="http://www.addressbazar.com/images/logo/no-logo.png" class="dashboard-avatar">
+        <% end %>
+        <div class="dashboard-avatar-text">
+          <h2><%= @user.startups.first.name %> </h2>
+          <h3><%= @user.startups.first.short_description %></h3>
+        </div>
+      <% end %>
+    </div>
+    <% end %>
+    <!-- NOM & AVATAR - BLOOMER -->
+    <% if @user.bloomer_admin? %>
+    <div class="first-row-dashboard hidden" id="header-bloomer-info">
+      <% if @user.bloomers.count != 0 %>
+        <% if @user.bloomers.first.logo? %>
+          <%= cl_image_tag @user.bloomers.first.logo.path, class:"dashboard-avatar" %>
+        <% else %>
+          <img src="http://www.addressbazar.com/images/logo/no-logo.png" class="dashboard-avatar">
+        <% end %>
+        <div class="dashboard-avatar-text">
+          <h2><%= @user.bloomers.first.name %> </h2>
+          <h3><%= @user.bloomers.first.category %> | <%= @user.bloomers.first.speciality %></h3>
+        </div>
+      <% end %>
     </div>
     <% end %>
   </div>
+
+  <div class="container-dashboard" style="padding-top:20px">
+    <!-- DASH CONTENT -->
+    <div class="second-row-dashboard">
+      <!-- DASHBOARD TABS -->
+      <div class="col-xs-3 dashboard-main-tabs">
+        <!-- BTN PROFIL -->
+        <h3 class="dashboard-btn active profile-link" data-target="#dashboard-profile" style="margin-top:0;">
+          <i class="fa fa-user" aria-hidden="true"></i>MON PROFIL
+        </h3>
+        <!-- BTN STARTUP -->
+        <% if @user.startup_admin? %>
+        <h3 class="dashboard-btn" data-target="#dashboard-startup-one" id="btn-startup-all">
+          <i class="fa fa-briefcase" aria-hidden="true"></i>
+          <% if @user.startups.count > 1 %>MES STARTUPS
+          <% else %>MA STARTUP
+          <% end %>
+          <span class="dash-notifs">(<%= @user.startups.count %>)</span>
+        </h3>
+          <% if @user.startups.count == 0%>
+            <h4>> J'ajoute une startup</h4>
+          <% else %>
+            <% @user.startups.each do |startup| %>
+              <h4 id="btn-startup-one">> <%= startup.name %></h4>
+              <h4>> J'ajoute une startup</h4>
+            <% end %>
+          <% end %>
+        <% end %>
+        <!-- BTN BLOOMER -->
+        <% if @user.bloomer_admin? %>
+        <h3 class="dashboard-btn" data-target="#dashboard-bloomer-one" id="btn-bloomer-all">
+          <i class="fa fa-briefcase" aria-hidden="true"></i>
+          <% if @user.bloomers.count > 1 %>MES BLOOMERS
+          <% else %>MON BLOOMER
+          <% end %>
+          <span class="dash-notifs">(<%= @user.bloomers.count %>)</span>
+        </h3>
+          <% if @user.bloomers.count == 0%>
+            <h4>> J'ajoute un bloomer</h4>
+          <% else %>
+            <% @user.bloomers.each do |bloomer| %>
+              <h4 id="btn-bloomer-one">> <%= bloomer.name %></h4>
+              <h4>> J'ajoute un bloomer</h4>
+            <% end %>
+          <% end %>
+        <% end %>
+        <!-- BTN CANDIDATURE -->
+        <h3 class="dashboard-btn profile-link" data-target="#dashboard-candidatures">
+          <i class="fa fa-bullhorn" aria-hidden="true"></i>MES CANDIDATURES <span class="dash-notifs">(3)</span>
+        </h3>
+        <% if @user.startup_admin? %>
+        <h3 class="dashboard-btn profile-link" data-target="#dashboard-reviews">
+          <i class="fa fa-star" aria-hidden="true"></i>MES AVIS <span class="dash-notifs">(3)</span>
+        </h3>
+        <h3 class="dashboard-btn profile-link" data-target="#dashboard-favorites">
+          <i class="fa fa-thumb-tack" aria-hidden="true"></i>MES FAVORIS <span class="dash-notifs">(3)</span>
+        </h3>
+        <% end %>
+        <h3 class="dashboard-btn profile-link" data-target="#dashboard-messages">
+          <i class="fa fa-comment" aria-hidden="true"></i>MES MESSAGES <span class="dash-notifs">(3)</span>
+        </h3>
+      </div>
+      <!-- DASHBOARD CONTENT 1. PROFILE -->
+      <div class="col-xs-9 dashboard-content" id="#dashboard-profile">
+        <!-- MAIN INFO -->
+        <h2>Mon profil</h2>
+        <div class="row dashboard-sub-content">
+          <div class="col-xs-12 col-sm-6">
+            <h3><span>Email</span> : <%= @user.email %></h3>
+            <h3><span>Startup admin</span> : <%= @user.startup_admin %></h3>
+            <h3><span>Bloomer admin</span> : <%= @user.bloomer_admin %></h3>
+            <h3><span>Age</span> : </h3>
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <h3>Compte Linkedin : </h3>
+            <h3>Compte Twitter : </h3>
+          </div>
+        </div>
+      </div>
+      <!-- DASHBOARD CONTENT 2. STARTUP -->
+      <% if @user.startups.count >=1 %>
+        <div class="col-xs-9 dashboard-content hidden" id="dashboard-startup-one">
+          <!-- MAIN INFO -->
+          <h2>Infos principales</h2>
+          <div class="row dashboard-sub-content">
+            <div class="col-xs-12 col-sm-6">
+              <h3><span>Nom</span> : <%= @user.startups.first.name %></h3>
+              <h3><span>Courte description</span> : <%= @user.startups.first.short_description %></h3>
+              <h3><span>Description</span> : <%= @user.startups.first.description %></h3>
+              <h3><span>Date de création</span> : <%= @user.startups.first.date_creation %></h3>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+              <h3><span>Site internet</span> : <%= @user.startups.first.website %></h3>
+              <h3><span>Compte twitter</span> : <%= @user.startups.first.twitter_account %></h3>
+            </div>
+          </div>
+          <h2>La team</h2>
+          <div class="row dashboard-sub-content">
+            <div class="col-xs-12 col-sm-6">
+              (à remplir)
+            </div>
+            <div class="col-xs-12 col-sm-6">
+              <h3><span>L'histoire de l'équipe :</span></h3>
+            </div>
+          </div>
+          <h2>Le Parcours</h2>
+          <div class="row dashboard-sub-content">
+            (à remplir)
+          </div>
+        </div>
+      <% end %>
+      <!-- DASHBOARD CONTENT 2bis. BLOOMER -->
+      <% if @user.bloomers.count >=1 %>
+        <div class="col-xs-9 dashboard-content hidden" id="dashboard-bloomer-one">
+          <!-- MAIN INFO -->
+          <h2>Infos principales</h2>
+          <div class="row dashboard-sub-content">
+            <div class="col-xs-12 col-sm-6">
+              <h3><span>Nom</span> : <%= @user.bloomers.first.name %></h3>
+              <h3><span>Description</span> : <%= @user.bloomers.first.description %></h3>
+              <h3><span>Catégorie</span> : <%= @user.bloomers.first.category %></h3>
+              <h3><span>Spécialité</span> : <%= @user.bloomers.first.speciality %></h3>
+              <h3><span>Date de création</span> : <%= @user.bloomers.first.date_creation %></h3>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+              <h3><span>Adresse</span> : <%= @user.bloomers.first.address %></h3>
+              <h3><span>Ville</span> : <%= @user.bloomers.first.city %></h3>
+              <h3><span>Site internet</span> : <%= @user.bloomers.first.website %></h3>
+              <h3><span>Compte twitter</span> : <%= @user.bloomers.first.twitter_account %></h3>
+            </div>
+          </div>
+          <% @user.bloomers.first.programs.each do |program| %>
+          <h2>Programme "<%= program.name %>"</h2>
+            <div class="row dashboard-sub-content">
+              <div class="col-xs-12 col-sm-6">
+                <h3><span>Nom</span> : <%= program.name %></h3>
+                <h3><span>Description</span> : <%= program.description %></h3>
+                <h3><span>Durée</span> : <%= program.duration %></h3>
+                <h3><span>Equité</span> : <%= program.equity %></h3>
+                <h3><span>Début d'inscription</span> : <%= program.candidature_open %></h3>
+                <h3><span>Fin d'inscription</span> : <%= program.candidature_close %></h3>
+                <h3><span>Critères de sélection</span> : <%= program.selection_criterias %></h3>
+              </div>
+              <div class="col-xs-12 col-sm-6">
+                <h3><span>Accompagnement individuel</span> : <%= program.individual_coaching %></h3>
+                <h3><span>Accompagnement collectif</span> : <%= program.collective_coachin %></h3>
+                <h3><span>Ecosystème</span> : <%= program.ecosystem %></h3>
+                <h3><span>Avantages</span> : <%= program.advantages %></h3>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+      <!-- DASHBOARD CONTENT 3. MES CANDIDATURES -->
+      <div class="col-xs-9 dashboard-content hidden" id="dashboard-candidatures">
+        <!-- MAIN INFO -->
+        <h2>Mes Candidatures</h2>
+        <div class="dashboard-apply-cards">
+          <% @user.candidatures.each do |candidature| %>
+          <% if candidature.startup.user == current_user %>
+          <div class="dashboard-apply-card">
+            <h2><%= candidature.program.bloomer.name %></h2>
+            <h3>Programme : <%= candidature.program.name%></h3>
+              <h4>Status : <%= candidature.status %></h4>
+              <p><i class="fa fa-eye" aria-hidden="true"></i> Détails
+              <i class="fa fa-pencil" aria-hidden="true"></i> Editer
+              <i class="fa fa-trash-o" aria-hidden="true"></i> Supprimer</p>
+          </div>
+          <% elsif candidature.bloomer.user == current_user %>
+           <div class="dashboard-apply-card">
+              <div class="col-xs-2" style="margin:0;padding:0;height:50px">
+                <% if candidature.startup.logo? %>
+                  <%= cl_image_tag candidature.startup.logo.path, class:"candidature-avatar" %>
+                <% end %>
+              </div>
+              <div class="col-xs-10">
+                <h2>Startup : <%= candidature.startup.name %></h2>
+                <h3> > Programme : <%= candidature.program.name%></h3>
+              </div>
+              <h4>Statut : <%= candidature.status %></h4>
+              <p><span><i class="fa fa-eye" aria-hidden="true" style="margin-left:0px"></i> Détails</span>
+              <span style="color:#13CE66"><i class="fa fa-check-circle" aria-hidden="true"></i> Accepter</span>
+              <span style="color:#FF5656"><i class="fa fa-times" aria-hidden="true"></i> Refuser</span>
+              </p>
+            </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+
+$(document).ready(function() {
+  $(".dashboard-btn").on("click", function(e){
+<!--     // Change active tab -->
+    $(".dashboard-btn").removeClass("active");
+    $(this).addClass("active");
+    $(".dashboard-content").addClass("hidden");
+    // Show target tab-content (use class="hidden")
+    tabSelector = $(this).data("target");
+    console.log(tabSelector);
+    $(tabSelector).removeClass("hidden");
+  });
+
+<!--   // AFFICHER LE HEADER PROFILE -->
+
+$(".profile-link").on("click", function(e){
+    $(".first-row-dashboard").addClass("hidden");
+    // Show target tab-content (use class="hidden")
+    $("#header-user-info").removeClass("hidden");
+  });
+
+
+<!--   // AFFICHER LE HEADER BLOOMER (juste .first) -->
+
+  $("#btn-bloomer-all").on("click", function(e){
+    $(".first-row-dashboard").addClass("hidden");
+    // Show target tab-content (use class="hidden")
+    $("#header-bloomer-info").removeClass("hidden");
+  });
+
+  $("#btn-bloomer-one").on("click", function(e){
+    $(".first-row-dashboard").addClass("hidden");
+    // Show target tab-content (use class="hidden")
+    $("#header-bloomer-info").removeClass("hidden");
+  });
+
+<!-- AFFICHER LE HEADER STARTUP (juste .first) -->
+
+  $("#btn-startup-all").on("click", function(e){
+    $(".first-row-dashboard").addClass("hidden");
+    // Show target tab-content (use class="hidden")
+    $("#header-startup-info").removeClass("hidden");
+  });
+
+  $("#btn-startup-one").on("click", function(e){
+    $(".first-row-dashboard").addClass("hidden");
+    // Show target tab-content (use class="hidden")
+    $("#header-startup-info").removeClass("hidden");
+  });
+});
+
+  <% end %>
+<% end %>

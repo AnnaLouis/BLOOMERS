@@ -41,6 +41,8 @@ class PagesController < ApplicationController
   end
 
   def dashboard
+    @user = current_user
+    @startups = Startup.select{ |startup| startup.user_id == current_user.id}
     @bloomers = Bloomer.select{ |bloomer| bloomer.user_id == current_user.id }
   end
 
