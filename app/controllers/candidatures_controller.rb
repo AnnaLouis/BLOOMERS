@@ -1,5 +1,5 @@
 class CandidaturesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show, :new, :create]
+  skip_before_action :authenticate_user!, only: [:index, :show, :new, :create, :validate]
   def index
     @candidatures = policy_scope(Candidature)
   end
@@ -39,6 +39,30 @@ class CandidaturesController < ApplicationController
 
   def accept?
     status = "refused"
+  end
+
+  def accept
+    @candidature = Candidature.find(params[:id])
+    @candidature.status = "Candidature acceptée"
+    @candidature.save
+    authorize @candidature
+    redirect_to dashboard_path
+  end
+
+  def refuse
+    @candidature = Candidature.find(params[:id])
+    @candidature.status = "Candidature refusée"
+    @candidature.save
+    authorize @candidature
+    redirect_to dashboard_path
+  end
+
+  def short_list
+    @candidature = Candidature.find(params[:id])
+    @candidature.status = "Short list"
+    @candidature.save
+    authorize @candidature
+    redirect_to dashboard_path
   end
 
 private

@@ -66,50 +66,69 @@
           <span class="dash-notifs">(<%= @user.startups.count %>)</span>
         </h3>
           <% if @user.startups.count == 0%>
-            <h4>> J'ajoute une startup</h4>
           <% else %>
             <% @user.startups.each do |startup| %>
               <h4 id="btn-startup-one">> <%= startup.name %></h4>
-              <h4>> J'ajoute une startup</h4>
             <% end %>
           <% end %>
-        <% end %>
-        <!-- BTN BLOOMER -->
-        <% if @user.bloomer_admin? %>
-        <h3 class="dashboard-btn" data-target="#dashboard-bloomer-one" id="btn-bloomer-all">
-          <i class="fa fa-briefcase" aria-hidden="true"></i>
-          <% if @user.bloomers.count > 1 %>MES BLOOMERS
-          <% else %>MON BLOOMER
+          <%= link_to new_startup_path do %>
+            <h4>> J'ajoute une startup</h4>
           <% end %>
-          <span class="dash-notifs">(<%= @user.bloomers.count %>)</span>
-        </h3>
+        <% end %>
+        <!-- BTN BLOOMER & BATCHS-->
+        <% if @user.bloomer_admin? %>
+          <!-- BLOOMER LISTS -->
+          <h3 class="dashboard-btn" data-target="#dashboard-bloomer-one" id="btn-bloomer-all">
+            <i class="fa fa-briefcase" aria-hidden="true"></i>
+            <% if @user.bloomers.count > 1 %>MES BLOOMERS
+            <% else %>MON BLOOMER
+            <% end %>
+            <span class="dash-notifs">(<%= @user.bloomers.count %>)</span>
+          </h3>
           <% if @user.bloomers.count == 0%>
-            <h4>> J'ajoute un bloomer</h4>
           <% else %>
             <% @user.bloomers.each do |bloomer| %>
               <h4 id="btn-bloomer-one">> <%= bloomer.name %></h4>
-              <h4>> J'ajoute un bloomer</h4>
             <% end %>
           <% end %>
+          <%= link_to new_bloomer_path do %>
+            <h4>> J'ajoute un bloomer</h4>
+          <% end %>
+          <!-- BATCHES LIST -->
+          <h3 class="dashboard-btn profile-link" data-target="#dashboard-batches">
+            <i class="fa fa-users" aria-hidden="true"></i>
+            <% if @user.batches.count > 1 %>LES PROMOTIONS
+            <% else %>LA PROMOTION
+            <% end %>
+            <span class="dash-notifs">(<%= @user.batches.count %>)</span>
+          </h3>
+          <% if @user.batches.count == 0%>
+          <% else %>
+            <% @user.batches.each do |batch| %>
+              <h4 id="btn-bloomer-one">> <%= batch.name %></h4>
+            <% end %>
+          <% end %>
+          <h4>> J'ajoute un batch</h4>
         <% end %>
+
         <!-- BTN CANDIDATURE -->
         <h3 class="dashboard-btn profile-link" data-target="#dashboard-candidatures">
-          <i class="fa fa-bullhorn" aria-hidden="true"></i>MES CANDIDATURES <span class="dash-notifs">(3)</span>
+          <i class="fa fa-bullhorn" aria-hidden="true"></i>MES CANDIDATURES <span class="dash-notifs">(<%= @user.candidatures.count %>)</span>
         </h3>
         <% if @user.startup_admin? %>
         <h3 class="dashboard-btn profile-link" data-target="#dashboard-reviews">
-          <i class="fa fa-star" aria-hidden="true"></i>MES AVIS <span class="dash-notifs">(3)</span>
+          <i class="fa fa-star" aria-hidden="true"></i>MES AVIS <span class="dash-notifs">(?)</span>
         </h3>
         <h3 class="dashboard-btn profile-link" data-target="#dashboard-favorites">
-          <i class="fa fa-thumb-tack" aria-hidden="true"></i>MES FAVORIS <span class="dash-notifs">(3)</span>
+          <i class="fa fa-thumb-tack" aria-hidden="true"></i>MES FAVORIS <span class="dash-notifs">(?)</span>
         </h3>
         <% end %>
         <h3 class="dashboard-btn profile-link" data-target="#dashboard-messages">
-          <i class="fa fa-comment" aria-hidden="true"></i>MES MESSAGES <span class="dash-notifs">(3)</span>
+          <i class="fa fa-comment" aria-hidden="true"></i>MES MESSAGES <span class="dash-notifs">(?)</span>
         </h3>
       </div>
       <!-- DASHBOARD CONTENT 1. PROFILE -->
-      <div class="col-xs-9 dashboard-content" id="#dashboard-profile">
+      <div class="col-xs-9 dashboard-content" id="dashboard-profile">
         <!-- MAIN INFO -->
         <h2>Mon profil</h2>
         <div class="row dashboard-sub-content">
@@ -226,13 +245,60 @@
                 <h3> > Programme : <%= candidature.program.name%></h3>
               </div>
               <h4>Statut : <%= candidature.status %></h4>
-              <p><span><i class="fa fa-eye" aria-hidden="true" style="margin-left:0px"></i> Détails</span>
+              <p>
+              <%= link_to candidature_path(candidature) do %>
+                <span><i class="fa fa-eye" aria-hidden="true" style="margin-left:0px"></i> Détails</span>
+              <% end %>
+              <%= link_to short_list_candidature_path(candidature),
+                  controller: :candidatures, method: :short_list do %>
+                <span style="color:#FEC300"><i class="fa fa-list" aria-hidden="true"></i> Short-list</span>
+              <% end %>
+              <%= link_to accept_candidature_path(candidature),
+                  controller: :candidatures, method: :accept do %>
               <span style="color:#13CE66"><i class="fa fa-check-circle" aria-hidden="true"></i> Accepter</span>
+              <% end %>
+              <%= link_to refuse_candidature_path(candidature),
+                  controller: :candidatures, method: :refuse do %>
               <span style="color:#FF5656"><i class="fa fa-times" aria-hidden="true"></i> Refuser</span>
+              <% end %>
               </p>
             </div>
             <% end %>
           <% end %>
+        </div>
+      </div>
+      <!-- DASHBOARD CONTENT 4. LES BATCHES -->
+      <div class="col-xs-9 dashboard-content hidden" id="dashboard-batches">
+        <!-- MAIN INFO -->
+        <% @user.batches.each do |batch| %>
+          <h2><%= batch.name %> (<%= batch.program.name %>) <i class="fa fa-plus-circle" aria-hidden="true" style="font-size:16px"></i></h2>
+        <div class="dashboard-apply-cards">
+          <% if batch.startups.count == 0 %>
+            <%= link_to "Je rajoute une startup", dashboard_path, class:"btn-postulate" %>
+          <% else %>
+          <% batch.startups.each do |startup| %>
+           <div class="dashboard-apply-card">
+              <div class="col-xs-2" style="margin:0;padding:0;height:50px">
+                <% if startup.logo? %>
+                  <%= cl_image_tag startup.logo.path, class:"candidature-avatar" %>
+                <% end %>
+              </div>
+              <div class="col-xs-10">
+                <h2>Startup : <%= startup.name %></h2>
+              </div>
+              <p>
+              <%= link_to startup_path(startup) do %>
+                <span><i class="fa fa-eye" aria-hidden="true" style="margin-left:0px"></i> Détails</span>
+              <% end %>
+              <span style="color:#FEC300"><i class="fa fa-list" aria-hidden="true"></i> Ajouter</span>
+              <span style="color:#13CE66"><i class="fa fa-check-circle" aria-hidden="true"></i> Ajouter</span>
+              <span style="color:#FF5656"><i class="fa fa-times" aria-hidden="true"></i> Supprimer</span>
+              </p>
+          </div>
+          <% end %>
+          <% end %>
+          </div>
+        <% end %>
         </div>
       </div>
     </div>

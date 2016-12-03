@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :candidatures, through: :bloomers
   has_many :reviews, through: :startups
   has_many :programs, through: :bloomers
+  has_many :batches, through: :programs
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.to_h.slice(:provider, :uid)

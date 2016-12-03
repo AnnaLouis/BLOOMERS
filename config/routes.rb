@@ -18,7 +18,14 @@ Rails.application.routes.draw do
   end
 
   resources :batches, only: [:show, :index]
-  resources :candidatures, only: [:show, :index]
+
+  resources :candidatures, only: [:show, :index] do
+    member do
+      post 'short_list', to: "candidatures#short_list"
+      post 'accept', to: "candidatures#accept"
+      post 'refuse', to: "candidatures#refuse"
+    end
+  end
 
   # DASHBOARD STARTUP_USER
   get '/startup_dashboard' => 'pages#startup_dashboard'
