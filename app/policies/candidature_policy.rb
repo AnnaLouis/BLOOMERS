@@ -12,4 +12,16 @@ class CandidaturePolicy < ApplicationPolicy
     def create?
       return true
     end
+
+  def accept?
+    record.bloomer.user == user
+  end
+
+  def refuse?
+    record.bloomer.user == user
+  end
+
+  def short_list?
+    record.bloomer.user == user
+  end
 end
