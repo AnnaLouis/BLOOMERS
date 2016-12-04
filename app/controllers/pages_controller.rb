@@ -11,7 +11,7 @@ class PagesController < ApplicationController
     @hash = Gmaps4rails.build_markers(@bloomers) do |bloomer, marker|
       marker.lat bloomer.latitude
       marker.lng bloomer.longitude
-      marker.infowindow "<h1>#{bloomer.name}</h1> <p>#{bloomer.category}"
+      marker.infowindow "<h2>#{bloomer.name}</h2> <h3>#{bloomer.category}</h3><h4><i class=\"fa fa-hashtag\" aria-hidden=\"true\"></i> #{bloomer.speciality}</h4>"
       if bloomer.category == "Incubateur"
         marker.picture({
          :url => "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=I|04677D|000000",
