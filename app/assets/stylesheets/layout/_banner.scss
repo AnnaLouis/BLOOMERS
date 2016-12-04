@@ -1,24 +1,31 @@
 .banner {
-  background-image:linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('11.jpg');
-  color: white;
+  background-image: rgba(255,0,0,1) url('pacmanpattern.png');
+  background-color: #F9F9F9;
   text-align: center;
   height: 100vh;
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: cover !important;
   display: flex;
-  align-items: center;
+  padding-top: 80px;
   justify-content: center;
   font-weight: lighter;
   background-attachment: fixed;
 }
+
+.banner img {
+  filter: brightness(2);
+  filter: blur(1);
+}
+
 .banner h1 {
-  font-size: 50px;
+  font-size: 37px;
   text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
   color: #00697F;
   text-decoration: none;
+  padding-bottom: 40px;
 }
 .banner p {
-  font-size: 23px;
+  font-size: 17px;
   margin-bottom: 20px;
   color: #FFC400;
   text-decoration: none;
@@ -36,3 +43,58 @@
   border: 2px solid #FFC400;
 }
 
+.welcome-info {
+  display:table;
+}
+
+.banner-cards {
+  padding: 30px 30px 30px 30px;
+}
+
+.card-banner {
+  background-color:#FFFFFF;
+  border-radius:3px;
+  margin: 0px;
+  padding: 20px 20px 20px 20px;
+  height: 200px;
+  max-height: 200px;
+  width: 270px;
+  max-width: 270px;
+}
+
+.card-title {
+  font-size: 16px;
+  text-decoration: none;
+  color: #FFC400;
+  border-bottom: 2px solid #CCCCCC;
+  line-height:40px;
+  font-weight:bold;
+}
+
+.card-description {
+  font-size: 14px;
+  text-decoration: none;
+  color: #616668;
+  padding-top:10px;
+  line-height:25px;
+}
+
+.card-num {
+  background-color:#FFFFFF;
+  color: #00697F;
+  font-size: 15px;
+  border-radius:50%;
+  top: -20px;
+  padding: 7px;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  left:50%;
+  font-weight:bold;
+}
+
+.card-icon {
+  font-size: 15px;
+  color: #616668;
+  line-height:40px;
+}
