@@ -1,19 +1,50 @@
 .wrapper-index{
-  background-color: white;
   text-align: center;
-  margin: 25px;
-  padding: 25px;
+  float:left;
+  width:340px;
+  padding: 40px 0 0 50px;
+}
+
+.wrapper-index h3 {
+  margin-top: 0;
+  padding-top:0;
+  padding-bottom:20px;
+}
+
+.content-research-index {
+  background-color: white;
+  margin-bottom:20px;
+  padding:20px;
+}
+
+.content-research-index .form-group {
+  margin:0px;
+  padding:0px;
+}
+
+.wrapper-results{
+  margin: 0;
+  padding: 40px 0 0 340px;
+  width:100%;
+}
+
+.wrapper-results h3 {
+  padding:0 0 0 -2px;
+  margin:0;
 }
 
 .bloomer_index {
-
   background-color: #FAFAFA;
   background-size: cover !important;
+}
 
+.bloomer-list {
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
 }
 
 .center-card{
-
   position: relative;
   margin: 0 auto;
   padding-left: 4em;
