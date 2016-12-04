@@ -1,10 +1,42 @@
 <!-- La bannière -->
 
 <div class="banner">
-  <div class="banner-content">
-    <h1>B L O O M E R S</h1>
-    <p>Votre startup mérite le meilleur</p>
-     <%= link_to "Je trouve mon accompagnement", bloomers_path, class: "btn btn-primary btn-lg" %>
+  <div class="container banner-content">
+  <div class="row">
+    <h1>VOTRE STARTUP MÉRITE LE MEILLEUR</h1>
+  </div>
+<!--   <div class="row">
+     <#%= link_to "Je trouve mon accompagnement", bloomers_path, class: "btn btn-primary btn-lg" %>
+  </div> -->
+
+   <div class="container banner-cards">
+     <div class="row welcome-info">
+        <div class="col-xs-12 col-sm-4 col-lg-4">
+          <div class="card-banner">
+            <div class="card-num"> 1 </div>
+            <div class="card-title"> Je trouve mon incubateur </div>
+            <div class="card-description"> Parmi plus de 300 structures disponibles en France </div> <br>
+            <div class="card-icon"><i class="fa fa-list" aria-hidden="true"></i></div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-lg-4">
+          <div class="card-banner">
+            <div class="card-num"> 2 </div>
+            <div class="card-title"> Je crée mon profil </div>
+            <div class="card-description"> Et optimise mes chances de candidatures </div> <br>
+            <div class="card-icon"> <i class="fa fa-hand-o-right" aria-hidden="true"></i> </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-lg-4">
+          <div class="card-banner">
+            <div class="card-num"> 3 </div>
+            <div class="card-title"> Je postule </div>
+            <div class="card-description"> En trois clics </div> <br>
+            <div class="card-icon"><i class="fa fa-check-square" aria-hidden="true"></i></div>
+          </div>
+        </div>
+      </div>
+   </div>
   </div>
 </div>
 
@@ -12,7 +44,7 @@
 <div class="wrapper">
   <h3> QU'EST CE QU'UN BLOOMER ?</h3>
   <div class="container">
-<!--     <div class="row">
+    <!-- <div class="row">
       <div class="col-md-4">
         Incubateur
       </div>
@@ -23,16 +55,14 @@
         Coworking
       </div>
     </div> -->
-    <div class="row">
-        <div class="row">
-      <div class="col-md-2">
+    <div class="row" id="definition">
+      <div class="col-md-3">
       </div>
-      <div class="col-md-8">
+      <div class="col-md-6">
       <p> Un Bloomer est un acteur de l'accompagnement des startups : incubateur, accélérateur ou coworking. Chaque structure contribue à l'éclosion de nos startups françaises et européennes. </p>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-3">
       </div>
-    </div>
     </div>
   </div>
 </div>
@@ -40,7 +70,7 @@
 
 <!-- BLOOMERS RANDOM -->
 <div class="wrapper" style="background-color: #F9F9F9;">
-  <h3> LES BLOOMERS </h3>
+  <h3> ILS SONT SUR BLOOMERS </h3>
 
     <div class="container">
       <div class="row" id="cards">
