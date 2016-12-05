@@ -1,72 +1,71 @@
 <div class="bloomer_index">
   <div class="row">
-    <div class="col-md-12">
-      <div class="wrapper-index">
-        <div class="row">
-          <h3> RECHERCHER </h3>
-            <div class="col-md-4">
-              <h4>Catégories</h4>
-              <%= simple_form_for(:search, url: bloomers_path, method: :get) do |f| %>
-              <%= f.error_notification %>
-              <%= f.input :category, as: :check_boxes, collection: Bloomer::CATEGORIES, label: 'Choisissez une catégorie'  %>
-            </div>
-            <div class="col-md-4">
-              <h4>Location</h4>
-              <%= f.input :city, label: 'Ville' %>
-            </div>
-            <div class="col-md-4">
-              <h4>Spécialité</h4>
-              <%= f.input :speciality, collection: @specialities, label: 'Entrez les spécialités' %>
-            </div>
-              <span class="nb-next-button"><%= f.button :submit, "Go !" %></span>
-          <% end %>
+    <!-- <div class="col-md-12"> -->
+    <!-- COLONNE 1 - RECHErCHE -->
+    <div class="wrapper-index">
+      <div class="col-xs-12">
+        <h3> RECHERCHER </h3>
+        <h4>Catégories</h4>
+        <div class="row content-research-index">
+          <%= simple_form_for(:search, url: bloomers_path, method: :get) do |f| %>
+          <%= f.error_notification %>
+          <%= f.input :category, as: :check_boxes, collection: Bloomer::CATEGORIES, label: 'Choisissez une catégorie'  %>
         </div>
+        <h4>Location</h4>
+        <div class="row content-research-index">
+          <%= f.input :city, label: 'Ville' %>
+        </div>
+        <h4>Spécialité</h4>
+        <div class="row content-research-index">
+          <%= f.input :speciality, collection: @specialities, label: 'Entrez les spécialités' %>
+        </div>
+        <span class="nb-next-button"><%= f.button :submit, "Go !" %></span>
+        <% end %>
       </div>
     </div>
-  </div>
-        <div class="wrapper-index text-center">
-          <h3> Les résultats </h3>
 
-        <div class="container">
-        <div class="row">
-          <% @bloomers.each do |bloomer| %>
-          <div class="col-md-4">
-            <%= link_to bloomer_path(bloomer), method: :get do %>
-           <div class="card">
-                <figure class="effect-zoe" style="background-image: url('<% if bloomer.photos? %><%= cl_image_path(bloomer.photos.last.path, :crop => :crop)%> <% else %> <%= "http://imageshack.com/a/img923/6113/XpMsUl.jpg"%> <% end %>');">
-                  <div class="test"> <h3> <%= bloomer.name %> </span></h3></div>
-                  <figcaption>
-                    <div class="row more-details">
-                      <div class="col-xs-6">
-                        <p> <%= bloomer.category %> </p>
-                      </div>
-                      <div class="col-xs-6">
-                        <p> <i class="fa fa-map-marker" aria-hidden="true"></i> Paris </p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-xs-6">
-                        <p>  <%= bloomer.speciality %> </p>
-                      </div>
-                      <div class="col-xs-6">
-                        <p class="icon-links">
-                          <i class="fa fa-calendar" aria-hidden="true"></i>
-                        </p>
-                      </div>
-                    </div>
-                  </figcaption>
-                </figure>
-              </div>
-              <% end %>
-            </div>
+    <div class="wrapper-results text-center">
+      <h3> Les résultats </h3>
+    <div class="list-bloomer">
+      <% @bloomers.each do |bloomer| %>
+      <div class="col-md-4" style="margin-right:0;margin-left:0;padding-right:0;padding-left:0;">
+        <%= link_to bloomer_path(bloomer), method: :get do %>
+       <div class="card">
+            <figure class="effect-zoe" style="background-image: url('<% if bloomer.photos? %><%= cl_image_path(bloomer.photos.last.path, :crop => :crop)%> <% else %> <%= "http://imageshack.com/a/img923/6113/XpMsUl.jpg"%> <% end %>');">
+              <div class="test"> <h3> <%= bloomer.name %> </span></h3></div>
+              <figcaption>
+                <div class="row more-details">
+                  <div class="col-xs-6">
+                    <p> <%= bloomer.category %> </p>
+                  </div>
+                  <div class="col-xs-6">
+                    <p> <i class="fa fa-map-marker" aria-hidden="true"></i> Paris </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-6">
+                    <p>  <%= bloomer.speciality %> </p>
+                  </div>
+                  <div class="col-xs-6">
+                    <p class="icon-links">
+                      <i class="fa fa-calendar" aria-hidden="true"></i>
+                    </p>
+                  </div>
+                </div>
+              </figcaption>
+            </figure>
+          </div>
           <% end %>
         </div>
-        </div>
-        </div>
-      </div>
+      <% end %>
+    </div>
+    </div>
+    </div>
+  </div>
     </div>
   </div>
 </div>
+  </div>
 
 <!-- LINK FROM CARDS TO FIRST BLOOMER FOR DEMO -->
 
