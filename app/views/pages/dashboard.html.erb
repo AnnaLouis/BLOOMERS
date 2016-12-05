@@ -113,7 +113,7 @@
 
         <!-- BTN CANDIDATURE -->
         <h3 class="dashboard-btn profile-link" data-target="#dashboard-candidatures">
-          <i class="fa fa-bullhorn" aria-hidden="true"></i>MES CANDIDATURES <span class="dash-notifs">(<%= @user.candidatures.count %>)</span>
+          <i class="fa fa-bullhorn" aria-hidden="true"></i>MES CANDIDATURES <span class="dash-notifs">(<%= @candidatures.count %>)</span>
         </h3>
         <% if @user.startup_admin? %>
         <h3 class="dashboard-btn profile-link" data-target="#dashboard-reviews">
@@ -223,67 +223,76 @@
         <!-- MAIN INFO -->
         <h2>Mes Candidatures</h2>
           <div class="row tabs-candidatures-status">
-            <div class="col-xs-2 tab-candidatures-status" data-target="new-candidatures">
-
+            <div class="col-xs-2 tab-candidatures-status active" data-target="#new-candidatures" style="border-radius: 2px 0 0 2px">
+              <h3><span>Nouvelles</span></h3>
             </div>
-            <div class="col-xs-2 tab-candidatures-status" data-target="to-meet-candidatures">
-
+            <div class="col-xs-2 tab-candidatures-status" data-target="#to-meet-candidatures">
+              <h3><span>A rencontrer</span></h3>
             </div>
-            <div class="col-xs-2 tab-candidatures-status" data-target="meeting-candidatures">
-
+            <div class="col-xs-2 tab-candidatures-status" data-target="#rdv-candidatures">
+              <h3><span>Mes RDV</span></h3>
             </div>
-            <div class="col-xs-2 tab-candidatures-status" data-target="short-list-candidatures">
-
+            <div class="col-xs-2 tab-candidatures-status" data-target="#short-list-candidatures">
+              <h3><span>Présélection</span></h3>
             </div>
-            <div class="col-xs-2 tab-candidatures-status" data-target="accepted-candidatures">
-
+            <div class="col-xs-2 tab-candidatures-status" data-target="#accepted-candidatures">
+              <h3><span>Acceptées</span></h3>
             </div>
-            <div class="col-xs-2 tab-candidatures-status" data-target="refused-candidatures">
-
+            <div class="col-xs-2 tab-candidatures-status" data-target="#refused-candidatures" style="border-radius:0 2px 2px 0">
+              <h3><span>Refusées</span></h3>
           </div>
         </div>
         <div class="dashboard-apply-cards">
-          <% @user.candidatures.each do |candidature| %>
-          <% if candidature.startup.user == current_user %>
-          <div class="dashboard-apply-card">
-            <h2><%= candidature.program.bloomer.name %></h2>
-            <h3>Programme : <%= candidature.program.name%></h3>
-              <h4>Status : <%= candidature.status %></h4>
-              <p><i class="fa fa-eye" aria-hidden="true"></i> Détails
-              <i class="fa fa-pencil" aria-hidden="true"></i> Editer
-              <i class="fa fa-trash-o" aria-hidden="true"></i> Supprimer</p>
-          </div>
-          <% elsif candidature.bloomer.user == current_user %>
-           <div class="dashboard-apply-card">
-              <div class="col-xs-2" style="margin:0;padding:0;height:50px">
-                <% if candidature.startup.logo? %>
-                  <%= cl_image_tag candidature.startup.logo.path, class:"candidature-avatar" %>
-                <% end %>
-              </div>
-              <div class="col-xs-10">
-                <h2>Startup : <%= candidature.startup.name %></h2>
-                <h3> > Programme : <%= candidature.program.name%></h3>
-              </div>
-              <h4>Statut : <%= candidature.status %></h4>
-              <p>
-              <%= link_to candidature_path(candidature) do %>
-                <span><i class="fa fa-eye" aria-hidden="true" style="margin-left:0px"></i> Détails</span>
-              <% end %>
-              <%= link_to short_list_candidature_path(candidature),
-                  controller: :candidatures, method: :short_list do %>
-                <span style="color:#FEC300"><i class="fa fa-list" aria-hidden="true"></i> Short-list</span>
-              <% end %>
-              <%= link_to accept_candidature_path(candidature),
-                  controller: :candidatures, method: :accept do %>
-              <span style="color:#13CE66"><i class="fa fa-check-circle" aria-hidden="true"></i> Accepter</span>
-              <% end %>
-              <%= link_to refuse_candidature_path(candidature),
-                  controller: :candidatures, method: :refuse do %>
-              <span style="color:#FF5656"><i class="fa fa-times" aria-hidden="true"></i> Refuser</span>
-              <% end %>
-              </p>
-            </div>
+          <!-- COTE STARTUP ADMIN -->
+          <% if current_user.startup_admin %>
+            <% @user.candidatures.each do |candidature| %>
+            <div class="dashboard-apply-card">
+              <h2><%= candidature.program.bloomer.name %></h2>
+              <h3>Programme : <%= candidature.program.name%></h3>
+                <h4>Status : <%= candidature.status %></h4>
+                <p><i class="fa fa-eye" aria-hidden="true"></i> Détails
+                <i class="fa fa-pencil" aria-hidden="true"></i> Editer
+                <i class="fa fa-trash-o" aria-hidden="true"></i> Supprimer</p>
             <% end %>
+          </div>
+          <!-- COTE BLOOMER ADMIN -->
+          <% elsif current_user.bloomer_admin %>
+            <!-- NOUVELLES CANDIDATURES -->
+            <div class="results-candidatures" id="new-candidatures">
+              <% @candidatures.select{ |candidature| candidature.status == "new"}.each do |candidature_new| %>
+                <%= render partial: "shared/bl_dashboard_candidatures_card", locals: {candidature: candidature_new} %>
+              <% end %>
+            </div>
+            <!-- TO MEET CANDIDATURES -->
+            <div class="results-candidatures hidden" id="to-meet-candidatures">
+              <% @candidatures.select{ |candidature| candidature.status == "to meet"}.each do |candidature_meet| %>
+                <%= render partial: "shared/bl_dashboard_candidatures_card", locals: {candidature: candidature_meet} %>
+              <% end %>
+            </div>
+            <!-- RDV CANDIDATURES -->
+            <div class="results-candidatures hidden" id="rdv-candidatures">
+              <% @candidatures.select{ |candidature| candidature.status == "rdv"}.each do |candidature_rdv| %>
+                <%= render partial: "shared/bl_dashboard_candidatures_card", locals: {candidature: candidature_rdv} %>
+              <% end %>
+            </div>
+            <!-- SHORT-LIST CANDIDATURES -->
+            <div class="results-candidatures hidden" id="short-list-candidatures">
+              <% @candidatures.select{ |candidature| candidature.status == "short list"}.each do |candidature_short_list| %>
+                <%= render partial: "shared/bl_dashboard_candidatures_card", locals: {candidature: candidature_short_list} %>
+              <% end %>
+            </div>
+            <!-- ACCEPTED CANDIDATURES -->
+            <div class="results-candidatures hidden" id="accepted-candidatures">
+              <% (@candidatures.select{ |candidature| candidature.status == "accepted"}).each do |candidature_accepted| %>
+                <%= render partial: "shared/bl_dashboard_candidatures_card", locals: {candidature: candidature_accepted} %>
+              <% end %>
+            </div>
+            <!-- REFUSED CANDIDATURES -->
+            <div class="results-candidatures hidden" id="refused-candidatures">
+              <% (@candidatures.select{ |candidature| candidature.status == "refused"}).each do |candidature_refused| %>
+                <%= render partial: "shared/bl_dashboard_candidatures_card", locals: {candidature: candidature_refused} %>
+              <% end %>
+            </div>
           <% end %>
         </div>
       </div>
@@ -329,16 +338,18 @@
   <%= javascript_tag do %>
 
 $(document).ready(function() {
+
+  <!-- MAIN TABS -->
   $(".dashboard-btn").on("click", function(e){
-<!--     // Change active tab -->
     $(".dashboard-btn").removeClass("active");
     $(this).addClass("active");
     $(".dashboard-content").addClass("hidden");
-    // Show target tab-content (use class="hidden")
+    <!-- // Show target tab-content (use class="hidden") -->
     tabSelector = $(this).data("target");
     console.log(tabSelector);
     $(tabSelector).removeClass("hidden");
   });
+
 
 <!--   // AFFICHER LE HEADER PROFILE -->
 
@@ -376,6 +387,21 @@ $(".profile-link").on("click", function(e){
     // Show target tab-content (use class="hidden")
     $("#header-startup-info").removeClass("hidden");
   });
+
+  $('#new-candidatures').on("click", function(e){
+
+  });
+
+<!--     CANDIDATURES TAB -->
+  $(".tab-candidatures-status").on("click", function(e){
+    $(".tab-candidatures-status").removeClass("active");
+    $(this).addClass("active");
+    $(".results-candidatures").addClass("hidden");
+    tabSelector = $(this).data("target");
+    console.log(tabSelector);
+    $(tabSelector).removeClass("hidden");
+  });
+
 });
 
   <% end %>

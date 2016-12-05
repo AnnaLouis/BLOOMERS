@@ -153,6 +153,7 @@
   margin-right:20px;
   margin-bottom:20px;
   background-color:white;
+  border-radius:2px;
 }
 
 .dashboard-apply-card h2{
@@ -205,14 +206,44 @@
 
 .tabs-candidatures-status {
   margin: 20px 20px 0 0;
+  background-color:white;
+  border-radius:2px;
 }
 
 .tab-candidatures-status {
   height:30px;
-  background-color: red;
+  padding: 10px 0px 25px 0px;
+  text-align: center;
+  // display:flex;
+  justify-content:center;
+}
+
+.tab-candidatures-status:hover {
+  background-color: rgba(4, 103, 125, 0.3);
+  color:white;
+  font-weight:bolder;
+}
+
+.tab-candidatures-status h3 {
+  font-family: 'Quicksand';
+  font-size: 13px;
+  font-weight: lighter;
+  text-transform: uppercase;
+  color: #04677D;
+  margin: 0;
+  cursor:pointer;
+}
+
+.tab-candidatures-status.active {
+  font-weight: bolder;
+  background-color: #04677D;
 
 }
 
+.tab-candidatures-status.active span {
+  border-bottom:1px solid #FEC300;
+  color:white;
+}
 
 // ANCIEN CSS
 
