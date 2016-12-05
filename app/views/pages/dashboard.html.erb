@@ -108,13 +108,14 @@
         <% if @user.programs.count == 0 %>
         <% else %>
           <% @user.programs.each do |program| %>
-            <h4 id="btn-bloomer-one"> <%= link_to program.name, program_path(program) %> </h4>
+            <h4 id="btn-bloomer-one" data-toggle="modal" data-target="#modal-program-<%= program.id %>" > <%= program.name %> </h4>
+            <!-- Modal -->
+            <%= render 'programs_modal', program: program %>
           <% end %>
         <% end %>
         <%= link_to new_program_path do %>
           <h4> > J'ajoute un programme </h4>
         <% end %>
-
 
           <!-- BATCHES LIST -->
           <h3 class="dashboard-btn profile-link" data-target="#dashboard-batches">
@@ -225,26 +226,26 @@
               <h3><span>Compte twitter</span> : <%= @user.bloomers.first.twitter_account %></h3>
             </div>
           </div>
-          <% @user.bloomers.first.programs.each do |program| %>
-          <h2>Programme "<%= program.name %>"</h2>
+        <!--   <#% @user.bloomers.first.programs.each do |program| %> -->
+          <!-- <h2>Programme "<#%= program.name %>"</h2>
             <div class="row dashboard-sub-content">
               <div class="col-xs-12 col-sm-6">
-                <h3><span>Nom</span> : <%= program.name %></h3>
-                <h3><span>Description</span> : <%= program.description %></h3>
-                <h3><span>Durée</span> : <%= program.duration %></h3>
-                <h3><span>Equité</span> : <%= program.equity %></h3>
-                <h3><span>Début d'inscription</span> : <%= program.candidature_open %></h3>
-                <h3><span>Fin d'inscription</span> : <%= program.candidature_close %></h3>
-                <h3><span>Critères de sélection</span> : <%= program.selection_criterias %></h3>
+                <h3><span>Nom</span> : <#%= program.name %></h3>
+                <h3><span>Description</span> : <#%= program.description %></h3>
+                <h3><span>Durée</span> : <#%= program.duration %></h3>
+                <h3><span>Equité</span> : <#%= program.equity %></h3>
+                <h3><span>Début d'inscription</span> : <#%= program.candidature_open %></h3>
+                <h3><span>Fin d'inscription</span> : <#%= program.candidature_close %></h3>
+                <h3><span>Critères de sélection</span> : <#%= program.selection_criterias %></h3>
               </div>
               <div class="col-xs-12 col-sm-6">
-                <h3><span>Accompagnement individuel</span> : <%= program.individual_coaching %></h3>
-                <h3><span>Accompagnement collectif</span> : <%= program.collective_coachin %></h3>
-                <h3><span>Ecosystème</span> : <%= program.ecosystem %></h3>
-                <h3><span>Avantages</span> : <%= program.advantages %></h3>
+                <h3><span>Accompagnement individuel</span> : <#%= program.individual_coaching %></h3>
+                <h3><span>Accompagnement collectif</span> : <#%= program.collective_coachin %></h3>
+                <h3><span>Ecosystème</span> : <#%= program.ecosystem %></h3>
+                <h3><span>Avantages</span> : <#%= program.advantages %></h3>
               </div>
-            </div>
-          <% end %>
+            </div> -->
+        <!--   <#% end %> -->
         </div>
       <% end %>
       <!-- DASHBOARD CONTENT 3. MES CANDIDATURES -->
