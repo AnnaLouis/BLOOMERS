@@ -1,0 +1,29 @@
+<div class="dashboard-apply-card">
+  <div class="col-xs-2" style="margin:0;padding:0;height:50px">
+    <% if candidature.startup.logo? %>
+      <%= cl_image_tag candidature.startup.logo.path, class:"candidature-avatar" %>
+    <% end %>
+  </div>
+  <div class="col-xs-10">
+    <h2>Startup : <%= candidature.startup.name %></h2>
+    <h3> > Programme : <%= candidature.program.name%></h3>
+  </div>
+  <h4>Statut : <%= candidature.status %></h4>
+  <p>
+  <%= link_to candidature_path(candidature) do %>
+    <span><i class="fa fa-eye" aria-hidden="true" style="margin-left:0px"></i> Détails</span>
+  <% end %>
+  <%= link_to short_list_candidature_path(candidature),
+      controller: :candidatures, method: :short_list do %>
+    <span style="color:#FEC300"><i class="fa fa-list" aria-hidden="true"></i> Short-list</span>
+  <% end %>
+  <%= link_to accept_candidature_path(candidature),
+      controller: :candidatures, method: :accept do %>
+  <span style="color:#13CE66"><i class="fa fa-check-circle" aria-hidden="true"></i> Accepter</span>
+  <% end %>
+  <%= link_to refuse_candidature_path(candidature),
+      controller: :candidatures, method: :refuse do %>
+  <span style="color:#FF5656"><i class="fa fa-times" aria-hidden="true"></i> Refuser</span>
+  <% end %>
+  </p>
+</div>
