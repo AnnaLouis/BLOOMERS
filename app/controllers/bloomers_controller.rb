@@ -29,6 +29,7 @@ class BloomersController < ApplicationController
     authorize @bloomer
     @alert_message = "Vous êtes sur la page de : #{@bloomer.name}"
     @bloomer_coordinates = { lat: @bloomer.latitude, lng: @bloomer.longitude }
+    @review = Review.new
   end
 
   def new
