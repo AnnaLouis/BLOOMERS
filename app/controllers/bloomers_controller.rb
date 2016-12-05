@@ -30,6 +30,8 @@ class BloomersController < ApplicationController
     @alert_message = "Vous êtes sur la page de : #{@bloomer.name}"
     @bloomer_coordinates = { lat: @bloomer.latitude, lng: @bloomer.longitude }
     @review = Review.new
+    @favorite = Favorite.new
+    @find_favorite = Favorite.find_by(bloomer_id: @bloomer.id, user_id: current_user.id)
   end
 
   def new

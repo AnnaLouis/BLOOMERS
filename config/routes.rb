@@ -9,9 +9,15 @@ Rails.application.routes.draw do
   resources :bloomers, only: [:index, :show, :create, :new] do
     resources :programs, only: [:new, :create]
     resources :reviews, only: [:new, :create]
-
+    resources :favorites, only: [:create] do
+      member do
+        post 'hide', to: "favorites#hide"
+        post 'add', to: "favorites#add"
+      end
+    end
   end
-      get "dashboard" => 'pages#dashboard'
+
+  get "dashboard" => 'pages#dashboard'
 
   resources :programs, only: [:new, :create, :show] do
     resources :candidatures, only: [:new, :create]
