@@ -6,11 +6,13 @@ class CandidaturePolicy < ApplicationPolicy
   end
 
   def new?
-    user.startups.include?(record.startup)
+    true
+    #user.startups.include?(record.startup)
   end
 
   def create?
-    user.startups.include?(record.startup)
+    true
+    #user.startups.include?(record.startup)
   end
 
   def accept?
