@@ -222,6 +222,26 @@
       <div class="col-xs-9 dashboard-content hidden" id="dashboard-candidatures">
         <!-- MAIN INFO -->
         <h2>Mes Candidatures</h2>
+          <div class="row tabs-candidatures-status">
+            <div class="col-xs-2 tab-candidatures-status" data-target="new-candidatures">
+
+            </div>
+            <div class="col-xs-2 tab-candidatures-status" data-target="to-meet-candidatures">
+
+            </div>
+            <div class="col-xs-2 tab-candidatures-status" data-target="meeting-candidatures">
+
+            </div>
+            <div class="col-xs-2 tab-candidatures-status" data-target="short-list-candidatures">
+
+            </div>
+            <div class="col-xs-2 tab-candidatures-status" data-target="accepted-candidatures">
+
+            </div>
+            <div class="col-xs-2 tab-candidatures-status" data-target="refused-candidatures">
+
+          </div>
+        </div>
         <div class="dashboard-apply-cards">
           <% @user.candidatures.each do |candidature| %>
           <% if candidature.startup.user == current_user %>
