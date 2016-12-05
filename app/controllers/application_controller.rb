@@ -20,6 +20,9 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :startup_admin, :bloomer_admin])
   end
 
+def default_url_options
+  { host: ENV['https://bloomersfrance.herokuapp.com/'] || 'localhost:3000' }
+end
 
   private
 
