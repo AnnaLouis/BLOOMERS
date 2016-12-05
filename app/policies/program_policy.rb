@@ -6,11 +6,12 @@ class ProgramPolicy < ApplicationPolicy
   end
 
   def new
-    user.bloomer_admin == true
+    # user.bloomer_admin == true
+    user.bloomers.include?(record.bloomer)
   end
 
   def create?
-    user.bloomer_admin == true
-    # TOUS LES BLOOMER ADMIN PEUVENT CREER ==> à voir si c'est uniquement le propriétaire du bloomer en question
+    # user.bloomer_admin == true
+    user.bloomers.include?(record.bloomer)
   end
 end

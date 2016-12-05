@@ -15,11 +15,11 @@ class BloomerPolicy < ApplicationPolicy
   # end
 
   def create?
-    record.user.bloomer_admin == true
+    record.user.bloomer_admin?
   end
 
-    # def update?
-    #   record.user == user
-    # end
+  # def update?
+  #   record.user == user
+  # end
 
 end
