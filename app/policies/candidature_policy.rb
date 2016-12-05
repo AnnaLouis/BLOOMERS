@@ -6,12 +6,12 @@ class CandidaturePolicy < ApplicationPolicy
   end
 
   def new?
-      return true
-    end
+    user.startups.include?(record.startup)
+  end
 
-    def create?
-      return true
-    end
+  def create?
+    user.startups.include?(record.startup)
+  end
 
   def accept?
     record.bloomer.user == user
