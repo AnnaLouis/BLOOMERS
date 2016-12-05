@@ -5,13 +5,18 @@ class ProgramPolicy < ApplicationPolicy
     end
   end
 
-  def new
-    # user.bloomer_admin == true
-    user.bloomers.include?(record.bloomer)
+  def show?
+    user.bloomer_admin == true && record.bloomer.user == user
+  end
+
+  def new?
+    user.bloomer_admin == true
+    # TOUS LES BLOOMER ADMIN PEUVENT CREER ==> à voir si c'est uniquement le propriétaire du bloomer en question
   end
 
   def create?
-    # user.bloomer_admin == true
-    user.bloomers.include?(record.bloomer)
+    user.bloomer_admin == true && record.bloomer.user == user
+    # TOUS LES BLOOMER ADMIN PEUVENT CREER ==> à voir si c'est uniquement le propriétaire du bloomer en question
   end
+
 end

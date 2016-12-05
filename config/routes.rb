@@ -9,10 +9,11 @@ Rails.application.routes.draw do
   resources :bloomers, only: [:index, :show, :create, :new] do
     resources :programs, only: [:new, :create]
     resources :reviews, only: [:new, :create]
+
   end
       get "dashboard" => 'pages#dashboard'
 
-  resources :programs, only: [] do
+  resources :programs, only: [:new, :create, :show] do
     resources :candidatures, only: [:new, :create]
     resources :batches, only: [:new, :create]
   end

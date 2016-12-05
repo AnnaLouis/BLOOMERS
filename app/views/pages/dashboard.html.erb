@@ -75,6 +75,8 @@
             <h4>> J'ajoute une startup</h4>
           <% end %>
         <% end %>
+
+
         <!-- BTN BLOOMER & BATCHS-->
         <% if @user.bloomer_admin? %>
           <!-- BLOOMER LISTS -->
@@ -94,22 +96,49 @@
           <%= link_to new_bloomer_path do %>
             <h4>> J'ajoute un bloomer</h4>
           <% end %>
+
+        <!-- PROGRAMS LIST -->
+        <h3 class="dashboard-btn" data-target="#dashboard-bloomer-one" id="btn-bloomer-all">
+          <i class="fa fa-list-alt" aria-hidden="true"></i>
+          <% if @user.programs.count > 1 %> MES PROGRAMMES
+          <% else %> MON PROGRAMME
+          <% end %>
+          <span class="dash-notifs">(<%= @user.programs.count %>)</span>
+        </h3>
+        <% if @user.programs.count == 0 %>
+        <% else %>
+          <% @user.programs.each do |program| %>
+            <h4 id="btn-bloomer-one"> <%= link_to program.name, program_path(program) %> </h4>
+          <% end %>
+        <% end %>
+        <%= link_to new_program_path do %>
+          <h4> > J'ajoute un programme </h4>
+        <% end %>
+
+
           <!-- BATCHES LIST -->
           <h3 class="dashboard-btn profile-link" data-target="#dashboard-batches">
             <i class="fa fa-users" aria-hidden="true"></i>
-            <% if @user.batches.count > 1 %>LES PROMOTIONS
-            <% else %>LA PROMOTION
+            <% if @user.batches.count > 1 %> MES PROMOTIONS
+            <% else %> MA PROMOTION
             <% end %>
             <span class="dash-notifs">(<%= @user.batches.count %>)</span>
           </h3>
-          <% if @user.batches.count == 0%>
+          <% if @user.batches.count == 0 %>
           <% else %>
             <% @user.batches.each do |batch| %>
               <h4 id="btn-bloomer-one">> <%= batch.name %></h4>
             <% end %>
           <% end %>
-          <h4>> J'ajoute un batch</h4>
+
+          <!-- <h4> <#%= link_to "J'ajoute un batch", new_program_batch_path(@program) %> </h4> -->
         <% end %>
+
+
+
+
+
+
 
         <!-- BTN CANDIDATURE -->
         <h3 class="dashboard-btn profile-link" data-target="#dashboard-candidatures">
