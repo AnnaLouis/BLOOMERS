@@ -42,6 +42,7 @@ class BloomersController < ApplicationController
     @bloomer.user = current_user
     authorize @bloomer
     if @bloomer.save
+      BloomerMailer.creation_confirmation(@bloomer).deliver_now
       redirect_to bloomer_path(@bloomer)
     else
       render :new

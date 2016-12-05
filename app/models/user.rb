@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook, :linkedin]
 
+  after_create :send_welcome_email
+
   has_many :startups
   has_many :bloomers
   has_many :candidatures, through: :startups
@@ -50,5 +52,11 @@ class User < ApplicationRecord
      user.save
     end
     return user
+  end
+
+  private
+
+  def send_welcome_email
+    UserMailer.welcome(self).deliver_now
   end
 end
