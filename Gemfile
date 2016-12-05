@@ -19,6 +19,7 @@ gem 'activeadmin', github: 'activeadmin/activeadmin'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 gem "jquery-fileupload-rails"
 
+
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
 end
@@ -45,6 +46,7 @@ group :development, :test do
   gem 'spring'
   gem 'listen', '~> 3.0.5'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem "letter_opener"
 end
 
 
