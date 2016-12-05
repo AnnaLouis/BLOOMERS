@@ -6,10 +6,10 @@ class BatchPolicy < ApplicationPolicy
   end
 
   def new?
-    user.bloomer_admin == true
+    user.bloomers.programs.include?(record.program)
   end
 
   def create?
-    user.bloomer_admin == true
+    user.bloomers.programs.include?(record.program)
   end
 end

@@ -340,7 +340,7 @@ review1.save
 
 # CANDIDATURE
 
-candidature1 = Candidature.new(status:"Pending")
+candidature1 = Candidature.new(status:"new")
 candidature1.team = "Trois EMLyon et deux Wagons."
 candidature1.your_problem = "En finir avec le mal-logement"
 candidature1.your_solution = "Des logements par milliers"

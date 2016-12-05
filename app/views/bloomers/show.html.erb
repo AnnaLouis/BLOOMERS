@@ -33,6 +33,7 @@
         <a class="sub-title tab active" data-target="#main-bloomer-info">INFO</a>
         <a class="sub-title tab" data-target="#entrepreneurs">ENTREPRENEURS</a>
         <a class="sub-title tab" data-target="#entreprises">ENTREPRISES</a>
+        <a class="sub-title tab" data-target="#reviews">REVIEWS</a>
       </div>
     </div>
   </div>
@@ -846,6 +847,41 @@
   <div class="wrapper-show-bloomer">
     <div class="container">
       <h2> Pas d'info pour l'instant</h2>
+    </div>
+  </div>
+</div>
+
+
+<div id="reviews" class="sub-content hidden" style="margin:0px;padding:0px">
+  <div class="wrapper-show-bloomer">
+    <div class="container">
+      <h2> Les Reviews</h2>
+
+      <ul>
+      <div class="row">
+
+      <% @bloomer.reviews.each do |review| %>
+        <div class="col-sm-4">
+        <div class="review">
+        <h3> <%= review.title %></h3>
+        <h4><%= review.description %></h4>
+        <p><% review.rating.times do %><i class="fa fa-star"></i><% end %></p>
+
+        </div>
+        </div>
+      <% end %>
+
+      </div>
+      </ul>
+
+
+      <%= simple_form_for [@bloomer, @review] do |f| %>
+      <%= f.input :title %>
+      <%= f.input :description %>
+      <%= f.input :rating, collection: [1,2,3,4,5] %>
+
+      <%= f.submit "add a review", class: "btn btn-primary" %>
+      <% end %>
     </div>
   </div>
 </div>

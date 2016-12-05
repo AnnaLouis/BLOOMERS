@@ -25,7 +25,7 @@ class CandidaturesController < ApplicationController
     @candidature = Candidature.new(candidature_params)
     @candidature.program_id = @program.id
     authorize @candidature
-    @candidature.status = "En cours"
+    @candidature.status = "new"
       if @candidature.save
         redirect_to candidature_path(@candidature)
       else
@@ -43,7 +43,7 @@ class CandidaturesController < ApplicationController
 
   def accept
     @candidature = Candidature.find(params[:id])
-    @candidature.status = "Candidature acceptée"
+    @candidature.status = "accepted"
     @candidature.save
     authorize @candidature
     redirect_to dashboard_path
@@ -51,7 +51,7 @@ class CandidaturesController < ApplicationController
 
   def refuse
     @candidature = Candidature.find(params[:id])
-    @candidature.status = "Candidature refusée"
+    @candidature.status = "refused"
     @candidature.save
     authorize @candidature
     redirect_to dashboard_path
@@ -59,7 +59,7 @@ class CandidaturesController < ApplicationController
 
   def short_list
     @candidature = Candidature.find(params[:id])
-    @candidature.status = "Short list"
+    @candidature.status = "short list"
     @candidature.save
     authorize @candidature
     redirect_to dashboard_path
