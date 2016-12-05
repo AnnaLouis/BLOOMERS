@@ -15,6 +15,7 @@ class StartupsController < ApplicationController
     @startup.user = current_user
     authorize(@startup)
     if @startup.save
+      StartupMailer.creation_confirmation(@startup).deliver_now
       redirect_to startup_path(@startup)
     else
       render 'new'

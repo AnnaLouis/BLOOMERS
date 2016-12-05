@@ -7,10 +7,6 @@ class BloomerMailer < ApplicationMailer
   #
   def creation_confirmation(bloomer)
     @bloomer = bloomer
-
-    mail(
-      to: @bloomer.user.email,
-      subject: "Le profil #{@bloomer.name} a bien été créé"
-      )
+    mail(to: @bloomer.user.email, subject: "Le profil #{@bloomer.name} a bien été créé.")
   end
 end
