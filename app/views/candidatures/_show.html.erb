@@ -1,0 +1,48 @@
+<div class="modal fade modal-candidatures" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="wrapper-show-candidature">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel"><%= @candidature.startup.name %></h4>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <div class="row content">
+              <div class="col-sm-6">
+                <div class="box-candidature">
+                  <h3> Votre constat </h3>
+                  <h4><%= @candidature.your_problem %></h4>
+                </div>
+                <div class="box-candidature">
+                  <h3> Votre Marché </h3>
+                  <h4><%= @candidature.your_market %></h4>
+                </div>
+                <div class="box-candidature">
+                  <h3> Votre Solution </h3>
+                  <h4><%= @candidature.your_solution %></h4>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="box-candidature">
+                  <h3> Qu'attendez-vous de votre incubation ? </h3>
+                  <h4><%= @candidature.question_incubation %></h4>
+                </div>
+                <div class="box-candidature">
+                  <h3> Votre Dream Team </h3>
+                  <h4><%= @candidature.team %></h4>
+                </div>
+                <div class="box-candidature">
+                  <h3> Votre candidature </h3>
+
+                  <h4><%= @candidature.status %></h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
