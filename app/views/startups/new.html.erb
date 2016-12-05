@@ -30,10 +30,19 @@
       </div>
       <!-- MES INFOS-->
       <div class="sub-new-bloomer-content hidden" id="step-2-description">
-            <%= f.input :website, label: 'Site internet' %>
-            <%= f.input :twitter_account, label: 'Compte Twitter' %>
-            <%= f.input :logo, as: :attachinary %>
-        <br><br>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6">
+          <div class="datepicker">
+            <%= f.input :date_creation, as: :string, input_html: {class: "not_to_display"}%>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+          <%= f.input :website, label: 'Site internet' %>
+          <%= f.input :twitter_account, label: 'Compte Twitter' %>
+          <%= f.input :logo, as: :attachinary %>
+        </div>
+      </div>
+        <!-- <br><br> -->
       <!-- SUBMIT -->
         <span class="nb-next-button"><%= f.button :submit, "Je crée ma structure !" %></span>
       </div>
