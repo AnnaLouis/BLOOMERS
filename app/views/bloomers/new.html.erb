@@ -56,11 +56,13 @@
       <div class="sub-new-bloomer-content hidden" id="step-3-infos">
       <div class="nb-title-sub-content"><h2>Informations pratiques</h2></div>
         <div class="col-xs-12 col-sm-6">
-          <%= f.input :date_creation, order: [:month, :year], label: 'Date de création' %>
-          <%= f.input :website, label: 'Site internet' %>
-          <%= f.input :email %>
+          <div class="datepicker">
+            <%= f.input :date_creation, as: :string, input_html: {class: "not_to_display"}%>
+          </div>
         </div>
         <div class="col-xs-12 col-sm-6">
+          <%= f.input :website, label: 'Site internet' %>
+          <%= f.input :email %>
           <%= f.input :address, label: 'Adresse' %>
           <%= f.input :city, label: 'Ville' %>
           <div class="nb-next-button" id="nb-next-button-3"><h4><span>SUIVANT</span> ></h4></div>
