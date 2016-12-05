@@ -27,9 +27,6 @@ Rails.application.routes.draw do
     end
   end
 
-  # DASHBOARD STARTUP_USER
-  get '/startup_dashboard' => 'pages#startup_dashboard'
-
   # resources :programs, only: [:edit, :update]
   resources :startups, only: [:show, :new, :create]
   mount Attachinary::Engine => "/attachinary"
