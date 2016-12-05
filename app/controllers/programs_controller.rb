@@ -1,18 +1,21 @@
 class ProgramsController < ApplicationController
 
+  def show
+    @program = Program.find(params[:id])
+    authorize @program
+  end
+
   def new
     @program = Program.new
-    @bloomer = Bloomer.find(params[:bloomer_id])
+    @bloomers = current_user.bloomers.order(:name)
     authorize @program
   end
 
   def create
     @program = Program.new(program_params)
-    @bloomer = Bloomer.find(params[:bloomer_id])
-    @program.bloomer = @bloomer
     authorize @program
     if @program.save
-      redirect_to bloomer_path(@bloomer)
+      redirect_to dashboard_path
     else
       render :new
     end
@@ -21,6 +24,6 @@ class ProgramsController < ApplicationController
   private
 
   def program_params
-     params.require(:program).permit(:name, :short_description, :description, :duration, :price, :equity, :candidature_open, :candidature_close, :individual_coaching, :collective_coachin, :ecosystem, :advantages, :selection_criterias)
+     params.require(:program).permit(:name, :short_description, :description, :duration, :price, :equity, :candidature_open, :candidature_close, :individual_coaching, :collective_coachin, :ecosystem, :advantages, :selection_criterias, :bloomer_id)
   end
 end

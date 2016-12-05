@@ -34,6 +34,7 @@
       <div class="sub-new-bloomer-content" id="step-1-name">
         <%= simple_form_for [@bloomer, @program] do |f| %>
         <%= f.error_notification %>
+        <%= f.association :bloomer, collection: @bloomers %>
         <%= f.input :name, label: 'Nom du programme' %>
         <div class="nb-next-button" id="nb-next-button-1"><h4><span>SUIVANT</span> </h4></div>
       </div>

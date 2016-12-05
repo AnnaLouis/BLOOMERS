@@ -1,0 +1,23 @@
+<h2 style="text-align:center"> <%= @program.name %> </h2>
+
+<div class="row dashboard-sub-content">
+
+  <div class="col-xs-12 col-sm-6">
+    <h3><span>Nom</span> : <%= @program.name %></h3>
+    <h3><span>Description</span> : <%= @program.description %></h3>
+    <h3><span>Durée</span> : <%= @program.duration %></h3>
+    <h3><span>Equité</span> : <%= @program.equity %></h3>
+    <h3><span>Début d'inscription</span> : <%= @program.candidature_open %></h3>
+    <h3><span>Fin d'inscription</span> : <%= @program.candidature_close %></h3>
+    <h3><span>Critères de sélection</span> : <%= @program.selection_criterias %></h3>
+  </div>
+
+  <div class="col-xs-12 col-sm-6">
+    <h3><span>Accompagnement individuel</span> : <%= @program.individual_coaching %></h3>
+    <h3><span>Accompagnement collectif</span> : <%= @program.collective_coachin %></h3>
+    <h3><span>Ecosystème</span> : <%= @program.ecosystem %></h3>
+    <h3><span>Avantages</span> : <%= @program.advantages %></h3>
+  </div>
+</div>
+
+<h4 style="text-align:center"> <%= link_to "Retour au dashboard", dashboard_path %> </h4>
