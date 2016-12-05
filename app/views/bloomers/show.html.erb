@@ -10,10 +10,27 @@
       </div>
       <div class="col-xs-3">
         <h4><span class="show-social-medias-button">
-          <% if current_user.startup_admin %>
-            <a href="<%= @bloomer.twitter_account %>" target="_blank">
-              <i class="fa fa-heart" aria-hidden="true"></i>
-            </a>
+          <!-- FAVORIS SEULEMENT POUR LES STARTUPS -->
+          <% if current_user.startup_admin == true %>
+            <!-- SI LE FAVORI N'EXISTE PAS -->
+            <% if @find_favorite.nil? %>
+              <%= link_to bloomer_favorites_path(@bloomer), controller: :favorites, method: :create do %>
+                <i class="fa fa-heart-o" aria-hidden="true"></i>
+              <% end %>
+            <% else %>
+              <!-- IF SHOWN -->
+              <% if !@find_favorite.hidden %>
+                <%= link_to hide_bloomer_favorite_path(@bloomer, @find_favorite), controller: :favorites, method: :hide do %>
+                  <i class="fa fa-heart" aria-hidden="true"></i>
+                <% end %>
+              <!-- IF HIDDEN -->
+              <% elsif @find_favorite.hidden %>
+                <%= link_to add_bloomer_favorite_path(@bloomer, @find_favorite), controller: :favorites, method: :add do %>
+                  <i class="fa fa-heart-o" aria-hidden="true"></i>
+                <% end %>
+              <% end %>
+            <!-- SI LE FAVORI EXIST -->
+            <% end %>
           <% end %>
           <a href="mailto:<%= @bloomer.email %>" target="_blank">
             <i class="fa fa-envelope" aria-hidden="true"></i>
