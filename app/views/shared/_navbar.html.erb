@@ -39,7 +39,7 @@
           <p class="navbar-bloomer-item"> <%= link_to "Voir mon profil startup", startup_dashboard_path %> </p>
           <% end %>
       <% end %>
-          <%= link_to destroy_user_session_path, method: :delete do %>
+          <%= link_to destroy_user_session_path, class: "navbar-bloomer-item navbar-bloomer-link", method: :delete do %>
           <%= t(".sign_out", default: "Déconnexion") %>
           <% end %>
     <% else%>
