@@ -11,7 +11,9 @@ class BatchesController < ApplicationController
 
   def new
     @batch = Batch.new
-    @program = Program.find(params[:program_id])
+    @user = current_user
+    @bloomers = Bloomer.select{ |bloomer| bloomer.user_id == current_user.id }
+    @programs = Program.select{ |program| program.user_id == current_user.id }
     authorize @batch
   end
 

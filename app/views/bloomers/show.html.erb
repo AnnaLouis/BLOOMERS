@@ -10,9 +10,11 @@
       </div>
       <div class="col-xs-3">
         <h4><span class="show-social-medias-button">
-          <a href="<%= @bloomer.twitter_account %>" target="_blank">
-            <i class="fa fa-star" aria-hidden="true"></i>
-          </a>
+          <% if current_user.startup_admin %>
+            <a href="<%= @bloomer.twitter_account %>" target="_blank">
+              <i class="fa fa-heart" aria-hidden="true"></i>
+            </a>
+          <% end %>
           <a href="mailto:<%= @bloomer.email %>" target="_blank">
             <i class="fa fa-envelope" aria-hidden="true"></i>
           </a>
@@ -32,8 +34,8 @@
       <div class="col-xs-12">
         <a class="sub-title tab active" data-target="#main-bloomer-info">INFO</a>
         <a class="sub-title tab" data-target="#entrepreneurs">ENTREPRENEURS</a>
-        <a class="sub-title tab" data-target="#entreprises">ENTREPRISES</a>
-        <a class="sub-title tab" data-target="#reviews">REVIEWS</a>
+        <a class="sub-title tab" data-target="#reviews">AVIS <span>(<%= @bloomer.reviews.count %>)</span></a>
+        <a class="sub-title tab hidden" data-target="#entreprises">ENTREPRISES</a>
       </div>
     </div>
   </div>
@@ -73,7 +75,7 @@
               <div class="col-xs-12 col-md-6">
                 <div class="div-main-info">
                   <h2>CREATION</h2>
-                  <h3><%= @bloomer.date_creation %></h3>
+                  <h3><%= @bloomer.date_creation.strftime('%B %Y') %></h3>
                 </div>
               </div>
             </div>
@@ -546,56 +548,6 @@
               </div>
             </div>
           </div>
-          <!-- avis startups -->
-          <div class="col-xs-12 col-sm-6">
-            <h3>AVIS DES STARTUPS</h3>
-            <div class="div-content-white">
-              <div class="reviews-bloomer-small-card hidden">
-                <div class="logo-startup-review">
-                  <img src="http://laurenceourac.com/home/wp-content/uploads/2015/12/ANNA.jpg" class="avatar">
-                </div>
-                <div class="text-startup-reviews">
-                  <h2>ASK ANNA</h2>
-                  <p>« Le meilleur programme d’incubation à Paris »
-                  <br>« Beaucoup de bienveillance »</p>
-                  <h4>En savoir +</h4>
-                </div>
-              </div>
-              <div class="reviews-bloomer-small-card hidden">
-                <div class="logo-startup-review">
-                  <img src="http://laurenceourac.com/home/wp-content/uploads/2015/12/ANNA.jpg" class="avatar">
-                </div>
-                <div class="text-startup-reviews">
-                  <h2>ASK ANNA</h2>
-                  <p>« Le meilleur programme d’incubation à Paris »
-                  <br>« Beaucoup de bienveillance »</p>
-                  <h4>En savoir +</h4>
-                </div>
-              </div>
-              <div class="reviews-bloomer-small-card hidden">
-                <div class="logo-startup-review">
-                  <img src="http://laurenceourac.com/home/wp-content/uploads/2015/12/ANNA.jpg" class="avatar">
-                </div>
-                <div class="text-startup-reviews">
-                  <h2>ASK ANNA</h2>
-                  <p>« Le meilleur programme d’incubation à Paris »
-                  <br>« Beaucoup de bienveillance »</p>
-                  <h4>En savoir +</h4>
-                </div>
-              </div>
-              <div class="reviews-bloomer-small-card hidden">
-                <div class="logo-startup-review">
-                  <div class="avatar" style="background-color: #FAFAFA;text-align:center;height:40px; width:40px">
-                    <h2 style="padding-top:13px;color:#8C8C8C">?</h2>
-                  </div>
-                </div>
-                <div class="text-startup-reviews" style="margin-bottom:0">
-                  <h2> PARTAGEZ VOTRE EXPERIENCE !</h2>
-                  <p>Ecrivez votre review et aidez les autres entrepreneurs à mieux choisir</p>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -855,21 +807,30 @@
 <div id="reviews" class="sub-content hidden" style="margin:0px;padding:0px">
   <div class="wrapper-show-bloomer">
     <div class="container">
-      <h2> Pas de reviews pour l'instant</h2>
-      <ul>
-      <% @bloomer.reviews.each do |review| %>
-        <li><h3> <%= review.title %></h3></li>
-        <li><h4><%= review.description %></h4></li>
-        <li><p><%= review.rating %></p></li>
+      <h2> Les Reviews</h2>
 
+      <ul>
+      <div class="row">
+
+      <% @bloomer.reviews.each do |review| %>
+        <div class="col-sm-4">
+        <div class="review">
+        <h3> <%= review.title %></h3>
+        <h4><%= review.description %></h4>
+        <p><% review.rating.times do %><i class="fa fa-star"></i><% end %></p>
+
+        </div>
+        </div>
       <% end %>
+
+      </div>
       </ul>
 
 
       <%= simple_form_for [@bloomer, @review] do |f| %>
       <%= f.input :title %>
       <%= f.input :description %>
-      <%= f.input :rating %>
+      <%= f.input :rating, collection: [1,2,3,4,5] %>
 
       <%= f.submit "add a review", class: "btn btn-primary" %>
       <% end %>
