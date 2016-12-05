@@ -9,4 +9,5 @@ class Review < ApplicationRecord
   validates :rating, inclusion: { in: (0..3).to_a,
     message: "%{value} is not a correct rate" }
   validates :rating, numericality: { only_integer: true }
+
 end
