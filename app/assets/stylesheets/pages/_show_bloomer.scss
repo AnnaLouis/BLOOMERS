@@ -108,6 +108,12 @@
   cursor: pointer;
 }
 
+.wrapper-show-bloomer .sub-title span {
+  font-weight: lighter;
+  color:#FEC300;
+  font-size:20px;
+}
+
 .wrapper-show-bloomer .sub-title.active {
   border-bottom : 2px solid #FEC300;
   font-weight:bolder;
