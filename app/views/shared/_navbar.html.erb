@@ -27,7 +27,7 @@
       <!-- Bloomer Admin -->
       <%  elsif current_user.bloomer_admin? %>
           <% if current_user.bloomers.count == 0 %>
-          <p class="navbar-bloomer-item"> <%= link_to "Je crée mon profil bloomer",  dashboard_startup_path %> </p>
+          <p class="navbar-bloomer-item"> <%= link_to "Je crée mon profil bloomer", new_bloomer_path %> </p>
           <% else %>
           <p class="navbar-bloomer-item"> <%= link_to "Voir mon profil bloomer", dashboard_path %> </p>
           <% end %>
@@ -36,7 +36,7 @@
            <% if current_user.startups.count == 0 %>
           <p class="navbar-bloomer-item"> <%= link_to "Je crée mon profil startup",  new_startup_path %> </p>
           <% else %>
-          <p class="navbar-bloomer-item"> <%= link_to "Voir mon profil startup", startup_dashboard_path %> </p>
+          <p class="navbar-bloomer-item"> <%= link_to "Voir mon profil startup", dashboard_path %> </p>
           <% end %>
       <% end %>
           <%= link_to destroy_user_session_path, class: "navbar-bloomer-item navbar-bloomer-link", method: :delete do %>
