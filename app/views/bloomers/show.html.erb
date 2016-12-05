@@ -855,14 +855,23 @@
 <div id="reviews" class="sub-content hidden" style="margin:0px;padding:0px">
   <div class="wrapper-show-bloomer">
     <div class="container">
-      <h2> Pas de reviews pour l'instant</h2>
-      <ul>
-      <% @bloomer.reviews.each do |review| %>
-        <li><h3> <%= review.title %></h3></li>
-        <li><h4><%= review.description %></h4></li>
-        <li><p><%= review.rating %></p></li>
+      <h2> Les Reviews</h2>
 
+      <ul>
+      <div class="row">
+
+      <% @bloomer.reviews.each do |review| %>
+        <div class="col-sm-4">
+        <div class="review">
+        <h3> <%= review.title %></h3>
+        <h4><%= review.description %></h4>
+        <p><% review.rating.times do %><i class="fa fa-star"></i><% end %></p>
+
+        </div>
+        </div>
       <% end %>
+
+      </div>
       </ul>
 
 
