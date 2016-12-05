@@ -1,7 +1,7 @@
 class UserMailerPreview < ActionMailer::Preview
  def welcome
    user = User.first
-   UserMailer.welcome(user)
+   UserMailer.creation_confirmation(user)
  end
 end
 

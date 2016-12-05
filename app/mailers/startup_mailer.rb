@@ -5,12 +5,8 @@ class StartupMailer < ApplicationMailer
   #
   #   en.startup_mailer.creation_confirmation.subject
   #
-  def creation_confirmation
-    @greeting = "Hi"
-
-    mail(
-       to: @startup.user.email
-       subject: "Le profil #{@startup.name} a bien été créé"
-       )
+  def creation_confirmation(startup)
+    @startup = startup
+    mail(to: @startup.user.email, subject: "Le profil #{@startup.name} a bien été créé.")
   end
 end
