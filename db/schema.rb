@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161201132618) do
+ActiveRecord::Schema.define(version: 20161205161400) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,6 +87,17 @@ ActiveRecord::Schema.define(version: 20161201132618) do
     t.text     "question_incubation"
     t.index ["program_id"], name: "index_candidatures_on_program_id", using: :btree
     t.index ["startup_id"], name: "index_candidatures_on_startup_id", using: :btree
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.boolean  "hidden"
+    t.text     "comment"
+    t.integer  "user_id"
+    t.integer  "bloomer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bloomer_id"], name: "index_favorites_on_bloomer_id", using: :btree
+    t.index ["user_id"], name: "index_favorites_on_user_id", using: :btree
   end
 
   create_table "incubations", force: :cascade do |t|
@@ -176,6 +187,8 @@ ActiveRecord::Schema.define(version: 20161201132618) do
   add_foreign_key "bloomers", "users"
   add_foreign_key "candidatures", "programs"
   add_foreign_key "candidatures", "startups"
+  add_foreign_key "favorites", "bloomers"
+  add_foreign_key "favorites", "users"
   add_foreign_key "incubations", "batches"
   add_foreign_key "incubations", "startups"
   add_foreign_key "programs", "bloomers"
