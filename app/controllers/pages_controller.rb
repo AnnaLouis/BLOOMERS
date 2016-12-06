@@ -35,12 +35,11 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    @user = current_user
-    @startups = Startup.select{ |startup| startup.user_id == current_user.id}
-    @bloomers = Bloomer.select{ |bloomer| bloomer.user_id == current_user.id }
-    if @user.startup_admin
+    @startups = current_user.startups
+    @bloomers = current_user.bloomers
+    if current_user.startup_admin
       @candidatures = Candidature.select{ |candidature| candidature.startup.user == current_user }
-    elsif @user.bloomer_admin
+    elsif current_user.bloomer_admin
       @candidatures = Candidature.select{ |candidature| candidature.program.bloomer.user == current_user }
     end
   end
