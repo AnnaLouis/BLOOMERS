@@ -1,4 +1,4 @@
-.wrapper-bloomer {
+.wrapper {
   width: 100vw;
   margin-left: 0px;
   color: #8C8C8C;
@@ -9,6 +9,16 @@
   padding-top: 10px;
   padding-bottom: 30px;
   margin-top: 20px;
+  border-radius:3px;
+  padding-right:30px;
+}
+
+.card-methodo {
+  padding: 30px 30px 30px 30px;
+}
+
+#methodo-cards {
+  padding: 0px 100px 0px 100px;
 }
 
 .solution h1 {
@@ -40,38 +50,41 @@
 
 
 #explore {
-  background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('1.jpg');
+  background-color:#FFFFFF;
+  opacity:0.8;
   background-size: cover;
   background-attachment: fixed;
+  padding-right: 40px;
 }
 
 #explore:hover {
-  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('1.jpg');
+  background-color: #00697F;
+  opacity:0.5;
   transition: 2000;
   color: white;
   background-attachment: fixed;
 }
 
 #partage {
-  background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('2.jpg');
+  background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('landing4.png');
   background-size: cover;
   background-attachment: fixed;
 }
 #partage:hover {
-  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('2.jpg');
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('landing3.png');
   transition: 2000;
   color: white;
   background-attachment: fixed;
 }
 
 #guide {
-  background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('3.jpg');
+  background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('landing4.png');
   background-size: cover;
   background-attachment: fixed;
 }
 
 #guide:hover {
-  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('3.jpg');
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('landing3.png');
   transition: 2000;
   color: white;
   background-attachment: fixed;

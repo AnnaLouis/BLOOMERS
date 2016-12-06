@@ -7,7 +7,7 @@
       <div class="dashboard-avatar-text">
         <h2><%= current_user.first_name%> <%= current_user.last_name%>  </h2>
         <% if current_user.startup_admin && current_user.startups.count != 0 %>
-          <h3>CEO de <% current_user.startups.each do |startup|%><%=startup.name%>, <%end%></h3>
+          <h3>CEO de <% current_user.startups.each do |startup|%><%=startup.name%> <%end%></h3>
         <% elsif current_user.bloomer_admin && current_user.bloomers.count != 0 %>
           <h3>Manager de <% current_user.bloomers.each do |bloomer|%><%=bloomer.name%>, <%end%></h3>
         <%end%>
@@ -51,7 +51,7 @@
     <!-- DASH CONTENT -->
     <div class="second-row-dashboard">
       <!-- DASHBOARD TABS -->
-      <div class="col-xs-3 dashboard-main-tabs">
+      <div class="col-xs-4 dashboard-main-tabs">
         <!-- BTN PROFIL -->
         <h3 class="dashboard-btn active profile-link" data-target="#dashboard-profile" style="margin-top:0;">
           <i class="fa fa-user" aria-hidden="true"></i>MON PROFIL
@@ -158,7 +158,7 @@
         </h3>
       </div>
       <!-- DASHBOARD CONTENT 1. PROFILE -->
-      <div class="col-xs-9 dashboard-content" id="dashboard-profile">
+      <div class="col-xs-8 dashboard-content" id="dashboard-profile">
         <!-- MAIN INFO -->
         <h2>Mon profil</h2>
         <div class="row dashboard-sub-content">

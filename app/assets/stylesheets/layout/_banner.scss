@@ -2,19 +2,11 @@
   background-image: url('landing2.png');
   text-align: center;
   height: 630px;
-  /* if you have a 70px navbar => height: calc(100vh - 70px); */
-  background-size: cover !important;
   display: flex;
-  padding-top: 80px;
   justify-content: center;
   font-weight: lighter;
   background-attachment: fixed;
   align-items:center;
-}
-
-.banner img {
-  filter: brightness(2);
-  filter: blur(1);
 }
 
 .banner h1 {
@@ -24,12 +16,6 @@
   text-decoration: none;
   padding-bottom: 40px;
   line-height:20px;
-}
-.banner p {
-  font-size: 17px;
-  margin-bottom: 20px;
-  color: #FFC400;
-  text-decoration: none;
 }
 
 .banner a {
@@ -49,14 +35,12 @@
 }
 
 .banner-cards {
-  padding: 30px 30px 30px 30px;
+  padding-top:50px;
 }
-
 .card-banner {
   background-color:#FFFFFF;
   border-radius:3px;
   margin: 0px;
-  padding: 20px 20px 20px 20px;
   height: 200px;
   max-height: 200px;
   width: 270px;
