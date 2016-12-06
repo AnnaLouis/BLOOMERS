@@ -1,32 +1,33 @@
 <div class="wrapper-new">
   <div class="wrapper-page-new-bloom">
+    <div class="row">
     <div class="col-xs-3 new-bloomer-left">
       <div class="steps">
         <!-- CANDIDATURE -->
         <h1>Je postule</h1>
-        <!-- STEP 1 - STARTUP -->
+        <!-- STEP 1 - CANDIDATURE -->
         <div class="nb-global-step active" data-target="#step-1-name">
           <div class="circle active" data-target="#step-1-name"></div>
-          <div class="step"><p><span>étape 1</span><br>La startup</p></div>
+          <div class="step"><p><span>je postule</span><br>en un click !</p></div>
         </div>
         <!-- Step 2 - DREAMTEAM -->
-        <div class="line-box"><div class="grey-line"></div></div>
+<!--         <div class="line-box"><div class="grey-line"></div></div>
         <div class="nb-global-step" data-target="#step-2-description">
           <div class="circle" id="circle-2"></div>
           <div class="step"><p><span>étape 2</span><br>L'équipe</p></div>
-        </div>
+        </div> -->
         <!-- Step 3 - PROJECT -->
-        <div class="line-box"><div class="grey-line"></div></div>
+<!--         <div class="line-box"><div class="grey-line"></div></div>
         <div class="nb-global-step" data-target="#step-3-infos">
           <div class="circle" id="circle-3"></div>
           <div class="step"><p><span>étape 3</span><br>Le projet</p></div>
-        </div>
+        </div> -->
         <!-- Step 4 - MOTIVATION -->
-        <div class="line-box"><div class="grey-line"></div></div>
+<!--         <div class="line-box"><div class="grey-line"></div></div>
         <div class="nb-global-step" data-target="#step-4-medias">
           <div class="circle" id="circle-4"></div>
           <div class="step"><p><span>étape 4</span><br>Motivations</p></div>
-        </div>
+        </div> -->
       </div>
     </div>
 
@@ -48,58 +49,62 @@
               <%= simple_form_for [@program, @candidature] do |f| %>
               <%= f.error_notification %>
               <%= f.input :startup_id, collection: @startups %>
+              <%= f.input :question_incubation, label: "Un commentaire ? Une remarque ?" %>
+              <span class="nb-next-button"><%= f.button :submit, "Je candidate !" %></span>
+              <% end %>
           </div>
         </div>
-        <div class="nb-next-button" id="nb-next-button-1">
+<!--         <div class="nb-next-button" id="nb-next-button-1">
           <h4><span>SUIVANT</span> ></h4>
-        </div>
+        </div> -->
       </div>
 
       <!-- Step 2 - PROJECT -->
-      <div class="sub-new-bloomer-content hidden" id="step-2-description">
-        <%= f.input :team, label: 'Qui se cache derrière votre projet ?' %>
+      <!-- <div class="sub-new-bloomer-content hidden" id="step-2-description">
+        <#%= f.input :team, label: 'Qui se cache derrière votre projet ?' %>
         <div class="nb-next-button" id="nb-next-button-2">
           <h4><span>SUIVANT</span> ></h4>
         </div>
       </div>
-
+ -->
       <!-- Step 3 - INCUBATION -->
-      <div class="sub-new-bloomer-content hidden" id="step-3-infos">
+      <!-- <div class="sub-new-bloomer-content hidden" id="step-3-infos">
         <div class="nb-title-sub-content">
           <h2>Votre projet aujourd'hui</h2>
         </div>
         <div class="nb-sub-content">
           <div class="col-xs-12 col-sm-6">
-            <%= f.input :your_problem, label: 'Quel est votre constat ?' %>
-            <%= f.input :your_market, label: 'À quel marché vous adressez-vous ?' %>
+            <#%= f.input :your_problem, label: 'Quel est votre constat ?' %>
+            <#%= f.input :your_market, label: 'À quel marché vous adressez-vous ?' %>
           </div>
           <div class="col-xs-12 col-sm-6">
-            <%= f.input :your_solution, label: 'Quelle solution avez-vous trouvé ?' %>
+            <#%= f.input :your_solution, label: 'Quelle solution avez-vous trouvé ?' %>
             <div class="nb-next-button" id="nb-next-button-3">
               <h4><span>SUIVANT</span> ></h4>
             </div>
           </div>
-        </div>
-      </div>
+        </div> -->
+     <!--  </div> -->
       <!-- SOCIAL MEDIAS -->
-      <div class="sub-new-bloomer-content hidden" id="step-4-medias">
+<!--       <div class="sub-new-bloomer-content hidden" id="step-4-medias">
         <div class="nb-title-sub-content">
           <h2>Votre motivation</h2>
-        </div>
+        </div> -->
       <!-- SUBMIT -->
-        <div class="col-xs-12 col-sm-6">
-          <%= f.input :question_incubation, label: "Qu'attendez-vous de votre incubation?" %>
+<!--         <div class="col-xs-12 col-sm-6">
+          <#%= f.input :question_incubation, label: "Qu'attendez-vous de votre incubation?" %>
         </div>
         <div class="col-xs-12 col-sm-6">
-          <%= f.input :phone_number, label: 'Votre numéro de téléphone : ' %>
+          <#%= f.input :phone_number, label: 'Votre numéro de téléphone : ' %>
           <span class="nb-next-button">
             <p> Merci d'avoir postulé. <br>Nous reviendrons vers vous au plus vite ! </p>
-            <span class="nb-next-button"><%= f.button :submit, "Je candidate !" %></span>
+            <span class="nb-next-button"><#%= f.button :submit, "Je candidate !" %></span>
           </span>
-          <% end %>
+          <#% end %>
         </div>
-      </div>
+      </div> -->
    </div>
+</div>
 </div>
 
 <% content_for(:after_js) do %>
