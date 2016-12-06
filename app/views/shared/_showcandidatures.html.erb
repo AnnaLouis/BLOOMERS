@@ -3,43 +3,117 @@
     <div class="modal-content">
       <div class="wrapper-show-candidature">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel"><%= candidature.startup.name %></h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h2 class="modal-title" id="myModalLabel">
+            <% if candidature.startup.logo? %>
+            <%= cl_image_tag candidature.startup.logo.path, class:"dashboard-avatar" %>
+            <% else %>
+            <img src="http://www.addressbazar.com/images/logo/no-logo.png" class="dashboard-avatar">
+            <% end %>
+            <%= candidature.startup.name %>
+          </h2>
         </div>
-        <div class="modal-body">
-          <div class="container">
-            <div class="row content">
-              <div class="col-sm-8">
+        <div class="modal-body" style="padding:15px 40px 0px 40px">
+          <div class="row content">
+            <div class="col-xs-12" style="margin:0;padding:0;">
+              <div class="col-xs-9 startup-info-dashboard-candidature">
+                <h2>La startup</h2>
                 <div class="box-candidature">
-                  <h3> Votre constat </h3>
-                  <h4><%= candidature.your_problem %></h4>
-                </div>
-                <div class="box-candidature">
-                  <h3> Votre Marché </h3>
-                  <h4><%= candidature.your_market %></h4>
-                </div>
-                <div class="box-candidature">
-                  <h3> Votre Solution </h3>
-                  <h4><%= candidature.your_solution %></h4>
-                </div>
-                <div class="box-candidature">
-                  <h3> Qu'attendez-vous de votre incubation ? </h3>
-                  <h4><%= candidature.question_incubation %></h4>
-                </div>
-                <div class="box-candidature">
-                  <h3> Votre Dream Team </h3>
-                  <h4><%= candidature.team %></h4>
-                </div>
-                <div class="box-candidature">
-                  <h3> Votre candidature </h3>
-
-                  <h4><%= candidature.status %></h4>
+                 <h3><%= candidature.startup.short_description %></h3>
+                 <h4><%= candidature.startup.description %></h4>
+               </div>
+               <div class="box-candidature">
+                <h3> La dream   team </h3>
+                <h4><%= candidature.startup.team %></h4>
+              </div>
+              <h2>Pourquoi ?</h2>
+              <div class="box-candidature">
+                <h3> Le Problème </h3>
+                <h4><%= candidature.startup.your_problem %></h4>
+              </div>
+              <div class="box-candidature">
+                <h3> Le Marché </h3>
+                <h4><%= candidature.startup.your_market %></h4>
+              </div>
+              <h2>La solution</h2>
+              <div class="box-candidature">
+                <h3> La Solution de <%= candidature.startup.name %> </h3>
+                <h4><%= candidature.startup.your_solution %></h4>
+              </div>
+              <h2>Pourquoi <%= candidature.program.bloomer.name%> ?</h2>
+              <div class="box-candidature">
+                <h3> Motivation </h3>
+                <h4><%= candidature.question_incubation %></h4>
+              </div>
+              <h2>Informations pratiques</h2>
+              <div class="box-candidature">
+                <div class="row">
+                  <div class="col-xs-6">
+                    <h3> Website </h3>
+                    <h4><%= candidature.startup.website %></h4>
+                    <br>
+                    <h3> Numéro de Téléphone </h3>
+                    <h4><%= candidature.startup.phone_number %></h4>
+                  </div>
+                  <div class="col-xs-6">
+                    <h3> Twitter </h3>
+                    <h4><%= candidature.startup.twitter_account %></h4>
+                  </div>
                 </div>
               </div>
             </div>
+            <div class="col-xs-3 startup-info-dashboard-candidature">
+              <h2>Status</h2>
+              <div class="box-status">
+               <h3>
+                <% if candidature.status == "new" %>nouvelle
+                <% elsif candidature.status == "to meet" %>à rencontrer
+                <% elsif candidature.status == "new" %>Rdv pris
+                <% elsif candidature.status == "new" %>préselectionnée
+                <% elsif candidature.status == "new" %>acceptée
+                <% elsif candidature.status == "new" %>refusée
+                <% else %> error
+                <% end %>
+              </h3>
+            </div>
+            <% if candidature.program.bloomer.user == current_user %>
+            <h2>ACTION</h2>
+            <div class="button-action-status">
+              <%= link_to short_list_candidature_path(candidature),
+              controller: :candidatures, method: :to_meet do %>
+              <span style="color:#8C8C8C"><i class="fa fa-clock-o" aria-hidden="true"></i> A rencontrer</span>
+              <% end %>
+            </div>
+            <div class="button-action-status">
+              <%= link_to short_list_candidature_path(candidature),
+              controller: :candidatures, method: :short_list do %>
+              <span style="color:#8C8C8C"><i class="fa fa-commenting" aria-hidden="true"></i> Prendre un RDV</span>
+              <% end %>
+            </div>
+            <div class="button-action-status">
+              <%= link_to short_list_candidature_path(candidature),
+              controller: :candidatures, method: :short_list do %>
+              <span style="color:#FEC300"><i class="fa fa-list" aria-hidden="true"></i> La présélectionner</span>
+              <% end %>
+            </div>
+            <div class="button-action-status">
+              <%= link_to accept_candidature_path(candidature),
+              controller: :candidatures, method: :accept do %>
+              <span style="color:#13CE66"><i class="fa fa-check-circle" aria-hidden="true"></i> Accepter</span>
+              <% end %>
+            </div>
+            <div class="button-action-status">
+              <%= link_to refuse_candidature_path(candidature),
+              controller: :candidatures, method: :refuse do %>
+              <span style="color:#FF5656"><i class="fa fa-times" aria-hidden="true"></i> Refuser</span>
+              <% end %>
+            </div>
+            <% end %>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
+</div>
 </div>

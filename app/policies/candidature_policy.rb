@@ -16,14 +16,18 @@ class CandidaturePolicy < ApplicationPolicy
   end
 
   def accept?
-    record.bloomer.user == user
+    record.program.bloomer.user == user
   end
 
   def refuse?
-    record.bloomer.user == user
+    record.program.bloomer.user == user
   end
 
   def short_list?
-    record.bloomer.user == user
+    record.program.bloomer.user == user
+  end
+
+  def to_meet?
+    record.program.bloomer.user == user
   end
 end

@@ -11,7 +11,7 @@ class PagesController < ApplicationController
     @hash = Gmaps4rails.build_markers(@bloomers) do |bloomer, marker|
       marker.lat bloomer.latitude
       marker.lng bloomer.longitude
-      marker.infowindow "<h2>#{bloomer.name}</h2> <h3>#{bloomer.category}</h3><h4><i class=\"fa fa-hashtag\" aria-hidden=\"true\"></i> #{bloomer.speciality}</h4>"
+      marker.infowindow render_to_string(:partial => "/shared/infowindow", :locals => { :bloomer => bloomer})
       if bloomer.category == "Incubateur"
         marker.picture({
          :url => "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=I|04677D|000000",
@@ -35,12 +35,14 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    @user = current_user
-    @startups = Startup.select{ |startup| startup.user_id == current_user.id}
-    @bloomers = Bloomer.select{ |bloomer| bloomer.user_id == current_user.id }
-    if @user.startup_admin
+    @startups = current_user.startups
+    @bloomers = current_user.bloomers
+    if current_user.startup_admin
+      @favorites = Favorite.select{ |favorite| favorite.user == current_user && favorite.hidden == false }
+    end
+    if current_user.startup_admin
       @candidatures = Candidature.select{ |candidature| candidature.startup.user == current_user }
-    elsif @user.bloomer_admin
+    elsif current_user.bloomer_admin
       @candidatures = Candidature.select{ |candidature| candidature.program.bloomer.user == current_user }
     end
   end

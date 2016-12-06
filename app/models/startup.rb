@@ -3,7 +3,6 @@ class Startup < ApplicationRecord
   belongs_to :user
   has_many :batches
   has_many :candidatures, dependent: :destroy
-  has_many :reviews, dependent: :destroy
   has_many :programs, through: :batches
   has_many :incubations
   has_many :batches, through: :incubations

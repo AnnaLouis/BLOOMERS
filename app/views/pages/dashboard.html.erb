@@ -5,42 +5,42 @@
       <% avatar_url = current_user.facebook_picture_url || current_user.linkedin_picture_url || "https://cdn4.iconfinder.com/data/icons/linecon/512/photo-512.png" %>
       <%= image_tag avatar_url, class:"dashboard-avatar" %>
       <div class="dashboard-avatar-text">
-        <h2><%= @user.first_name%> <%= @user.last_name%>  </h2>
-        <% if @user.startup_admin && @user.startups.count != 0 %>
-          <h3>CEO de <% @user.startups.each do |startup|%><%=startup.name%>, <%end%></h3>
-        <% elsif @user.bloomer_admin && @user.bloomers.count != 0 %>
-          <h3>Manager de <% @user.bloomers.each do |bloomer|%><%=bloomer.name%>, <%end%></h3>
+        <h2><%= current_user.first_name%> <%= current_user.last_name%>  </h2>
+        <% if current_user.startup_admin && current_user.startups.count != 0 %>
+          <h3>CEO de <% current_user.startups.each do |startup|%><%=startup.name%>, <%end%></h3>
+        <% elsif current_user.bloomer_admin && current_user.bloomers.count != 0 %>
+          <h3>Manager de <% current_user.bloomers.each do |bloomer|%><%=bloomer.name%>, <%end%></h3>
         <%end%>
       </div>
     </div>
     <!-- NOM & AVATAR - STARTUP -->
-    <% if @user.startup_admin? %>
+    <% if current_user.startup_admin? %>
     <div class="first-row-dashboard hidden" id="header-startup-info">
-      <% if @user.startups.count != 0 %>
-        <% if @user.startups.first.logo? %>
-          <%= cl_image_tag @user.startups.first.logo.path, class:"dashboard-avatar" %>
+      <% if current_user.startups.count != 0 %>
+        <% if current_user.startups.first.logo? %>
+          <%= cl_image_tag current_user.startups.first.logo.path, class:"dashboard-avatar" %>
         <% else %>
           <img src="http://www.addressbazar.com/images/logo/no-logo.png" class="dashboard-avatar">
         <% end %>
         <div class="dashboard-avatar-text">
-          <h2><%= @user.startups.first.name %> </h2>
-          <h3><%= @user.startups.first.short_description %></h3>
+          <h2><%= current_user.startups.first.name %> </h2>
+          <h3><%= current_user.startups.first.short_description %></h3>
         </div>
       <% end %>
     </div>
     <% end %>
     <!-- NOM & AVATAR - BLOOMER -->
-    <% if @user.bloomer_admin? %>
+    <% if current_user.bloomer_admin? %>
     <div class="first-row-dashboard hidden" id="header-bloomer-info">
-      <% if @user.bloomers.count != 0 %>
-        <% if @user.bloomers.first.logo? %>
-          <%= cl_image_tag @user.bloomers.first.logo.path, class:"dashboard-avatar" %>
+      <% if current_user.bloomers.count != 0 %>
+        <% if current_user.bloomers.first.logo? %>
+          <%= cl_image_tag current_user.bloomers.first.logo.path, class:"dashboard-avatar" %>
         <% else %>
           <img src="http://www.addressbazar.com/images/logo/no-logo.png" class="dashboard-avatar">
         <% end %>
         <div class="dashboard-avatar-text">
-          <h2><%= @user.bloomers.first.name %> </h2>
-          <h3><%= @user.bloomers.first.category %> | <%= @user.bloomers.first.speciality %></h3>
+          <h2><%= current_user.bloomers.first.name %> </h2>
+          <h3><%= current_user.bloomers.first.category %> | <%= current_user.bloomers.first.speciality %></h3>
         </div>
       <% end %>
     </div>
@@ -57,17 +57,17 @@
           <i class="fa fa-user" aria-hidden="true"></i>MON PROFIL
         </h3>
         <!-- BTN STARTUP -->
-        <% if @user.startup_admin? %>
+        <% if current_user.startup_admin? %>
         <h3 class="dashboard-btn" data-target="#dashboard-startup-one" id="btn-startup-all">
           <i class="fa fa-briefcase" aria-hidden="true"></i>
-          <% if @user.startups.count > 1 %>MES STARTUPS
+          <% if current_user.startups.count > 1 %>MES STARTUPS
           <% else %>MA STARTUP
           <% end %>
-          <span class="dash-notifs">(<%= @user.startups.count %>)</span>
+          <span class="dash-notifs">(<%= current_user.startups.count %>)</span>
         </h3>
-          <% if @user.startups.count == 0%>
+          <% if current_user.startups.count == 0%>
           <% else %>
-            <% @user.startups.each do |startup| %>
+            <% current_user.startups.each do |startup| %>
               <h4 id="btn-startup-one">> <%= startup.name %></h4>
             <% end %>
           <% end %>
@@ -78,18 +78,18 @@
 
 
         <!-- BTN BLOOMER & BATCHS-->
-        <% if @user.bloomer_admin? %>
+        <% if current_user.bloomer_admin? %>
           <!-- BLOOMER LISTS -->
           <h3 class="dashboard-btn" data-target="#dashboard-bloomer-one" id="btn-bloomer-all">
             <i class="fa fa-briefcase" aria-hidden="true"></i>
-            <% if @user.bloomers.count > 1 %>MES BLOOMERS
+            <% if current_user.bloomers.count > 1 %>MES BLOOMERS
             <% else %>MON BLOOMER
             <% end %>
-            <span class="dash-notifs">(<%= @user.bloomers.count %>)</span>
+            <span class="dash-notifs">(<%= current_user.bloomers.count %>)</span>
           </h3>
-          <% if @user.bloomers.count == 0%>
+          <% if current_user.bloomers.count == 0%>
           <% else %>
-            <% @user.bloomers.each do |bloomer| %>
+            <% current_user.bloomers.each do |bloomer| %>
               <h4 id="btn-bloomer-one">> <%= bloomer.name %></h4>
             <% end %>
           <% end %>
@@ -100,14 +100,14 @@
         <!-- PROGRAMS LIST -->
         <h3 class="dashboard-btn" data-target="#dashboard-bloomer-one" id="btn-bloomer-all">
           <i class="fa fa-list-alt" aria-hidden="true"></i>
-          <% if @user.programs.count > 1 %> MES PROGRAMMES
+          <% if current_user.programs.count > 1 %> MES PROGRAMMES
           <% else %> MON PROGRAMME
           <% end %>
-          <span class="dash-notifs">(<%= @user.programs.count %>)</span>
+          <span class="dash-notifs">(<%= current_user.programs.count %>)</span>
         </h3>
-        <% if @user.programs.count == 0 %>
+        <% if current_user.programs.count == 0 %>
         <% else %>
-          <% @user.programs.each do |program| %>
+          <% current_user.programs.each do |program| %>
             <h4 id="btn-bloomer-one" data-toggle="modal" data-target="#modal-program-<%= program.id %>" > <%= program.name %> </h4>
             <!-- Modal -->
             <%= render 'programs_modal', program: program %>
@@ -120,14 +120,14 @@
           <!-- BATCHES LIST -->
           <h3 class="dashboard-btn profile-link" data-target="#dashboard-batches">
             <i class="fa fa-users" aria-hidden="true"></i>
-            <% if @user.batches.count > 1 %> MES PROMOTIONS
+            <% if current_user.batches.count > 1 %> MES PROMOTIONS
             <% else %> MA PROMOTION
             <% end %>
-            <span class="dash-notifs">(<%= @user.batches.count %>)</span>
+            <span class="dash-notifs">(<%= current_user.batches.count %>)</span>
           </h3>
-          <% if @user.batches.count == 0 %>
+          <% if current_user.batches.count == 0 %>
           <% else %>
-            <% @user.batches.each do |batch| %>
+            <% current_user.batches.each do |batch| %>
               <h4 id="btn-bloomer-one">> <%= batch.name %></h4>
             <% end %>
           <% end %>
@@ -145,12 +145,12 @@
         <h3 class="dashboard-btn profile-link" data-target="#dashboard-candidatures">
           <i class="fa fa-bullhorn" aria-hidden="true"></i>MES CANDIDATURES <span class="dash-notifs">(<%= @candidatures.count %>)</span>
         </h3>
-        <% if @user.startup_admin? %>
+        <% if current_user.startup_admin? %>
         <h3 class="dashboard-btn profile-link" data-target="#dashboard-reviews">
-          <i class="fa fa-star" aria-hidden="true"></i>MES AVIS <span class="dash-notifs">(?)</span>
+          <i class="fa fa-star" aria-hidden="true" style="color:#04677D"></i>MES AVIS <span class="dash-notifs">(<%= current_user.reviews.count %>)</span>
         </h3>
         <h3 class="dashboard-btn profile-link" data-target="#dashboard-favorites">
-          <i class="fa fa-thumb-tack" aria-hidden="true"></i>MES FAVORIS <span class="dash-notifs">(?)</span>
+          <i class="fa fa-thumb-tack" aria-hidden="true"></i>MES FAVORIS <span class="dash-notifs">(<%= @favorites.count %>)</span>
         </h3>
         <% end %>
         <h3 class="dashboard-btn profile-link" data-target="#dashboard-messages">
@@ -163,9 +163,9 @@
         <h2>Mon profil</h2>
         <div class="row dashboard-sub-content">
           <div class="col-xs-12 col-sm-6">
-            <h3><span>Email</span> : <%= @user.email %></h3>
-            <h3><span>Startup admin</span> : <%= @user.startup_admin %></h3>
-            <h3><span>Bloomer admin</span> : <%= @user.bloomer_admin %></h3>
+            <h3><span>Email</span> : <%= current_user.email %></h3>
+            <h3><span>Startup admin</span> : <%= current_user.startup_admin %></h3>
+            <h3><span>Bloomer admin</span> : <%= current_user.bloomer_admin %></h3>
             <h3><span>Age</span> : </h3>
           </div>
           <div class="col-xs-12 col-sm-6">
@@ -175,20 +175,20 @@
         </div>
       </div>
       <!-- DASHBOARD CONTENT 2. STARTUP -->
-      <% if @user.startups.count >=1 %>
+      <% if current_user.startups.count >=1 %>
         <div class="col-xs-9 dashboard-content hidden" id="dashboard-startup-one">
           <!-- MAIN INFO -->
           <h2>Infos principales</h2>
           <div class="row dashboard-sub-content">
             <div class="col-xs-12 col-sm-6">
-              <h3><span>Nom</span> : <%= @user.startups.first.name %></h3>
-              <h3><span>Courte description</span> : <%= @user.startups.first.short_description %></h3>
-              <h3><span>Description</span> : <%= @user.startups.first.description %></h3>
-              <h3><span>Date de création</span> : <%= @user.startups.first.date_creation %></h3>
+              <h3><span>Nom</span> : <%= current_user.startups.first.name %></h3>
+              <h3><span>Courte description</span> : <%= current_user.startups.first.short_description %></h3>
+              <h3><span>Description</span> : <%= current_user.startups.first.description %></h3>
+              <h3><span>Date de création</span> : <%= current_user.startups.first.date_creation %></h3>
             </div>
             <div class="col-xs-12 col-sm-6">
-              <h3><span>Site internet</span> : <%= @user.startups.first.website %></h3>
-              <h3><span>Compte twitter</span> : <%= @user.startups.first.twitter_account %></h3>
+              <h3><span>Site internet</span> : <%= current_user.startups.first.website %></h3>
+              <h3><span>Compte twitter</span> : <%= current_user.startups.first.twitter_account %></h3>
             </div>
           </div>
           <h2>La team</h2>
@@ -207,26 +207,26 @@
         </div>
       <% end %>
       <!-- DASHBOARD CONTENT 2bis. BLOOMER -->
-      <% if @user.bloomers.count >=1 %>
+      <% if current_user.bloomers.count >=1 %>
         <div class="col-xs-9 dashboard-content hidden" id="dashboard-bloomer-one">
           <!-- MAIN INFO -->
           <h2>Infos principales</h2>
           <div class="row dashboard-sub-content">
             <div class="col-xs-12 col-sm-6">
-              <h3><span>Nom</span> : <%= @user.bloomers.first.name %></h3>
-              <h3><span>Description</span> : <%= @user.bloomers.first.description %></h3>
-              <h3><span>Catégorie</span> : <%= @user.bloomers.first.category %></h3>
-              <h3><span>Spécialité</span> : <%= @user.bloomers.first.speciality %></h3>
-              <h3><span>Date de création</span> : <%= @user.bloomers.first.date_creation %></h3>
+              <h3><span>Nom</span> : <%= current_user.bloomers.first.name %></h3>
+              <h3><span>Description</span> : <%= current_user.bloomers.first.description %></h3>
+              <h3><span>Catégorie</span> : <%= current_user.bloomers.first.category %></h3>
+              <h3><span>Spécialité</span> : <%= current_user.bloomers.first.speciality %></h3>
+              <h3><span>Date de création</span> : <%= current_user.bloomers.first.date_creation %></h3>
             </div>
             <div class="col-xs-12 col-sm-6">
-              <h3><span>Adresse</span> : <%= @user.bloomers.first.address %></h3>
-              <h3><span>Ville</span> : <%= @user.bloomers.first.city %></h3>
-              <h3><span>Site internet</span> : <%= @user.bloomers.first.website %></h3>
-              <h3><span>Compte twitter</span> : <%= @user.bloomers.first.twitter_account %></h3>
+              <h3><span>Adresse</span> : <%= current_user.bloomers.first.address %></h3>
+              <h3><span>Ville</span> : <%= current_user.bloomers.first.city %></h3>
+              <h3><span>Site internet</span> : <%= current_user.bloomers.first.website %></h3>
+              <h3><span>Compte twitter</span> : <%= current_user.bloomers.first.twitter_account %></h3>
             </div>
           </div>
-        <!--   <#% @user.bloomers.first.programs.each do |program| %> -->
+        <!--   <#% current_user.bloomers.first.programs.each do |program| %> -->
           <!-- <h2>Programme "<#%= program.name %>"</h2>
             <div class="row dashboard-sub-content">
               <div class="col-xs-12 col-sm-6">
@@ -248,9 +248,49 @@
         <!--   <#% end %> -->
         </div>
       <% end %>
+
+      <!-- DASHBOARD CONTENT 4. MES AVIS/REVIEWS -->
+
+      <div class="col-xs-9 dashboard-content hidden" id="dashboard-reviews">
+        <% if current_user.startup_admin  %>
+        <div class="row">
+          <% current_user.reviews.each do |review| %>
+              <div class="col-sm-4">
+                <div class="review">
+                  <div class="card-title">
+                    <%= review.bloomer.name %>
+                  </div>
+                    <h4><%= review.title %> : <%= review.description %></h4>
+                    <p><% review.rating.times do %><i class="fa fa-star"></i><% end %></p>
+                </div>
+              </div>
+          </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <!-- DASHBOARD CONTENT 6. MES FAVORITS -->
+
+      <div class="col-xs-9 dashboard-content hidden" id="dashboard-favorites">
+        <% if current_user.startup_admin  %>
+        <div class="row">
+          <% @favorites.each do |favorite| %>
+              <div class="col-sm-4">
+                <div class="review">
+                  <div class="card-title">
+                    <%= link_to favorite.bloomer.name, bloomer_path(favorite.bloomer) %>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <% end %>
+        <% end %>
+      </div>
+
+
       <!-- DASHBOARD CONTENT 3. MES CANDIDATURES -->
       <div class="col-xs-9 dashboard-content hidden" id="dashboard-candidatures">
-        <!-- MAIN INFO -->
+        <!-- TABS-->
         <h2>Mes Candidatures</h2>
           <div class="row tabs-candidatures-status">
             <div class="col-xs-2 tab-candidatures-status active" data-target="#new-candidatures" style="border-radius: 2px 0 0 2px">
@@ -270,21 +310,47 @@
             </div>
             <div class="col-xs-2 tab-candidatures-status" data-target="#refused-candidatures" style="border-radius:0 2px 2px 0">
               <h3><span>Refusées</span></h3>
+            </div>
           </div>
-        </div>
         <div class="dashboard-apply-cards">
           <!-- COTE STARTUP ADMIN -->
           <% if current_user.startup_admin %>
-            <% @user.candidatures.each do |candidature| %>
-            <div class="dashboard-apply-card">
-              <h2><%= candidature.program.bloomer.name %></h2>
-              <h3>Programme : <%= candidature.program.name%></h3>
-                <h4>Status : <%= candidature.status %></h4>
-                <p><i class="fa fa-eye" aria-hidden="true"></i> Détails
-                <i class="fa fa-pencil" aria-hidden="true"></i> Editer
-                <i class="fa fa-trash-o" aria-hidden="true"></i> Supprimer</p>
-            <% end %>
-          </div>
+            <div class="results-candidatures" id="new-candidatures">
+              <% @candidatures.select{ |candidature| candidature.status == "new"}.each do |candidature_new| %>
+                <%= render partial: "shared/bl_dashboard_candidatures_card", locals: {candidature: candidature_new} %>
+              <% end %>
+            </div>
+            <!-- TO MEET CANDIDATURES -->
+            <div class="results-candidatures hidden" id="to-meet-candidatures">
+              <% @candidatures.select{ |candidature| candidature.status == "to meet"}.each do |candidature_meet| %>
+                <%= render partial: "shared/bl_dashboard_candidatures_card", locals: {candidature: candidature_meet} %>
+              <% end %>
+            </div>
+            <!-- RDV CANDIDATURES -->
+            <div class="results-candidatures hidden" id="rdv-candidatures">
+              <% @candidatures.select{ |candidature| candidature.status == "rdv"}.each do |candidature_rdv| %>
+                <%= render partial: "shared/bl_dashboard_candidatures_card", locals: {candidature: candidature_rdv} %>
+              <% end %>
+            </div>
+            <!-- SHORT-LIST CANDIDATURES -->
+            <div class="results-candidatures hidden" id="short-list-candidatures">
+              <% @candidatures.select{ |candidature| candidature.status == "short list"}.each do |candidature_short_list| %>
+                <%= render partial: "shared/bl_dashboard_candidatures_card", locals: {candidature: candidature_short_list} %>
+              <% end %>
+            </div>
+            <!-- ACCEPTED CANDIDATURES -->
+            <div class="results-candidatures hidden" id="accepted-candidatures">
+              <% (@candidatures.select{ |candidature| candidature.status == "accepted"}).each do |candidature_accepted| %>
+                <%= render partial: "shared/bl_dashboard_candidatures_card", locals: {candidature: candidature_accepted} %>
+              <% end %>
+            </div>
+            <!-- REFUSED CANDIDATURES -->
+            <div class="results-candidatures hidden" id="refused-candidatures">
+              <% (@candidatures.select{ |candidature| candidature.status == "refused"}).each do |candidature_refused| %>
+                <%= render partial: "shared/bl_dashboard_candidatures_card", locals: {candidature: candidature_refused} %>
+              <% end %>
+            </div>
+          <!--  END OF STARTUP ADMIN -->
           <!-- COTE BLOOMER ADMIN -->
           <% elsif current_user.bloomer_admin %>
             <!-- NOUVELLES CANDIDATURES -->
@@ -326,10 +392,11 @@
           <% end %>
         </div>
       </div>
+
       <!-- DASHBOARD CONTENT 4. LES BATCHES -->
       <div class="col-xs-9 dashboard-content hidden" id="dashboard-batches">
         <!-- MAIN INFO -->
-        <% @user.batches.each do |batch| %>
+        <% current_user.batches.each do |batch| %>
           <h2><%= batch.name %> (<%= batch.program.name %>) <i class="fa fa-plus-circle" aria-hidden="true" style="font-size:16px"></i></h2>
         <div class="dashboard-apply-cards">
           <% if batch.startups.count == 0 %>

@@ -31,7 +31,9 @@ Rails.application.routes.draw do
       post 'short_list', to: "candidatures#short_list"
       post 'accept', to: "candidatures#accept"
       post 'refuse', to: "candidatures#refuse"
+      post 'refuse', to: "candidatures#to_meet"
     end
+    resources :bookings, only: [:new, :create]
   end
 
   # resources :programs, only: [:edit, :update]
