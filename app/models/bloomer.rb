@@ -22,4 +22,16 @@ class Bloomer < ApplicationRecord
   validates :address, presence: true
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
+
+  searchkick
+
+  def search_data
+    {
+      city: city,
+      category: category,
+      speciality: speciality,
+      program_prices: programs.pluck(:price)
+    }
+  end
+
 end
