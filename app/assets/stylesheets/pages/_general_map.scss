@@ -20,6 +20,7 @@ text-align: center;
 // }
 
 
+
 .gm-style-iw h1 {
 font-size: 12px;
 }
@@ -61,6 +62,17 @@ font-size: 10px;
 }
 
 // INFO WINDOW
+
+.infowidow-image-content {
+  width: 300px;
+  height: 150px;
+
+}
+
+.gm-style-iw {
+  text-decoration:none;
+  cursor:pointer;
+}
 
 .gm-style-iw h2 {
   font-size:16px;
@@ -147,5 +159,21 @@ font-size: 10px;
 
 #lille {
   background-image: linear-gradient(-225deg, rgba(254,195,0,0) 0%, rgba(254,195,0,0.4) 100%), url('http://www.ssvp.fr/wp-content/uploads/2015/05/54249_1_lille-grand-place.jpg');
+}
+
+#bordeaux {
+  background-image: linear-gradient(-225deg, rgba(254,195,0,0) 0%, rgba(254,195,0,0.4) 100%), url('https://lh6.googleusercontent.com/-osfKGwyNlrg/VZZH5UZNg2I/AAAAAAAAALU/bFjCmIq0drU/w506-h750/Bordeaux%2BM%25C3%25A9tropole.jpg');
+}
+
+#grenoble {
+  background-image: linear-gradient(-225deg, rgba(254,195,0,0) 0%, rgba(254,195,0,0.4) 100%), url('http://www.taxi-coursier.com/wp-content/uploads/2016/04/coursier-grenoble.jpg');
+}
+
+#montpellier {
+  background-image: linear-gradient(-225deg, rgba(254,195,0,0) 0%, rgba(254,195,0,0.4) 100%), url('http://carte-escapegame.fr/wp-content/uploads/2016/03/Montpellier-77047.jpg');
+}
+
+#rennes {
+  background-image: linear-gradient(-225deg, rgba(254,195,0,0) 0%, rgba(254,195,0,0.4) 100%), url('http://www.tourisme-rennes.com/images/img-32.jpg');
 }
 

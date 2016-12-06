@@ -256,6 +256,31 @@
         }
       });
     });
+      <!-- JQUERY BORDEAUX CENTER -->
+  $("#bordeaux").on('click', function ()
+    { handler.buildMap(
+      {internal: { id: 'map' },
+      provider: {
+        scrollwheel: false,
+        <!-- zoomControl: false, -->
+        styles: mapStyle,
+      }},
+      function() {
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        <!-- Center the map AND ajust zoom to see all markers -->
+        handler.bounds.extendWith(markers);
+       <!--  handler.fitMapToBounds(); -->
+       <!-- CENTRER SUR PARIS / ILE DE FRANCE -->
+        handler.map.centerOn({lat: 44.837789, lng: -0.57918});
+        handler.getMap().setZoom(12);
+    <!--     PARIS ={lat: 48.85661400000001, lng: 2.3522219000000177}); -->
+        if (markers.length == 0) {
+        handler.getMap().setZoom();
+        } else if (markers.length == 1) {
+        handler.getMap().setZoom(8);
+        }
+      });
+    });
   });
 <% end %>
 <% end %>
