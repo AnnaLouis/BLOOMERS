@@ -268,15 +268,24 @@ startup3.user = User.find_by_email("admin@igloo.fr")
 startup3.save
 startup3.logo_url = "http://startuponly.com/pp/146/703/698/d3acbf1247867657_400.png"
 
-startup4 = Startup.new(name: "De Rigueur")
+
+startup4 = Startup.new(name: "De Rigeur")
 startup4.short_description = "Maison française du XXIe siècle"
 startup4.website = "www.derigueur.fr"
 startup4.twitter_account = "https://twitter.com/derigueurfr"
 startup4.date_creation = Date.new(2013, 8, 10)
 startup4.user = User.find_by_email("admin@derigueur.fr")
 startup4.save
-#LOGO
 startup4.logo_url = "http://entreprendre.univ-lyon3.fr/wp-content/uploads/2015/08/logo-derigueur.png"
+
+startup5 = Startup.new(name: "Zipline")
+startup5.short_description = "The Future of Healthcare is Out for Delivery"
+startup5.website = "http://flyzipline.com/product/"
+startup5.twitter_account = "https://twitter.com/zipline"
+startup5.date_creation = Date.new(2013, 8, 8)
+startup5.user = User.find_by_email("admin@zipline.fr")
+startup5.save
+startup5.logo_url = "https://www.linkedin.com/company/zipline-international-inc-?trk=company_logo"
 
 # BATCHS DE SHOWROOMPRIVE
 
