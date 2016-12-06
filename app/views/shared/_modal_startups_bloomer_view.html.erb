@@ -1,0 +1,52 @@
+<div class="modal fade" id="modal-startups-view-bloomer" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+    <!-- HEADER -->
+      <!-- <div class="modal-header"> -->
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin:20px;z-index:2000"><span aria-hidden="true">&times;</span></button>
+       <!--  <h2 id="title-modal-startups-list"> Startups de <#%= bloomer.name %> </h2>
+      </div> -->
+      <!-- CONTENT -->
+      <div class="modal-body">
+        <div class="wrapper-modal-startups-list">
+          <% bloomer.programs.each do |program| %>
+          <!-- ROW PROGRAMME -->
+            <div class="row">
+              <h2><span><%= program.name %></span></h2>
+            </div>
+            <% program.batches.each do |batch| %>
+              <div class="row">
+                <h3>> <%= batch.name %><h3>
+                <div class="row startups-cards-modal-bl">
+                <% batch.startups.each do |startup| %>
+                  <!-- CARD EACH STARTUP -->
+                  <div class="startup-card-modal-bl">
+                  <%= link_to "http://" + startup.website, target:"_blank" do %>
+                    <div class="col-xs-12 col-sm-4">
+                      <% if startup.logo? %>
+                        <%= cl_image_tag startup.logo.path, crop: :fill, class: "avatar" %>
+                      <% end %>
+                    </div>
+                    <div class="col-xs-12 col-md-8" style="padding:0px">
+                      <h2><%= startup.name %></h2>
+                      <h3><%= startup.short_description %></h3>
+                    </div>
+                  <% end %>
+                  </div>
+                <% end %>
+                </div>
+              </div>
+            <% end %>
+          <%end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+

@@ -247,6 +247,15 @@
   text-align: left;
 }
 
+.div-startups-card a:hover {
+   text-decoration:none;
+}
+
+.div-startups-card .card-team h4:hover {
+  color:#04677D;
+  shadow: 1px 1px 2px #FEC300;
+}
+
 .card-team h4 {
   font-family: 'Quicksand', sans-serif;
   color: #FEC300;

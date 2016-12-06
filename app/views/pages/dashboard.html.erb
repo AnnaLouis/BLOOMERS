@@ -15,19 +15,21 @@
     </div>
     <!-- NOM & AVATAR - STARTUP -->
     <% if current_user.startup_admin? %>
-    <div class="first-row-dashboard hidden" id="header-startup-info">
+    <% current_user.startups.each do |startup| %>
+    <div class="first-row-dashboard hidden" id="header-startup-info-<%= startup.id %>">
       <% if current_user.startups.count != 0 %>
-        <% if current_user.startups.first.logo? %>
-          <%= cl_image_tag current_user.startups.first.logo.path, class:"dashboard-avatar" %>
+        <% if startup.logo? %>
+          <%= cl_image_tag startup.logo.path, class:"dashboard-avatar" %>
         <% else %>
           <img src="http://www.addressbazar.com/images/logo/no-logo.png" class="dashboard-avatar">
         <% end %>
         <div class="dashboard-avatar-text">
-          <h2><%= current_user.startups.first.name %> </h2>
-          <h3><%= current_user.startups.first.short_description %></h3>
+          <h2><%= startup.name %> </h2>
+          <h3><%= startup.short_description %></h3>
         </div>
       <% end %>
     </div>
+    <% end %>
     <% end %>
     <!-- NOM & AVATAR - BLOOMER -->
     <% if current_user.bloomer_admin? %>
@@ -58,17 +60,18 @@
         </h3>
         <!-- BTN STARTUP -->
         <% if current_user.startup_admin? %>
-        <h3 class="dashboard-btn" data-target="#dashboard-startup-one" id="btn-startup-all">
+        <h3 class="dashboard-btn profile-link">
           <i class="fa fa-briefcase" aria-hidden="true"></i>
-          <% if current_user.startups.count > 1 %>MES STARTUPS
+          <% if current_user.startups.count > 1 %>MES STARTUPS <span class="dash-notifs">(<%= current_user.startups.count %>)</span>
           <% else %>MA STARTUP
           <% end %>
-          <span class="dash-notifs">(<%= current_user.startups.count %>)</span>
         </h3>
-          <% if current_user.startups.count == 0%>
+          <% if current_user.startups.count == 0 %>
           <% else %>
             <% current_user.startups.each do |startup| %>
-              <h4 id="btn-startup-one">> <%= startup.name %></h4>
+              <h4 class="dashboard-btn" data-target="#dashboard-startup-<%= startup.id -%>,#header-startup-info-<%= startup.id %>">
+                > <%= startup.name %>
+              </h4>
             <% end %>
           <% end %>
           <%= link_to new_startup_path do %>
@@ -176,19 +179,20 @@
       </div>
       <!-- DASHBOARD CONTENT 2. STARTUP -->
       <% if current_user.startups.count >=1 %>
-        <div class="col-xs-9 dashboard-content hidden" id="dashboard-startup-one">
+        <% current_user.startups.each do |startup| %>
+        <div class="col-xs-9 dashboard-content hidden" id="dashboard-startup-<%= startup.id -%>">
           <!-- MAIN INFO -->
           <h2>Infos principales</h2>
           <div class="row dashboard-sub-content">
             <div class="col-xs-12 col-sm-6">
-              <h3><span>Nom</span> : <%= current_user.startups.first.name %></h3>
-              <h3><span>Courte description</span> : <%= current_user.startups.first.short_description %></h3>
-              <h3><span>Description</span> : <%= current_user.startups.first.description %></h3>
-              <h3><span>Date de création</span> : <%= current_user.startups.first.date_creation %></h3>
+              <h3><span>Nom</span> : <%= startup.name %></h3>
+              <h3><span>Courte description</span> : <%= startup.short_description %></h3>
+              <h3><span>Description</span> : <%= startup.description %></h3>
+              <h3><span>Date de création</span> : <%= startup.date_creation %></h3>
             </div>
             <div class="col-xs-12 col-sm-6">
-              <h3><span>Site internet</span> : <%= current_user.startups.first.website %></h3>
-              <h3><span>Compte twitter</span> : <%= current_user.startups.first.twitter_account %></h3>
+              <h3><span>Site internet</span> : <%= startup.website %></h3>
+              <h3><span>Compte twitter</span> : <%= startup.twitter_account %></h3>
             </div>
           </div>
           <h2>La team</h2>
@@ -198,6 +202,7 @@
             </div>
             <div class="col-xs-12 col-sm-6">
               <h3><span>L'histoire de l'équipe :</span></h3>
+              <%= startup.team %>
             </div>
           </div>
           <h2>Le Parcours</h2>
@@ -205,6 +210,7 @@
             (à remplir)
           </div>
         </div>
+      <% end %>
       <% end %>
       <!-- DASHBOARD CONTENT 2bis. BLOOMER -->
       <% if current_user.bloomers.count >=1 %>
@@ -439,8 +445,12 @@ $(document).ready(function() {
 
   <!-- MAIN TABS -->
   $(".dashboard-btn").on("click", function(e){
+    <!-- ACTIVE OR NOT THE BUTTON -->
     $(".dashboard-btn").removeClass("active");
     $(this).addClass("active");
+    <!-- HIDE PROFILE HEAD -->
+    $(".first-row-dashboard").addClass("hidden");
+    <!-- HIDE CONTENT OF THE LEFT -->
     $(".dashboard-content").addClass("hidden");
     <!-- // Show target tab-content (use class="hidden") -->
     tabSelector = $(this).data("target");

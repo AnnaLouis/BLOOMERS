@@ -1,14 +1,22 @@
+<%= render "shared/showcandidatures", candidature: candidature %>
+
 <div class="dashboard-apply-card">
-  <div class="col-xs-2" style="margin:0;padding:0;height:50px">
+  <div class="col-xs-2 container-candidature-fields">
     <% if candidature.startup.logo? %>
     <%= cl_image_tag candidature.startup.logo.path, class:"candidature-avatar" %>
     <% end %>
   </div>
-  <div class="col-xs-10">
-    <h2>Startup : <%= candidature.startup.name %></h2>
-    <h3> > Programme : <%= candidature.program.name%></h3>
+  <div class="col-xs-2 container-candidature-fields">
+    <h2>Startup<br><span><%= candidature.startup.name %></span></h2>
   </div>
-
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".modal-candidatures" style="height:30px;width:100%; text-align:center;justify-content:center; text-transform:uppercase; font-family:'Muli'">Détails</button>
-  <%= render "shared/showcandidatures", candidature: candidature %>
+  <div class="col-xs-2 container-candidature-fields">
+    <h3>Programme<br><span><%= candidature.program.name%></span></h3>
+  </div>
+  <div class="col-xs-4">
+    <h4><%= candidature.startup.short_description %></h4>
+  </div>
+  <div class="col-xs-2 container-candidature-fields">
+    <button type="button" class="btn btn-postulate" data-toggle="modal" data-target=".modal-candidatures" style="height:50%;width:50%;border-radius:4px; text-align:center;justify-content:center; text-transform:uppercase; font-size:12px;font-family:'Muli'; padding:1px">Détails</button>
+  </div>
 </div>
+

@@ -1,3 +1,8 @@
+<!-- LES MODALES -->
+<%= render 'shared/modal_startups_bloomer_view', bloomer: @bloomer %>
+
+<!-- LE CONTENU -->
+
 <div class="banner-bloomer" style="background-image: /*linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%),*/url('<% if @bloomer.photos? %><%= cl_image_path(@bloomer.photos.last.path, :crop => :crop)%><% else %><%= "http://imageshack.com/a/img923/6113/XpMsUl.jpg"%> <% end %>'); background-repeat:no-repeat; background-position: center center; background-size: cover;">
 </div>
 
@@ -180,11 +185,16 @@
               </div>
               <% end %>
             </div>
-            <div class="div-startups-card">
-              <div class="card-team">
-                <h4 style="text-align:center">Découvrez les <br>autres startups +</h4>
+            <!-- LES AUTRES STARTUPS -->
+            <% if @bloomer.startups.count > 3 %>
+              <div class="div-startups-card">
+              <%= link_to "#", data:{toggle: "modal", target: "#modal-startups-view-bloomer"} do %>
+                <div class="card-team">
+                  <h4 style="text-align:center">Découvrez + de startups +</h4>
+                </div>
+              <% end %>
               </div>
-            </div>
+            <% end %>
           </div>
         </div>
       </div>
@@ -268,6 +278,7 @@
     </div>
   </div>
 
+  <%= render 'shared/modal_photos_view_bloomer', bloomer: @bloomer %>
   <!-- ROW 4 : PHOTO + PLACE INFO -->
   <div class="wrapper-show-bloomer">
     <div class="container">
@@ -275,25 +286,27 @@
         <!-- en photo -->
         <div class="col-xs-12 col-sm-6">
           <h3>VISITEZ NOS LOCAUX</h3>
-          <div class="div-content-white">
-            <div class="col-xs-8" style="margin:0; padding:0">
-              <% if @bloomer.photos? %>
-                <%= cl_image_tag @bloomer.photos.last.path, crop: :fill, class: "big-video" %>
-              <% else %>
-                <img src="http://imageshack.com/a/img923/6113/XpMsUl.jpg" alt="photo 1" class="big-video">
-              <% end %>
-            </div>
-            <div class="col-xs-4 small-videos">
-              <% if @bloomer.photos? %>
-                <% @bloomer.photos.each do |photo| %>
-                <%= cl_image_tag photo.path, crop: :fill, class: "small-video" %>
+          <%= link_to "#", data: {toggle: "modal", target: "#modal-photos-view-bloomer"} do %>
+            <div class="div-content-white">
+              <div class="col-xs-8" style="margin:0; padding:0">
+                <% if @bloomer.photos? %>
+                  <%= cl_image_tag @bloomer.photos.last.path, crop: :fill, class: "big-video" %>
+                <% else %>
+                  <img src="http://imageshack.com/a/img923/6113/XpMsUl.jpg" alt="photo 1" class="big-video">
                 <% end %>
-              <% else %>
-                <img src="http://imageshack.com/a/img923/6113/XpMsUl.jpg" alt="photo 2" class="small-video">
-                <img src="http://imageshack.com/a/img923/6113/XpMsUl.jpg" alt="photo 3" class="small-video">
-              <% end %>
+              </div>
+              <div class="col-xs-4 small-videos">
+                <% if @bloomer.photos? %>
+                  <% @bloomer.photos.each do |photo| %>
+                  <%= cl_image_tag photo.path, crop: :fill, class: "small-video" %>
+                  <% end %>
+                <% else %>
+                  <img src="http://imageshack.com/a/img923/6113/XpMsUl.jpg" alt="photo 2" class="small-video">
+                  <img src="http://imageshack.com/a/img923/6113/XpMsUl.jpg" alt="photo 3" class="small-video">
+                <% end %>
+              </div>
             </div>
-          </div>
+          <% end %>
         </div>
         <!-- local info -->
         <div class="col-xs-12 col-sm-6">
