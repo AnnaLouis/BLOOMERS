@@ -1,17 +1,28 @@
-<div id="modal-program-<%= program.id %>" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
- <div class="modal-dialog modal-lg " role="document">
-    <div class="modal-content flexbox">
-      <h3><span>Nom</span> : <%= program.name %></h3>
-      <h3><span>Description</span> : <%= program.description %></h3>
-      <h3><span>Durée</span> : <%= program.duration %></h3>
-      <h3><span>Equité</span> : <%= program.equity %></h3>
-      <h3><span>Début d'inscription</span> : <%= program.candidature_open %></h3>
-      <h3><span>Fin d'inscription</span> : <%= program.candidature_close %></h3>
-      <h3><span>Critères de sélection</span> : <%= program.selection_criterias %></h3>
+<div class="modal fade modal-program-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="modal-program-<%= program.id %>" >
+ <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="wrapper-show-candidature">
+        <div class="modal-header">
+          <h2 class="modal-title" id="myModalLabel"> Mon Programme : </h2>
+        </div>
+        <div class="modal-body" style="padding:15px 40px 0px 40px">
+          <div class="row content">
+            <div class="col-xs-12" style="margin:0; padding:0;">
+              <h3>Nom : <%= program.name %> </h3>
+              <h3>Description : <%= program.description %>< /h3>
+              <h3>Durée : <%= program.duration %> </h3>
+              <h3>Equité : <%= program.equity %> </h3>
+              <h3>Début d'inscription : <%= program.candidature_open %> </h3>
+              <h3>Fin d'inscription : <%= program.candidature_close %> </h3>
+              <h3> Critères de sélection : <%= program.selection_criterias %> </h3>
+              <h3>Accompagnement individuel : <%= program.individual_coaching %> </h3>
+              <h3>Accompagnement collectif : <%= program.collective_coachin %> </h3>
+              <h3>Ecosystème : <%= program.ecosystem %> </h3>
+              <h3>Avantages : <%= program.advantages %> </h3>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-      <h3><span>Accompagnement individuel</span> : <%= program.individual_coaching %></h3>
-      <h3><span>Accompagnement collectif</span> : <%= program.collective_coachin %></h3>
-      <h3><span>Ecosystème</span> : <%= program.ecosystem %></h3>
-      <h3><span>Avantages</span> : <%= program.advantages %></h3>
   </div>
-</div>
+ </div>
