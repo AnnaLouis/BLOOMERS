@@ -1,8 +1,7 @@
 .banner {
-  background-image: rgba(255,0,0,1) url('pacmanpattern.png');
-  background-color: #F9F9F9;
+  background-image: url('landing2.png');
   text-align: center;
-  height: 100vh;
+  height: 630px;
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: cover !important;
   display: flex;
@@ -10,6 +9,7 @@
   justify-content: center;
   font-weight: lighter;
   background-attachment: fixed;
+  align-items:center;
 }
 
 .banner img {
@@ -18,11 +18,12 @@
 }
 
 .banner h1 {
-  font-size: 37px;
-  text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
-  color: #00697F;
+  font-size: 45px;
+  // text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+  color: white;
   text-decoration: none;
   padding-bottom: 40px;
+  line-height:20px;
 }
 .banner p {
   font-size: 17px;

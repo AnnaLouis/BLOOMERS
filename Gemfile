@@ -18,6 +18,7 @@ gem 'omniauth-linkedin'
 gem 'activeadmin', github: 'activeadmin/activeadmin'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 gem "jquery-fileupload-rails"
+gem 'searchkick', '~> 1.3'
 
 
 source 'https://rails-assets.org' do

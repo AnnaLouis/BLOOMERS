@@ -5,20 +5,25 @@
     <div class="wrapper-index">
       <div class="col-xs-12">
         <h3> RECHERCHE </h3>
-        <h4> Catégories </h4>
-        <div class="row content-research-index">
-          <%= simple_form_for(:search, url: bloomers_path, method: :get) do |f| %>
-          <%= f.error_notification %>
-          <%= f.input :category, as: :check_boxes, collection: Bloomer::CATEGORIES, label: 'Choisissez une catégorie'  %>
-        </div>
-        <h4>Location</h4>
-        <div class="row content-research-index">
-          <%= f.input :city, label: 'Ville' %>
-        </div>
-        <h4>Spécialité</h4>
-        <div class="row content-research-index">
-          <%= f.input :speciality, collection: @specialities, label: 'Entrez les spécialités' %>
-        </div>
+
+        <%= simple_form_for(:search, url: bloomers_path, method: :get) do |f| %>
+        <ul>
+          <h4> Catégories </h4>
+          <% if @categories.present? %>
+            <%= f.input :category, as: :check_boxes, collection: @categories.map { |category| category["key"] }, label: "Choisissez une catégorie", checked: @selected_categories %>
+          <% else %>
+            Pas de catégorie
+          <% end %>
+          <h4>Location</h4>
+            <%= f.input :city, label: 'Ville', selected: @selected_city %>
+          <h4>Spécialité</h4>
+          <% if @specialities.present? %>
+            <%= f.input :speciality, collection: @specialities.map { |speciality| speciality["key"] }, label: 'Entrez les spécialités', include_blank: true, selected: @selected_speciality %>
+          <% else %>
+            Pas de spécialité
+          <% end %>
+        </ul>
+
         <span class="nb-next-button"><%= f.button :submit, "Go !" %></span>
         <% end %>
       </div>
