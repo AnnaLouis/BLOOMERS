@@ -75,6 +75,15 @@ class BloomersController < ApplicationController
     @favorite = Favorite.new
     @find_favorite = Favorite.find_by(bloomer_id: @bloomer.id, user_id: current_user.id)
     @bookings = Booking.select{ |booking| booking.bloomer_id == params[:id].to_i}
+    if current_user.startup_admin
+      @user_bloomers = []
+      current_user.startups.each do |startup|
+        startup.batches.each do |batch|
+          @user_bloomers << batch.bloomer
+        end
+      end
+    end
+# raise
   end
 
   def new
