@@ -1,0 +1,9 @@
+<%= link_to bloomer_path(bloomer) do %>
+  <h2><%= bloomer.name %></h2>
+  <h3><%= bloomer.category%></h3>
+  <h4><i class="fa fa-hashtag" aria-hidden="true"></i> <%= bloomer.speciality%></h4>
+  <% if bloomer.photos? %>
+    <div class="infowidow-image-content" style="background-image: linear-gradient(-225deg, rgba(254,195,0,0) 0%, rgba(254,195,0,0.4) 100%), url(' <%= cl_image_path bloomer.photos.first.path %>'); background-repeat:no-repeat; background-position: center center; background-size: cover;">
+    </div>
+  <% end %>
+<% end %>

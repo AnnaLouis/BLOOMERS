@@ -824,32 +824,30 @@
 <div id="reviews" class="sub-content hidden" style="margin:0px;padding:0px">
   <div class="wrapper-show-bloomer">
     <div class="container">
-      <h2> Les Reviews</h2>
+      <h2> Les Avis</h2>
 
       <ul>
-      <div class="row">
-
-      <% @bloomer.reviews.each do |review| %>
-        <div class="col-sm-4">
-        <div class="review">
-        <h3> <%= review.title %></h3>
-        <h4><%= review.description %></h4>
-        <p><% review.rating.times do %><i class="fa fa-star"></i><% end %></p>
-
+        <div class="row">
+          <% @bloomer.reviews.each do |review| %>
+            <div class="col-sm-4">
+              <div class="review">
+                <div class="card-title"><%= review.title %></div>
+                  <h4><%= review.description %></h4>
+                    <p><% review.rating.times do %><i class="fa fa-star"></i><% end %></p>
+              </div>
+            </div>
+          <% end %>
         </div>
-        </div>
-      <% end %>
-
-      </div>
       </ul>
-
-
-      <%= simple_form_for [@bloomer, @review] do |f| %>
-      <%= f.input :title %>
-      <%= f.input :description %>
-      <%= f.input :rating, collection: [1,2,3,4,5] %>
-
-      <%= f.submit "add a review", class: "btn btn-primary" %>
+      <% if current_user.startup_admin? %>
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3" id="review-input" style="color:#04677D">
+        <%= simple_form_for [@bloomer, @review] do |f| %>
+          <%= f.input :title %>
+          <%= f.input :description %>
+          <%= f.input :rating, collection: [1,2,3,4,5] %>
+          <%= f.submit "add a review", class: "btn btn-primary" %>
+        <% end %>
+      </div>
       <% end %>
     </div>
   </div>
