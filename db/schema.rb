@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161206122414) do
+ActiveRecord::Schema.define(version: 20161206140944) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,11 +90,6 @@ ActiveRecord::Schema.define(version: 20161206122414) do
     t.integer  "program_id"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
-    t.text     "team"
-    t.text     "your_problem"
-    t.text     "your_solution"
-    t.text     "your_market"
-    t.integer  "phone_number"
     t.text     "question_incubation"
     t.index ["program_id"], name: "index_candidatures_on_program_id", using: :btree
     t.index ["startup_id"], name: "index_candidatures_on_startup_id", using: :btree
@@ -146,11 +141,11 @@ ActiveRecord::Schema.define(version: 20161206122414) do
     t.text     "description"
     t.integer  "rating"
     t.integer  "bloomer_id"
-    t.integer  "startup_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "user_id"
     t.index ["bloomer_id"], name: "index_reviews_on_bloomer_id", using: :btree
-    t.index ["startup_id"], name: "index_reviews_on_startup_id", using: :btree
+    t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
   end
 
   create_table "startups", force: :cascade do |t|
@@ -163,6 +158,11 @@ ActiveRecord::Schema.define(version: 20161206122414) do
     t.integer  "user_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.text     "team"
+    t.text     "your_problem"
+    t.text     "your_solution"
+    t.text     "your_market"
+    t.integer  "phone_number"
     t.index ["user_id"], name: "index_startups_on_user_id", using: :btree
   end
 
@@ -206,6 +206,6 @@ ActiveRecord::Schema.define(version: 20161206122414) do
   add_foreign_key "incubations", "startups"
   add_foreign_key "programs", "bloomers"
   add_foreign_key "reviews", "bloomers"
-  add_foreign_key "reviews", "startups"
+  add_foreign_key "reviews", "users"
   add_foreign_key "startups", "users"
 end
