@@ -30,6 +30,12 @@
           <p class="navbar-bloomer-item"> <%= link_to "Je crée mon profil bloomer", new_bloomer_path %> </p>
           <% else %>
           <p class="navbar-bloomer-item"> <%= link_to "Voir mon profil bloomer", dashboard_path %> </p>
+            <%= link_to dashboard_path, class: "navbar-bloomer-item navbar-bloomer-link" do %>
+              <div class="badge-container">
+                <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                <div class="badge badge-blue"><%= current_user.candidatures.count %></div>
+              </div>
+            <% end %>
           <% end %>
       <!-- Startup_Admin -->
       <%  elsif current_user.startup_admin? %>
@@ -37,6 +43,13 @@
           <p class="navbar-bloomer-item"> <%= link_to "Je crée mon profil startup",  new_startup_path %> </p>
           <% else %>
           <p class="navbar-bloomer-item"> <%= link_to "Voir mon profil startup", dashboard_path %> </p>
+   <!--        Si on veut rajouter des notificatiosn côté startup -->
+           <!--  <#%= link_to dashboard_path, class: "navbar-bloomer-item navbar-bloomer-link" do %>
+              <div class="badge-container">
+                <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                <div class="badge badge-blue"><#%= current_user.messages.count %></div>
+              </div>
+            <#% end %> -->
           <% end %>
       <% end %>
           <%= link_to destroy_user_session_path, class: "navbar-bloomer-item navbar-bloomer-link", method: :delete do %>
