@@ -38,6 +38,9 @@ class PagesController < ApplicationController
     @startups = current_user.startups
     @bloomers = current_user.bloomers
     if current_user.startup_admin
+      @favorites = Favorite.select{ |favorite| favorite.user == current_user && favorite.hidden == false }
+    end
+    if current_user.startup_admin
       @candidatures = Candidature.select{ |candidature| candidature.startup.user == current_user }
     elsif current_user.bloomer_admin
       @candidatures = Candidature.select{ |candidature| candidature.program.bloomer.user == current_user }
