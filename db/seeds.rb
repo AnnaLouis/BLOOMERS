@@ -251,6 +251,11 @@ startup2.website = "www.lelab.cc"
 startup2.twitter_account = "https://twitter.com/LeLabShirt"
 startup2.date_creation = Date.new(2014, 4, 8)
 startup2.user = User.find_by_email("admin@lelab.fr")
+startup2.team = "Trois EMLyon et deux Wagons."
+startup2.your_problem = "En finir avec le mal-logement"
+startup2.your_solution = "Des logements par milliers"
+startup2.your_market = "1 000 000 de sans abris"
+startup2.phone_number = "0606066556"
 startup2.save
 startup2.logo_url = "http://modelab.fr/wp-content/uploads/2015/11/Logo-Lelab.png"
 
@@ -332,21 +337,16 @@ program1.save
 #REVIEW
 
 review1 = Review.new(title:"Bien")
-review1.description = "Trop bien"
+review1.description = "C'est un super incubateur"
 review1.rating = 3
 review1.bloomer = bloomer2
-review1.startup = startup1
+review1.user = user1
 review1.save
 
 # CANDIDATURE
 
 candidature1 = Candidature.new(status:"new")
-candidature1.team = "Trois EMLyon et deux Wagons."
-candidature1.your_problem = "En finir avec le mal-logement"
-candidature1.your_solution = "Des logements par milliers"
-candidature1.your_market = "1 000 000 de sans abris"
-candidature1.phone_number = "0606066556"
-candidature1.question_incubation = "Un mentoring de qualité"
+candidature1.question_incubation = "Lookforward me parait être un incubateur idéal pour mon domaine et pour l'accompagnement unique qu'il propose"
 candidature1.startup = startup1
 candidature1.program = program1
 candidature1.save
