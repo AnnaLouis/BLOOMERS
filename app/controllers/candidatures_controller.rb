@@ -28,7 +28,7 @@ class CandidaturesController < ApplicationController
     authorize @candidature
     @candidature.status = "new"
       if @candidature.save
-        redirect_to candidature_path(@candidature)
+        redirect_to dashboard_path
       else
         render 'new'
       end
@@ -77,7 +77,7 @@ class CandidaturesController < ApplicationController
 private
 
   def candidature_params
-    params.require(:candidature).permit(:team, :your_problem, :your_solution, :your_market, :phone_number, :question_incubation, :startup_id)
+    params.require(:candidature).permit(:question_incubation, :startup_id)
   end
 
   def find_dates_taken
