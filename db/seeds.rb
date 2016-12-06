@@ -102,13 +102,13 @@ bloomer1.twitter_account = "https://twitter.com/LookForwardHub"
 bloomer1.date_creation = Date.new(2015, 6, 1)
 bloomer1.description = "LOOK FORWARD est la plateforme de toute innovation susceptible de révolutionner le monde de la mode et du retail. Avec les startups integrees à son incubateur, LOOK FORWARD a l’ambition de bousculer la facon de distribuer, consommer et produire la mode."
 bloomer1.user = User.find_by_email("anna@bloomers.fr")
-bloomer1.save
 urls1 = ["http://imageshack.com/a/img923/6113/XpMsUl.jpg",
         "http://blog.upfit-services.com/wp-content/uploads/2015/10/IMG_20151012_150511.jpg",
         "https://www.ideclik.com/wp-content/uploads/2016/01/lookforward-002.jpg",
         "http://blog.upfit-services.com/wp-content/uploads/2015/10/IMG_20151012_113324.jpg"]
 bloomer1.photo_urls = urls1
 bloomer1.logo_url = "http://www.alloweb.org/wp-content/uploads/2016/10/incubateur_look_forward_showroomprive-1-730x250.jpg"
+bloomer1.save
 
 bloomer2 = Bloomer.new(name:"La Mutinerie")
 bloomer2.city = "Paris"
