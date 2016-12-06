@@ -7,6 +7,7 @@ class CandidaturesController < ApplicationController
   def show
     @candidature = Candidature.find(params[:id])
     authorize @candidature
+    @bookings = Booking.select{ |booking| booking.bloomer_id == params[:id].to_i}
   end
 
   def new
@@ -77,6 +78,15 @@ private
 
   def candidature_params
     params.require(:candidature).permit(:team, :your_problem, :your_solution, :your_market, :phone_number, :question_incubation, :startup_id)
+  end
+
+  def find_dates_taken
+    all_bookings = []
+    @bookings.each do |booking|
+      range =
+      all_bookings << (booking.start_date..booking.end_date).map{|date| date.strftime("%FT%R")}
+    end
+    return all_bookings.flatten
   end
 end
 

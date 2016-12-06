@@ -32,7 +32,7 @@ class BloomersController < ApplicationController
     @review = Review.new
     @favorite = Favorite.new
     @find_favorite = Favorite.find_by(bloomer_id: @bloomer.id, user_id: current_user.id)
-    @bookings = Booking.select{ |booking| booking.bloomer_id == params[:id].to_i}
+
   end
 
   def new
@@ -67,12 +67,4 @@ private
      params.require(:bloomer).permit(:name, :city, :category, :website, :email, :twitter_account, :description, :address, :speciality, :date_creation, photos:[])
   end
 
-  def find_dates_taken
-    all_bookings = []
-    @bookings.each do |booking|
-      range =
-      all_bookings << (booking.start_date..booking.end_date).map{|date| date.strftime("%FT%R")}
-    end
-    return all_bookings.flatten
-  end
  end

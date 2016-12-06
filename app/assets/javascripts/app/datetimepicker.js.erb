@@ -1,0 +1,8 @@
+$(function () {
+  $('.datetimepicker12').datetimepicker({
+    inline: true,
+    sideBySide: true,
+    format: 'DD/MM/YYYY HH:mm',
+    disabledDates: <%= raw @dates_taken.to_json %>
+  });
+});

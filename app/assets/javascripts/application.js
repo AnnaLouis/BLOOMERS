@@ -11,14 +11,3 @@
 //= require bootstrap-datetimepicker
 //= require_tree ./app/
 
-
-$(function () {
-  $('datetimepicker12').datetimepicker({
-    format: 'DD/MM/YYYY HH:mm',
-    locale: 'fr',
-    sideBySide: true,
-    stepping: 15,
-    showClose: true,
-    toolbarPlacement: 'bottom'
-  });
-});

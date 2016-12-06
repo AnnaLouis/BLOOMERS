@@ -10,13 +10,13 @@ class BookingsController < ApplicationController
     @candidature = Candidature.find(params[:candidature_id])
     @booking = Booking.new
     authorize @booking
-    @booking.start_date = Date.strptime(params[:start_date], "%FT%R")
+    @booking.start_date = DateTime.parse(params[:booking][:start_date])
     @booking.end_date = @booking.start_date + 1.hours
-    @booking.bloomer = current_user.bloomer
     @booking.candidature = @candidature
+    @booking.bloomer = @candidature.program.bloomer
     @booking.status = "Pending"
     if @booking.save
-      redirect_to bloomer_path(@bloomer)
+      redirect_to dashboard_path(@candidature.program.bloomer)
       flash[:notice] = "Votre booking a bien été pris en compte, vous serez prévenu de la confirmation"
     else
       render :new
@@ -27,5 +27,21 @@ class BookingsController < ApplicationController
 
   def booking_params
     params.require(:booking).permit(:start_date)
+  end
+
+  def validate
+    @candidature = Candidature.find(params[:candidature_id])
+    @booking = Booking.find(params[:id])
+    @booking.status = "Accepted"
+    @booking.save
+    redirect_to dashboard_path
+  end
+
+  def decline
+    @candidature = Candidature.find(params[:candidature_id])
+    @booking = Booking.find(params[:id])
+    @booking.status = "Declined"
+    @booking.save
+    redirect_to dashboard_path
   end
 end
