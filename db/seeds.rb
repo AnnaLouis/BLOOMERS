@@ -285,7 +285,7 @@ startup5.twitter_account = "https://twitter.com/zipline"
 startup5.date_creation = Date.new(2013, 8, 8)
 startup5.user = User.find_by_email("admin@zipline.fr")
 startup5.save
-startup5.logo_url = "https://www.linkedin.com/company/zipline-international-inc-?trk=company_logo"
+startup5.logo_url = "https://techcrunch.com/2016/10/13/a-test-flight-with-zipline-makers-of-humanitarian-delivery-drones/"
 
 # BATCHS DE SHOWROOMPRIVE
 
