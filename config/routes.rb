@@ -36,6 +36,13 @@ Rails.application.routes.draw do
     resources :bookings, only: [:new, :create]
   end
 
+  resources :bookings, only: [:index, :show] do
+      member do
+        post 'validate', to: "bookings#validate"
+        post 'decline', to: "bookings#decline"
+      end
+    end
+
   # resources :programs, only: [:edit, :update]
   resources :startups, only: [:show, :new, :create]
   mount Attachinary::Engine => "/attachinary"
