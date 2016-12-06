@@ -33,6 +33,7 @@ Rails.application.routes.draw do
       post 'refuse', to: "candidatures#refuse"
       post 'refuse', to: "candidatures#to_meet"
     end
+    resources :bookings, only: [:new, :create]
   end
 
   # resources :programs, only: [:edit, :update]

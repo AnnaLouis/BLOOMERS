@@ -1,0 +1,47 @@
+<div style="overflow:hidden;">
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-8">
+        <%= simple_form_for [@candidature, @booking] do |f| %>
+        <%= f.input :start_date, as: :string, input_html: {class: "datetimepicker12"}%>
+        <%= f.submit %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <!-- <script type="text/javascript">
+    $(function () {
+      $('datetimepicker12').datetimepicker({
+        format: 'DD/MM/YYYY HH:mm',
+        locale: 'fr',
+        sideBySide: true,
+        stepping: 15,
+        showClose: true,
+        toolbarPlacement: 'bottom'
+      });
+    });
+  </script> -->
+</div>
+
+
+
+<!-- <div class="container">
+    <div class="row">
+        <div class='col-sm-6'>
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker();
+            });
+        </script>
+    </div>
+</div>
+-->

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161205161400) do
+ActiveRecord::Schema.define(version: 20161206122414) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,17 @@ ActiveRecord::Schema.define(version: 20161205161400) do
     t.float    "latitude"
     t.float    "longitude"
     t.index ["user_id"], name: "index_bloomers_on_user_id", using: :btree
+  end
+
+  create_table "bookings", force: :cascade do |t|
+    t.date     "start_date"
+    t.date     "end_date"
+    t.integer  "candidature_id"
+    t.integer  "bloomer_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["bloomer_id"], name: "index_bookings_on_bloomer_id", using: :btree
+    t.index ["candidature_id"], name: "index_bookings_on_candidature_id", using: :btree
   end
 
   create_table "candidatures", force: :cascade do |t|
@@ -185,6 +196,8 @@ ActiveRecord::Schema.define(version: 20161205161400) do
 
   add_foreign_key "batches", "programs"
   add_foreign_key "bloomers", "users"
+  add_foreign_key "bookings", "bloomers"
+  add_foreign_key "bookings", "candidatures"
   add_foreign_key "candidatures", "programs"
   add_foreign_key "candidatures", "startups"
   add_foreign_key "favorites", "bloomers"
