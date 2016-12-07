@@ -1,8 +1,32 @@
+.btn-redirect {
+ color: white;
+  padding: 10px 15px;
+  border-radius: 4px;
+  font-weight: bold;
+  background: #00697F;
+  width: 200px;
+  transition: background 0.3s ease;
+}
+
+.btn-redirect:hover {
+  opacity: 1;
+  background: #00697F;
+  text-decoration: none;
+  color: white;
+}
+
+
+
+
+
+
+
 .wrapper p {
   font-size: 15px;
   text-align:center;
 
 }
+
 
 .wrapper h1 {
   font-size:23px;
