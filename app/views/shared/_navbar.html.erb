@@ -29,7 +29,20 @@
           <% if current_user.bloomers.count == 0 %>
           <p class="navbar-bloomer-item"> <%= link_to "Je crée mon profil bloomer", new_bloomer_path %> </p>
           <% else %>
-          <p class="navbar-bloomer-item"> <%= link_to "Voir mon profil bloomer", dashboard_path %> </p>
+
+            <div class="navbar-bloomer-item">
+                <div class="dropdown">
+                 <p class="navbar-bloomer-link dropdown-toggle", id="navbar-bloomer-menu", data-toggle="dropdown"> Mon profil bloomer </p>
+                 <ul class="dropdown-menu navbar-bloomer-link dropdown-menu-right navbar-bloomer-dropdown-menu">
+                  <li>
+                     <%= link_to "Mon dashboard", dashboard_path %>
+                  </li>
+                  <li>
+                     <%= link_to "Ma page", bloomers_path%>
+                 </li>
+               </ul>
+             </div>
+           </div>
             <%= link_to dashboard_path(anchor: "tab=dashboard-candidatures"), class: "navbar-bloomer-item navbar-bloomer-link" do %>
               <div class="badge-container">
                 <i class="fa fa-commenting-o" aria-hidden="true"></i>

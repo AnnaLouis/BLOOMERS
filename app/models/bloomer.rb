@@ -7,8 +7,8 @@ class Bloomer < ApplicationRecord
   has_many :batches, through: :programs
   has_many :startups, through: :batches
   # IMG ATTACHINARY & CLOUDINARY
-  has_attachment :logo
   has_attachments :photos, maximum: 8
+  has_attachment :logo
   # VALIDATIONS
   validates :name, presence: true, uniqueness: true
 
