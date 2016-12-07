@@ -16,6 +16,8 @@ class BookingsController < ApplicationController
     @booking.bloomer = @candidature.program.bloomer
     @booking.status = "Pending"
     if @booking.save
+      @booking.candidature.status = "rdv"
+      @booking.candidature.save
       redirect_to dashboard_path(@candidature.program.bloomer)
       flash[:notice] = "Votre booking a bien été pris en compte, vous serez prévenu de la confirmation"
     else
