@@ -25,25 +25,28 @@ class BookingsController < ApplicationController
     end
   end
 
-  private
-
-  def booking_params
-    params.require(:booking).permit(:start_date)
-  end
-
   def validate
-    @candidature = Candidature.find(params[:candidature_id])
+    # @candidature = Candidature.find(params[:candidature_id])
     @booking = Booking.find(params[:id])
+    authorize @booking
     @booking.status = "Accepted"
     @booking.save
     redirect_to dashboard_path
   end
 
   def decline
-    @candidature = Candidature.find(params[:candidature_id])
+    # @candidature = Candidature.find(params[:candidature_id])
     @booking = Booking.find(params[:id])
+    authorize @booking
     @booking.status = "Declined"
     @booking.save
     redirect_to dashboard_path
   end
+
+  private
+
+  def booking_params
+    params.require(:booking).permit(:start_date)
+  end
+
 end
