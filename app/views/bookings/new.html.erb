@@ -3,8 +3,8 @@
     <div class="row">
       <div class="col-md-8">
         <%= simple_form_for [@candidature, @booking] do |f| %>
-        <%= f.input :start_date, as: :string, input_html: {class: "datetimepicker12"}%>
-        <%= f.submit %>
+          <%= f.input :start_date, as: :string, input_html: {class: "datetimepicker12"}%>
+          <%= f.submit %>
         <% end %>
       </div>
     </div>

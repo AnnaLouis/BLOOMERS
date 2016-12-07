@@ -35,6 +35,14 @@ class CandidaturesController < ApplicationController
 
   end
 
+  # def rdv
+  #   @candidature = Candidature.find(params[:id])
+  #   @candidature.status = "rdv"
+  #   @candidature.save
+  #   authorize @candidature
+  #   redirect_to dashboard_path
+  # end
+
   def accept
     @candidature = Candidature.find(params[:id])
     @candidature.status = "accepted"
