@@ -51,7 +51,7 @@ $(document).ready(function() {
     console.log($('.dashboard-btn[data-target="' + current_tab + '"]'))
     setTimeout(function() {
       $('.dashboard-btn[data-target="' + current_tab + '"]').click();
-    }, 50)
+    }, 50);
 
 
 });
