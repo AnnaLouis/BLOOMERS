@@ -9,7 +9,7 @@
     <h1>TROUVES L'ACCOMPAGNEMENT QU'IL TE FAUT</h1>
     <br>
     <!-- <div class="col-md-offset-4"> -->
-       <%= link_to "Je trouve mon Bloomer", bloomers_path, class:"btn-redirect" %>
+       <%= link_to "C'est parti !", bloomers_path, class:"btn-redirect", id:"redirect"  %>
     <!-- </div> -->
   </div>
 
@@ -46,21 +46,21 @@
 </div>
 
 <!-- BLOOMERS RANDOM -->
-<div class="wrapper" id="lesbloomers">
+<!-- <div class="wrapper" id="lesbloomers">
   <h3> ILS SONT SUR BLOOMERS </h3>
 
     <div class="container">
       <div class="row" id="cards">
-        <% @three_random_bloomers.each do |bloomer| %>
+        <#% @three_random_bloomers.each do |bloomer| %>
          <div class="col-md-4">
-          <%= link_to bloomer_path(bloomer), method: :get do %>
+          <#%= link_to bloomer_path(bloomer), method: :get do %>
             <div class="card">
-              <figure class="effect-zoe" style="background-image:linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<% if bloomer.photos? %><%= cl_image_path(bloomer.photos.last.path, :crop => :crop)%> <% else %> <%= "http://imageshack.com/a/img923/6113/XpMsUl.jpg"%> <% end %>');">
-                <div class="test"> <h3> <%= bloomer.name %> </span></h3></div>
+              <figure class="effect-zoe" style="background-image:linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<#% if bloomer.photos? %><#%= cl_image_path(bloomer.photos.last.path, :crop => :crop)%> <#% else %> <#%= "http://imageshack.com/a/img923/6113/XpMsUl.jpg"%> <#% end %>');">
+                <div class="test"> <h3> <#%= bloomer.name %> </span></h3></div>
                 <figcaption>
                   <div class="row more-details">
                     <div class="col-xs-6">
-                      <p> <%= bloomer.category %> </p>
+                      <p> <#%= bloomer.category %> </p>
                     </div>
                     <div class="col-xs-6">
                       <p> <i class="fa fa-map-marker" aria-hidden="true"></i> Paris </p>
@@ -68,7 +68,7 @@
                   </div>
                   <div class="row">
                     <div class="col-xs-6">
-                      <p>  <%= bloomer.speciality %> </p>
+                      <p>  <#%= bloomer.speciality %> </p>
                     </div>
                     <div class="col-xs-6">
                       <p class="icon-links">
@@ -79,25 +79,25 @@
                 </figcaption>
               </figure>
             </div>
-            <% end %>
+            <#% end %>
           </div>
-        <% end %>
+        <#% end %>
 
-
-    </div>
+ -->
+<!--     </div>
   </div>
-</div>
+</div> -->
 
 
 <!-- LA METHODOLOGIE BLOOMERS -->
-<div class="wrapper" id="methodo">
+<!-- <div class="wrapper" id="methodo">
     <h3> NOTRE MÉTHODOLOGIE </h3>
   <div class="container-fluid">
     <div class="row" id="methodo-cards">
       <div class="col-xs-12 col-md-4 solution" id="explore">
         <div class="card-methodo">
         <h3>Explorer</h3>
-        <%= image_tag('explore.svg', class: 'home-image') %>
+        <#%= image_tag('explore.svg', class: 'home-image') %>
         <ul>
           <li>Lorem ipsum blablabla anna remplira plus tard</li>
           <li>Lorem ipsum blablabla anna remplira plus tard</li>
@@ -108,7 +108,7 @@
       <div class="col-xs-12 col-md-4 solution" id="partage">
         <div class="card-methodo">
         <h3>Partager</h3>
-        <%= image_tag('share.svg', class:'home-image') %>
+        <#%= image_tag('share.svg', class:'home-image') %>
         <ul>
           <li>Lorem ipsum blablabla anna remplira plus tard</li>
           <li>Lorem ipsum blablabla anna remplira plus tard</li>
@@ -119,7 +119,7 @@
       <div class="col-xs-12 col-md-4 solution" id="guide">
         <div class="card-methodo">
           <h3>Guider</h3>
-        <%= image_tag('lighthouse.svg', class:'home-image') %>
+        <#%= image_tag('lighthouse.svg', class:'home-image') %>
         <ul>
           <li>Lorem ipsum blablabla anna remplira plus tard</li>
           <li>Lorem ipsum blablabla anna remplira plus tard</li>
@@ -129,4 +129,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
