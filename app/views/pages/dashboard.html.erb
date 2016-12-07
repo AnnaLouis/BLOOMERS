@@ -115,8 +115,8 @@
                 <% program.batches.each do |batch| %>
                   <h5 class="btn-bloomer-one" data-target="#content-batch-<%= batch.id %>">> <%= batch.name %></h5>
                 <% end %>
-                <h5>+ <%= link_to "Je crée une nouvelle promo", new_program_batch_path(program) %> </h5>
               <% end %>
+                <h5>+ <%= link_to "Je crée une nouvelle promo", new_program_batch_path(program) %> </h5>
             <% end %>
           <% end %>
           <!-- LIEN AJOUTER UN PROGRAMME -->
