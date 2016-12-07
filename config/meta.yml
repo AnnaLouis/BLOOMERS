@@ -1,6 +1,6 @@
 # config/meta.yml
-meta_title: "Blooomers"
-meta_description: "BLOOMERS - Explorer - Partager  - Accompagner"
-meta_image: "logo.jpg" # Une image dans votre dossier app/assets/images/
-twitter_account: "@bloomers" # indispensable pour les Twitter Cards
+meta_title: "Blooomers, je trouve l'accompagnement qu'il me faut"
+meta_description: "Trouve l'accompagnement qu'il faut à ta startup et postule en trois clics !"
+meta_image: "landingmeta.png" # Une image dans votre dossier app/assets/images/
+twitter_account: "@BloomersFrance" # indispensable pour les Twitter Cards
 
