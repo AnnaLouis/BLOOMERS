@@ -6,10 +6,18 @@ class BatchPolicy < ApplicationPolicy
   end
 
   def new?
-    user.bloomers.programs.include?(record.program)
+    @programs = []
+    user.bloomers.each do |bloomer|
+      @programs << bloomer.program
+    end
+    @programs.include?(record)
   end
 
   def create?
-    user.bloomers.programs.include?(record.program)
+    @programs = []
+    user.bloomers.each do |bloomer|
+      @programs << bloomer.program
+    end
+    @programs.include?(record)
   end
 end

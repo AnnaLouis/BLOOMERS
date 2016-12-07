@@ -84,10 +84,24 @@
 
 .dashboard-main-tabs h4 {
   font-family: 'Quicksand';
-  font-size: 12px;
+  font-size: 16px;
   color: #FEC300;
   font-weight:lighter;
   padding-left:20px;
+}
+
+.dashboard-main-tabs h5 {
+  font-family: 'Quicksand';
+  font-size: 12px;
+  color: #8C8C8C;
+  font-weight:lighter;
+  padding-left:30px;
+}
+
+.dashboard-main-tabs h5:hover {
+  font-weight: bolder;
+  cursor:pointer;
+  text-decoration:none;
 }
 
 .dashboard-main-tabs h4:hover {
