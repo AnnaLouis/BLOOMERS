@@ -327,21 +327,21 @@ incubation4.save
 
 # PROGRAMS LABO EDITION
 
-program1 = Program.new(name:"Incubation")
-program1.short_description = "Accompagnement et soutien des startups qui innovent dans le secteur de l'édition"
-program1.description = "Plus d'info online. Description blablabla."
-program1.price = 1000
-program1.duration = "12 mois"
-program1.equity = false
-program1.individual_coaching = "Validation du Business Model, réalisation d'un prototype en R&D, accompagnement pour les premières ventes, aides juridiques et publiques"
-program1.collective_coachin = "<h4>Ateliers d'écriture</h4><p>initiation à l'écriture à travers des formats innovants et de nouvelles solutions technologiques</p><h4>Meetups & Tables Rondes</h4><p>Rencontres et débats réunissant professionnels du secteur et nouveaux acteurs de l'édition numérique autour de sujets d'actualité</p>"
-program1.ecosystem = "<p>Des partenaires traditionnels comme innovant dans le milieu de l'édition : CNL (Centre National du livre), SNE (Syndicat national de l'édition), ELS, SOfia...</p>"
-program1.advantages = "Validation du Business Model, réalisation d'un prototype en R&D, accompagnement pour les premières ventes, aides juridiques et publiques"
-program1.selection_criterias = "Startups motivées qui désirent révolutionner l'accès aux produits et services dans le secteur de l'édition"
-program1.bloomer = bloomer7
-program1.candidature_open = Date.new(2016,11,1)
-program1.candidature_close = Date.new(2016,12,31)
-program1.save
+program2 = Program.new(name:"Incubation")
+program2.short_description = "Accompagnement et soutien des startups qui innovent dans le secteur de l'édition"
+program2.description = "Plus d'info online. Description blablabla."
+program2.price = 1000
+program2.duration = "12 mois"
+program2.equity = false
+program2.individual_coaching = "Validation du Business Model, réalisation d'un prototype en R&D, accompagnement pour les premières ventes, aides juridiques et publiques"
+program2.collective_coachin = "<h4>Ateliers d'écriture</h4><p>initiation à l'écriture à travers des formats innovants et de nouvelles solutions technologiques</p><h4>Meetups & Tables Rondes</h4><p>Rencontres et débats réunissant professionnels du secteur et nouveaux acteurs de l'édition numérique autour de sujets d'actualité</p>"
+program2.ecosystem = "<p>Des partenaires traditionnels comme innovant dans le milieu de l'édition : CNL (Centre National du livre), SNE (Syndicat national de l'édition), ELS, SOfia...</p>"
+program2.advantages = "Validation du Business Model, réalisation d'un prototype en R&D, accompagnement pour les premières ventes, aides juridiques et publiques"
+program2.selection_criterias = "Startups motivées qui désirent révolutionner l'accès aux produits et services dans le secteur de l'édition"
+program2.bloomer = bloomer7
+program2.candidature_open = Date.new(2016,11,1)
+program2.candidature_close = Date.new(2016,12,31)
+program2.save
 
 #REVIEW
 

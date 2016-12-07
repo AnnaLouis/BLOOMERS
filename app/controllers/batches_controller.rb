@@ -10,18 +10,19 @@ class BatchesController < ApplicationController
   end
 
   def new
+    @program = Program.find(params[:program_id])
     @batch = Batch.new
     @user = current_user
     @bloomers = Bloomer.select{ |bloomer| bloomer.user_id == current_user.id }
-    @programs = Program.select{ |program| program.user_id == current_user.id }
-    authorize @batch
+    @programs = Program.select{ |program| program.bloomer.user_id == current_user.id }
+    authorize @program
   end
 
   def create
     @program = Program.find(params[:program_id])
     @batch = Batch.new(batch_params)
     @batch.program_id = @program.id
-    authorize @batch
+    authorize @program
     if @batch.save
       flash[:notice] = "Le batch \"#{@batch.name}\" du programme \"#{@program.name}\" a bien créé"
       redirect_to dashboard_path

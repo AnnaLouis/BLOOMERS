@@ -66,7 +66,7 @@ class CandidaturesController < ApplicationController
     redirect_to dashboard_path
   end
 
-  def short_list
+  def to_meet
     @candidature = Candidature.find(params[:id])
     @candidature.status = "to meet"
     @candidature.save
