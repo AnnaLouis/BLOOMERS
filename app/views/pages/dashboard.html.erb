@@ -252,15 +252,15 @@
 
       <!-- MES FAVORITS (OK) : STARTUP ADMIN ONLY-->
       <% if current_user.startup_admin  %>
-        <% @favorites.each do |favorite| %>
         <div class="col-xs-9 dashboard-content hidden" id="dashboard-favorites" style="display:flex; flex-direction:column; flex-wrap:wrap">
+        <% @favorites.each do |favorite| %>
             <div class="review">
               <div class="card-title">
                 <%= link_to favorite.bloomer.name, bloomer_path(favorite.bloomer) %>
               </div>
             </div>
-        </div>
         <% end %>
+        </div>
       <% end %>
 
 

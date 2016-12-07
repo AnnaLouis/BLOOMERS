@@ -79,7 +79,7 @@
             <% if candidature.program.bloomer.user == current_user %>
             <h2>ACTION</h2>
             <div class="button-action-status">
-              <%= link_to short_list_candidature_path(candidature),
+              <%= link_to to_meet_candidature_path(candidature),
               controller: :candidatures, method: :to_meet do %>
               <span style="color:#8C8C8C"><i class="fa fa-clock-o" aria-hidden="true"></i> A rencontrer</span>
               <% end %>
