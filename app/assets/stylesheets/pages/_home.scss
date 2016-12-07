@@ -1,6 +1,6 @@
 .roll {
   position: absolute;
-  top: 50%;
+  top: 38%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 35px;
@@ -36,6 +36,7 @@
   animation-name: change;
   animation-duration: 6s;
   animation-iteration-count: infinite;
+
 }
 
 .rollvisible ul li {
