@@ -29,6 +29,7 @@
           <% if current_user.bloomers.count == 0 %>
           <p class="navbar-bloomer-item"> <%= link_to "Je crée mon profil bloomer", new_bloomer_path %> </p>
           <% else %>
+
             <div class="navbar-bloomer-item">
                 <div class="dropdown">
                  <p class="navbar-bloomer-link dropdown-toggle", id="navbar-bloomer-menu", data-toggle="dropdown"> Mon profil bloomer </p>

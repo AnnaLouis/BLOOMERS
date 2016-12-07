@@ -4,28 +4,28 @@
     <!-- COLONNE 1 - RECHErCHE -->
     <div class="wrapper-index" style="padding-bottom: 30px;">
       <div class="col-xs-12">
-<!--         <h3> RECHERCHE </h3> -->
 
-        <%= simple_form_for(:search, url: bloomers_path, method: :get) do |f| %>
-        <ul>
-          <h4 style="color:#384259;font-weight:light;"> Catégories </h4> <br>
-          <% if @categories.present? %>
-            <%= f.input :category, as: :check_boxes, collection: @categories.map { |category| category["key"] }, label: "Choisissez une catégorie", checked: @selected_categories %>
-          <% else %>
-            Pas de catégorie
-          <% end %>
-          <h4 style="color:#384259;font-weight:light;">Location</h4> <br>
-            <%= f.input :city, label: 'Ville', selected: @selected_city %>
-          <h4 style="color:#384259;font-weight:light;">Spécialité</h4> <br>
-          <% if @specialities.present? %>
-            <%= f.input :speciality, collection: @specialities.map { |speciality| speciality["key"] }, label: 'Entrez les spécialités', include_blank: true, selected: @selected_speciality %>
-          <% else %>
-            Pas de spécialité
-          <% end %>
-        </ul>
-
-        <span class="nb-next-button"><%= f.button :submit, "Go !" %></span>
+      <!--         <h3> RECHERCHE </h3> -->
+      <%= simple_form_for(:search, url: bloomers_path, method: :get) do |f| %>
+      <ul>
+        <h4 style="color:#384259;font-weight:light;"> Catégories </h4> <br>
+        <% if @categories.present? %>
+          <%= f.input :category, as: :check_boxes, collection: @categories.map { |category| category["key"] }, label: "Choisissez une catégorie", checked: @selected_categories %>
+        <% else %>
+          Pas de catégorie
         <% end %>
+        <h4 style="color:#384259;font-weight:light;">Location</h4> <br>
+          <%= f.input :city, label: 'Ville', selected: @selected_city %>
+        <h4 style="color:#384259;font-weight:light;">Spécialité</h4> <br>
+        <% if @specialities.present? %>
+          <%= f.input :speciality, collection: @specialities.map { |speciality| speciality["key"] }, label: 'Entrez les spécialités', include_blank: true, selected: @selected_speciality %>
+        <% else %>
+          Pas de spécialité
+        <% end %>
+      </ul>
+      <span class="nb-next-button"><%= f.button :submit, "Go !" %></span>
+      <% end %>
+
       </div>
     </div>
 
