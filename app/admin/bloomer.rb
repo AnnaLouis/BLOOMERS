@@ -1,6 +1,6 @@
 ActiveAdmin.register Bloomer do
 
-  permit_params :name, :city, :website, :category, :email, :address, :speciality, :date_creation, :description, :twitter_account, photos: []
+  permit_params :name, :city, :website, :category, :email, :address, :speciality, :date_creation, :description, :twitter_account, :logo, photos: []
 
   index do
     selectable_column
