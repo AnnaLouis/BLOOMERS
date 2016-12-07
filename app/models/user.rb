@@ -9,6 +9,7 @@ class User < ApplicationRecord
 
   has_many :startups
   has_many :bloomers
+  has_many :incubations, through: :startups
   has_many :candidatures, through: :startups
   has_many :candidatures, through: :bloomers
   has_many :programs, through: :bloomers
