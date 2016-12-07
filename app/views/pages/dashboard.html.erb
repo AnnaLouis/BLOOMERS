@@ -126,7 +126,7 @@
           <% end %>
 
         <!-- MES ACCOMPAGNEMENTS -->
-        <% if %>
+        <% if current_user.startup_admin? %>
         <h3 class="dashboard-btn profile-link" data-target="#dashboard-incubations">
           <i class="fa fa-bath" aria-hidden="true"></i>
           <% if @incubations.count <= 1 %>
@@ -239,6 +239,7 @@
         </div>
       <% end %>
 
+      <% if current_user.startup_admin? %>
       <div class="col-xs-9 dashboard-content hidden" id="dashboard-incubations">
         <% if @incubations.count == 0 %>
         <h2>Vous n'avez pas de promotion pour l'instant</h2>
@@ -266,6 +267,7 @@
         <% end %>
         <% end %>
       </div>
+      <% end %>
 
       <!-- DASHBOARD CONTENT 4. MES AVIS/REVIEWS -->
       <% if current_user.startup_admin  %>
