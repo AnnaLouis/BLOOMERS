@@ -32,14 +32,7 @@ class CandidaturesController < ApplicationController
       else
         render 'new'
       end
-  end
 
-  def decline?
-    status = "declined"
-  end
-
-  def accept?
-    status = "refused"
   end
 
   def accept

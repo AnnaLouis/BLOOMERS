@@ -40,10 +40,19 @@ $(document).ready(function() {
     });
 
 
+    $(".dashboard-btn").on("click", function(e){
+      tabSelector = $(this).data("target");
+      window.location.hash = '#tab=' + tabSelector.replace('#', '');
+    });
+
     var url_params = getHashParams()
     var current_tab = '#' + url_params.tab;
-    console.log(current_tab)
     $('.sub-title[data-target="' + current_tab + '"]').click();
+    console.log($('.dashboard-btn[data-target="' + current_tab + '"]'))
+    setTimeout(function() {
+      $('.dashboard-btn[data-target="' + current_tab + '"]').click();
+    }, 50)
+
 
 });
 

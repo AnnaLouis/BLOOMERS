@@ -30,10 +30,10 @@
           <p class="navbar-bloomer-item"> <%= link_to "Je crée mon profil bloomer", new_bloomer_path %> </p>
           <% else %>
           <p class="navbar-bloomer-item"> <%= link_to "Voir mon profil bloomer", dashboard_path %> </p>
-            <%= link_to dashboard_path, class: "navbar-bloomer-item navbar-bloomer-link" do %>
+            <%= link_to dashboard_path(anchor: "tab=dashboard-candidatures"), class: "navbar-bloomer-item navbar-bloomer-link" do %>
               <div class="badge-container">
                 <i class="fa fa-commenting-o" aria-hidden="true"></i>
-                <div class="badge badge-blue"><%= current_user.candidatures.count %></div>
+                <div class="badge badge-blue"> <%= current_user.candidatures.where(status: "new").count %> </div>
               </div>
             <% end %>
           <% end %>

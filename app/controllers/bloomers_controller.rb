@@ -25,7 +25,7 @@ class BloomersController < ApplicationController
 
     if params[:search]
       # categories
-      @selected_categories = params[:search][:category].select(&:present?)
+      @selected_categories = params[:search][:category]
       conditions[:category] = @selected_categories if @selected_categories.present?
 
       # city
