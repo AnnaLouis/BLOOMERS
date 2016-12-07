@@ -115,7 +115,7 @@ class BloomersController < ApplicationController
 private
 
   def bloomer_params
-     params.require(:bloomer).permit(:name, :city, :category, :website, :email, :twitter_account, :description, :address, :speciality, :date_creation, photos:[])
+    params.require(:bloomer).permit(:name, :city, :category, :website, :email, :twitter_account, :description, :address, :speciality, :date_creation, :logo, photos:[])
   end
 
   def get_buckets(filter_name, search)

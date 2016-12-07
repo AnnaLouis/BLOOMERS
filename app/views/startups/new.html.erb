@@ -23,17 +23,18 @@
         </div>
       </div>
     </div>
-
     <div class="col-xs-9 new-bloomer-right">
+    <%= simple_form_for(@startup) do |f| %>
       <!-- 1. EQUIPE & PROJET -->
       <div class="sub-new-bloomer-content" id="step-1-name" style="width:100%">
         <div class="row">
           <div class="col-xs-12 col-sm-6">
-            <%= simple_form_for(@startup) do |f| %>
+
             <%= f.error_notification %>
             <%= f.input :name, label: 'Le nom de votre startup' %>
             <br>
             <%= f.input :team, label: 'Qui se cache derrière votre projet ?' %>
+            <%= f.input :photos, label: 'Quelques photos de votre équipe et projet', as: :attachinary %>
           </div>
           <div class="col-xs-12 col-sm-6">
             <%= f.input :short_description, label: 'Votre startup en une phrase' %>
@@ -74,11 +75,11 @@
             <%= f.input :your_solution, label: 'Quelle solution avez-vous trouvé ?' %>
             <div class="nb-next-button" id="nb-next-button-3">
               <span class="nb-next-button"><%= f.button :submit, "Je crée ma startup !" %></span>
-              <% end %>
             </div>
           </div>
         </div>
       </div>
+    <% end %>
     </div>
   </div>
 </div>

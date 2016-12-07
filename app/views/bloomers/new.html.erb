@@ -30,9 +30,9 @@
     </div>
 
     <div class="col-xs-9 new-bloomer-right">
+    <%= simple_form_for(@bloomer) do |f| %>
       <!-- Begining of simple form -->
       <div class="sub-new-bloomer-content" id="step-1-name">
-        <%= simple_form_for(@bloomer) do |f| %>
         <%= f.error_notification %>
         <%= f.input :name, label: 'Nom de votre structure' %>
         <%= f.input :logo, as: :attachinary %>
@@ -54,7 +54,7 @@
       </div>
       <!-- INFO -->
       <div class="sub-new-bloomer-content hidden" id="step-3-infos">
-      <div class="nb-title-sub-content"><h2>Informations pratiques</h2></div>
+        <div class="nb-title-sub-content"><h2>Informations pratiques</h2></div>
         <div class="col-xs-12 col-sm-6">
           <div class="datepicker">
             <%= f.input :date_creation, as: :string, input_html: {class: "not_to_display"}%>
@@ -70,19 +70,16 @@
       </div>
       <!-- SOCIAL MEDIAS -->
       <div class="sub-new-bloomer-content hidden" id="step-4-medias">
-      <div class="nb-title-sub-content"><h2>Réseaux sociaux</h2></div>
-      <div class="col-xs-12 col-sm-6">
-        <%= f.input :twitter_account, label: 'Compte Twitter' %>
-        <%= f.input :photos, as: :attachinary %>
-
+        <div class="nb-title-sub-content"><h2>Réseaux sociaux</h2></div>
+        <div class="col-xs-12 col-sm-6">
+          <%= f.input :twitter_account, label: 'Compte Twitter' %>
+          <%= f.input :photos, as: :attachinary %>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+          <span class="nb-next-button"><%= f.button :submit, "Je crée ma structure !" %></span>
+        </div>
       </div>
-      <div class="col-xs-12 col-sm-6">
-        <span class="nb-next-button"><%= f.button :submit, "Je crée ma structure !" %></span>
-        <% end %>
-      </div>
-      <!-- SUBMIT -->
-
-      </div>
+    <% end %>
     </div>
   </div>
 </div>
