@@ -9,6 +9,25 @@
      <#%= link_to "Je trouve mon accompagnement", bloomers_path, class: "btn btn-primary btn-lg" %>
   </div> -->
 
+<!--   <#% simple_form_for(@bloomer) do |f| %>
+    <#%= f.input :city %>
+    <#%= f.input :category %>
+    <#%= f.input :speciality %>
+  <#% end %> -->
+
+
+  <div class="search-landing">
+    <div class="searchForm row">
+      <div class="col-xs-12" style="width:400px;text-align: center">
+        <%= simple_form_for(:search, url: bloomers_path, method: :get) do |f| %>
+          <h4 style="color:#384259;font-weight:light;"> Location </h4> <br>
+          <%= f.input :city, label: 'Ville', selected: @selected_city %>
+          <span class="nb-next-button"><%= f.button :submit, "Go !" %></span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
    <div class="container">
      <div class="row banner-cards">
         <div class="col-xs-12 col-sm-4 col-lg-4">
@@ -125,6 +144,3 @@
     </div>
   </div>
 </div>
-
-
-
