@@ -76,11 +76,11 @@
 
 
 .btn-redirect {
- color: white;
+  color: white;
   padding: 10px 15px;
   border-radius: 4px;
   font-weight: bold;
-  background: #00697F;
+  background: blue;
   width: 200px;
   transition: background 0.3s ease;
 }
@@ -92,8 +92,17 @@
   color: white;
 }
 
+#redirect {
+  color: white;
+  background: #04677D;
+  // opacity: none;
+}
 
-
+#redirect:hover {
+  color: white;
+  background: #04677D;
+  border-color: none;
+}
 
 
 
