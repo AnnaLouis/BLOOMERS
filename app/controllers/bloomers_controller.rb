@@ -97,9 +97,11 @@ class BloomersController < ApplicationController
     @bloomer.user = current_user
     authorize @bloomer
     if @bloomer.save
+      flash[:notice] = "Le bloomer #{@bloomer.name} a bien été créé"
       BloomerMailer.creation_confirmation(@bloomer).deliver_now
       redirect_to bloomer_path(@bloomer)
     else
+      flash[:alert] = "Oupsi ! Un des champs a mal été rempli"
       render :new
     end
   end

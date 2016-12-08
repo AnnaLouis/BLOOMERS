@@ -21,6 +21,7 @@ class BookingsController < ApplicationController
       redirect_to dashboard_path(@candidature.program.bloomer)
       flash[:notice] = "Votre booking a bien été pris en compte, vous serez prévenu de la confirmation"
     else
+      flash[:alert] = "Oupsi ! Un champ a mal été rempli"
       render :new
     end
   end

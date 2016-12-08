@@ -15,8 +15,10 @@ class ProgramsController < ApplicationController
     @program = Program.new(program_params)
     authorize @program
     if @program.save
+      flash[:notice] = "Le programme #{@program.name} a bien été créé"
       redirect_to dashboard_path
     else
+      flash[:alter] = "Oupsi ! Un des champs n'est pas correct"
       render :new
     end
   end
