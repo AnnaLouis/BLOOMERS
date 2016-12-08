@@ -35,6 +35,7 @@ class PagesController < ApplicationController
   end
 
   def dashboard
+    @booking = Booking.new
     @startups = current_user.startups
     @bloomers = current_user.bloomers
     if current_user.startup_admin
