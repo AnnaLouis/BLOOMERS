@@ -24,6 +24,6 @@ class ProgramsController < ApplicationController
   private
 
   def program_params
-     params.require(:program).permit(:name, :short_description, :description, :duration, :price, :equity, :candidature_open, :candidature_close, :individual_coaching, :collective_coachin, :ecosystem, :advantages, :selection_criterias, :bloomer_id)
+     params.require(:program).permit(:name, :short_description, :description, :duration, :price, :equity, :candidature_open, :candidature_close, :individual_coaching, :surviving_rate, :collective_coachin, :ecosystem, :advantages, :selection_criterias, :bloomer_id)
   end
 end

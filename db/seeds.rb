@@ -232,6 +232,7 @@ program1.selection_criterias = "<h4>TEAM DE CHOC</h4> <p>Passion, pragmatisme, e
 program1.bloomer = bloomer1
 program1.candidature_open = Date.new(2016,11,1)
 program1.candidature_close = Date.new(2016,12,31)
+program1.surviving_rate = 90
 program1.save
 
 # STARTUPS DE SHOWROOMPRIVE
@@ -341,6 +342,7 @@ program2.selection_criterias = "Startups motivées qui désirent révolutionner 
 program2.bloomer = bloomer7
 program2.candidature_open = Date.new(2016,11,1)
 program2.candidature_close = Date.new(2016,12,31)
+program2.surviving_rate = 79
 program2.save
 
 #REVIEW

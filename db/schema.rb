@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161206160212) do
+ActiveRecord::Schema.define(version: 20161208100507) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -134,6 +134,7 @@ ActiveRecord::Schema.define(version: 20161206160212) do
     t.text     "ecosystem"
     t.text     "advantages"
     t.text     "selection_criterias"
+    t.integer  "surviving_rate"
     t.index ["bloomer_id"], name: "index_programs_on_bloomer_id", using: :btree
   end
 
