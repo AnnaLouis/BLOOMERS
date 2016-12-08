@@ -3,10 +3,9 @@ class BloomersController < ApplicationController
 
   def index
     @bloomers = policy_scope(Bloomer)
-
     @search_bloomer = Bloomer.new
 
-    # # Je crée les spécialités Bloomers
+    # Je crée les spécialités Bloomers
     # @specialities = []
     # @bloomers.each do |bloomer|
     #   @specialities << bloomer.speciality
@@ -26,6 +25,7 @@ class BloomersController < ApplicationController
     if params[:search]
       # categories
       @selected_categories = params[:search][:category]
+      @selected_categories = @selected_categories.select(&:present?) if @selected_categories.present?
       conditions[:category] = @selected_categories if @selected_categories.present?
 
       # city
@@ -72,6 +72,7 @@ class BloomersController < ApplicationController
     @alert_message = "Vous êtes sur la page de : #{@bloomer.name}"
     @bloomer_coordinates = { lat: @bloomer.latitude, lng: @bloomer.longitude }
     @review = Review.new
+    @find_review = Review.find_by(user_id: current_user.id, bloomer_id: @bloomer.id)
     @favorite = Favorite.new
     @find_favorite = Favorite.find_by(bloomer_id: @bloomer.id, user_id: current_user.id)
     @bookings = Booking.select{ |booking| booking.bloomer_id == params[:id].to_i}

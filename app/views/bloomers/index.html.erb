@@ -20,7 +20,7 @@
         <% if @specialities.present? %>
           <%= f.input :speciality, collection: @specialities.map { |speciality| speciality["key"] }, label: 'Entrez les spécialités', include_blank: true, selected: @selected_speciality %>
         <% else %>
-          Pas de spécialité
+          <%= @selected_speciality || "Pas de spécialité" %>
         <% end %>
       </ul>
       <span class="nb-next-button"><%= f.button :submit, "Go !" %></span>
