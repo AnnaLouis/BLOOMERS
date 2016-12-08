@@ -40,7 +40,7 @@
 }
 
 .button-action-status {
-  padding: 5px 0 5px 0;
+  padding: 5px 0 5px 15px;
   background-color: white;
   font-weight:lighter;
   font-family:'Muli';
@@ -103,5 +103,38 @@
   border-bottom: 2px solid #FEC300;
   justify-content: center;
 }
+
+#btn-modal-booking {
+  border: none;
+  background-color: white;
+  padding-left: 0;
+}
+
+#bookingModal {
+  z-index: 3000;
+}
+
+#modal-body{
+  padding-left: 40px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

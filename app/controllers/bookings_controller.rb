@@ -14,7 +14,7 @@ class BookingsController < ApplicationController
     @booking.end_date = @booking.start_date + 1.hours
     @booking.candidature = @candidature
     @booking.bloomer = @candidature.program.bloomer
-    @booking.status = "Pending"
+    @booking.status = "pending"
     if @booking.save
       @booking.candidature.status = "rdv"
       @booking.candidature.save
@@ -26,19 +26,17 @@ class BookingsController < ApplicationController
   end
 
   def validate
-    # @candidature = Candidature.find(params[:candidature_id])
     @booking = Booking.find(params[:id])
     authorize @booking
-    @booking.status = "Accepted"
+    @booking.status = "accepted"
     @booking.save
     redirect_to dashboard_path
   end
 
   def decline
-    # @candidature = Candidature.find(params[:candidature_id])
     @booking = Booking.find(params[:id])
     authorize @booking
-    @booking.status = "Declined"
+    @booking.status = "declined"
     @booking.save
     redirect_to dashboard_path
   end

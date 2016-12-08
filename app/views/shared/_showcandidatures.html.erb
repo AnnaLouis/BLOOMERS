@@ -1,3 +1,4 @@
+
 <div class="modal fade modal-candidatures" id="candidatures-modal-<%=candidature.id%>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -76,52 +77,54 @@
                   <% end %>
                 </h3>
               </div>
-            <% if candidature.program.bloomer.user == current_user %>
-            <h2>ACTION</h2>
-            <div class="button-action-status">
-              <%= link_to to_meet_candidature_path(candidature),
-              controller: :candidatures, method: :to_meet do %>
-              <span style="color:#8C8C8C"><i class="fa fa-clock-o" aria-hidden="true"></i> A rencontrer</span>
-              <% end %>
-            </div>
-            <div class="button-action-status">
-              <%= link_to new_candidature_booking_path(candidature),
-              controller: :bookings, method: :get do %>
-              <span style="color:#8C8C8C"><i class="fa fa-commenting" aria-hidden="true"></i> Prendre un RDV</span>
-              <% end %>
-            </div>
-            <div class="button-action-status">
-              <%= link_to short_list_candidature_path(candidature),
-              controller: :candidatures, method: :short_list do %>
-              <span style="color:#FEC300"><i class="fa fa-list" aria-hidden="true"></i> La présélectionner</span>
-              <% end %>
-            </div>
-            <div class="button-action-status">
-              <%= link_to accept_candidature_path(candidature),
-              controller: :candidatures, method: :accept do %>
-              <span style="color:#13CE66"><i class="fa fa-check-circle" aria-hidden="true"></i> Accepter</span>
-              <% end %>
-            </div>
-            <div class="button-action-status">
-              <%= link_to refuse_candidature_path(candidature),
-              controller: :candidatures, method: :refuse do %>
-              <span style="color:#FF5656"><i class="fa fa-times" aria-hidden="true"></i> Refuser</span>
-              <% end %>
-            </div>
-            <h2>MES RDV</h2>
+              <% if candidature.program.bloomer.user == current_user %>
+              <h2>ACTION</h2>
+              <div class="button-action-status">
+                <%= link_to to_meet_candidature_path(candidature),
+                controller: :candidatures, method: :to_meet do %>
+                <span style="color:#8C8C8C"><i class="fa fa-clock-o" aria-hidden="true"></i> A rencontrer</span>
+                <% end %>
+              </div>
+              <div class="button-action-status">
+                <button type="button" id="btn-modal-booking" data-toggle="modal" data-target="#bookingModal-<%=candidature.id%>" style="color:#8C8C8C">
+                  <i class="fa fa-commenting" aria-hidden="true"></i> Prendre un RDV
+                </button>
+                <!-- <span style="color:#8C8C8C"><i class="fa fa-commenting" data-toggle="modal data-target="#bookingModal" aria-hidden="true"></i> Prendre un RDV</span>
+                <span style="color:#8C8C8C"><i class="fa fa-commenting" aria-hidden="true"></i> Prendre un RDV</span>
+ -->
+              </div>
+              <div class="button-action-status">
+                <%= link_to short_list_candidature_path(candidature),
+                controller: :candidatures, method: :short_list do %>
+                <span style="color:#FEC300"><i class="fa fa-list" aria-hidden="true"></i> La présélectionner</span>
+                <% end %>
+              </div>
+              <div class="button-action-status">
+                <%= link_to accept_candidature_path(candidature),
+                controller: :candidatures, method: :accept do %>
+                <span style="color:#13CE66"><i class="fa fa-check-circle" aria-hidden="true"></i> Accepter</span>
+                <% end %>
+              </div>
+              <div class="button-action-status">
+                <%= link_to refuse_candidature_path(candidature),
+                controller: :candidatures, method: :refuse do %>
+                <span style="color:#FF5656"><i class="fa fa-times" aria-hidden="true"></i> Refuser</span>
+                <% end %>
+              </div>
+              <h2>MES RDV</h2>
               <% candidature.bookings.each do |booking| %>
-            <div class="box-status">
-              <%= booking.start_date %>
-              <%= booking.end_date %>
-              <%= booking.status %>
-            </div>
+              <div class="box-status">
+                <%= booking.start_date %>
+                <%= booking.end_date %>
+                <%= booking.status %>
+              </div>
               <% end %>
-            <% end %>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 </div>
 </div>
