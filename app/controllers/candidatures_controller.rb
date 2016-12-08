@@ -28,8 +28,10 @@ class CandidaturesController < ApplicationController
     authorize @candidature
     @candidature.status = "new"
       if @candidature.save
-        redirect_to dashboard_path
+        flash[:notice] = "Votre candidature à #{@program.bloomer.name} a bien été pris en compte"
+        redirect_to dashboard_path(@bloomer, anchor: "tab=dashboard-candidatures")
       else
+        flash[:alter] = "Oupsi ! Un champ a mal été rempli"
         render 'new'
       end
 
@@ -48,7 +50,7 @@ class CandidaturesController < ApplicationController
     @candidature.status = "accepted"
     @candidature.save
     authorize @candidature
-    redirect_to dashboard_path
+    redirect_to dashboard_path(@bloomer, anchor: "tab=dashboard-candidatures")
   end
 
   def refuse
@@ -56,7 +58,7 @@ class CandidaturesController < ApplicationController
     @candidature.status = "refused"
     @candidature.save
     authorize @candidature
-    redirect_to dashboard_path
+    redirect_to dashboard_path(@bloomer, anchor: "tab=dashboard-candidatures")
   end
 
   def short_list
@@ -64,7 +66,7 @@ class CandidaturesController < ApplicationController
     @candidature.status = "short list"
     @candidature.save
     authorize @candidature
-    redirect_to dashboard_path
+    redirect_to dashboard_path(@bloomer, anchor: "tab=dashboard-candidatures")
   end
 
   def to_meet
@@ -72,7 +74,7 @@ class CandidaturesController < ApplicationController
     @candidature.status = "to meet"
     @candidature.save
     authorize @candidature
-    redirect_to dashboard_path
+    redirect_to dashboard_path(@bloomer, anchor: "tab=dashboard-candidatures")
   end
 
 private
