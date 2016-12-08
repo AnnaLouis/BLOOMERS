@@ -15,9 +15,11 @@ class StartupsController < ApplicationController
     @startup.user = current_user
     authorize(@startup)
     if @startup.save
+      flash[:notice] = "Le startup #{@startup.name} a bien été créée"
       StartupMailer.creation_confirmation(@startup).deliver_now
       redirect_to dashboard_path
     else
+      flash[:alert] = "Oupsi ! Un champ a mal été rempli"
       render 'new'
     end
   end
