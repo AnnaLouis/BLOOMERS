@@ -287,6 +287,7 @@
 
 .photo-event {
    height:240px;
+   width:100%;
 
 }
 
@@ -538,4 +539,37 @@ color: #FEC32B;
   flex: 1 0 auto;
   height:70px;
   align-items: center;
+}
+
+// DIV SHOW EVENT
+#text-show-events h2 {
+  color: #04677D;
+  font-size: 26px;
+  margin-top: 0;
+  text-transform: uppercase;
+}
+
+#text-show-events h3 {
+  color: #FEC300;
+  font-size: 22px;
+  text-align:left;
+  margin-top:0;
+  margin-bottom:5px;
+}
+
+#text-show-events h4 {
+  font-size:12px
+}
+
+// NEWSFEED
+
+#newsfeed-subtitle {
+  color: #FEC300;
+  font-size: bolder;
+}
+
+//  MODAL PHOTOS
+#modal-photos {
+  width:100%;
+  height: auto;
 }
