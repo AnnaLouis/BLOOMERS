@@ -140,7 +140,7 @@
 
         <!-- BTN CANDIDATURE -->
         <h3 class="dashboard-btn profile-link" data-target="#dashboard-candidatures">
-          <i class="fa fa-bullhorn" aria-hidden="true"></i>MES CANDIDATURES <span class="dash-notifs">(<%= @candidatures.count %>)</span>
+          <i class="fa fa-bullhorn" aria-hidden="true"></i>MES CANDIDATURES <span class="dash-notifs">(<%= 404+current_user.candidatures.where(status: "new").count %>)</span>
         </h3>
         <% if current_user.startup_admin? %>
         <h3 class="dashboard-btn profile-link" data-target="#dashboard-reviews">
@@ -313,21 +313,39 @@
         <div class="row tabs-candidatures-status">
           <div class="col-xs-2 tab-candidatures-status active" data-target=".new-candidatures" style="border-radius: 2px 0 0 2px">
             <h3><span>Nouvelles</span></h3>
+            <% if current_user.candidatures.where(status: "new").count >= 1 %>
+            <div class="badge badge-blue" style="z-index:1000"> <%= current_user.candidatures.where(status: "new").count %> </div>
+            <% end %>
           </div>
           <div class="col-xs-2 tab-candidatures-status" data-target=".to-meet-candidatures">
             <h3><span>A rencontrer</span></h3>
+            <% if current_user.candidatures.where(status: "to meet").count >= 1 %>
+            <div class="badge badge-blue" style="z-index:1000"> <%= current_user.candidatures.where(status: "to meet").count %> </div>
+             <% end %>
           </div>
           <div class="col-xs-2 tab-candidatures-status" data-target=".rdv-candidatures">
             <h3><span>Mes RDV</span></h3>
+            <% if current_user.candidatures.where(status: "rdv").count >= 1 %>
+            <div class="badge badge-blue" style="z-index:1000"> <%= current_user.candidatures.where(status: "rdv").count %> </div>
+             <% end %>
           </div>
           <div class="col-xs-2 tab-candidatures-status" data-target=".short-list-candidatures">
             <h3><span>Présélection</span></h3>
+            <% if current_user.candidatures.where(status: "short list").count >= 1 %>
+            <div class="badge badge-blue" style="z-index:1000"> <%= current_user.candidatures.where(status: "short list").count %> </div>
+             <% end %>
           </div>
           <div class="col-xs-2 tab-candidatures-status" data-target=".accepted-candidatures">
             <h3><span>Acceptées</span></h3>
+            <% if current_user.candidatures.where(status: "accepted").count >= 1 %>
+            <div class="badge badge-blue" style="z-index:1000"> <%= current_user.candidatures.where(status: "accepted").count %> </div>
+             <% end %>
           </div>
           <div class="col-xs-2 tab-candidatures-status" data-target=".refused-candidatures" style="border-radius:0 2px 2px 0">
             <h3><span>Refusées</span></h3>
+            <% if current_user.candidatures.where(status: "refused").count >= 1 %>
+            <div class="badge badge-blue" style="z-index:1000"> <%= current_user.candidatures.where(status: "refused").count %> </div>
+             <% end %>
           </div>
         </div>
         <div class="dashboard-apply-cards">
