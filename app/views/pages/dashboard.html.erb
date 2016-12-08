@@ -326,8 +326,8 @@
           </div>
           <div class="col-xs-2 tab-candidatures-status" data-target=".to-meet-candidatures">
             <h3><span>A rencontrer</span></h3>
-            <% if current_user.candidatures.where(status: "to meet").count >= 1 %>
-            <div class="badge badge-blue" style="z-index:1000"> <%= current_user.candidatures.where(status: "to meet").count %> </div>
+            <% if current_user.bloomer_admin %>
+            <div class="badge badge-blue" style="z-index:1000"> <%= 404+current_user.candidatures.where(status: "to meet").count %> </div>
              <% end %>
           </div>
           <div class="col-xs-2 tab-candidatures-status" data-target=".rdv-candidatures">
