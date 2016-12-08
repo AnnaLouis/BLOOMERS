@@ -10,9 +10,15 @@ class ReviewsController < ApplicationController
 
   def create
     @review = @bloomer.reviews.build(review_params)
+    @review.user = current_user
     authorize(@review)
-    @review.save
+    if @review.save
+    flash[:notice] = "C'est enregistré merci !"
     redirect_to bloomer_path(@bloomer, anchor: "tab=reviews")
+    else
+    flash[:alert] = "Oups, un champ a été mal rempli..."
+    render 'new'
+    end
   end
 
   private

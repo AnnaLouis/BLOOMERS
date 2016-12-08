@@ -864,6 +864,7 @@
       </ul>
       <% if current_user.startup_admin? %>
       <% if @user_bloomers.include?(@bloomer)%>
+      <% if @find_review.nil? %>
       <div class="col-xs-12 col-sm-6 col-sm-offset-3" id="review-input" style="color:#04677D">
         <%= simple_form_for [@bloomer, @review] do |f| %>
           <%= f.input :title %>
@@ -872,6 +873,7 @@
           <%= f.submit "add a review", class: "btn btn-primary" %>
         <% end %>
       </div>
+      <% end %>
       <% end %>
       <% end %>
     </div>
