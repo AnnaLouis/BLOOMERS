@@ -129,6 +129,14 @@
 
 .nb-next-button {
   cursor:pointer;
+  input {
+    width: 100%;
+    background: #fec300;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    font-weight: bold;
+  }
 }
 
 .nb-next-button h4 {

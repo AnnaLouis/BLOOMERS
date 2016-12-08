@@ -36,6 +36,12 @@
 .bloomer_index {
   background-color: #FAFAFA;
   background-size: cover !important;
+  ul {
+    padding: 0;
+  }
+  .nb-next-button input {
+    width: 100%;
+  }
 }
 
 .bloomer-list {
