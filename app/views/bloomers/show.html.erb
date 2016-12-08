@@ -11,7 +11,7 @@
   <div class="container">
     <div class="row title">
       <div class="col-xs-9">
-        <h1><%= @bloomer.name.upcase %></h1>
+        <h1><%= @bloomer.name %></h1>
       </div>
       <div class="col-xs-3">
         <h4><span class="show-social-medias-button">
@@ -48,7 +48,7 @@
             </a>
         </span></h4>
         <h3><a href="http://<%= @bloomer.website %>" target="_blank">
-          visit the website
+          <%= @bloomer.website %>
         </a></h3>
       </div>
     </div>
@@ -77,13 +77,13 @@
               <div class="col-xs-12 col-md-6">
                 <div class="div-main-info">
                   <h2>STRUCTURE</h2>
-                  <h3><%= @bloomer.category.upcase %></h3>
+                  <h3><%= @bloomer.category %></h3>
                 </div>
               </div>
               <div class="col-xs-12 col-md-6">
                 <div class="div-main-info">
                   <h2>SPECIALISATION</h2>
-                  <h3><%= @bloomer.speciality.upcase %></h3>
+                  <h3><%= @bloomer.speciality %></h3>
                 </div>
               </div>
             </div>

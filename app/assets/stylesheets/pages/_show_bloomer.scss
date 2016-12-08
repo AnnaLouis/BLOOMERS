@@ -67,6 +67,7 @@
   color: #04677D;
   padding-bottom:10px;
   padding-top:10px;
+  text-transform: uppercase;
 }
 
 .wrapper-show-bloomer .title .show-social-medias-button a {
@@ -90,15 +91,20 @@
   text-align: right;
   font-size:14px;
   color: #8C8C8C ;
+  text-transform: uppercase;
 }
 
 .wrapper-show-bloomer .title a {
-  color: #8C8C8C
+  color: #8C8C8C;
+  text-transform:none;
+
+font-weight: lighter;
 }
 
 .wrapper-show-bloomer .title a:hover {
   text-decoration: none;
   color: #04667C;
+  font-weight:bolder;
 }
 
 // /* SUBTITLE JS */
@@ -183,6 +189,7 @@
 
 .div-main-info {
   text-align: center;
+  text-transform:uppercase;
 }
 
 .div-main-info h3 {
