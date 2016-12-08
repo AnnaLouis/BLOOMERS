@@ -24,65 +24,42 @@
     </div>
   </div>
 
-
-<!-- <div class="dashboard-apply-card">
-  <div class="col-xs-2 container-candidature-fields">
-    <%# if candidature.startup.logo? %>
-    <%#= cl_image_tag candidature.startup.logo.path, class:"candidature-avatar" %>
-    <%# end %>
-  </div>
-  <div class="col-xs-2 container-candidature-fields">
-    <h2>Startup<br><span><%#= candidature.startup.name %></span></h2>
-  </div>
-  <div class="col-xs-2 container-candidature-fields">
-    <h3>Programme<br><span><%#= candidature.program.name%></span></h3>
-  </div>
-  <div class="col-xs-4">
-    <h4><%#= candidature.startup.short_description %></h4>
-  </div>
-  <div class="col-xs-2 container-candidature-fields">
-    <button type="button" class="btn btn-postulate" data-toggle="modal" data-target="#candidatures-modal-<%#=candidature.id%>" style="height:50%;width:50%;border-radius:4px; text-align:center;justify-content:center; text-transform:uppercase; font-size:12px;font-family:'Muli'; padding:1px">Détails</button>
-  </div>
-</div> -->
-
 <% end %>
 
   <!-- coté startup -->
 
 <% if candidature.startup.user == current_user%>
 
-<div class="dashboard-apply-card">
-  <div class="col-xs-2 container-candidature-fields">
+
+  <div class="card-candidature">
+    <div class="card-candidature-field hidden-xs text-center">
     <% if candidature.program.bloomer.logo? %>
     <%= cl_image_tag candidature.program.bloomer.logo.path, class:"candidature-avatar" %>
     <% end %>
-  </div>
-  <div class="col-xs-2 container-candidature-fields">
-    <h2>Bloomer<br><span><%= candidature.program.bloomer.name %></span></h2>
-  </div>
-  <div class="col-xs-2 container-candidature-fields">
-    <h3>Programme<br><span><%= candidature.program.name%></span></h3>
-  </div>
+    </div>
+    <div class="card-candidature-field">
+    <h2 style="font-size:14px">Bloomer :<br><span><%= candidature.program.bloomer.name %></span></h2>
+    </div>
+    <div class="card-candidature-field">
+      <h3 style="font-size:14px;padding-left: 10px;">Programme :<br><span><%= candidature.program.name%></span></h3>
+    </div>
 
-      <!-- si le rdv est accepté ou refusé -->
 
-  <% if candidature.status == "rdv" && candidature.bookings.last.status != "pending" %>
-
-    <div class="col-xs-4">
+  <!-- si le rdv est accepté ou refusé -->
+    <% if candidature.status == "rdv" && candidature.bookings.last.status != "pending" %>
+    <div class="card-candidature-description hidden-xs">
       <h4 style="text-align: center"><%= candidature.bookings.last.start_date.strftime('%e-%m-%y %Hh%M') %></h4>
     </div>
-    <div class="col-xs-2 container-candidature-fields">
+    <div class="card-candidature-field text-center">
       <h2>RDV : <%= candidature.bookings.last.status %> </h2>
     </div>
+<!-- si le rdv est en attente d'acceptation -->
 
-  <!-- si le rdv est en attente d'acceptation -->
-
-  <% elsif candidature.status == "rdv" && candidature.bookings.last.status == "pending" %>
-
-    <div class="col-xs-4">
+    <% elsif candidature.status == "rdv" && candidature.bookings.last.status == "pending" %>
+    <div class="card-candidature-description hidden-xs">
       <h4 style="text-align: center"><%= candidature.bookings.last.start_date.strftime('%e-%m-%y %Hh%M') %></h4>
     </div>
-    <div class="col-xs-2 container-candidature-fields">
+    <div class="card-candidature-field text-center">
       <%= link_to validate_booking_path(candidature.bookings.last), controller: :bookings, method: :validate do %>
         <button type="button" class="btn btn-postulate" data-toggle="modal" data-target="#candidatures-modal-<%=candidature.id%>" style="height:50%;width:30px;border-radius:4px; text-align:center;justify-content:center; text-transform:uppercase; font-size:12px;font-family:'Muli'; padding:1px; margin-right: 3px; background-color: #13CE66">
           V
@@ -98,10 +75,10 @@
   <!-- si aucun rdv n'a encore été booké -->
 
   <% else %>
-    <div class="col-xs-4">
+    <div class="card-candidature-description hidden-xs">
       <h4><%= candidature.startup.short_description %></h4>
     </div>
-    <div class="col-xs-2 container-candidature-fields">
+    <div class="card-candidature-field text-center">
       <button type="button" class="btn btn-postulate" data-toggle="modal" data-target="#candidatures-modal-<%=candidature.id%>" style="height:50%;width:50%;border-radius:4px; text-align:center;justify-content:center; text-transform:uppercase; font-size:12px;font-family:'Muli'; padding:1px">
         Détails
       </button>
@@ -111,6 +88,8 @@
 </div>
 
 <% end %>
+
+
 <div class="modal fade" id="bookingModal-<%=candidature.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
