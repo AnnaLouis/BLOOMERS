@@ -114,9 +114,14 @@
               <h2>MES RDV</h2>
               <% candidature.bookings.each do |booking| %>
               <div class="box-status">
-                <%= booking.start_date %>
-                <%= booking.end_date %>
-                <%= booking.status %>
+                <h2 style="color:#00697F;font-size: 17px;"> <%= booking.start_date.strftime("%e %b %Y à %H:%M") %> </h2>
+                <% if booking.status ="pending" %>
+                 <p> En attente </p>
+                 <% elsif booking.status ="accepted" %>
+                 <p> Accepté </p>
+                 <% elsif booking.status ="declined" %>
+                 <p> Décliné </p>
+                 <% end %>
               </div>
               <% end %>
               <% end %>

@@ -140,7 +140,14 @@
 
         <!-- BTN CANDIDATURE -->
         <h3 class="dashboard-btn profile-link" data-target="#dashboard-candidatures">
-          <i class="fa fa-bullhorn" aria-hidden="true"></i>MES CANDIDATURES <span class="dash-notifs">(<%= 404+current_user.candidatures.where(status: "new").count %>)</span>
+          <i class="fa fa-bullhorn" aria-hidden="true"></i> MES CANDIDATURES
+            <% if current_user.bloomer_admin? %>
+          <span class="dash-notifs">(<%= 404+current_user.candidatures.where(status: "new").count %>)
+          </span>
+          <% else %>
+          <span class="dash-notifs">(<%= current_user.candidatures.where(status: "new").count %>)
+          </span>
+            <% end %>
         </h3>
         <% if current_user.startup_admin? %>
         <h3 class="dashboard-btn profile-link" data-target="#dashboard-reviews">
