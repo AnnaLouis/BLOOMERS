@@ -88,7 +88,7 @@
             <% if current_user.bloomers.count > 1 %>MES BLOOMERS
               <span class="dash-notifs">(<%= current_user.bloomers.count %>)</span>
               <br>ERROR
-            <% else %><%= current_user.bloomers.first.name.upcase %> <span class="dash-notifs">(<%= current_user.bloomers.first.programs.count %> programme<% if current_user.bloomers.first.programs.count > 1%>s<%end%>)</span>
+            <% else %><%= current_user.bloomers.first.name.upcase %>
             <% end %>
           </h3>
           <% if current_user.bloomers.count == 0%>
@@ -105,8 +105,7 @@
             <% current_user.programs.each do |program| %>
               <h4 id="btn-bloomer-one" style="text-transform:uppercase" data-toggle="modal" data-target="#modal-program-<%= program.id %>">
                 <i class="fa fa-list-alt" aria-hidden="true"></i>
-                <%= program.name %><span class="dash-notifs" style="color:#8C8C8C">
-                 (<%= program.batches.count %> promos)</span>
+                <%= program.name %>
               </h4>
               <!-- Modal -->
               <%= render 'programs_modal', program: program %>
@@ -117,6 +116,7 @@
                 <% end %>
               <% end %>
                 <h5>+ <%= link_to "Je crée une nouvelle promo", new_program_batch_path(program) %> </h5>
+                <br>
             <% end %>
           <% end %>
           <!-- LIEN AJOUTER UN PROGRAMME -->
@@ -165,23 +165,23 @@
 
 
       <!-- DASHBOARD CONTENT 1. PROFILE -->
-      <div class="col-xs-8 dashboard-content" id="dashboard-profile">
-        <!-- MAIN INFO -->
-        <h2>Mon profil</h2>
-        <div class="row dashboard-sub-content">
+<!--       <div class="col-xs-8 dashboard-content" id="dashboard-profile">
+ -->        <!-- MAIN INFO -->
+<!--         <h2>Mon profil</h2>
+ -->   <!--      <div class="row dashboard-sub-content startup-infos-dashboard-last">
           <div class="col-xs-12 col-sm-6">
-            <h3><span>Email</span> : <%= current_user.email %></h3>
-            <h3><span>Startup admin</span> : <%= current_user.startup_admin %></h3>
-            <h3><span>Bloomer admin</span> : <%= current_user.bloomer_admin %></h3>
-            <h3><span>Age</span> : </h3>
-          </div>
+            <h3><span>Email</span><br><#%= current_user.email %></h3> -->
+<!--             <h3><span>Startup admin</span> : <#%= current_user.startup_admin %></h3>
+            <h3><span>Bloomer admin</span> : <#%= current_user.bloomer_admin %></h3> -->
+      <!--       <h3><span>Age</span><br></h3> -->
+         <!--  </div>
           <div class="col-xs-12 col-sm-6">
             <h3>Compte Linkedin : </h3>
             <h3>Compte Twitter : </h3>
           </div>
         </div>
       </div>
-
+ -->
 
 
       <!-- DASHBOARD CONTENT 2. STARTUP -->
@@ -190,32 +190,45 @@
         <div class="col-xs-9 dashboard-content hidden" id="dashboard-startup-<%= startup.id -%>">
           <!-- MAIN INFO -->
           <h2>Infos principales</h2>
-          <div class="row dashboard-sub-content">
+          <div class="row dashboard-sub-content startup-infos-dashboard-last">
             <div class="col-xs-12 col-sm-6">
-              <h3><span>Nom</span> : <%= startup.name %></h3>
-              <h3><span>Courte description</span> : <%= startup.short_description %></h3>
-              <h3><span>Description</span> : <%= startup.description %></h3>
-              <h3><span>Date de création</span> : <%= startup.date_creation %></h3>
+              <h3><span>Introduction</span><br><br><%= startup.short_description %></h3>
+              <h3><span>Description</span><br><br><%= startup.description %></h3>
             </div>
             <div class="col-xs-12 col-sm-6">
-              <h3><span>Site internet</span> : <%= startup.website %></h3>
-              <h3><span>Compte twitter</span> : <%= startup.twitter_account %></h3>
+              <h3><span>Date de création</span><br><br>
+                <% if !startup.date_creation.nil? %>
+                  <%= startup.date_creation.strftime("%m/%d/%Y") %>
+                <% end %>
+              </h3>
+              <h3><span>Site internet</span><br><br><%= startup.website %></h3>
+              <h3><span>Compte twitter</span><br><br><%= startup.twitter_account %></h3>
+              <h3><span>Téléphone</span><br><br>0<%= startup.phone_number %></h3>
             </div>
           </div>
+
+          <div class="row dashboard-sub-content startup-infos-dashboard-last">
+            <% if startup.photos? %>
+              <%= cl_image_tag(startup.photos[1].path, height: 200)%>
+              <%= cl_image_tag(startup.photos.last.path, height: 200)%>
+            <% end %>
+          </div>
+
+          <h2>Le problème et le marché</h2>
+          <div class="row dashboard-sub-content startup-infos-dashboard-last">
+            <div class="col-xs-6">
+              <h3><span>Le Problème</span><br><br><%= startup.your_problem %></h3>
+            </div>
+            <div class="col-xs-6">
+              <h3><span>Le Marché</span><br><br><%= startup.your_market %></h3>
+            </div>
+          </div>
+
           <h2>La team</h2>
-          <div class="row dashboard-sub-content">
-            <div class="col-xs-12 col-sm-6">
-              (à remplir)
-            </div>
-            <div class="col-xs-12 col-sm-6">
-              <h3><span>L'histoire de l'équipe :</span></h3>
-              <%= startup.team %>
-            </div>
+          <div class="row dashboard-sub-content startup-infos-dashboard-last">
+            <h3><span>L'histoire de l'équipe</span><br><br><%= startup.team %></h3>
           </div>
-          <h2>Le Parcours</h2>
-          <div class="row dashboard-sub-content">
-            (à remplir)
-          </div>
+
         </div>
         <% end %>
       <% end %>
