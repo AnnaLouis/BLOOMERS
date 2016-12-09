@@ -24,8 +24,19 @@
                  <h4><%= candidature.startup.description %></h4>
                </div>
                <div class="box-candidature">
-                <h3> La dream   team </h3>
+                <h3> La dream team </h3>
                 <h4><%= candidature.startup.team %></h4>
+              </div>
+              <h2>QUELQUES PHOTOS</h2>
+              <div class="box-candidature">
+                <% if candidature.startup.photos? %>
+                  <%= cl_image_tag(candidature.startup.photos[1].path, height: 200)%>
+                  <%= cl_image_tag(candidature.startup.photos.last.path, height: 200)%>
+                <% end %>
+              </div>
+              <div class="box-candidature">
+                <h3> Le Problème </h3>
+                <h4><%= candidature.startup.your_problem %></h4>
               </div>
               <h2>Pourquoi ?</h2>
               <div class="box-candidature">
