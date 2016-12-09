@@ -29,9 +29,16 @@
               </div>
               <h2>QUELQUES PHOTOS</h2>
               <div class="box-candidature">
-                <% if candidature.startup.photos? %>
+                <% if candidature.startup.photos.count == 3 %>
+                  <%= cl_image_tag(candidature.startup.photos.first.path, height: 200)%>
                   <%= cl_image_tag(candidature.startup.photos[1].path, height: 200)%>
+                <% end %>
+                <% if candidature.startup.photos.count == 2 %>
+                  <%= cl_image_tag(candidature.startup.photos.first.path, height: 200)%>
                   <%= cl_image_tag(candidature.startup.photos.last.path, height: 200)%>
+                <% end %>
+                <% if candidature.startup.photos.count == 1 %>
+                  <%= cl_image_tag(candidature.startup.photos.first.path, height: 200)%>
                 <% end %>
               </div>
               <div class="box-candidature">
