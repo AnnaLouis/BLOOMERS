@@ -209,7 +209,7 @@
 
           <div class="row dashboard-sub-content startup-infos-dashboard-last">
             <% if startup.photos? %>
-              <%= cl_image_tag(startup.photos[1].path, height: 200)%>
+              <%= cl_image_tag(startup.photos.first.path, height: 200)%>
               <%= cl_image_tag(startup.photos.last.path, height: 200)%>
             <% end %>
           </div>
