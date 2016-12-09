@@ -376,20 +376,19 @@
     <div class="container">
       <div class="row program-titles">
         <div class="col-xs-12">
-          <a class="program-title tab" style="padding:0;margin:0px">></a>
           <a class="program-title tab active" data-target="#program-one">
             <% if @first_program.present? %>
-              <%= @first_program.name %>
+              1. <%= @first_program.name %>
             <% end %>
           </a>
           <a class="program-title" data-target="#program-two">
             <% if @second_program.present? %>
-              <%= @second_program.name %>
+              2. <%= @second_program.name %>
             <% end %>
           </a>
           <a class="program-title" data-target="#program-three">
             <% if @third_program.present? %>
-              <%= @third_program.name %>
+              3. <%= @third_program.name %>
             <% end %>
           </a>
         </div>
