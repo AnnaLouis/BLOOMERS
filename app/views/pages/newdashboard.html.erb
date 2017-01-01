@@ -1,0 +1,325 @@
+<div class="wrapper-newdashboard">
+  <!-- MENU -->
+  <div class="menu-left">
+    <!-- SHORT PROFILE  -->
+    <div class="user-profile">
+      <% avatar_url = current_user.facebook_picture_url || current_user.linkedin_picture_url || "https://cdn4.iconfinder.com/data/icons/linecon/512/photo-512.png" %>
+      <%= image_tag avatar_url, class:"avatar" %>
+      <h2><%= current_user.first_name%> <%= current_user.last_name %>  </h2>
+    </div>
+    <!-- MON DASHBOARD -->
+    <div class="menu-card active">
+      <h3><i class="fa fa-tachometer" aria-hidden="true"></i> Mon dashboard</h3>
+    </div>
+    <!-- STARTUP -->
+    <% if current_user.startup_admin? %>
+      <div class="menu-card" data-target="#startup-info-<%= @startups.first.id %>">
+        <h3><i class="fa fa-briefcase" aria-hidden="true"></i>
+        <% if current_user.startups.count > 1 %>Mes startups <span> (<%= current_user.startups.count %>)</span>
+        <% else %>Ma startup
+        <% end %>
+        </h3>
+      </div>
+      <div class="menu-card" data-target="#startup-incubations">
+        <h3><i class="fa fa-life-ring" aria-hidden="true"></i>
+        <% if @incubations.count > 1 %>Mes incubations <span>(<%= @incubations.count %>)</span>
+        <% else %>Mon incubation
+        <% end %>
+        </h3>
+      </div>
+    <% end %>
+    <!-- BLOOMER -->
+    <% if current_user.bloomer_admin? %>
+      <% @bloomers.each do |bloomer| %>
+      <div class="menu-card" data-target="#bloomer-info-<%= bloomer.id %>">
+        <h3><i class="fa fa-briefcase" aria-hidden="true"></i>
+        <%= bloomer.name %>
+        </h3>
+      </div>
+      <% end %>
+    <% end %>
+    <!-- CANDIDATURES -->
+    <div class="menu-card">
+      <h3><i class="fa fa-bullhorn" aria-hidden="true"></i>
+      <% if @candidatures.count > 1 %>Mes candidatures <span>(<%= @candidatures.count %>)</span>
+      <% else %>Ma candidature
+      <% end %>
+      </h3>
+    </div>
+    <!-- MON PROFIL -->
+    <div class="menu-card">
+      <h3><i class="fa fa-user" aria-hidden="true"></i> Mon profil</h3>
+    </div>
+  </div>
+  <!-- CONTENU -->
+  <div class="content-right">
+    <div class="title-navbar">
+      <div class="content-title-navbar">
+        <h1 id="title-dashboard">Mon dashboard</h1>
+        <h2>
+          <%= link_to root_path do %>
+            <i class="fa fa-home" aria-hidden="true"></i>
+          <% end %>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+          <i class="fa fa-sign-out" aria-hidden="true"></i>
+          <% end %>
+        </h2>
+      </div>
+    </div>
+    <!--  CONTENU STARTUP -->
+    <% if current_user.startup_admin && @startups.count != 0 %>
+      <!-- COMPTE STARTUPS -->
+      <% @startups.each do |startup| %>
+        <div class="content-dashboard hidden" id="startup-info-<%= startup.id %>">
+          <!-- logo & main infos -->
+          <div class="row-content">
+            <div class="content-card startup-logo">
+              <% if startup.logo? %>
+                <%= cl_image_tag startup.logo.path, class:"logo" %>
+              <% else %>
+                <img src="http://www.addressbazar.com/images/logo/no-logo.png" class="logo">
+              <% end %>
+            </div>
+            <div class="content-card startup-description">
+              <h4 class="edit-btn">
+                <%= link_to edit_startup_path(startup) do %>
+                <i class="fa fa-pencil-square-o" aria-hidden="true"></i> modifier
+                <% end %>
+              </h4>
+              <h2><%= startup.name %></h2>
+              <h3><%= startup.short_description %></h3>
+              <div class="startup-contact-info">
+                <div class="col-xs-12 col-sm-6" style="text-align: right">
+                  <h4><%= startup.date_creation.strftime("%B %Y") %> <i class="fa fa-birthday-cake" aria-hidden="true"></i></h4>
+                  <h4><%= startup.website %> <i class="fa fa-globe" aria-hidden="true"></i></h4>
+                </div>
+                <div class="col-xs-12 col-sm-6" style="text-align: left">
+                  <h4><i class="fa fa-twitter" aria-hidden="true"></i> <%= startup.twitter_account %></h4>
+                  <h4><i class="fa fa-phone" aria-hidden="true"></i> <%= startup.phone_number %></h4>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- SOLUTION & Stade de développement -->
+          <div class="row-content">
+            <div class="content-card more-infos-first">
+                <h2>La solution</h2>
+                <p><%= startup.your_solution %></p>
+              </div>
+            <div class="content-card more-infos">
+              <h2>Avancée du projet</h2>
+              <p><%= startup.description %></p>
+            </div>
+          </div>
+          <!-- MARCHE & PROBLEME -->
+          <h2 class="subtitle">Problème et marché</h2>
+          <div class="row-content">
+            <div class="content-card more-infos-first">
+              <h2>Le marché</h2>
+              <p><%= startup.your_market %></p>
+            </div>
+            <div class="content-card more-infos">
+              <h2>Le problème</h2>
+              <p><%= startup.your_problem %></p>
+            </div>
+          </div>
+          <!-- LA TEAM -->
+          <h2 class="subtitle">L'équipe</h2>
+          <div class="row-content">
+            <div class="content-card startup-team-members">
+              <!-- <h2>Les membres</h2> -->
+              <div class="member-card">
+                <div class="photo-member">
+                  <% user_photo_url = current_user.facebook_picture_url || current_user.linkedin_picture_url || "https://cdn4.iconfinder.com/data/icons/linecon/512/photo-512.png" %>
+                  <%= image_tag user_photo_url, class:"avatar" %>
+                </div>
+                <div class="info-member">
+                  <h2><%= startup.user.first_name %> <%= startup.user.last_name %></h2>
+                  <h3>CEO & Co-fondateur</h3>
+                  <h4>
+                    <a>
+                      <i class="fa fa-envelope" aria-hidden="true"></i>
+                      <span class="extra"><%= startup.user.email %></span>
+                    </a>
+                    <a>
+                      <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+                      <span class="extra">/alizeewyart</span>
+                    </a>
+                    <a>
+                      <i class="fa fa-twitter" aria-hidden="true"></i>
+                      <span class="extra">@AlizeeWyart</span>
+                    </a>
+                    <a>
+                      <span class="extra">
+                        <% if !startup.user.startup_admin %>
+                          Non Admin: <i class="fa fa-check-circle-o" aria-hidden="true" style="color:#3EE47A"></i>
+                        <% else %>
+                          Admin : <i class="fa fa-times" aria-hidden="true" style="color:#9F1723"></i>
+                        <% end %>
+                      </span>
+                    </a></h4>
+                </div>
+              </div>
+
+            </div>
+            <div class="content-card startup-team-story">
+              <h2>L'histoire de l'équipe</h2>
+              <p><%= startup.team %></p>
+            </div>
+          </div>
+          <!-- LES PHOTOS -->
+          <% if startup.photos? %>
+          <div class="row-content">
+            <% startup.photos.each do |photo| %>
+            <div class="content-card startup-photo">
+              <%= cl_image_tag(photo.path, class: "photos")%>
+            </div>
+            <% end %>
+          </div>
+          <% end %>
+        </div>
+      <% end %>
+      <!-- LES INCUBATIONS -->
+      <div class="content-dashboard hidden" id="startup-incubations">
+      <% @incubations.each do |incubation| %>
+        <div class="row-content">
+          <!-- LOGO -->
+          <div class="content-card bloomer-logo">
+            <% if incubation.bloomer.logo? %>
+              <%= cl_image_tag incubation.bloomer.logo.path, class:"logo" %>
+            <% else %>
+              <img src="http://www.addressbazar.com/images/logo/no-logo.png" class="logo">
+            <% end %>
+          </div>
+          <div class="content-card startup-description">
+            <h2><%= incubation.bloomer.name %> (<%= incubation.bloomer.category %>)</h2>
+            <h3><%= incubation.bloomer.description %></h3>
+            <div class="startup-contact-info">
+              <div class="col-xs-12 col-sm-6" style="text-align: right">
+                <h4>Programme <b><%= incubation.program.name %></b> <i class="fa fa-list-alt" aria-hidden="true"></i></h4>
+                <h4>Promotion <b><%= incubation.batch.name %></b> <i class="fa fa-users" aria-hidden="true"></i></h4>
+              </div>
+              <div class="col-xs-12 col-sm-6" style="text-align: left">
+                <h4><i class="fa fa-calendar" aria-hidden="true"></i> Du <%= incubation.batch.batch_start.strftime("%d/%m/%y") %> au <%= incubation.batch.batch_end.strftime("%d/%m/%y") %> (<%= incubation.program.duration %>)</h4>
+                <h4><i class="fa fa-star" aria-hidden="true"></i>
+                  <% this_review = @reviews.find(bloomer: incubation.bloomer).first %>
+                  <% if this_review %>
+                    Votre avis : "<%= this_review.title %>" (<%= this_review.rating%>/5)
+                  <% else %>
+                    <%= link_to bloomer_path(incubation.bloomer) do %>
+                      Donnez votre avis !
+                    <% end %>
+                  <% end %>
+                </h4>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      <% end %>
+      </div>
+    <% end %>
+    <!-- CONTENU BLOOMER -->
+    <% if current_user.bloomer_admin && @bloomers.count != 0 %>
+      <% @bloomers.each do |bloomer| %>
+        <div class="content-dashboard hidden" id="bloomer-info-<%= bloomer.id %>">
+          <div class="bloomer-details-navbar">
+            <div class="titles active" data-target="#bloomer-infos"><h2>Infos</h2></div>
+            <% bloomer.programs.each do |program| %>
+              <div class="titles" data-target="#bloomer-program-<%= program.id %>"><h2> <%= program.name %> </h2></div>
+            <% end %>
+            <div class="titles" data-target="#bloomer-news-events"><h2>News & Evénéments</h2></div>
+          </div>
+          <!-- MAIN INFOS OF BLOOMER -->
+          <div class="sub-bloomer-content" id="bloomer-infos">
+            <!-- LOGO & MAIN INFOS -->
+            <div class="row-content" style="margin-top: 20px;">
+              <div class="content-card bloomer-logo">
+                <% if bloomer.logo? %>
+                  <%= cl_image_tag bloomer.logo.path, class:"logo" %>
+                <% else %>
+                  <img src="http://www.addressbazar.com/images/logo/no-logo.png" class="logo">
+                <% end %>
+              </div>
+              <div class="content-card bloomer-description">
+                <h4 class="edit-btn">
+                  <%= link_to edit_bloomer_path(bloomer) do %>
+                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i> modifier
+                  <% end %>
+                </h4>
+                <h2><%= bloomer.name %></h2>
+                <h3>Insérer une short descption</h3>
+                <div class="bloomer-contact-info">
+                  <div class="col-xs-12 col-sm-6" style="text-align: right">
+                    <h4><%= bloomer.category %> <i class="fa fa-info-circle" aria-hidden="true"></i></h4>
+                    <h4><%= bloomer.speciality %> <i class="fa fa-id-badge" aria-hidden="true"></i></h4>
+                    <h4><%= bloomer.date_creation.strftime("%B %Y") %> <i class="fa fa-birthday-cake" aria-hidden="true"></i></h4>
+                    <h4><%= bloomer.website %> <i class="fa fa-globe" aria-hidden="true"></i></h4>
+                  </div>
+                  <div class="col-xs-12 col-sm-6" style="text-align: left">
+                    <h4><i class="fa fa-twitter" aria-hidden="true"></i> <%= bloomer.twitter_account %></h4>
+                    <h4><i class="fa fa-facebook-square" aria-hidden="true"></i> A ajouter</h4>
+                    <h4><i class="fa fa-envelope" aria-hidden="true"></i> <%= bloomer.email %></h4>
+                    <h4><i class="fa fa-map-marker" aria-hidden="true"></i> <%= bloomer.address %></h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- DESCRIPTION & MORE INFO -->
+            <div class="row-content">
+              <div class="content-card more-infos-first">
+                  <h2>Description</h2>
+                  <p><%= bloomer.description %></p>
+                </div>
+              <div class="content-card more-infos">
+                <h2>Informations sur le lieu</h2>
+                <p>A faire</p>
+              </div>
+            </div>
+            <!-- LES PHOTOS -->
+            <% if bloomer.photos? %>
+            <div class="row-content" style="flex-wrap: wrap;">
+              <% bloomer.photos.each do |photo| %>
+              <div class="content-card bloomer-photo">
+                <%= cl_image_tag(photo.path, class: "photos")%>
+              </div>
+              <% end %>
+            </div>
+            <% end %>
+          </div>
+          <!-- PROGRAMMES -->
+          <% bloomer.programs.each do |program| %>
+          <div class="sub-bloomer-content hidden" id="bloomer-program-<%= program.id %>">
+          </div>
+          <% end %>
+          <!-- NEWS & EVENTS -->
+          <div class="sub-bloomer-content hidden" id="bloomer-news-events">
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      $(".menu-card").on("click", function(e){
+        $(".menu-card").removeClass("active");
+        $(this).addClass("active");
+        var title = $(this).closest('div').children('h3').html();
+        $("#title-dashboard").html(title);
+        $(".content-dashboard").addClass("hidden");
+        tabSelector = $(this).data("target");
+        $(tabSelector).removeClass("hidden");
+      });
+      $(".titles").on("click", function(e){
+        $(".titles").removeClass("active");
+        $(this).addClass("active");
+        $(".sub-bloomer-content").addClass("hidden");
+        tabSelector = $(this).data("target");
+        $(tabSelector).removeClass("hidden");
+      });
+    });
+  <% end %>
+<% end %>

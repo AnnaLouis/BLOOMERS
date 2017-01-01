@@ -24,6 +24,18 @@ class StartupsController < ApplicationController
     end
   end
 
+  def edit
+    @startup = Startup.find(params[:id])
+    authorize(@startup)
+  end
+
+  def update
+   @startup = Startup.find(params[:id])
+   @startup.update(startup_params)
+   authorize(@startup)
+   redirect_to dashboard_path
+  end
+
 private
 
   def startup_params

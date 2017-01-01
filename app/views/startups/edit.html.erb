@@ -1,0 +1,127 @@
+<div class="wrapper-new">
+  <div class="row wrapper-page-new-bloom">
+    <div class="col-xs-3 new-bloomer-left">
+      <div class="steps">
+        <!-- PROFILE -->
+        <h1>Je crée mon profil startup</h1>
+        <!-- STEP 1 - Création -->
+        <div class="nb-global-step active" data-target="#step-1-name">
+          <div class="circle active" id="circle-1" data-target="#step-1-name"></div>
+          <div class="step"><p><span>étape 1</span><br>Equipe & Team</p></div>
+        </div>
+        <!-- STEP 2 - Description -->
+        <div class="line-box"><div class="grey-line"></div></div>
+        <div class="nb-global-step" data-target="#step-2-infos">
+          <div class="circle" id="circle-2"></div>
+          <div class="step"><p><span>étape 2</span><br>Les info</p></div>
+        </div>
+        <!-- Step 3 - DREAMTEAM -->
+        <div class="line-box"><div class="grey-line"></div></div>
+        <div class="nb-global-step" data-target="#step-3-market">
+          <div class="circle" id="circle-3"></div>
+          <div class="step"><p><span>étape 3</span><br>Marché & Solution</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-9 new-bloomer-right">
+    <%= simple_form_for(@startup) do |f| %>
+      <!-- 1. EQUIPE & PROJET -->
+      <div class="sub-new-bloomer-content" id="step-1-name" style="width:100%">
+        <div class="row">
+          <div class="col-xs-12 col-sm-6">
+
+            <%= f.error_notification %>
+            <%= f.input :name, label: 'Le nom de votre startup' %>
+            <br>
+            <%= f.input :team, label: 'Qui se cache derrière votre projet ?' %>
+            <%= f.input :photos, label: 'Quelques photos de votre équipe et projet', as: :attachinary %>
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <%= f.input :short_description, label: 'Votre startup en une phrase' %>
+            <br>
+            <%= f.input :description, label: "Quelle est l'avancée de votre projet ?" %>
+            <div class="nb-next-button" id="nb-next-button-1"><h4><span>SUIVANT</span> ></h4></div>
+          </div>
+        </div>
+      </div>
+      <!-- 2. MES INFOS-->
+      <div class="sub-new-bloomer-content hidden" id="step-2-infos">
+        <div class="row">
+          <div class="col-xs-12 col-sm-6">
+            <div class="datepicker">
+              <%= f.input :date_creation, as: :string, input_html: {class: "not_to_display"} %>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <%= f.input :website, label: 'Site internet' %>
+            <%= f.input :twitter_account, label: 'Compte Twitter' %>
+            <%= f.input :phone_number, label: 'Numéro de téléphone' %>
+            <%= f.input :logo, as: :attachinary %>
+            <div class="nb-next-button" id="nb-next-button-2"><h4><span>SUIVANT</span> ></h4></div>
+          </div>
+        </div>
+      </div>
+      <!-- Step 3 - MARCHE & SOLUTION -->
+      <div class="sub-new-bloomer-content hidden" id="step-3-market">
+        <div class="nb-title-sub-content">
+          <h2>Votre projet aujourd'hui</h2>
+        </div>
+        <div class="nb-sub-content">
+          <div class="col-xs-12 col-sm-6">
+            <%= f.input :your_problem, label: 'Quel est votre constat ?' %>
+            <%= f.input :your_market, label: 'À quel marché vous adressez-vous ?' %>
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <%= f.input :your_solution, label: 'Quelle solution avez-vous trouvé ?' %>
+            <div class="nb-next-button" id="nb-next-button-3">
+              <span class="nb-next-button"><%= f.button :submit, "Je crée ma startup !" %></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+$(document).ready(function() {
+  $(".nb-global-step").on("click", function(e){
+    // Change active tab
+    $(".nb-global-step").removeClass("active");
+    $(".circle").removeClass("active");
+    $(this).addClass("active");
+    $(this).children().addClass("active");
+    // Hide all tab-content (use class="hidden")
+    $(".sub-new-bloomer-content").addClass("hidden");
+    // Show target tab-content (use class="hidden")
+    tabSelector = $(this).data("target");
+    $(tabSelector).removeClass("hidden");
+  });
+
+  // STEP 1 TO STEP 2
+  $("#nb-next-button-1").on("click", function(e){
+    $(".nb-global-step").removeClass("active");
+    $(".circle").removeClass("active");
+    $("#circle-2").addClass("active");
+    $(".sub-new-bloomer-content").addClass("hidden");
+    $("#step-2-infos").removeClass("hidden");
+  });
+
+  // STEP 1 TO STEP 2
+  $("#nb-next-button-2").on("click", function(e){
+    $(".nb-global-step").removeClass("active");
+    $(".circle").removeClass("active");
+    $("#circle-3").addClass("active");
+    $(".sub-new-bloomer-content").addClass("hidden");
+    $("#step-3-market").removeClass("hidden");
+  });
+
+});
+
+  <% end %>
+<% end %>
+

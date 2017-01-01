@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   get '/map' => 'pages#map'
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :bloomers, only: [:index, :show, :create, :new] do
-    resources :programs, only: [:new, :create]
+  resources :bloomers, only: [:index, :show, :edit, :update, :create, :new] do
+    resources :programs, only: [:new, :create, :edit, :update]
     resources :reviews, only: [:new, :create]
     resources :favorites, only: [:create] do
       member do
@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
 
   get "dashboard" => 'pages#dashboard'
+  get "newdashboard" => 'pages#newdashboard'
 
   resources :programs, only: [:new, :create, :show] do
     resources :candidatures, only: [:new, :create]
@@ -44,10 +45,10 @@ Rails.application.routes.draw do
   end
 
   resources :batches, only: [] do
-    resources :incubations, only: [:new, :create]
+    resources :incubations, only: [:new, :create, :edit, :update]
   end
 
   # resources :programs, only: [:edit, :update]
-  resources :startups, only: [:show, :new, :create]
+  resources :startups, only: [:show, :new, :create, :edit, :update]
   mount Attachinary::Engine => "/attachinary"
 end

@@ -49,4 +49,18 @@ class PagesController < ApplicationController
     end
   end
 
+  def newdashboard
+    @booking = Booking.new
+    if current_user.startup_admin
+      @startups = current_user.startups
+      @favorites = Favorite.select{ |favorite| favorite.user == current_user && favorite.hidden == false }
+      @incubations = Incubation.select{ |incubation| incubation.startup.user == current_user }
+      @candidatures = Candidature.select{ |candidature| candidature.startup.user == current_user }
+      @reviews = Review.select { |review| review.user == current_user }
+    elsif current_user.bloomer_admin
+      @bloomers = current_user.bloomers
+      @candidatures = Candidature.select{ |candidature| candidature.program.bloomer.user == current_user }
+    end
+  end
+
 end
