@@ -1,21 +1,22 @@
 .roll {
-  position: absolute;
-  top: 38%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 35px;
+  // position: absolute;
+  // top: 38%;
+  // left: 50%;
+  // transform: translate(-50%, -50%);
+  font-size: 12px;
   line-height: 40px;
   // font-family: 'Lato', sans-serif;
   color: white;
-  height: 160px;
+  height: 30px;
   overflow:hidden;
+  margin: 40px 0 170px 0;
 }
 
 .rollvisible {
   font-weight:600;
   overflow:hidden;
   height:80px;
-  padding:0 40px;
+  // padding:0 40px;
 }
 
 
@@ -34,16 +35,17 @@
   -webkit-animation-duration: 6s;
   -webkit-animation-iteration-count: infinite;
   animation-name: change;
-  animation-duration: 6s;
+  animation-duration: 12s;
   animation-iteration-count: infinite;
-
+  padding-left: 0;
 }
 
 .rollvisible ul li {
-  line-height:80px;
+  line-height:30px;
   margin:0;
-  font-size: 80px;
+  font-size: 20px;
   text-align: center;
+  font-weight:lighter;
 }
 
 @-webkit-keyframes opacity {

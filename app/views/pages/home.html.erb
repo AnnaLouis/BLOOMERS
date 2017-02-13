@@ -2,11 +2,51 @@
 
 
 <div class="banner">
+  <div class="banner-content">
+    <h1><span style="padding:0 20px 20px 20px;border-bottom:3px solid #FABF01">BLOOMERS<span></h1>
+    <!-- <div class="trait"> </div> -->
+    <div class="roll">
+      <div class="rollvisible">
+        <ul>
+          <li> ta startup mérite le meilleur</li>
+          <li> trouve le meilleur accompagnement</li>
+          <li>  incubateur, accélérateur, co-working</li>
+        </ul>
+      </div>
+    </div>
+    <div class="row" style="margin:0px">
+      <%= link_to bloomers_path, style:"color:white" do %>
+      <div class="col-xs-6">
+      <div class="btn-home">
+        <div class="row" style="padding-bottom:20px">
+          <%= image_tag "rocket.png", class:"icon-home" %>
+        </div>
+        Je suis une startup
+        </div>
+      </div>
+      <% end %>
+
+      <%= link_to bloomers_path, style:"color:white" do %>
+      <div class="col-xs-6">
+      <div class="btn-home">
+        <div class="row" style="padding-bottom:20px">
+          <%= image_tag "target.png", class:"icon-home"%>
+        </div>
+        J'accompagne des startups
+      </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="banner">
+
   <div class="container">
-  <div class="row">
+  <div class="row"> -->
 
     <!-- <h1><span style="font-weight: bold">ACCELERATEUR, INCUBATEUR, COWORKING </span> </h1> -->
-
+<!--
     <div class="roll">
       <div class="rollvisible">
         <ul>
@@ -18,14 +58,14 @@
     </div>
     <br>
    <h1>trouve l'accompagnement qu'il te faut</h1> </div>
-   <br>
+   <br> -->
 
     <!-- <div class="col-md-offset-4"> -->
-       <%= link_to "C'est parti !", bloomers_path, class:"btn-redirect", id:"redirect"  %>
-    <!-- </div> -->
+<!--        <#%= link_to "C'est parti !", bloomers_path, class:"btn-redirect", id:"redirect"  %>
+ -->    <!-- </div> -->
 
-  </div>
-
+<!-- </div>
+ -->
 <!--
    <div class="container">
      <div class="row banner-cards">

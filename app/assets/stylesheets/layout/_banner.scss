@@ -1,35 +1,63 @@
+// .banner {
+//   background-image: url('landing2.png');
+//   text-align: center;
+//   height: 100vh;
+//   display: flex;
+//   justify-content: center;
+//   font-weight: lighter;
+//   background-attachment: fixed;
+//   align-items:center;
+//   opacity: 0.9;
+// }
+
 .banner {
-  background-image: url('landing2.png');
+  color: white;
   text-align: center;
   height: 100vh;
+  /* if you have a 70px navbar => height: calc(100vh - 70px); */
+  background-size: cover !important;
+  background-image: linear-gradient(-229deg, rgba(4, 74, 89, 0.9) 0%, rgba(4, 74, 89, 0.9) 50%), url("work6.jpg");
   display: flex;
+  align-items: center;
   justify-content: center;
-  font-weight: lighter;
-  background-attachment: fixed;
-  align-items:center;
-  opacity: 0.9;
 }
 
+.banner-content {
+  width:50%;
+  margin-top: 40px;
+}
+
+// .banner h1 {
+//   font-size: 50px;
+//   font-weight: bold;
+//   text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+// }
+// .banner p {
+//   font-size: 20px;
+//   font-weight: lighter;
+//   color: rgba(255, 255, 255, 0.7);
+//   margin-bottom: 20px;
+// }
+
 .banner h1 {
-  font-size: 45px;
-  // text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+  font-size: 60px;
   color: white;
   text-decoration: none;
   padding-bottom: 40px;
-  line-height:20px;
+  line-height: 0px;
 }
 
-.banner a {
-  background-color:white;
-  color:#07617D;
-  border: 2px solid #07617D;
-}
+// .banner a {
+//   // background-color:white;
+//   color:#07617D;
+//   border: 2px solid #07617D;
+// }
 
-.banner a:hover {
-  background-color:white;
-  color:#384259;
-  border: 2px solid white;
-}
+// .banner a:hover {
+//   background-color:white;
+//   color:#384259;
+//   border: 2px solid white;
+// }
 
 .welcome-info {
   display:table;
@@ -85,3 +113,38 @@
   color: #616668;
   line-height:40px;
 }
+
+.trait {
+  border:1px solid #FABF01;
+  background-color:#FABF01;
+  height:2px;
+}
+
+.btn-home {
+  font-size: 13px;
+  padding: 20px 20px 20px 20px;
+  background-color: rgba(245, 245, 245, 0.06);
+  border: 1px solid transparent;
+  position:relative;
+  height:140px;
+}
+
+.btn-home a {
+  color:white;
+}
+
+.btn-home:hover a {
+  color:white;
+}
+
+
+.btn-home:hover {
+  border: 1px solid white;
+  color: white;
+  transition: 0.6s ease;
+}
+
+.icon-home {
+  height: 50px;
+}
+
