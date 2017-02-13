@@ -3,7 +3,11 @@
 
 <div class="banner">
   <div class="banner-content">
-    <h1><span style="padding:0 20px 20px 20px;border-bottom:3px solid #FABF01">BLOOMERS<span></h1>
+    <h1>
+      <span style="padding:0 20px 20px 20px;border-bottom:3px solid #FABF01">
+        BLOOMERS
+      </span>
+    </h1>
     <!-- <div class="trait"> </div> -->
     <div class="roll">
       <div class="rollvisible">
@@ -28,157 +32,34 @@
 
       <%= link_to bloomers_path, style:"color:white" do %>
       <div class="col-xs-6">
-      <div class="btn-home">
-        <div class="row" style="padding-bottom:20px">
-          <%= image_tag "target.png", class:"icon-home"%>
+        <div class="btn-home">
+          <div class="row" style="padding-bottom:20px">
+            <%= image_tag "target.png", class:"icon-home"%>
+          </div>
+          J'accompagne des startups
         </div>
-        J'accompagne des startups
-      </div>
       </div>
       <% end %>
     </div>
   </div>
 </div>
 
-<!-- <div class="banner">
-
+<div class="wrapper-home">
   <div class="container">
-  <div class="row"> -->
-
-    <!-- <h1><span style="font-weight: bold">ACCELERATEUR, INCUBATEUR, COWORKING </span> </h1> -->
-<!--
-    <div class="roll">
-      <div class="rollvisible">
-        <ul>
-          <li>  INCUBATEUR</li>
-          <li> ACCELERATEUR</li>
-          <li>  COWORKING</li>
-        </ul>
+    <div class="row">
+      <h2> Comment ça marche ?  </h2>
+      <div class="yellow-underline">   </div>
+    </div>
+    <div class="row" style="padding-top:55px">
+      <div class="col-xs-4">
+        <p><span class="bold-blue">1. </span>J'explore les programmes d'accompagnement</p>
+      </div>
+      <div class="col-xs-4">
+        <p><span class="bold-blue">2. </span>Je crée mon profil startup</p>
+      </div>
+      <div class="col-xs-4">
+        <p><span class="bold-blue">3. </span>Je postule aux programmes</p>
       </div>
     </div>
-    <br>
-   <h1>trouve l'accompagnement qu'il te faut</h1> </div>
-   <br> -->
-
-    <!-- <div class="col-md-offset-4"> -->
-<!--        <#%= link_to "C'est parti !", bloomers_path, class:"btn-redirect", id:"redirect"  %>
- -->    <!-- </div> -->
-
-<!-- </div>
- -->
-<!--
-   <div class="container">
-     <div class="row banner-cards">
-        <div class="col-xs-12 col-sm-4 col-lg-4">
-          <div class="card-banner">
-            <div class="card-num"> 1 </div>
-            <div class="card-title"> Incubateur, Accélérateur, Coworking </div>
-            <div class="card-description"> Je trouve le Bloomer qu'il me faut parmi plus de 300 structures disponibles en France </div> <br>
-            <div class="card-icon"><i class="fa fa-list" aria-hidden="true"></i></div>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-lg-4">
-          <div class="card-banner">
-            <div class="card-num"> 2 </div>
-            <div class="card-title"> Je crée mon profil </div>
-            <div class="card-description"> Et optimise mes chances de candidatures </div> <br>
-            <div class="card-icon"> <i class="fa fa-hand-o-right" aria-hidden="true"></i> </div>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-lg-4">
-          <div class="card-banner">
-            <div class="card-num"> 3 </div>
-            <div class="card-title"> Je postule </div>
-            <div class="card-description"> En trois clics </div> <br>
-            <div class="card-icon"><i class="fa fa-check-square" aria-hidden="true"></i></div>
-          </div>
-        </div>
-      </div>
-   </div> -->
+  </div>
 </div>
-
-<!-- BLOOMERS RANDOM -->
-<!-- <div class="wrapper" id="lesbloomers">
-  <h3> ILS SONT SUR BLOOMERS </h3>
-
-    <div class="container">
-      <div class="row" id="cards">
-        <#% @three_random_bloomers.each do |bloomer| %>
-         <div class="col-md-4">
-          <#%= link_to bloomer_path(bloomer), method: :get do %>
-            <div class="card">
-              <figure class="effect-zoe" style="background-image:linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<#% if bloomer.photos? %><#%= cl_image_path(bloomer.photos.last.path, :crop => :crop)%> <#% else %> <#%= "http://imageshack.com/a/img923/6113/XpMsUl.jpg"%> <#% end %>');">
-                <div class="test"> <h3> <#%= bloomer.name %> </span></h3></div>
-                <figcaption>
-                  <div class="row more-details">
-                    <div class="col-xs-6">
-                      <p> <#%= bloomer.category %> </p>
-                    </div>
-                    <div class="col-xs-6">
-                      <p> <i class="fa fa-map-marker" aria-hidden="true"></i> Paris </p>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-xs-6">
-                      <p>  <#%= bloomer.speciality %> </p>
-                    </div>
-                    <div class="col-xs-6">
-                      <p class="icon-links">
-                        <i class="fa fa-calendar" aria-hidden="true"></i>
-                      </p>
-                    </div>
-                  </div>
-                </figcaption>
-              </figure>
-            </div>
-            <#% end %>
-          </div>
-        <#% end %>
-
- -->
-<!--     </div>
-  </div>
-</div> -->
-
-
-<!-- LA METHODOLOGIE BLOOMERS -->
-<!-- <div class="wrapper" id="methodo">
-    <h3> NOTRE MÉTHODOLOGIE </h3>
-  <div class="container-fluid">
-    <div class="row" id="methodo-cards">
-      <div class="col-xs-12 col-md-4 solution" id="explore">
-        <div class="card-methodo">
-        <h3>Explorer</h3>
-        <#%= image_tag('explore.svg', class: 'home-image') %>
-        <ul>
-          <li>Lorem ipsum blablabla anna remplira plus tard</li>
-          <li>Lorem ipsum blablabla anna remplira plus tard</li>
-          <li>Lorem ipsum blablabla anna remplira plus tard</li>
-        </ul>
-        </div>
-      </div>
-      <div class="col-xs-12 col-md-4 solution" id="partage">
-        <div class="card-methodo">
-        <h3>Partager</h3>
-        <#%= image_tag('share.svg', class:'home-image') %>
-        <ul>
-          <li>Lorem ipsum blablabla anna remplira plus tard</li>
-          <li>Lorem ipsum blablabla anna remplira plus tard</li>
-          <li>Lorem ipsum blablabla anna remplira plus tard</li>
-        </ul>
-        </div>
-      </div>
-      <div class="col-xs-12 col-md-4 solution" id="guide">
-        <div class="card-methodo">
-          <h3>Guider</h3>
-        <#%= image_tag('lighthouse.svg', class:'home-image') %>
-        <ul>
-          <li>Lorem ipsum blablabla anna remplira plus tard</li>
-          <li>Lorem ipsum blablabla anna remplira plus tard</li>
-          <li>Lorem ipsum blablabla anna remplira plus tard</li>
-        </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
