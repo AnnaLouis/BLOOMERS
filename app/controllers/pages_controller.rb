@@ -4,6 +4,31 @@ class PagesController < ApplicationController
   def home
     bloomers = Bloomer.all
     @three_random_bloomers = bloomers.order("RANDOM()").limit(3)
+    @bloomers = Bloomer.where.not(latitude: nil, longitude: nil)
+    @hash = Gmaps4rails.build_markers(@bloomers) do |bloomer, marker|
+      marker.lat bloomer.latitude
+      marker.lng bloomer.longitude
+      marker.infowindow render_to_string(:partial => "/shared/infowindow", :locals => { :bloomer => bloomer})
+      if bloomer.category == "Incubateur"
+        marker.picture({
+         :url => "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=I|04677D|000000",
+         :width   => 32,
+         :height  => 32
+        })
+      elsif bloomer.category == "Accélérateur"
+        marker.picture({
+         :url => "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=A|FEC300|000000",
+         :width   => 32,
+         :height  => 32
+        })
+      elsif bloomer.category == "Coworking"
+        marker.picture({
+         :url => "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=C|13CE66|000000",
+         :width   => 32,
+         :height  => 32
+        })
+      end
+    end
   end
 
   def map

@@ -1,39 +1,15 @@
-<div class="footer-items">
-  <div class="row">
-    <div class="col-md-6">
-      <%= link_to root_path, class: "footer-bloomer-brand" do %>
-      <%= image_tag "logo.png" %>
-      <% end %>
-    </div>
+<footer>
 
-      <div class="col-md-2">
-        <div class="section-footer">
-         <h1> L'ÉQUIPE </h1>
-         <p> Qui sommes-nous ? </p>
-         <p> Contact </p>
-       </div>
-
-     </div>
-     <div class="col-md-2">
-       <div class="section-footer">
-       <h1> L'EXPLORATION </h1>
-      <p> Notre Méthodologie </p>
-      <p> Notre parcours </p>
-      </div>
-    </div>
-
-    <div class="col-md-2">
-      <div class="section-footer">
-        <br><br>
-        <a href="https://twitter.com/bloomersfrance" class="share-link bg-twitter">
-          <i class="fa fa-twitter" style="color:#FFC400"></i>
-        </a>
-        <a href="http://bloomers.fr/" class="share-link bg-email">
-          <i class="fa fa-envelope-o" style="color:#FFC400"></i>
-        </a>
-      </div>
-    </div>
-  </div>
+<div class="left-footer">
+    <%= link_to "L'exploration", bloomers_path  %>
+    <%= link_to "L'équipe", bloomers_path  %>
+    <%= link_to "Contact", bloomers_path  %>
 </div>
-
-
+<div class="center-footer">
+  <a href=""><i class="fa fa-twitter" aria-hidden="true"></i></a>
+  <a href=""><i class="fa fa-envelope" aria-hidden="true"></i></a>
+</div>
+<div>
+  <span> Made with <i class="fa fa-heart" aria-hidden="true"></i> in Écully Beach by Alizée et Anna </span>
+</div>
+</footer>
