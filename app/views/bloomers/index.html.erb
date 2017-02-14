@@ -16,20 +16,20 @@
       <div class="city-box">
         <%= image_tag "placeholder.png" %>
         <h4> Ville </h4>
-        <div id="city-choice">
-        <%= f.input :city, as: :check_boxes, collection: @cities, label: false, checked: @cities %>
-        </div>
+      </div>
+      <div id="city-choice">
+      <%= f.input :city, as: :check_boxes, collection: @cities, label: false, checked: @cities %>
       </div>
 
       <div class="speciality-box">
         <h4 id="speciality"> Spécialité </h4>
-        <div id="speciality-choice">
-          <% if @specialities.present? %>
-          <%= f.input :speciality, as: :check_boxes, collection: @specialities, label: false, include_blank: true, checked: @specialities %>
-          <% else %>
-          <%= @selected_speciality || "Pas de spécialité" %>
-          <% end %>
-        </div>
+      </div>
+      <div id="speciality-choice">
+        <% if @specialities.present? %>
+        <%= f.input :speciality, as: :check_boxes, collection: @specialities, label: false, include_blank: true, checked: @specialities %>
+        <% else %>
+        <%= @selected_speciality || "Pas de spécialité" %>
+        <% end %>
       </div>
     </div>
     <div class="search-box">
@@ -43,20 +43,38 @@
 </div>
 
 
-<div class="wrapper-content-index">
+<div class="wrapper-content-index" style="background-color:#F9F9F9">
 
 
   <div class="row">
 
-    <div class="col-sm-8">
-    <% @bloomers.each do |b| %>
-    <%= b.name %>
-    <% end %>
+    <div class="col-xs-12 col-sm-7">
+      <% @bloomers.each do |bloomer| %>
 
+      <div class="row bloomer-card">
 
+        <div class="col-xs-4" style="padding: 0;">
+          <div class="bloomer-card-image" style="background-image: url('<% if bloomer.photos? %><%= cl_image_path(bloomer.photos.last.path, :crop => :crop)%> <% else %> <%= "http://imageshack.com/a/img923/6113/XpMsUl.jpg"%> <% end %>');">
 
+          </div>
+        </div>
+
+        <div class="col-xs-2" style="padding: 30px 10px;">
+         <!--  <div class="bloomer-logo"> -->
+          <% if bloomer.logo? %><%= cl_image_tag(bloomer.logo.path, :crop => :crop)%>
+          <% else %>
+          <%= "http://imageshack.com/a/img923/6113/XpMsUl.jpg"%>
+          <% end %>
+          <!-- </div> -->
+        </div>
+
+        <div class="hidden-xs col-sm-6">
+        <%= bloomer.name %>
+        </div>
+
+      </div>
+      <% end %>
     </div>
-
     <div class="col-sm-4">
 
 
