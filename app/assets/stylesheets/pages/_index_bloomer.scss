@@ -59,3 +59,118 @@
   text-align: center;
 }
 
+.wrapper-header-index {
+  .header {
+    width: 90%;
+    margin: auto;
+    text-align: center;
+  }
+  .search {
+    display:flex;
+    justify-content:space-around;
+    h4 {
+      font-size:14px;
+      font-family: 'Muli', sans-serif;
+      font-weight: 100;
+      color: #9B9B9B;
+    }
+    .search-box {
+      font-size:14px;
+    }
+  }
+  h1 {
+    text-align: center;
+    color: #4A4A4A;
+    font-size: 25px;
+    text-transform: uppercase;
+    font-family: 'Comfortaa', cursive;
+    padding-top: 20px;
+  }
+  .yellow-underline {
+    width:50%;
+    margin-bottom:40px;
+  }
+  #choice-box {
+    display:flex;
+    border-radius: 3px 0 0 3px;
+    box-shadow: 1px 1px 1px grey;
+    cursor:pointer;
+    position:relative;
+
+  }
+  #speciality {
+    border-left: 1px solid #9B9B9B;
+    padding-left: 12px;
+  }
+  #speciality-choice {
+    position: absolute;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0px 1px 2px #9B9B9B;
+    top: 42px;
+    z-index: 2000;
+    width: 400px;
+    left: 0;
+    width: 100%;
+    display:none;
+  }
+    #city-choice {
+    position: absolute;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0px 1px 2px #9B9B9B;
+    top: 42px;
+    z-index: 2000;
+    width: 400px;
+    left: 0;
+    width: 100%;
+    display:none;
+  }
+
+  .city-box {
+    min-width: 150px;
+    display: inline-flex;
+    align-items: center;
+    img {
+      height:15px;
+      margin: 0 5px 0 10px;
+    }
+  }
+  .speciality-box {
+    min-width: 150px;
+    display: inline-flex;
+    align-items: center;
+  }
+  .btn-search {
+    width: 100%;
+    min-width: 150px;
+    background: #fec300;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    font-weight: lighter;
+    font-family: "Muli", sans-serif;
+    box-shadow: 1px 1px 1px grey;
+    transition:0.3s ease;
+  }
+  .btn-search:hover {
+    background-color:#04677D;
+  }
+  .search-box {
+    position:relative;
+    img {
+      width: 15px;
+      position: absolute;
+      top: 13px;
+      left: 10px;
+    }
+  }
+  .checkbox {
+    margin:0;
+    font-size: 12px;
+  }
+}
+
+.icon-index {
+    height:35px;
+}

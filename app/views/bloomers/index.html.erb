@@ -1,94 +1,96 @@
-<div class="bloomer_index">
-  <div class="row">
-    <!-- <div class="col-md-12"> -->
-    <!-- COLONNE 1 - RECHErCHE -->
-    <div class="wrapper-index" style="padding-bottom: 30px;">
-      <div class="col-xs-12">
+<div class="wrapper-header-index">
 
-      <!--         <h3> RECHERCHE </h3> -->
-      <%= simple_form_for(:search, url: bloomers_path, method: :get) do |f| %>
-      <ul>
-        <h4 style="color:#384259;font-weight:light;"> Catégories </h4> <br>
-        <% if @categories.present? %>
-          <%= f.input :category, as: :check_boxes, collection: @categories.map { |category| category["key"] }, label: "Choisissez une catégorie", checked: @selected_categories %>
-        <% else %>
-          Pas de catégorie
-        <% end %>
-        <h4 style="color:#384259;font-weight:light;">Location</h4> <br>
-          <%= f.input :city, label: 'Ville', selected: @selected_city %>
-        <h4 style="color:#384259;font-weight:light;">Spécialité</h4> <br>
-        <% if @specialities.present? %>
-          <%= f.input :speciality, collection: @specialities.map { |speciality| speciality["key"] }, label: 'Entrez les spécialités', include_blank: true, selected: @selected_speciality %>
-        <% else %>
-          <%= @selected_speciality || "Pas de spécialité" %>
-        <% end %>
-      </ul>
-      <span class="nb-next-button"><%= f.button :submit, "Go !" %></span>
-      <% end %>
+  <div class="row header">
 
+    <%= image_tag "pacman.png", class:"icon-index" %>
+    <h1> Trouve l'incubateur qu'il te faut </h1>
+
+    <div class="yellow-underline"></div>
+
+  </div>
+
+  <div class="row search">
+
+    <%= simple_form_for(:search, url: bloomers_path, method: :get) do |f| %>
+    <div id="choice-box">
+      <div class="city-box">
+        <%= image_tag "placeholder.png" %>
+        <h4> Ville </h4>
+        <div id="city-choice">
+        <%= f.input :city, as: :check_boxes, collection: @cities, label: false, checked: @cities %>
+        </div>
       </div>
-    </div>
 
-    <div class="wrapper-results text-center">
-<!--       <h3> Les résultats </h3> -->
-    <div class="list-bloomer">
-      <% @bloomers.each do |bloomer| %>
-      <div class="col-md-4" style="margin-right:0;margin-left:0;padding-right:0;padding-left:0;">
-        <%= link_to bloomer_path(bloomer), method: :get do %>
-       <div class="card">
-            <figure class="effect-zoe" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<% if bloomer.photos? %><%= cl_image_path(bloomer.photos.last.path, :crop => :crop)%> <% else %> <%= "http://imageshack.com/a/img923/6113/XpMsUl.jpg"%> <% end %>');">
-              <div class="test"> <h3> <%= bloomer.name %> </span></h3></div>
-              <figcaption>
-                <div class="row more-details">
-                  <div class="col-xs-6">
-                    <p> <%= bloomer.category %> </p>
-                  </div>
-                  <div class="col-xs-6">
-                    <p> <i class="fa fa-map-marker" aria-hidden="true"></i> Paris </p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-xs-6">
-                    <p>  <%= bloomer.speciality %> </p>
-                  </div>
-                  <div class="col-xs-6">
-                    <p class="icon-links">
-                      <i class="fa fa-calendar" aria-hidden="true"></i>
-                    </p>
-                  </div>
-                </div>
-              </figcaption>
-            </figure>
-          </div>
+      <div class="speciality-box">
+        <h4 id="speciality"> Spécialité </h4>
+        <div id="speciality-choice">
+          <% if @specialities.present? %>
+          <%= f.input :speciality, as: :check_boxes, collection: @specialities, label: false, include_blank: true, checked: @specialities %>
+          <% else %>
+          <%= @selected_speciality || "Pas de spécialité" %>
           <% end %>
         </div>
-      <% end %>
+      </div>
     </div>
+    <div class="search-box">
+      <%= image_tag "search.png", style:"width:15px" %>
+      <%= f.button :submit, "Rechercher", class:"btn-search" %>
     </div>
-    </div>
+    <% end %>
+
   </div>
-    </div>
-  </div>
+
 </div>
+
+
+<div class="wrapper-content-index">
+
+
+  <div class="row">
+
+    <div class="col-sm-8">
+    <% @bloomers.each do |b| %>
+    <%= b.name %>
+    <% end %>
+
+
+
+    </div>
+
+    <div class="col-sm-4">
+
+
+
+    </div>
+
   </div>
 
+</div>
 
-<!-- LINK FROM CARDS TO FIRST BLOOMER FOR DEMO -->
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $('.speciality-box').on("click", function(){
+      $('#city-choice').css({"display":"none"});
 
-<!--  <#% content_for(:after_js) do %>
- <script>
+      if ($('#speciality-choice').css("display") == "block") {
+        $('#speciality-choice').css({"display":"none"});
+      }
+      else {
+        $('#speciality-choice').css({"display":"block"});
+      }
+    });
 
-   $('.card').on('click', function(event) {
-     window.location.href="/bloomers/1"
-   });
+    $('.city-box').on("click", function(){
+      $('#speciality-choice').css({"display":"none"});
+      if ($('#city-choice').css("display") == "block") {
+        $('#city-choice').css({"display":"none"});
+      }
+      else {
+        $('#city-choice').css({"display":"block"});
+      }
+    })
 
- </script>
- <#% end %>
-
- -->
-
-
-
-
+  <% end %>
+<% end %>
 
 

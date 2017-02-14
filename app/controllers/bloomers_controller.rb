@@ -12,6 +12,13 @@ class BloomersController < ApplicationController
     # end
     # @specialities.uniq!
 
+    # @cities = []
+    # @bloomers.each do |bloomer|
+    #   @cities << bloomer.city
+    # end
+    # @cities.uniq!
+
+
     # # Je fais la fonction recherche
     # if params[:search] && params[:search][:category] != ""
     #   @bloomers = @bloomers.where(category: params[:search][:category])
@@ -20,45 +27,68 @@ class BloomersController < ApplicationController
     #   @bloomers = @bloomers.where(city: params[:search][:city])
     # end
 
-    conditions = {}
+    # conditions = {}
 
-    if params[:search]
-      # categories
-      @selected_categories = params[:search][:category]
-      @selected_categories = @selected_categories.select(&:present?) if @selected_categories.present?
-      conditions[:category] = @selected_categories if @selected_categories.present?
+    # if params[:search]
+    #   # categories
+    #   @selected_categories = params[:search][:category]
+    #   @selected_categories = @selected_categories.select(&:present?) if @selected_categories.present?
+    #   conditions[:category] = @selected_categories if @selected_categories.present?
 
-      # city
-      @selected_city = params[:search][:city]
-      conditions[:city] = @selected_city if @selected_city.present?
+    #   # city
+    #   @selected_city = params[:search][:city]
+    #   conditions[:city] = @selected_city if @selected_city.present?
 
-      # speciality
-      @selected_speciality = params[:search][:speciality]
-      conditions[:speciality] = @selected_speciality if @selected_speciality.present?
+    #   # speciality
+    #   @selected_speciality = params[:search][:speciality]
+    #   conditions[:speciality] = @selected_speciality if @selected_speciality.present?
 
-      # price ranges
-      @selected_min_price = params[:search][:min_price]
-      @selected_max_price = params[:search][:max_price]
+    #   # price ranges
+    #   @selected_min_price = params[:search][:min_price]
+    #   @selected_max_price = params[:search][:max_price]
 
-      if @selected_min_price || @selected_max_price
-        conditions[:program_prices] = {
-          ranges: {
-            from: @selected_min_price,
-            to: @selected_max_price
-          }
-        }
-      end
+    #   if @selected_min_price || @selected_max_price
+    #     conditions[:program_prices] = {
+    #       ranges: {
+    #         from: @selected_min_price,
+    #         to: @selected_max_price
+    #       }
+    #     }
+    #   end
+    # end
+
+    # Je crée mes tableaux
+    @specialities = []
+    @bloomers.each do |bloomer|
+      @specialities << bloomer.speciality
     end
 
-    search = Bloomer.search("*", aggs: [:category, :city, :speciality, :program_prices], where: conditions)
-    @bloomers = search.results
+    @specialities.uniq!
+
+    @cities = []
+    @bloomers.each do |bloomer|
+      @cities << bloomer.city
+    end
+    @cities.uniq!
+
+     # Je filtre le résultat
+    # if params[:search] && params[:search][:speciality] != ""
+    #   @bloomers = @bloomers.where(speciality: params[:search][:speciality])
+    # end
+    if params[:search] && params[:search][:city] != ""
+      @bloomers = @bloomers.where(city: params[:search][:city])
+    end
+
+
+    # search = Bloomer.search("*", aggs: [:category, :city, :speciality, :program_prices], where: conditions)
+    # @bloomers = search.results
 
     # raise
 
-    @categories = get_buckets(:category, search)
-    @cities = get_buckets(:city, search)
-    @specialities = get_buckets(:speciality, search)
-    @prices = get_buckets(:program_prices, search)
+    # @categories = get_buckets(:category, search)
+    # @cities = get_buckets(:city, search)
+    # @specialities = get_buckets(:speciality, search)
+    # @prices = get_buckets(:program_prices, search)
   end
 
   def show
