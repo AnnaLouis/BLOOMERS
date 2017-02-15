@@ -18,8 +18,8 @@ class BloomerPolicy < ApplicationPolicy
     record.user.bloomer_admin?
   end
 
-  # def update?
-  #   record.user == user
-  # end
+  def update?
+    record.user == user
+  end
 
 end

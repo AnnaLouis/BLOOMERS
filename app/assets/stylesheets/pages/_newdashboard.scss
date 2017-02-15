@@ -245,11 +245,47 @@
           }
         }
       }
+      .more-infos {
+        .control-label {
+          font-size: 12px;
+          font-weight: 500;
+        }
+        input {
+          font-size:12px;
+          padding-left: 10px;
+        }
+        .form-control {
+          height: 28px;
+          border-bottom: 2px solid #FEC300;
+        }
+        .form-group {
+          margin-bottom: 0px;
+        }
+        select {
+          font-size:12px;
+          padding-left: 10px;
+        }
+      }
       .bloomer-description {
         margin-left: 40px;
         flex: 1 0 70%;
         padding:20px;
         position: relative;
+        .control-label {
+          font-size: 12px;
+          font-weight: 500;
+        }
+        input {
+          font-size:12px;
+          padding-left: 10px;
+        }
+        .form-control {
+          height: 28px;
+          border-bottom: 2px solid #FEC300;
+        }
+        .form-group {
+          margin-bottom: 0px;
+        }
         .edit-btn {
           position: absolute;
           right: 20px;
@@ -280,7 +316,7 @@
         flex: 1 0 33%;
       }
       .bloomer-photo {
-        flex: 1 0 20%;
+        flex: 1 1 45%;
       }
       .photos {
           width:100%;
@@ -362,6 +398,14 @@
           height:auto;
         }
       }
+    }
+  }
+  .bloomer_description {
+    #bloomer_description {
+      height: 140px;
+      font-size: 12px;
+      padding: 10px;
+      text-align:justify;
     }
   }
 }
