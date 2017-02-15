@@ -1,0 +1,903 @@
+<!-- LES MODALES -->
+<%= render 'shared/modal_startups_bloomer_view', bloomer: @bloomer %>
+
+<!-- LE CONTENU -->
+
+<div class="banner-bloomer" style="background-image: /*linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%),*/url('<% if @bloomer.photos? %><%= cl_image_path(@bloomer.photos.last.path, :crop => :crop)%><% else %><%= "http://imageshack.com/a/img923/6113/XpMsUl.jpg"%> <% end %>'); background-repeat:no-repeat; background-position: center center; background-size: cover;">
+</div>
+
+<!--  TITLE & TABS SELECTOR-->
+<div class="wrapper-show-bloomer">
+  <div class="container">
+    <div class="row title">
+      <div class="col-xs-9">
+        <h1><%= @bloomer.name.upcase %></h1>
+      </div>
+      <div class="col-xs-3">
+        <h4><span class="show-social-medias-button">
+          <!-- FAVORIS SEULEMENT POUR LES STARTUPS -->
+          <% if current_user.startup_admin == true %>
+            <!-- SI LE FAVORI N'EXISTE PAS -->
+            <% if @find_favorite.nil? %>
+              <%= link_to bloomer_favorites_path(@bloomer), controller: :favorites, method: :create do %>
+                <i class="fa fa-heart-o" aria-hidden="true"></i>
+              <% end %>
+            <% else %>
+              <!-- IF SHOWN -->
+              <% if !@find_favorite.hidden %>
+                <%= link_to hide_bloomer_favorite_path(@bloomer, @find_favorite), controller: :favorites, method: :hide do %>
+                  <i class="fa fa-heart" aria-hidden="true"></i>
+                <% end %>
+              <!-- IF HIDDEN -->
+              <% elsif @find_favorite.hidden %>
+                <%= link_to add_bloomer_favorite_path(@bloomer, @find_favorite), controller: :favorites, method: :add do %>
+                  <i class="fa fa-heart-o" aria-hidden="true"></i>
+                <% end %>
+              <% end %>
+            <!-- SI LE FAVORI EXIST -->
+            <% end %>
+          <% end %>
+          <a href="mailto:<%= @bloomer.email %>" target="_blank">
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+          </a>
+          <a href="<%= @bloomer.twitter_account %>" target="_blank">
+            <i class="fa fa-facebook-square" aria-hidden="true"></i>
+          </a>
+          <a href="<%= @bloomer.twitter_account %>" target="_blank">
+            <i class="fa fa-twitter" aria-hidden="true"></i>
+            </a>
+        </span></h4>
+        <h3><a href="http://<%= @bloomer.website %>" target="_blank">
+          visit the website
+        </a></h3>
+      </div>
+    </div>
+    <div class="row sub-titles">
+      <div class="col-xs-12">
+        <a class="sub-title tab active" data-target="#main-bloomer-info">INFO</a>
+        <a class="sub-title tab" data-target="#entrepreneurs">PROGRAMMES <span>(<%= @bloomer.programs.count %>)</span></a>
+        <a class="sub-title tab" data-target="#reviews">AVIS <span>(<%= @bloomer.reviews.count %>)</span></a>
+        <a class="sub-title tab hidden" data-target="#entreprises">ENTREPRISES</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE INFO -->
+<div id="main-bloomer-info" class="sub-content" style="margin:0px;padding:0px">
+  <!-- ROW 1 : main info + description -->
+  <div class="wrapper-show-bloomer">
+    <div class="container">
+      <!-- First Line -->
+      <div class="row">
+        <!-- colonne 1 -->
+        <div class="col-xs-12 col-sm-6">
+          <div class="container-second">
+            <div class="row-main-info">
+              <div class="col-xs-12 col-md-6">
+                <div class="div-main-info">
+                  <h2>STRUCTURE</h2>
+                  <h3><%= @bloomer.category.upcase %></h3>
+                </div>
+              </div>
+              <div class="col-xs-12 col-md-6">
+                <div class="div-main-info">
+                  <h2>SPECIALISATION</h2>
+                  <h3><%= @bloomer.speciality.upcase %></h3>
+                </div>
+              </div>
+            </div>
+            <div class="row-main-info">
+              <div class="col-xs-12 col-md-6">
+                <div class="div-main-info">
+                  <h2>NOS STARTUPS</h2>
+                  <h3><%= @bloomer.startups.count %></h3>
+                </div>
+              </div>
+              <div class="col-xs-12 col-md-6">
+                <div class="div-main-info">
+                  <h2>CREATION</h2>
+                  <h3><%= @bloomer.date_creation.strftime('%B %Y') %></h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- colonne 2 -->
+        <div class="col-xs-12 col-sm-6">
+          <div class="container-second">
+            <div class="div-description">
+              <p><%= @bloomer.description %>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROW 2 : VIDEOS & STARTUPS -->
+  <div class="wrapper-show-bloomer">
+    <div class="container">
+      <div class="row">
+        <!-- en vidéo -->
+        <div class="col-xs-12 col-sm-6">
+          <h3>MOTEUR... ACTION !</h3>
+          <div class="div-content-white">
+            <div class="col-xs-8" style="margin:0; padding:0">
+              <img src="http://www.roadtovr.com/wp-content/uploads/2015/03/youtube-logo2.jpg" alt="video 1" class="big-video">
+            </div>
+            <div class="col-xs-4 small-videos">
+              <img src="http://www.roadtovr.com/wp-content/uploads/2015/03/youtube-logo2.jpg" alt="video 2" class="small-video">
+              <img src="http://www.roadtovr.com/wp-content/uploads/2015/03/youtube-logo2.jpg" alt="video 3" class="small-video">
+            </div>
+          </div>
+        </div>
+        <!-- Startups -->
+        <div class="col-xs-12 col-sm-6">
+          <h3>LES STARTUPS (<%= @bloomer.startups.count%>)</h3>
+          <div class="div-content-white">
+            <div class="div-startups-card">
+              <% if @three_random_startups[0].present? %>
+              <div class="col-xs-12 col-sm-4" style="padding:0px">
+                <% if @three_random_startups[0].logo? %>
+                  <%= cl_image_tag @three_random_startups[0].logo.path, crop: :fill, class: "avatar" %>
+                <% else %>
+                <img src="http://laurenceourac.com/home/wp-content/uploads/2015/12/ANNA.jpg" class="avatar">
+                <% end %>
+              </div>
+              <div class="col-xs-12 col-md-8" style="padding:0px">
+                  <h2><%= @three_random_startups[0].name %></h2>
+                  <h3><%= @three_random_startups[0].short_description %></h3>
+                  <h4><%= @three_random_startups[0].batches.first.name %></h4>
+              </div>
+              <% end %>
+            </div>
+            <div class="div-startups-card">
+              <% if @three_random_startups[1].present? %>
+              <div class="col-xs-12 col-sm-4" style="padding:0px">
+                <% if @three_random_startups[1].logo? %>
+                  <%= cl_image_tag @three_random_startups[1].logo.path, crop: :fill, class: "avatar" %>
+                <% else %>
+                  <img src="http://laurenceourac.com/home/wp-content/uploads/2015/12/ANNA.jpg" class="avatar">
+                <% end %>
+              </div>
+              <div class="col-xs-12 col-md-8" style="padding:0px">
+                  <h2><%= @three_random_startups[1].name %></h2>
+                  <h3><%= @three_random_startups[1].short_description %></h3>
+                  <h4><%= @three_random_startups[1].batches.first.name %></h4>
+              </div>
+              <% end %>
+            </div>
+            <div class="div-startups-card">
+              <% if @three_random_startups[2].present? %>
+              <div class="col-xs-12 col-sm-4" style="padding:0px">
+                <% if @three_random_startups[2].logo? %>
+                <%= cl_image_tag @three_random_startups[2].logo.path, crop: :fill, class: "avatar" %>
+                <% else %>
+                <img src="http://laurenceourac.com/home/wp-content/uploads/2015/12/ANNA.jpg" class="avatar">
+                <% end %>
+              </div>
+              <div class="col-xs-12 col-md-8" style="padding:0px">
+                <h2><%= @three_random_startups[2].name %></h2>
+                <h3><%= @three_random_startups[2].short_description %></h3>
+                <h4><%= @three_random_startups[2].batches.first.name %></h4>
+              </div>
+              <% end %>
+            </div>
+            <!-- LES AUTRES STARTUPS -->
+            <% if @bloomer.startups.count > 3 %>
+              <div class="div-startups-card">
+              <%= link_to "#", data:{toggle: "modal", target: "#modal-startups-view-bloomer"} do %>
+                <div class="card-team">
+                  <h4 style="text-align:center">Découvrez + de startups +</h4>
+                </div>
+              <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROW 3 : main info + description -->
+  <div class="wrapper-show-bloomer">
+    <div class="container">
+      <!-- First Line -->
+      <div class="row">
+        <!-- colonne 1 -->
+        <div class="col-xs-12 col-sm-6">
+          <h3>L'EQUIPE ENCADRANTE</h3>
+          <!-- les membres de l'équipe -->
+          <div class="div-content-white">
+            <!--  Une carte équipe -->
+            <div class="div-startups-card">
+              <!--  Une carte équipe -->
+              <div class="col-xs-12 col-sm-4" style="padding:0px">
+                <img src="https://media.licdn.com/media/AAEAAQAAAAAAAAaEAAAAJGE5NzIwNzhmLTNmZDktNDkxNC04OGQ4LTM1MGVkNTAxNTkxNg.jpg" class="avatar">
+              </div>
+              <div class="col-xs-12 col-md-8" style="padding:0px 0px 0px 10px">
+                <h2>Brieuc Lambert</h2>
+                <h3>HAPPINESS MANAGER</h3>
+                <h4><i class="fa fa-envelope" aria-hidden="true"></i> <i class="fa fa-linkedin-square" aria-hidden="true"></i> <i class="fa fa-twitter" aria-hidden="true"></i></h4>
+              </div>
+            </div>
+            <div class="div-startups-card">
+              <!--  Une carte équipe -->
+
+              <div class="col-xs-12 col-sm-4" style="padding:0px">
+                <img src="https://media.licdn.com/media/AAEAAQAAAAAAAAMJAAAAJDhmMWMwZjNmLTczYjItNDEyYS1hNTEzLWE3NDU4NTBiM2E1NA.jpg" class="avatar">
+              </div>
+              <div class="col-xs-12 col-md-8" style="padding:0px 0px 0px 10px">
+                <h2>Félix Lienau</h2>
+                <h3>STARTUP MANAGER</h3>
+                <h4><i class="fa fa-envelope" aria-hidden="true"></i> <i class="fa fa-linkedin-square" aria-hidden="true"></i> <i class="fa fa-twitter" aria-hidden="true"></i></h4>
+              </div>
+
+            </div>
+            <div class="div-startups-card">
+              <!--  Une carte équipe -->
+
+              <div class="col-xs-12 col-sm-4" style="padding:0px">
+                <img src="https://media.licdn.com/media/p/7/005/00b/2b5/3e32839.jpg" class="avatar">
+              </div>
+              <div class="col-xs-12 col-md-8" style="padding:0px 0px 0px 10px">
+                <h2>Hugo Revel</h2>
+                <h3>CLEANESS MANAGER</h3>
+                <h4><i class="fa fa-envelope" aria-hidden="true"></i> <i class="fa fa-linkedin-square" aria-hidden="true"></i> <i class="fa fa-twitter" aria-hidden="true"></i></h4>
+              </div>
+
+            </div>
+            <!--  Une carte équipe -->
+            <div class="col-xs-12 col-md-6">
+              <div class="card-team">
+                <h4>Plus d'info +</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- colonne 2 - EVENTS -->
+        <div class="col-xs-12 col-sm-6">
+          <h3>EVENEMENTS</h3>
+            <div class="div-content-white">
+            <div class="row">
+              <div class="col-xs-3" style="background-image: url('https://s-media-cache-ak0.pinimg.com/736x/02/d7/e7/02d7e793609a42f64724ebd99cc29ac8.jpg'); background-size:cover; min-height:212px;    margin-left: 15px;">
+              </div>
+              <div class="col-xs-8" id="text-show-events">
+                <h2>Brunch party </h2>
+                <h3>@ <%= @bloomer.name %></h3>
+                <h4>13 h - 16 h 00 </h4>
+                <p>Networker, s'entraider entre startups tout en profitant d'un buffet illimité. What else ? <br>Coût : gratuit. </p>
+                <button type="button" class="btn btn-postulate" style="height:50%;width:50%;border-radius:4px; text-align:center;justify-content:center; text-transform:uppercase; font-size:12px;font-family:'Muli'; padding:1px">Je m'inscris</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <%= render 'shared/modal_photos_view_bloomer', bloomer: @bloomer %>
+  <!-- ROW 4 : PHOTO + PLACE INFO -->
+  <div class="wrapper-show-bloomer">
+    <div class="container">
+      <div class="row">
+        <!-- en photo -->
+        <div class="col-xs-12 col-sm-6">
+          <h3>VISITEZ NOS LOCAUX</h3>
+          <%= link_to "#", data: {toggle: "modal", target: "#modal-photos-view-bloomer"} do %>
+            <div class="div-content-white">
+              <div class="col-xs-8" style="margin:0; padding:0">
+                <% if @bloomer.photos? %>
+                  <%= cl_image_tag @bloomer.photos.last.path, crop: :fill, class: "big-video" %>
+                <% else %>
+                  <img src="http://imageshack.com/a/img923/6113/XpMsUl.jpg" alt="photo 1" class="big-video">
+                <% end %>
+              </div>
+              <div class="col-xs-4 small-videos">
+                <% if @bloomer.photos? %>
+                  <% @bloomer.photos.each do |photo| %>
+                  <%= cl_image_tag photo.path, crop: :fill, class: "small-video" %>
+                  <% end %>
+                <% else %>
+                  <img src="http://imageshack.com/a/img923/6113/XpMsUl.jpg" alt="photo 2" class="small-video">
+                  <img src="http://imageshack.com/a/img923/6113/XpMsUl.jpg" alt="photo 3" class="small-video">
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <!-- local info -->
+        <div class="col-xs-12 col-sm-6">
+          <h3>QUELQUES INFOS</h3>
+          <div class="div-content-white">
+            <div class="div-description">
+              <p>Des locaux inspirants en plein coeur du siège de Showroomprivé.
+                <br>3 salles de meeting
+                <br>1 imprimante 3D…
+                <br>dans un espace de 500m2, 3 salles de réunions. </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NEWSFEED + MAP -->
+    <div class="wrapper-show-bloomer">
+      <div class="container">
+        <div class="row">
+          <!-- en vidéo -->
+          <div class="col-xs-12 col-sm-6">
+            <h3>NEWSFEED</h3>
+            <div class="div-content-white">
+              <div class="div-startups-card">
+                <h2>MADDYNESS</h2>
+                <h3><span id="newsfeed-subtitle">BLOOMER</span> - <%= @bloomer.name%> recrute leur nouvelle promo !</h3>
+              </div>
+              <div class="div-startups-card">
+                <h2>SOCIALTER</h2>
+                <h3><span id="newsfeed-subtitle">STARTUP</span> - Un "camion poubelle de la mer" pour nettoyer les océans</h3>
+              </div>
+              <div class="div-startups-card">
+                <h2>10001 STARTUPS</h2>
+                <h3><span id="newsfeed-subtitle">BLOOMER</span> - Pourquoi intégrer un incubateur d'un grand groupe ?</h3>
+              </div>
+              <div class="div-startups-card">
+                <h2>PRESSE CITRON</h2>
+                <h3><span id="newsfeed-subtitle">ECOSYSTEM</span> - Le monde des startups expliqué à mes grands-parents</h3>
+              </div>
+            </div>
+          </div>
+          <!-- NOUS  -->
+          <div class="col-xs-12 col-sm-6">
+            <h3>OÙ LES TROUVER ?</h3>
+            <div class="div-content-white">
+              <div class="col-xs-12 col-sm-7">
+                <div id="map" style="width: 100%; height: 200px;"></div>
+              </div>
+              <div class="col-xs-12 col-sm-5">
+                <p><%= @bloomer.address %>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+<!-- PAGE ENTREPRENEURS -->
+<div id="entrepreneurs" class="sub-content hidden" style="margin:0px;padding:0px">
+  <!-- TAB SUB TITLE PROGRAM -->
+  <div class="wrapper-show-bloomer">
+    <div class="container">
+      <div class="row program-titles">
+        <div class="col-xs-12">
+          <a class="program-title tab active" data-target="#program-one">
+            <% if @first_program.present? %>
+              1. <%= @first_program.name %>
+            <% end %>
+          </a>
+          <a class="program-title" data-target="#program-two">
+            <% if @second_program.present? %>
+              2. <%= @second_program.name %>
+            <% end %>
+          </a>
+          <a class="program-title" data-target="#program-three">
+            <% if @third_program.present? %>
+              3. <%= @third_program.name %>
+            <% end %>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE ENTREPRENEURS - PROGRAMME 1 -->
+  <div class="program-content" id="program-one">
+    <% if @first_program.present? %>
+    <!-- ROW 1 : main info + postulate -->
+    <div class="wrapper-show-bloomer">
+      <div class="container">
+        <!-- ROW 1 : main info + time line -->
+        <div class="row">
+          <!-- MAIN INFO PROGRAM -->
+          <div class="col-xs-12 col-sm-6">
+            <div class="container-second">
+              <div class="row-main-info">
+                <div class="col-xs-12 col-md-6">
+                  <div class="div-main-info">
+                    <h2>COUT</h2>
+                    <h3>
+                    <% if @first_program.price == 0 %>
+                    GRATUIT
+                    <% else %>
+                    <%= @first_program.price %> €
+                    <% end %>
+                    </h3>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-md-6">
+                  <div class="div-main-info">
+                    <h2>DUREE</h2>
+                    <h3><%= @first_program.duration %></h3>
+                  </div>
+                </div>
+              </div>
+              <div class="row-main-info">
+                <div class="col-xs-12 col-md-6">
+                  <div class="div-main-info">
+                    <h2>TAUX DE SURVIE</h2>
+                    <h3><%= @first_program.surviving_rate %> %</h3>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-md-6">
+                  <div class="div-main-info">
+                    <h2>PRISE PARTICIPATION</h2>
+                    <h3>
+                      <% if @first_program.equity? %>
+                      <%= "OUI" %>
+                      <% else %>
+                      <%= "NON" %>
+                      <% end %>
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- TIMELINE CANDIDATURE -->
+          <div class="col-xs-12 col-sm-6">
+            <div class="container-second">
+              <div class="div-description">
+                <div class="timeline">
+                  <div class="l-wizard-h">
+                    <ul class="wizard-h">
+                      <li class="l-wizard-h-step wizard-h__step--previous">
+                       <i class="fa fa-file-text-o"></i>
+                        <div class="text-step-timeline">
+                        <span class="date-step-timeline">
+                          <%= @first_program.candidature_open.strftime("%l %b %y") %>
+                        </span>
+                        <br><span class="name-step-timeline">Appel à projects</span>
+                        </div>
+                      </li>
+                      <li class="l-wizard-h-step wizard-h__step--current">
+                        <i class="fa fa-user"></i>
+                        <div class="text-step-timeline">
+                          <span class="date-step-timeline">
+                          <%= @first_program.candidature_close.strftime("%l %b %y") %>
+                          </span>
+                          <br><span class="name-step-timeline">Fin de candidature</span>
+                        </div>
+                      </li>
+                      <li class="l-wizard-h-step wizard-h__step">
+                        <i class="fa fa-check"></i>
+                        <div class="text-step-timeline">
+                          <span class="date-step-timeline">
+                            <% if @first_program.batches.count != 0 %>
+                            <%= @first_program.batches.last.batch_start.strftime("%l %b %y") %>
+                            <% else %>
+                            <%= "?" %>
+                            <% end %>
+                            </span>
+                          <br><span class="name-step-timeline">
+                            <% if @first_program.batches.count != 0 %>
+                            Rentrée <%= @first_program.batches.last.name%></span>
+                            <% end %>
+                        </div>
+                      </li>
+                   </ul>
+                  </div>
+                </div>
+                <div class="timeline">
+                  <div class="col-xs-6">
+                    <h4 style="text-align:center">Il reste <%= (@first_program.candidature_close - Date.today).to_i %> jours </h4>
+                  </div>
+                  <div class="col-xs-6" style="justify-content: center;display:flex">
+                    <%= link_to "Je Postule", new_program_candidature_path(@first_program), class:"btn-postulate" %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ROW 2 : L'ACCOMPAGNEMENT (individuel + collectif) -->
+    <div class="wrapper-show-bloomer">
+      <div class="container">
+        <div class="row">
+          <!-- ACCOMPAGNEMENT INDIV -->
+          <div class="col-xs-12 col-sm-6">
+            <h3>ACCOMPAGNEMENT INDIVIDUEL</h3>
+            <div class="div-content-white">
+              <div class="plain-text">
+                <% if @first_program.individual_coaching? %>
+                <%= @first_program.individual_coaching.html_safe %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <!-- ACCOMPAGNEMENT COLLECTIF -->
+          <div class="col-xs-12 col-sm-6">
+            <h3>ACCOMPAGNEMENT COLLECTIF</h3>
+            <div class="div-content-white">
+              <div class="plain-text">
+                <% if @first_program.collective_coachin? %>
+                <%= @first_program.collective_coachin.html_safe %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 3 : Ecocsysteme + avantages -->
+    <div class="wrapper-show-bloomer">
+      <div class="container">
+        <!-- First Line -->
+        <div class="row">
+          <!-- colonne 1 - ECOSYSTEME -->
+          <div class="col-xs-12 col-sm-6">
+            <h3>L'ECOSYSTEME</h3>
+            <div class="div-content-white">
+              <div class="plain-text">
+                <% if @first_program.ecosystem? %>
+                <%= @first_program.ecosystem.html_safe %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <!-- colonne 2 - AVANTAGES -->
+          <div class="col-xs-12 col-sm-6">
+            <h3>LES AVANTAGES</h3>
+            <div class="div-content-white">
+              <div class="plain-text">
+                <% if @first_program.advantages? %>
+                <%= @first_program.advantages.html_safe %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 4 : criteres de selection + avis -->
+    <div class="wrapper-show-bloomer">
+      <div class="container">
+        <div class="row">
+          <!-- critères de sélection -->
+          <div class="col-xs-12 col-sm-6">
+            <h3>CRITERES DE SELECTION</h3>
+            <div class="div-content-white">
+              <div class="plain-text">
+                <% if @first_program.selection_criterias? %>
+                <%= @first_program.selection_criterias.html_safe %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <% end %>
+  </div>
+
+    <!-- PAGE ENTREPRENEURS - PROGRAMME 2 -->
+  <div class="program-content hidden" id="program-two">
+    <% if @second_program.present? %>
+    <!-- ROW 1 : main info + postulate -->
+    <div class="wrapper-show-bloomer">
+      <div class="container">
+        <!-- ROW 1 : main info + time line -->
+        <div class="row">
+          <!-- MAIN INFO PROGRAM -->
+          <div class="col-xs-12 col-sm-6">
+            <div class="container-second">
+              <div class="row-main-info">
+                <div class="col-xs-12 col-md-6">
+                  <div class="div-main-info">
+                    <h2>COUT</h2>
+                    <h3>
+                    <% if @second_program.price == 0 %>
+                    GRATUIT
+                    <% else %>
+                    <%= @second_program.price %> €
+                    <% end %>
+                    </h3>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-md-6">
+                  <div class="div-main-info">
+                    <h2>DUREE</h2>
+                    <h3><%= @second_program.duration %></h3>
+                  </div>
+                </div>
+              </div>
+              <div class="row-main-info">
+                <div class="col-xs-12 col-md-6">
+                  <div class="div-main-info">
+                    <h2>TAUX DE SURVIE</h2>
+                    <h3><%= @second_program.surviving_rate %> %</h3>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-md-6">
+                  <div class="div-main-info">
+                    <h2>PRISE PARTICIPATION</h2>
+                    <h3>
+                      <% if @second_program.equity? %>
+                      <%= "OUI" %>
+                      <% else %>
+                      <%= "NON" %>
+                      <% end %>
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- TIMELINE CANDIDATURE -->
+          <div class="col-xs-12 col-sm-6">
+            <div class="container-second">
+              <div class="div-description">
+                <div class="timeline">
+                  <div class="l-wizard-h">
+                    <ul class="wizard-h">
+                      <li class="l-wizard-h-step wizard-h__step--previous">
+                       <i class="fa fa-file-text-o"></i>
+                        <div class="text-step-timeline">
+                        <span class="date-step-timeline">
+                          <%= @second_program.candidature_open.strftime("%l %b %y") %>
+                        </span>
+                        <br><span class="name-step-timeline">Appel à projects</span>
+                        </div>
+                      </li>
+                      <li class="l-wizard-h-step wizard-h__step--current">
+                        <i class="fa fa-user"></i>
+                        <div class="text-step-timeline">
+                          <span class="date-step-timeline">
+                          <%= @second_program.candidature_close.strftime("%l %b %y") %>
+                          </span>
+                          <br><span class="name-step-timeline">Fin de candidature</span>
+                        </div>
+                      </li>
+                      <li class="l-wizard-h-step wizard-h__step">
+                        <i class="fa fa-check"></i>
+                        <div class="text-step-timeline">
+                          <span class="date-step-timeline">
+                            <% if @second_program.batches.count != 0 %>
+                            <%= @second_program.batches.last.batch_start.strftime("%l %b %y") %>
+                            <% else %>
+                            <%= "?" %>
+                            <% end %>
+                            </span>
+                          <br><span class="name-step-timeline">
+                            <% if @second_program.batches.count != 0 %>
+                            Rentrée <%= @second_program.batches.last.name%></span>
+                            <% end %>
+                        </div>
+                      </li>
+                   </ul>
+                  </div>
+                </div>
+                <div class="timeline">
+                  <div class="col-xs-6">
+                    <h4 style="text-align:center">Il reste <%= (@second_program.candidature_close - Date.today).to_i %> jours </h4>
+                  </div>
+                  <div class="col-xs-6" style="justify-content: center;display:flex">
+                    <%= link_to "Je Postule", new_program_candidature_path(@second_program), class:"btn-postulate" %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ROW 2 : L'ACCOMPAGNEMENT (individuel + collectif) -->
+    <div class="wrapper-show-bloomer">
+      <div class="container">
+        <div class="row">
+          <!-- ACCOMPAGNEMENT INDIV -->
+          <div class="col-xs-12 col-sm-6">
+            <h3>ACCOMPAGNEMENT INDIVIDUEL</h3>
+            <div class="div-content-white">
+              <div class="plain-text">
+                <% if @second_program.individual_coaching? %>
+                <%= @second_program.individual_coaching.html_safe %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <!-- ACCOMPAGNEMENT COLLECTIF -->
+          <div class="col-xs-12 col-sm-6">
+            <h3>ACCOMPAGNEMENT COLLECTIF</h3>
+            <div class="div-content-white">
+              <div class="plain-text">
+                <% if @second_program.collective_coachin? %>
+                <%= @second_program.collective_coachin.html_safe %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 3 : Ecocsysteme + avantages -->
+    <div class="wrapper-show-bloomer">
+      <div class="container">
+        <!-- First Line -->
+        <div class="row">
+          <!-- colonne 1 - ECOSYSTEME -->
+          <div class="col-xs-12 col-sm-6">
+            <h3>L'ECOSYSTEME</h3>
+            <div class="div-content-white">
+              <div class="plain-text">
+                <% if @second_program.ecosystem? %>
+                <%= @second_program.ecosystem.html_safe %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <!-- colonne 2 - AVANTAGES -->
+          <div class="col-xs-12 col-sm-6">
+            <h3>LES AVANTAGES</h3>
+            <div class="div-content-white">
+              <div class="plain-text">
+                <% if @second_program.advantages? %>
+                <%= @second_program.advantages.html_safe %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 4 : criteres de selection + avis -->
+    <div class="wrapper-show-bloomer">
+      <div class="container">
+        <div class="row">
+          <!-- critères de sélection -->
+          <div class="col-xs-12 col-sm-6">
+            <h3>CRITERES DE SELECTION</h3>
+            <div class="div-content-white">
+              <div class="plain-text">
+                <% if @second_program.selection_criterias? %>
+                <%= @second_program.selection_criterias.html_safe %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <!-- avis startups -->
+          <div class="col-xs-12 col-sm-6">
+            <h3>AVIS DES STARTUPS</h3>
+            <div class="div-content-white">
+              <div class="reviews-bloomer-small-card hidden">
+                <div class="logo-startup-review">
+                  <img src="http://laurenceourac.com/home/wp-content/uploads/2015/12/ANNA.jpg" class="avatar">
+                </div>
+                <div class="text-startup-reviews">
+                  <h2>ASK ANNA</h2>
+                  <p>« Le meilleur programme d’incubation à Paris »
+                  <br>« Beaucoup de bienveillance »</p>
+                  <h4>En savoir +</h4>
+                </div>
+              </div>
+              <div class="reviews-bloomer-small-card hidden">
+                <div class="logo-startup-review">
+                  <img src="http://laurenceourac.com/home/wp-content/uploads/2015/12/ANNA.jpg" class="avatar">
+                </div>
+                <div class="text-startup-reviews">
+                  <h2>ASK ANNA</h2>
+                  <p>« Le meilleur programme d’incubation à Paris »
+                  <br>« Beaucoup de bienveillance »</p>
+                  <h4>En savoir +</h4>
+                </div>
+              </div>
+              <div class="reviews-bloomer-small-card hidden">
+                <div class="logo-startup-review">
+                  <img src="http://laurenceourac.com/home/wp-content/uploads/2015/12/ANNA.jpg" class="avatar">
+                </div>
+                <div class="text-startup-reviews">
+                  <h2>ASK ANNA</h2>
+                  <p>« Le meilleur programme d’incubation à Paris »
+                  <br>« Beaucoup de bienveillance »</p>
+                  <h4>En savoir +</h4>
+                </div>
+              </div>
+              <div class="reviews-bloomer-small-card hidden">
+                <div class="logo-startup-review">
+                  <div class="avatar" style="background-color: #FAFAFA;text-align:center;height:40px; width:40px">
+                    <h2 style="padding-top:13px;color:#8C8C8C">?</h2>
+                  </div>
+                </div>
+                <div class="text-startup-reviews" style="margin-bottom:0">
+                  <h2> PARTAGEZ VOTRE EXPERIENCE !</h2>
+                  <p>Ecrivez votre review et aidez les autres entrepreneurs à mieux choisir</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <% end %>
+  </div>
+</div>
+
+<!-- PAGE ENTREPRISES -->
+<div id="entreprises" class="sub-content hidden" style="margin:0px;padding:0px">
+  <div class="wrapper-show-bloomer">
+    <div class="container">
+      <h2> Pas d'info pour l'instant</h2>
+    </div>
+  </div>
+</div>
+
+
+<div id="reviews" class="sub-content hidden" style="margin:0px;padding:0px">
+  <div class="wrapper-show-bloomer">
+    <div class="container">
+      <ul>
+        <div class="row">
+          <% @bloomer.reviews.each do |review| %>
+            <div class="col-sm-4">
+              <div class="review">
+                <div class="card-title"><%= review.title %></div>
+                  <h4><%= review.description %></h4>
+                    <p><% review.rating.times do %><i class="fa fa-star"></i><% end %></p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </ul>
+      <% if current_user.startup_admin? %>
+      <% if @user_bloomers.include?(@bloomer)%>
+      <% if @find_review.nil? %>
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3" id="review-input" style="color:#04677D">
+        <%= simple_form_for [@bloomer, @review] do |f| %>
+          <%= f.input :title %>
+          <%= f.input :description %>
+          <%= f.input :rating, collection: [1,2,3,4,5] %>
+          <%= f.submit "add a review", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+      <% end %>
+      <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="wrapper-show-bloomer" style="height:50px">
+</div>
+
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      var handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers([{ lat: <%= @bloomer.latitude %>, lng: <%= @bloomer.longitude %> }]);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(14);
+        };
+      });
+    });
+  <% end %>
+<% end %>
