@@ -255,126 +255,122 @@
     width:62%;
     margin-left: 160px;
     }
+  }
 
 // TIMELINE
 
 .wrapper-bloomer-show {
-  /* TIMELINE */
+  .timeline {
+    margin:20px 0 0 0;
+    height:100px;
+  }
 
-.timeline {
-  margin:20px 0 0 0;
-  height:100px;
-}
+  .text-step-timeline {
+    margin: 10px 0px 0px -36px;
+    line-height: 14px;
+  }
 
-.text-step-timeline {
-  margin: 10px 0px 0px -36px;
-  line-height: 14px;
-}
+  .date-step-timeline {
+    font-size: 8px;
+    color: rgba(0,0,0,0.59);
+    margin-bottom: 0px
+  }
 
-.date-step-timeline {
-  font-size: 8px;
-  color: rgba(0,0,0,0.59);
-  margin-bottom: 0px
-}
-
-.name-step-timeline {
-  font-size: 10px;
-color: #04677D;
-}
-.l-wizard-h {
-  padding: 0 0px 0 40px;
-}
-.wizard-h {
-    color: #b8b8b8;
-    margin-bottom: 0;
-    padding: 0;
-    position: relative;
-}
-.wizard-h::before {
-    background: #FABF01 none repeat scroll 0 0;
-    bottom: 0;
-    content: "";
-    height: 2px;
-    left: 8%;
-    position: absolute;
-    top: 15px;
-    width: 68%;
-}
-.l-wizard-h-step {
-    float: left;
-    width: 33%;
-}
-.wizard-h .wizard-h__step, .wizard-h .wizard-h__step--previous, .wizard-h .wizard-h__step--current {
-    display: inline-block;
-    font-size: 20px;
-    height: 30px;
-    line-height: 30px;
-    margin-bottom: 0px;
-    position: relative;
-}
-.wizard-h .wizard-h__step--previous {
-    color: #4d4d4d;
-}
-.wizard-h .wizard-h__step, .wizard-h .wizard-h__step--previous, .wizard-h .wizard-h__step--current {
-    display: inline-block;
-    height: auto;
-    margin-bottom: 0;
+  .name-step-timeline {
+    font-size: 10px;
+  color: #04677D;
+  }
+  .l-wizard-h {
+    padding: 0 0px 0 40px;
+  }
+  .wizard-h {
+      color: #b8b8b8;
+      margin-bottom: 0;
+      padding: 0;
+      position: relative;
+  }
+  .wizard-h::before {
+      background: #FABF01 none repeat scroll 0 0;
+      bottom: 0;
+      content: "";
+      height: 2px;
+      left: 8%;
+      position: absolute;
+      top: 15px;
+      width: 68%;
+  }
+  .l-wizard-h-step {
+      float: left;
+      width: 33%;
+  }
+  .wizard-h .wizard-h__step, .wizard-h .wizard-h__step--previous, .wizard-h .wizard-h__step--current {
+      display: inline-block;
+      font-size: 20px;
+      height: 30px;
+      line-height: 30px;
+      margin-bottom: 0px;
+      position: relative;
+  }
+  .wizard-h .wizard-h__step--previous {
+      color: #4d4d4d;
+  }
+  .wizard-h .wizard-h__step, .wizard-h .wizard-h__step--previous, .wizard-h .wizard-h__step--current {
+      display: inline-block;
+      height: auto;
+      margin-bottom: 0;
+      text-align: center;
+  }
+  .wizard-h .wizard-h__step .fa, .wizard-h .wizard-h__step--previous .fa, .wizard-h .wizard-h__step--current .fa {
+      background: #FEC300 none repeat scroll 0 0;
+      border: 2px solid #04677D;
+      border-radius: 50%;
+      display: block;
+      font-size: 12px;
+      color:white;
+      height: 30px;
+      left: 23%;
+      line-height: 28px;
+      position: relative;
+      width: 30px;
+      text-align: center;
+      margin-bottom: 0px;
+  }
+  .wizard-h .wizard-h__step--previous .fa {
+      background: #04677D none repeat scroll 0 0;
+      border: 2px solid #04677D;
+      border-radius:50%;
+      text-align: center;
+  }
+  .wizard-h .wizard-h__step--current {
+      color: #3890bd;
+      font-weight: 500;
+  }
+  .wizard-h .wizard-h__step span, .wizard-h .wizard-h__step--previous span, .wizard-h .wizard-h__step--current span {
+      display: inline-block;
+  }
+  .btn-postulate {
     text-align: center;
-}
-.wizard-h .wizard-h__step .fa, .wizard-h .wizard-h__step--previous .fa, .wizard-h .wizard-h__step--current .fa {
-    background: #FEC300 none repeat scroll 0 0;
-    border: 2px solid #04677D;
-    border-radius: 50%;
-    display: block;
-    font-size: 12px;
-    color:white;
-    height: 30px;
-    left: 23%;
-    line-height: 28px;
-    position: relative;
-    width: 30px;
-    text-align: center;
-    margin-bottom: 0px;
-}
-.wizard-h .wizard-h__step--previous .fa {
-    background: #04677D none repeat scroll 0 0;
-    border: 2px solid #04677D;
-    border-radius:50%;
-    text-align: center;
-}
-.wizard-h .wizard-h__step--current {
-    color: #3890bd;
-    font-weight: 500;
-}
-.wizard-h .wizard-h__step span, .wizard-h .wizard-h__step--previous span, .wizard-h .wizard-h__step--current span {
-    display: inline-block;
-}
-
-.btn-postulate {
-  text-align: center;
-  color: white;
-  padding: 10px 15px;
-  border-radius: 4px;
-  font-weight: bold;
-  background: #04677D;
-  transition: background 0.3s ease;
-  width: 100%;
-}
-
-.btn-postulate:hover {
-  opacity: 1;
-  background: #FEC300;
-  text-decoration: none;
-  color: white;
-}
-
-// /* PAGE ENTREPRENEURS - ACCOMPAGNEMENTS */
-.plain-text {
-  margin-top:2px;
-  margin-bottom:2px;
-  font-size:14px;
-  font-weight: bolder;
-}
+    color: white;
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+    background: #04677D;
+    transition: background 0.3s ease;
+    width: 100%;
+  }
+  .btn-postulate:hover {
+    opacity: 1;
+    background: #FEC300;
+    text-decoration: none;
+    color: white;
+  }
+  // /* PAGE ENTREPRENEURS - ACCOMPAGNEMENTS */
+  .plain-text {
+    margin-top:2px;
+    margin-bottom:2px;
+    font-size:14px;
+    font-weight: bolder;
+  }
 
 // CHANGEMENT COLOR
 
