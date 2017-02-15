@@ -79,6 +79,12 @@ class BloomersController < ApplicationController
       @bloomers = @bloomers.where(city: params[:search][:city])
     end
 
+    @map_bloomers = @bloomers.where.not(latitude: nil, longitude: nil)
+    @hash = Gmaps4rails.build_markers(@map_bloomers) do |bloomer, marker|
+      marker.lat bloomer.latitude
+      marker.lng bloomer.longitude
+      marker.infowindow render_to_string(:partial => "/shared/infowindow", :locals => { :bloomer => bloomer})
+    end
 
     # search = Bloomer.search("*", aggs: [:category, :city, :speciality, :program_prices], where: conditions)
     # @bloomers = search.results

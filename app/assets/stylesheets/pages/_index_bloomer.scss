@@ -185,6 +185,7 @@
       box-shadow: 0 0 10px rgba(128, 128, 128, 0.11);
       height: 150px;
       border-radius: 3px;
+      transition:0.3s ease;
     img {
       width:100%;
     }
@@ -196,7 +197,29 @@
     height:150px;
     border-radius:3px 0 0 3px;
   }
-
+  h4 {
+    text-transform: uppercase;
+    color: #04677D;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: "Comfortaa", cursive;
+  }
+  h5 {
+    font-family: 'Muli', sans-serif;
+    font-size: 11px;
+    font-weight: 100;
+    color: #9B9B9B;
+  }
+  p {
+    font-size: 12px;
+    color: #9B9B9B;
+    font-family: 'Muli', cursive;
+    font-weight: 300;
+  }
+  .program-name {
+    color:#04677D;
+    font-weight:600;
+  }
 }
 
   .bloomer-logo {
@@ -208,5 +231,11 @@
   }
 
 
+.color-yellow {
+  color:#FABF01;
+}
 
+.bloomer-card:hover {
+  background-color:#F9FBFC;
+}
 

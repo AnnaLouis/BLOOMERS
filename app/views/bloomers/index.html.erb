@@ -50,7 +50,7 @@
 
     <div class="col-xs-12 col-sm-7">
       <% @bloomers.each do |bloomer| %>
-
+      <%= link_to bloomer_path(bloomer) do %>
       <div class="row bloomer-card">
 
         <div class="col-xs-4" style="padding: 0;">
@@ -68,15 +68,31 @@
           <!-- </div> -->
         </div>
 
-        <div class="hidden-xs col-sm-6">
-        <%= bloomer.name %>
+        <div class="col-sm-6">
+          <h4><span class="yellow-underline"><%= bloomer.name %></span></h4>
+          <p> <i class="fa fa-map-marker" aria-hidden="true"></i> <%= bloomer.city %>
+          <i class="fa fa-hashtag" aria-hidden="true" style="margin-left:20px"></i> <%= bloomer.speciality %></p>
+          <div class="programs-box">
+            <% if bloomer.programs.count == 0 %>
+              <h5><span class="program-name">Pas encore de programme</span></h5>
+            <% end %>
+            <% bloomer.programs.each do |program| %>
+              <div class="program-box">
+                <h5><span class="program-name"><%= program.name %> : </span>
+                <% if program.candidature_close? %>
+                 Il reste <span class="color-yellow"><b><%= (Date.today - program.candidature_close).to_i %> jours</span></b> pour candidater
+                <% end %></h5>
+              </div>
+            <% end %>
+          </div>
         </div>
 
       </div>
       <% end %>
+      <% end %>
     </div>
-    <div class="col-sm-4">
-
+    <div class="hidden-xs col-sm-5">
+      <div id="map" style="width: 100%; height: 80vh"></div>
 
 
     </div>
@@ -107,6 +123,85 @@
         $('#city-choice').css({"display":"block"});
       }
     })
+
+    $(document).ready(function() {
+    var centerlocation = {lat: 47.7529067, lng: 1.671169};
+    var setzoomvariable = 5;
+    var mapStyle = [
+      {"featureType": "landscape.natural",
+      "elementType": "geometry.fill",
+      "stylers": [{
+      "visibility": "on"},
+      {"color": "#e0efef"
+      }]},
+      {"featureType": "poi",
+      "elementType": "geometry.fill",
+      "stylers": [
+      {"visibility": "on"
+      },
+      {"hue": "#1900ff"
+      },
+      {"color": "#c0e8e8"
+      }]},
+      {"featureType": "road", "elementType": "geometry", "stylers": [
+        {"lightness": 100},
+        {"visibility": "simplified"}]},
+      {
+        "featureType": "road",
+        "elementType": "labels",
+        "stylers": [
+        {
+        "visibility": "off"
+      }]},
+      {
+        "featureType": "road.local",
+        "elementType": "labels.text",
+        "stylers": [
+        {
+        "visibility": "on"
+      }]},
+      {
+        "featureType": "transit.line",
+        "elementType": "geometry",
+        "stylers": [
+        {
+        "visibility": "on"
+      },
+      {
+        "lightness": 700
+      }]},
+      {
+        "featureType": "water",
+        "elementType": "all",
+        "stylers": [
+        {
+        "color": "#7dcdcd"
+      }]}];
+
+    var handler = Gmaps.build('Google');
+    handler.buildMap(
+      {internal: { id: 'map' },
+      provider: {
+        scrollwheel: false,
+        <!-- zoomControl: false, -->
+        styles: mapStyle,
+      }},
+      function() {
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        <!-- Center the map AND ajust zoom to see all markers -->
+        handler.bounds.extendWith(markers);
+       <!--  handler.fitMapToBounds(); -->
+       <!-- CENTRER SUR PARIS / ILE DE FRANCE -->
+        handler.map.centerOn(centerlocation);
+        handler.getMap().setZoom(setzoomvariable);
+    <!--     PARIS ={lat: 48.85661400000001, lng: 2.3522219000000177}); -->
+        if (markers.length == 0) {
+        handler.getMap().setZoom();
+        } else if (markers.length == 1) {
+        handler.getMap().setZoom(14);
+        }
+      });
+    });
 
   <% end %>
 <% end %>
