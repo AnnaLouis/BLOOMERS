@@ -147,9 +147,12 @@ class BloomersController < ApplicationController
   #   authorize @bloomer
   # end
 
-  # def update
-    # authorize @bloomer
-  # end
+  def update
+   @bloomer = Bloomer.find(params[:id])
+   @bloomer.update(bloomer_params)
+   authorize @bloomer
+   redirect_to newdashboard_path
+  end
 
 private
 

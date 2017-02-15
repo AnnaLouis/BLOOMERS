@@ -56,6 +56,7 @@ class PagesController < ApplicationController
       @reviews = Review.select { |review| review.user == current_user }
     elsif current_user.bloomer_admin
       @bloomers = current_user.bloomers
+      @bloomer = current_user.bloomers.first
       @candidatures = Candidature.select{ |candidature| candidature.program.bloomer.user == current_user }
     end
   end

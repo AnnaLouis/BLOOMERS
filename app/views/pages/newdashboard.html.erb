@@ -241,7 +241,7 @@
                   <img src="http://www.addressbazar.com/images/logo/no-logo.png" class="logo">
                 <% end %>
               </div>
-              <div class="content-card bloomer-description">
+              <div class="content-card bloomer-description hidden">
                 <h4 class="edit-btn">
                   <%= link_to edit_bloomer_path(bloomer) do %>
                   <i class="fa fa-pencil-square-o" aria-hidden="true"></i> modifier
@@ -264,28 +264,57 @@
                   </div>
                 </div>
               </div>
+              <div class="content-card bloomer-description">
+                <%= simple_form_for @bloomer do |f| %>
+                  <%= f.input :name, label:"NOM DE VOTRE STRUCTURE" %>
+                  <%= f.submit %>
+                <% end %>
+              </div>
             </div>
             <!-- DESCRIPTION & MORE INFO -->
             <div class="row-content">
               <div class="content-card more-infos-first">
                   <h2>Description</h2>
-                  <p><%= bloomer.description %></p>
+                  <%= simple_form_for @bloomer do |f| %>
+                    <%= f.input :description, label:false %>
+                    <%= f.submit %>
+                  <% end %>
                 </div>
               <div class="content-card more-infos">
-                <h2>Informations sur le lieu</h2>
-                <p>A faire</p>
+                <h2>Informations principales</h2>
+                <%= simple_form_for @bloomer do |f| %>
+                  <%= f.input :category, label:"Catégorie", collection: Bloomer::CATEGORIES %>
+                  <%= f.input :speciality, label:"Spécialité" %>
+                  <%= f.input :date_creation, label:"Date de création" %>
+                  <%= f.submit %>
+                <% end %>
               </div>
             </div>
             <!-- LES PHOTOS -->
-            <% if bloomer.photos? %>
             <div class="row-content" style="flex-wrap: wrap;">
-              <% bloomer.photos.each do |photo| %>
+              <div class="content-card more-infos" style="margin-left:0;margin-right:50px;flex: 1 1 45%;">
+                <h2>Contact</h2>
+                <%= simple_form_for @bloomer do |f| %>
+                  <%= f.input :email, label:"Email" %>
+                  <%= f.input :address, label:"Adresse" %>
+                  <%= f.input :website, label:"Site internet" %>
+                  <%= f.input :twitter_account, label:"Compte Twitter" %>
+                  <%= f.submit %>
+                <% end %>
+              </div>
+              <% if bloomer.photos? %>
               <div class="content-card bloomer-photo">
-                <%= cl_image_tag(photo.path, class: "photos")%>
+                <h2>LEs photos </h2>
+                <%= simple_form_for @bloomer do |f| %>
+                   <%= f.input :photos, as: :attachinary %>
+                  <%= f.submit %>
+                <% end %>
+                <!-- <#% bloomer.photos.each do |photo| %>
+                <#%= cl_image_tag(photo.path, class: "photos")%>
+                <#% end %> -->
               </div>
               <% end %>
             </div>
-            <% end %>
           </div>
           <!-- PROGRAMMES -->
           <% bloomer.programs.each do |program| %>
