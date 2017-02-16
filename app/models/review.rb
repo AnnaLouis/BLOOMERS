@@ -1,7 +1,6 @@
 class Review < ApplicationRecord
   # REFERENCES
   belongs_to :bloomer
-  belongs_to :user
   # VALIDATIONS
   validates :title, presence: true
   validates :description, presence: true

@@ -180,8 +180,8 @@
               <div class="col-xs-6">
                 <h2><i class="fa fa-plus-circle margin-right-8px" aria-hidden="true"></i> LES AVANTAGES</h2>
                 <h3 class="color-green">
-                  <% if @first_program.advantages? %>
-                  <%= @first_program.advantages %>
+                  <% if @first_program.description? %>
+                  <%= @first_program.description %>
                   <% end %>
                 </h3>
               </div>

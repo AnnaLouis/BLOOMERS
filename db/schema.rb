@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161208100507) do
+ActiveRecord::Schema.define(version: 20170216171126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,9 @@ ActiveRecord::Schema.define(version: 20161208100507) do
     t.integer  "user_id"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "gen_apply_link"
+    t.string   "video"
+    t.string   "facebook"
     t.index ["user_id"], name: "index_bloomers_on_user_id", using: :btree
   end
 
@@ -119,22 +122,35 @@ ActiveRecord::Schema.define(version: 20161208100507) do
 
   create_table "programs", force: :cascade do |t|
     t.string   "name"
-    t.string   "short_description"
     t.text     "description"
     t.string   "duration"
     t.integer  "price"
     t.boolean  "equity"
     t.integer  "bloomer_id"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.date     "candidature_open"
     t.date     "candidature_close"
     t.text     "individual_coaching"
     t.text     "collective_coachin"
-    t.text     "ecosystem"
-    t.text     "advantages"
     t.text     "selection_criterias"
-    t.integer  "surviving_rate"
+    t.datetime "batch_start"
+    t.string   "apply_link"
+    t.string   "selection_criterias_one"
+    t.string   "selection_criterias_two"
+    t.string   "selection_criterias_three"
+    t.string   "selection_criterias_four"
+    t.string   "selection_criterias_five"
+    t.string   "individual_coaching_one"
+    t.string   "individual_coaching_two"
+    t.string   "individual_coaching_three"
+    t.string   "individual_coaching_four"
+    t.string   "individual_coaching_five"
+    t.string   "collective_coaching_one"
+    t.string   "collective_coaching_two"
+    t.string   "collective_coaching_three"
+    t.string   "collective_coaching_four"
+    t.string   "collective_coaching_five"
     t.index ["bloomer_id"], name: "index_programs_on_bloomer_id", using: :btree
   end
 
@@ -143,9 +159,10 @@ ActiveRecord::Schema.define(version: 20161208100507) do
     t.text     "description"
     t.integer  "rating"
     t.integer  "bloomer_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.integer  "user_id"
+    t.string   "startup_name"
     t.index ["bloomer_id"], name: "index_reviews_on_bloomer_id", using: :btree
     t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
   end
@@ -208,6 +225,5 @@ ActiveRecord::Schema.define(version: 20161208100507) do
   add_foreign_key "incubations", "startups"
   add_foreign_key "programs", "bloomers"
   add_foreign_key "reviews", "bloomers"
-  add_foreign_key "reviews", "users"
   add_foreign_key "startups", "users"
 end

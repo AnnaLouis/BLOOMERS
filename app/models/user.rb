@@ -15,7 +15,6 @@ class User < ApplicationRecord
   has_many :programs, through: :bloomers
   has_many :batches, through: :programs
   has_many :favorites, dependent: :destroy
-  has_many :reviews, dependent: :destroy
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.to_h.slice(:provider, :uid)
