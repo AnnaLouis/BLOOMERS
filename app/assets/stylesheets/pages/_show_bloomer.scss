@@ -47,7 +47,7 @@
     h3 {
     font-size:11px;
     margin-top: 7px;
-    margin-bottom:20px;
+    margin-bottom:14px;
     color: #8C8C8C;
     }
   }
@@ -70,10 +70,6 @@
     .avatar {
       width: 60px;
     }
-    img {
-      width: 35%;
-      padding:5px;
-    }
     a h4 {
       text-align: center;
       font-size: 10px;
@@ -88,6 +84,18 @@
     }
     .logo-startups-box {
       text-align:center;
+      display:flex;
+      flex-direction:row;
+      flex-wrap: wrap;
+      img {
+        height:100%;
+        width:auto;
+      }
+    }
+    .startup-box {
+      flex: 1 1 25%;
+      height: 80px;
+      padding: 10px;
     }
   }
   p {
@@ -178,6 +186,11 @@
 .margin-right-8px {
   margin-right:8px
 }
+
+.margin-left-16px {
+  margin-left:16px
+}
+
 
 .margin-right-20px {
   margin-right:20px;
