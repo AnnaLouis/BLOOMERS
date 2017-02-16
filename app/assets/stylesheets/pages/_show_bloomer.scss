@@ -66,6 +66,9 @@
       color:#04677D;
     }
   }
+  .startups-box:hover .bg-hover-blue {
+    opacity:1;
+  }
   .startups-box {
     .avatar {
       width: 60px;
@@ -82,14 +85,19 @@
       font-weight:bold;
       color:#04677D;
     }
+    .bg-hover-blue {
+      top: 0px;
+      left: 15px;
+      height: 100%;
+      width: 94.5%;
+    }
     .logo-startups-box {
       text-align:center;
       display:flex;
       flex-direction:row;
       flex-wrap: wrap;
       img {
-        height:100%;
-        width:auto;
+        width:60px;
       }
     }
     .startup-box {
