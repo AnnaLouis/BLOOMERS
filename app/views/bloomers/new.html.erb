@@ -2,7 +2,7 @@
   <div class="wrapper-page-new-bloom">
     <div class="col-xs-3 new-bloomer-left">
       <div class="steps">
-        <h1>créez votre bloomer</h1>
+        <h1>Créez votre Bloomer</h1>
         <!-- STEP 1 - Création -->
         <div class="nb-global-step active" data-target="#step-1-name">
           <div class="circle active" data-target="#step-1-name"></div>
@@ -18,27 +18,29 @@
         <div class="line-box"><div class="grey-line"></div></div>
         <div class="nb-global-step" data-target="#step-3-infos">
           <div class="circle" id="circle-3"></div>
-          <div class="step"><p><span>étape 3</span><br>Info pratiques</p></div>
+          <div class="step"><p><span>étape 3</span><br>Infos pratiques</p></div>
         </div>
         <!-- Step 4 - Medias -->
-        <div class="line-box"><div class="grey-line"></div></div>
-        <div class="nb-global-step" data-target="#step-4-medias">
+     <!--    <div class="line-box"><div class="grey-line"></div></div> -->
+<!--         <div class="nb-global-step" data-target="#step-4-medias">
           <div class="circle" id="circle-4"></div>
           <div class="step"><p><span>étape 4</span><br>Réseaux sociaux</p></div>
-        </div>
+        </div> -->
       </div>
     </div>
 
     <div class="col-xs-9 new-bloomer-right">
     <%= simple_form_for(@bloomer) do |f| %>
-      <!-- Begining of simple form -->
+
+      <!-- CRÉATION -->
       <div class="sub-new-bloomer-content" id="step-1-name">
         <%= f.error_notification %>
         <%= f.input :name, label: 'Nom de votre structure' %>
         <%= f.input :logo, as: :attachinary %>
         <div class="nb-next-button" id="nb-next-button-1"><h4><span>SUIVANT</span> ></h4></div>
       </div>
-      <!-- MAIN DESCRIPTION -->
+
+      <!-- DESCRIPTION -->
       <div class="sub-new-bloomer-content hidden" id="step-2-description">
         <div class="nb-title-sub-content"><h2>Décrivez votre structure</h2></div>
         <div class="nb-sub-content">
@@ -52,7 +54,8 @@
           </div>
         </div>
       </div>
-      <!-- INFO -->
+
+      <!-- INFOS PRATIQUES -->
       <div class="sub-new-bloomer-content hidden" id="step-3-infos">
         <div class="nb-title-sub-content"><h2>Informations pratiques</h2></div>
         <div class="col-xs-12 col-sm-6">
@@ -61,13 +64,16 @@
           </div>
         </div>
         <div class="col-xs-12 col-sm-6">
+          <%= f.input :email, label: 'Email de contact'%>
           <%= f.input :website, label: 'Site internet' %>
-          <%= f.input :email %>
+          <%= f.input :twitter_account, label: 'Compte Twitter' %>
           <%= f.input :address, label: 'Adresse' %>
           <%= f.input :city, label: 'Ville' %>
-          <div class="nb-next-button" id="nb-next-button-3"><h4><span>SUIVANT</span> ></h4></div>
+          <%= f.input :photos, as: :attachinary %>
+          <span class="nb-next-button"><%= f.button :submit, "Je crée ma structure !" %></span>
         </div>
       </div>
+
       <!-- SOCIAL MEDIAS -->
       <div class="sub-new-bloomer-content hidden" id="step-4-medias">
         <div class="nb-title-sub-content"><h2>Réseaux sociaux</h2></div>

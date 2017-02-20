@@ -20,7 +20,7 @@
 }
 
 .new-bloomer-left h1 {
-  font-family: 'Comfortaa', cursive;
+  font-family: 'Muli', sans-serif;
   font-weight: lighter;
   font-size: 22px;
   color: #04677D;
@@ -131,12 +131,19 @@
   cursor:pointer;
   input {
     width: 100%;
-    background: #fec300;
-    color: white;
+    background: white;
+    color: #FEC300;
     padding: 10px 15px;
     border: none;
-    font-weight: bold;
+    border: 1px solid #FEC300;
   }
+}
+
+.nb-next-button input:hover {
+  cursor:pointer;
+  color: #04667c;
+  background-color: white;
+  border-color: #04667c;
 }
 
 .nb-next-button h4 {
@@ -173,15 +180,14 @@
 }
 
 .form-control{
-  box-shadow:none;
+  box-shadow: 1px 1px 1px #CDE1E5;
   border-radius:none;
   border:none;
-  border-bottom: 3px solid #FEC300;
   color: #04667C;
-  font-size:20px;
+  font-size:15px;
   font-family: 'Muli', sans-serif;
   padding-left:0px;
-  background: rgba(254,195,0, 0.03);
+  background: rgba(155, 155, 155, 0.03);
 }
 
 .datepicker {
